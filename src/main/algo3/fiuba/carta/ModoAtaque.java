@@ -1,15 +1,14 @@
-package algo3.fiuba.carta;
+package main.algo3.fiuba.carta;
 
-public class ModoDefensa implements EstadoCarta {
+public class ModoAtaque implements EstadoCarta {
 
     @Override
     public void atacar(Carta otraCarta, Integer puntosAtaque) {
-        throw new RuntimeException("No puede atacar cuando está en modo defensa");
+        otraCarta.recibirAtaque(puntosAtaque);
     }
 
     @Override
     public boolean recibirAtaque(Integer ataqueAtacante, Integer ataqueDefensor, Integer defensaDefensor) {
-        return ataqueAtacante >= defensaDefensor;
+        return ataqueAtacante >= ataqueDefensor;
     }
-
 }
