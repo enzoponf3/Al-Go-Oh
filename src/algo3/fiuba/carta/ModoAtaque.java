@@ -1,6 +1,6 @@
 package algo3.fiuba.carta;
 
-public class ModoAtaque implements TipoEnJuego {
+public class ModoAtaque implements EstadoCarta {
 
     @Override
     public void atacar(Carta otraCarta, Integer puntosAtaque) {
