@@ -24,4 +24,9 @@ public class Carta {
             estadoCarta = new EnCementerio();
         }
     }
+
+    public void pasarAModoJuego(EnJuego tipoEnJuego) {
+        estadoCarta = tipoEnJuego;
+    }
+
 }

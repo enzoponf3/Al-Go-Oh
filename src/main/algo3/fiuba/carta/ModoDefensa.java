@@ -1,6 +1,19 @@
 package main.algo3.fiuba.carta;
 
-public class ModoDefensa implements EstadoCarta {
+public class ModoDefensa implements EnJuego {
+
+    private static ModoDefensa INSTANCIA;
+
+    private ModoDefensa() {
+    }
+
+    public static ModoDefensa INSTANCIA() {
+        if (INSTANCIA == null){
+            INSTANCIA = new ModoDefensa();
+        }
+
+        return INSTANCIA;
+    }
 
     @Override
     public void atacar(Carta otraCarta, Integer puntosAtaque) {
