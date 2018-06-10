@@ -1,5 +1,9 @@
 package main.algo3.fiuba.carta;
 
-public interface EnJuego extends EstadoCarta {
+public abstract class EnJuego implements EstadoCarta {
 
+    @Override
+    public boolean estaViva() {
+        return true;
+    }
 }

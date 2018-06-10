@@ -11,4 +11,10 @@ public class FueraDeJuego implements EstadoCarta {
     public boolean recibirAtaque(Integer ataqueAtacante, Integer ataqueDefensor, Integer defensaDefensor) {
         throw new RuntimeException("No se puede atacar a una carta que no está en juego");
     }
+
+    @Override
+    public boolean estaViva() {
+        throw new RuntimeException("La carta no se ha jugado aún.");
+    }
+
 }

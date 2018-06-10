@@ -29,4 +29,8 @@ public class Carta {
         estadoCarta = tipoEnJuego;
     }
 
+    public boolean estaViva() {
+        return estadoCarta.estaViva();
+    }
+
 }

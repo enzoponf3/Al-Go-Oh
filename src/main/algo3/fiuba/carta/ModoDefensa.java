@@ -1,6 +1,6 @@
 package main.algo3.fiuba.carta;
 
-public class ModoDefensa implements EnJuego {
+public class ModoDefensa extends EnJuego {
 
     private static ModoDefensa INSTANCIA;
 
