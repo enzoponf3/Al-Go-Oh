@@ -1,8 +1,6 @@
 package test.algo3.main.cartas;
 
-import main.algo3.fiuba.cartas.Monstruo;
-import main.algo3.fiuba.cartas.ModoAtaque;
-import main.algo3.fiuba.cartas.ModoDefensa;
+import main.algo3.fiuba.cartas.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,8 +11,11 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500);
 
-        monstruoAtacante.pasarAModoJuego(ModoDefensa.INSTANCIA());
-        monstruoDefensor.pasarAModoJuego(ModoAtaque.INSTANCIA());
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoDefensa();
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoDefensa();
 
         monstruoAtacante.atacar(monstruoDefensor);
     }
@@ -24,8 +25,11 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500);
 
-        monstruoAtacante.pasarAModoJuego(ModoAtaque.INSTANCIA());
-        monstruoDefensor.pasarAModoJuego(ModoAtaque.INSTANCIA());
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoAtaque();
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertTrue(true);
@@ -39,8 +43,11 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor);
 
-        monstruoAtacante.pasarAModoJuego(ModoAtaque.INSTANCIA());
-        monstruoDefensor.pasarAModoJuego(ModoDefensa.INSTANCIA());
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoDefensa();
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertTrue(monstruoAtacante.estaVivo());
@@ -55,8 +62,11 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor);
 
-        monstruoAtacante.pasarAModoJuego(ModoAtaque.INSTANCIA());
-        monstruoDefensor.pasarAModoJuego(ModoDefensa.INSTANCIA());
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoDefensa();
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertTrue(monstruoAtacante.estaVivo());
@@ -72,8 +82,11 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0);
 
-        monstruoAtacante.pasarAModoJuego(ModoAtaque.INSTANCIA());
-        monstruoDefensor.pasarAModoJuego(ModoAtaque.INSTANCIA());
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoAtaque();
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertTrue(monstruoAtacante.estaVivo());
@@ -88,8 +101,11 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0);
 
-        monstruoAtacante.pasarAModoJuego(ModoAtaque.INSTANCIA());
-        monstruoDefensor.pasarAModoJuego(ModoAtaque.INSTANCIA());
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoAtaque();
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertFalse(monstruoAtacante.estaVivo());

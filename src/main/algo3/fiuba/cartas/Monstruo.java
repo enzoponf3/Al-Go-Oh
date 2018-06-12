@@ -4,17 +4,20 @@ public class Monstruo extends Carta {
 
     private Integer ataque;
     private Integer defensa;
+    private ModoMonstruo modoMonstruo;
 
     public Monstruo(String nombre, Integer ataque, Integer defensa) {
         super(nombre);
+        this.ataque = ataque;
+        this.defensa = defensa;
     }
 
     public void atacar(Monstruo otraCarta) {
-        estadoCarta.atacar(otraCarta, ataque);
+        modoMonstruo.atacar(otraCarta, ataque);
     }
 
     public void recibirAtaque(Integer puntosAtaqueRival) {
-        if (estadoCarta.recibirAtaque(puntosAtaqueRival, ataque, defensa)) {
+        if (modoMonstruo.recibirAtaque(puntosAtaqueRival, ataque, defensa)) {
             estadoCarta = new EnCementerio();
         }
     }
@@ -25,5 +28,13 @@ public class Monstruo extends Carta {
 
     public boolean estaVivo() {
         return estadoCarta.estaViva();
+    }
+
+    public void pasarAModoAtaque() {
+        modoMonstruo = ModoAtaque.INSTANCIA();
+    }
+
+    public void pasarAModoDefensa() {
+        modoMonstruo = ModoDefensa.INSTANCIA();
     }
 }
