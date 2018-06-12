@@ -1,10 +1,11 @@
-package test.algo3.main.cartas;
+package algo3.fiuba.entrega1;
 
-import main.algo3.fiuba.cartas.*;
+import algo3.fiuba.cartas.BocaArriba;
+import algo3.fiuba.cartas.Monstruo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MonstruoTest {
+public class MonstruoEntrega1Test {
 
     @Test(expected = RuntimeException.class)
     public void monstruoNoPuedeAtacarEnModoDefensa() {
