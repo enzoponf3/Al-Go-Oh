@@ -1,4 +1,4 @@
-package main.algo3.fiuba.carta;
+package main.algo3.fiuba.cartas;
 
 public abstract class EnJuego implements EstadoCarta {
 

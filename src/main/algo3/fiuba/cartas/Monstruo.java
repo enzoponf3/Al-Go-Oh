@@ -1,21 +1,15 @@
-package main.algo3.fiuba.carta;
+package main.algo3.fiuba.cartas;
 
-public class Carta {
+public class Monstruo extends Carta {
 
-    private String nombre;
     private Integer ataque;
     private Integer defensa;
-    private EstadoCarta estadoCarta;
 
-    public Carta(String nombre, Integer ataque, Integer defensa) {
-        this.nombre = nombre;
-        this.ataque = ataque;
-        this.defensa = defensa;
-
-        this.estadoCarta = new FueraDeJuego();
+    public Monstruo(String nombre, Integer ataque, Integer defensa) {
+        super(nombre);
     }
 
-    public void atacar(Carta otraCarta) {
+    public void atacar(Monstruo otraCarta) {
         estadoCarta.atacar(otraCarta, ataque);
     }
 
@@ -29,8 +23,7 @@ public class Carta {
         estadoCarta = tipoEnJuego;
     }
 
-    public boolean estaViva() {
+    public boolean estaVivo() {
         return estadoCarta.estaViva();
     }
-
 }

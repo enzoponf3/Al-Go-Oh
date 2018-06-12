@@ -1,4 +1,4 @@
-package main.algo3.fiuba.carta;
+package main.algo3.fiuba.cartas;
 
 public class ModoAtaque extends EnJuego {
 
@@ -16,7 +16,7 @@ public class ModoAtaque extends EnJuego {
     }
 
     @Override
-    public void atacar(Carta otraCarta, Integer puntosAtaque) {
+    public void atacar(Monstruo otraCarta, Integer puntosAtaque) {
         otraCarta.recibirAtaque(puntosAtaque);
     }
 
