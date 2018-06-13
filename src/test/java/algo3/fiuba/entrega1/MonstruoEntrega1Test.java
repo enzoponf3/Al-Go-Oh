@@ -109,6 +109,7 @@ public class MonstruoEntrega1Test {
         monstruoDefensor.pasarAModoAtaque();
 
         monstruoAtacante.atacar(monstruoDefensor);
+
         Assert.assertFalse(monstruoAtacante.estaVivo());
         Assert.assertTrue(monstruoDefensor.estaVivo());
     }

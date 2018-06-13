@@ -17,8 +17,13 @@ public class JugadorEntrega1Test {
     }
 
     @Test
-    public void elJugadorCreadoEstaEnJuego() {
+    public void elJugadorRecienCreadoEstaEnJuego() {
         Assert.assertTrue(jugador.estaEnJuego());
+    }
+
+    @Test
+    public void elJugadorRecienCreadoNoTieneCartas() {
+        Assert.assertEquals(jugador.cantidadCartas(), Integer.valueOf(0));
     }
 
     @Test
@@ -41,7 +46,6 @@ public class JugadorEntrega1Test {
         Integer puntosASacar = 7999;
         jugador.modificarPuntosDeVida(-puntosASacar);
 
-        Assert.assertTrue(jugador.estaEnJuego());
         Assert.assertEquals(jugador.getPuntosDeVida(), Integer.valueOf(1));
     }
 
@@ -50,24 +54,44 @@ public class JugadorEntrega1Test {
         Integer puntosASacar = 8000;
         jugador.modificarPuntosDeVida(-puntosASacar);
 
-        Assert.assertTrue(!jugador.estaEnJuego());
+        Assert.assertFalse(jugador.estaEnJuego());
         Assert.assertEquals(jugador.getPuntosDeVida(), Integer.valueOf(0));
     }
 
     @Test
-    public void leSacoMásPuntosDeVidaDeLosQueTiene_ElJugadorMuere_SusPuntosDeVidaSon0() {
+    public void leSacoMasPuntosDeVidaDeLosQueTiene_ElJugadorMuere_SusPuntosDeVidaSon0() {
         Integer puntosASacar = 8001;
         jugador.modificarPuntosDeVida(-puntosASacar);
 
-        Assert.assertTrue(!jugador.estaEnJuego());
+        Assert.assertFalse(jugador.estaEnJuego());
         Assert.assertEquals(jugador.getPuntosDeVida(), Integer.valueOf(0));
     }
 
     @Test
     public void agregoUnaCartaALaMano_LaCartaEstaEnLaMano() {
+        Integer cantidadInicialCartas = jugador.cantidadCartas() + 1;
         Carta carta = new Monstruo("m", 1000, 1000);
+        jugador.agregarCartaAMazo(carta);
 
-        jugador.tomarCarta(carta);
-        jugador.getMano().contiene(carta);
+        jugador.tomarCarta();
+        Assert.assertEquals(jugador.cantidadCartas(), cantidadInicialCartas);
+    }
+
+    @Test
+    public void jugadorColocarCartaMonstruoEnManoEnTablero() {
+        Carta carta = new Monstruo("m", 1000, 1000);
+        jugador.agregarCartaAMazo(carta);
+        jugador.tomarCarta();
+        Integer cantidadFinalCartas = jugador.cantidadCartas() - 1;
+
+        jugador.colocarCartaEnTablero(carta);
+        Assert.assertEquals(cantidadFinalCartas, jugador.cantidadCartas());
+        Assert.assertTrue(jugador.cartaEnTablero(carta));
+    }
+
+    @Test (expected = RuntimeException.class)
+    public void jugadorNoPuedeColocarCartaMonstruoEnTableroSinCartasEnMano() {
+        Carta carta = new Monstruo("m", 1000, 1000);
+        jugador.colocarCartaEnTablero(carta);
     }
 }

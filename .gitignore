@@ -11,3 +11,4 @@ bin/
 build.xml.old
 *.jar
 *.iml
+out/
