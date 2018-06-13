@@ -13,7 +13,6 @@ public class Monstruo extends Carta {
     private Integer ataque;
     private Integer defensa;
     private ModoMonstruo modoMonstruo;
-    private Jugador jugador;
 
     public Monstruo(String nombre, Integer ataque, Integer defensa) {
         super(nombre);
