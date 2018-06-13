@@ -1,7 +1,7 @@
 package algo3.fiuba.entrega1;
 
 import algo3.fiuba.TableroJugador;
-import algo3.fiuba.cartas.BocaArriba;
+import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
 import org.junit.Assert;

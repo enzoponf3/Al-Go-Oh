@@ -1,4 +1,4 @@
-package algo3.fiuba.cartas;
+package algo3.fiuba.cartas.estados_cartas;
 
 public class BocaAbajo extends EnJuego {
 

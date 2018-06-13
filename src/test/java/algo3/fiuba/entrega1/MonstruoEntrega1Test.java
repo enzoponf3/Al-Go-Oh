@@ -1,6 +1,7 @@
 package algo3.fiuba.entrega1;
 
-import algo3.fiuba.cartas.BocaArriba;
+import algo3.fiuba.Jugador;
+import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.Monstruo;
 import org.junit.Assert;
 import org.junit.Test;
@@ -113,6 +114,62 @@ public class MonstruoEntrega1Test {
         Assert.assertFalse(monstruoAtacante.estaVivo());
         Assert.assertTrue(monstruoDefensor.estaVivo());
     }
+
+    @Test
+    public void matarMonstruoDefensorEnModoAtaque_DiferenciaDePuntosDaniaLosPuntosDeVidaDelDefensor_JugadorDefensorPierde() {
+        Integer puntosAtacante = 9000;
+        Jugador jugadorAtacante = new Jugador();
+        Integer puntosDefensor = 100;
+        Jugador jugadorDefensor = new Jugador();
+
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor);
+
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+        monstruoAtacante.setJugador(jugadorAtacante);
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoAtaque();
+        monstruoAtacante.setJugador(jugadorDefensor);
+
+
+        monstruoAtacante.atacar(monstruoDefensor);
+
+        // El jugador defensor debe morir porque se crea con 8000 hp y se le resta 8900
+        Assert.assertFalse(monstruoDefensor.estaVivo());
+        Assert.assertFalse(jugadorDefensor.estaEnJuego());
+        Assert.assertTrue(jugadorAtacante.estaEnJuego());
+    }
+
+    @Test
+    public void matarMonstruoEnModoDefensa_DiferenciaDePuntosNoDaniaLosPuntosDeVidaDelDefensor() {
+        Integer puntosAtacante = 9000;
+        Jugador jugadorAtacante = new Jugador();
+        Integer puntosDefensor = 100;
+        Jugador jugadorDefensor = new Jugador();
+
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor);
+
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+        monstruoAtacante.setJugador(jugadorAtacante);
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoDefensa();
+        monstruoAtacante.setJugador(jugadorDefensor);
+
+
+        monstruoAtacante.atacar(monstruoDefensor);
+
+        // El jugador defensor debe morir porque se crea con 8000 hp y se le resta 8900
+        Assert.assertFalse(monstruoDefensor.estaVivo());
+        Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertTrue(jugadorAtacante.estaEnJuego());
+    }
+
+
 
 
 

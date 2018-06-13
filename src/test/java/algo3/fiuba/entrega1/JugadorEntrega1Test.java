@@ -59,7 +59,7 @@ public class JugadorEntrega1Test {
     }
 
     @Test
-    public void leSacoMasPuntosDeVidaDeLosQueTiene_ElJugadorMuere_SusPuntosDeVidaSon0() {
+    public void leSacoMasPuntosDeVidaDeLosQueTiene_ElJugadorMuere_SusPuntosDeVidaSonCero() {
         Integer puntosASacar = 8001;
         jugador.modificarPuntosDeVida(-puntosASacar);
 

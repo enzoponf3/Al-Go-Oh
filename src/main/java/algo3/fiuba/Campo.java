@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Campo {
 
 
-    public Campo(){
+    public Campo() {
 
     }
 
