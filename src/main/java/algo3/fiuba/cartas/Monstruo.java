@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas;
 
 import algo3.fiuba.Jugador;
+import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
@@ -15,7 +16,7 @@ public class Monstruo extends Carta {
     private ModoMonstruo modoMonstruo;
 
     public Monstruo(String nombre, Integer ataque, Integer defensa) {
-        super(nombre);
+        super(nombre,new EfectoNulo());
         this.ataque = ataque;
         this.defensa = defensa;
     }

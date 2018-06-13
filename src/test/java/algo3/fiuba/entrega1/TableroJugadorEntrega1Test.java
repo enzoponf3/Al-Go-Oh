@@ -1,6 +1,8 @@
 package algo3.fiuba.entrega1;
 
+import algo3.fiuba.Jugador;
 import algo3.fiuba.TableroJugador;
+import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
@@ -30,7 +32,7 @@ public class TableroJugadorEntrega1Test {
     @Test
     public void colocarCartaMagicaEnTableroJugador() {
 
-        Magica cartaMagica = new Magica("una carta magica ");
+        Magica cartaMagica = new Magica("una carta magica ", new EfectoNulo());
 
         Assert.assertTrue(tableroJugador.colocarCartaEnTablero(cartaMagica));
     }
@@ -50,6 +52,12 @@ public class TableroJugadorEntrega1Test {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0);
 
+        Jugador jugadorAtacante = new Jugador();
+        Jugador jugadorDefensor = new Jugador();
+
+        monstruoAtacante.setJugador(jugadorAtacante);
+        monstruoDefensor.setJugador(jugadorDefensor);
+
         monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoAtacante.pasarAModoAtaque();
 
@@ -58,9 +66,10 @@ public class TableroJugadorEntrega1Test {
 
         monstruoAtacante.atacar(monstruoDefensor);
 
+        Assert.assertFalse(monstruoAtacante.estaVivo());
+
         tableroJugador.agregarCartaMuerta(monstruoAtacante);
-        //Assert.assertTrue(tableroJugador.cartaEnCementerio(monstruoAtacante));
-        Assert.assertTrue(monstruoAtacante.estaVivo());
+        Assert.assertTrue(tableroJugador.cartaEnCementerio(monstruoAtacante));
     }
 
     /* - tomar carta del campo no se puede

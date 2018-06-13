@@ -1,6 +1,7 @@
 package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.Monstruo;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -39,5 +40,9 @@ public class TableroJugador {
 
     public void agregarCartaAMazo(Carta carta) {
         mazo.push(carta);
+    }
+
+    public boolean cartaEnCementerio(Monstruo monstruoAtacante) {
+        return cementerio.contains(monstruoAtacante);
     }
 }
