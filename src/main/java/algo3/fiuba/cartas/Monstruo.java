@@ -56,6 +56,7 @@ public class Monstruo extends Carta {
         this.jugador = jugador;
     }
 
-    public void daniarJugador(Integer diferenciaPuntos) {
+    public void daniarJugador(Integer puntosDeDanio) {
+        jugador.modificarPuntosDeVida(-puntosDeDanio);
     }
 }

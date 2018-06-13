@@ -18,6 +18,7 @@ public class MonstruoEntrega1Test {
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoDefensa();
+        monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
     }
@@ -29,9 +30,11 @@ public class MonstruoEntrega1Test {
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoAtacante.pasarAModoAtaque();
+        monstruoAtacante.setJugador(new Jugador());
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoAtaque();
+        monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertTrue(true);
@@ -44,12 +47,14 @@ public class MonstruoEntrega1Test {
 
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor);
+        monstruoAtacante.setJugador(new Jugador());
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoAtacante.pasarAModoAtaque();
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoDefensa();
+        monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertTrue(monstruoAtacante.estaVivo());
@@ -66,9 +71,11 @@ public class MonstruoEntrega1Test {
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoAtacante.pasarAModoAtaque();
+        monstruoAtacante.setJugador(new Jugador());
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoDefensa();
+        monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertTrue(monstruoAtacante.estaVivo());
@@ -86,9 +93,11 @@ public class MonstruoEntrega1Test {
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoAtacante.pasarAModoAtaque();
+        monstruoAtacante.setJugador(new Jugador());
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoAtaque();
+        monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
         Assert.assertTrue(monstruoAtacante.estaVivo());
@@ -105,9 +114,11 @@ public class MonstruoEntrega1Test {
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoAtacante.pasarAModoAtaque();
+        monstruoAtacante.setJugador(new Jugador());
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoAtaque();
+        monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
 
@@ -116,14 +127,15 @@ public class MonstruoEntrega1Test {
     }
 
     @Test
-    public void matarMonstruoDefensorEnModoAtaque_DiferenciaDePuntosDaniaLosPuntosDeVidaDelDefensor_JugadorDefensorPierde() {
-        Integer puntosAtacante = 9000;
+    public void atacarMonstruoEnModoAtaque_GanaAtacante_DiferenciaDePuntosDaniaLosPuntosDeVidaDelDefensor() {
+        Integer puntosAtacante = 8000;
         Jugador jugadorAtacante = new Jugador();
         Integer puntosDefensor = 100;
         Jugador jugadorDefensor = new Jugador();
 
+
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoAtacante.pasarAModoAtaque();
@@ -131,20 +143,27 @@ public class MonstruoEntrega1Test {
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoAtaque();
-        monstruoAtacante.setJugador(jugadorDefensor);
+        monstruoDefensor.setJugador(jugadorDefensor);
 
 
         monstruoAtacante.atacar(monstruoDefensor);
 
-        // El jugador defensor debe morir porque se crea con 8000 hp y se le resta 8900
-        Assert.assertFalse(monstruoDefensor.estaVivo());
-        Assert.assertFalse(jugadorDefensor.estaEnJuego());
+        // El jugador defensor pierde 100 puntos de vida, porque se crea con 8000 hp y se le resta 7900
+        Integer puntosDeVidaJugadorAtacanteEsperados = 8000;
+        Integer puntosDeVidaJugadorDefensorEsperados = 100;
+
+        Assert.assertTrue(monstruoAtacante.estaVivo());
         Assert.assertTrue(jugadorAtacante.estaEnJuego());
+        Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
+
+        Assert.assertFalse(monstruoDefensor.estaVivo());
+        Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
 
     @Test
-    public void matarMonstruoEnModoDefensa_DiferenciaDePuntosNoDaniaLosPuntosDeVidaDelDefensor() {
-        Integer puntosAtacante = 9000;
+    public void atacarMonstruoEnModoDefensa_GanaAtacante_DiferenciaDePuntosNoDaniaLosPuntosDeVidaDelDefensor() {
+        Integer puntosAtacante = 8000;
         Jugador jugadorAtacante = new Jugador();
         Integer puntosDefensor = 100;
         Jugador jugadorDefensor = new Jugador();
@@ -158,15 +177,87 @@ public class MonstruoEntrega1Test {
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoDefensa();
-        monstruoAtacante.setJugador(jugadorDefensor);
+        monstruoDefensor.setJugador(jugadorDefensor);
 
 
         monstruoAtacante.atacar(monstruoDefensor);
 
-        // El jugador defensor debe morir porque se crea con 8000 hp y se le resta 8900
+        Integer puntosDeVidaJugadorAtacanteEsperados = 8000;
+        Integer puntosDeVidaJugadorDefensorEsperados = 8000;
+
+        Assert.assertTrue(monstruoAtacante.estaVivo());
+        Assert.assertTrue(jugadorAtacante.estaEnJuego());
+        Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
+
         Assert.assertFalse(monstruoDefensor.estaVivo());
         Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
+    }
+
+    @Test
+    public void atacarMonstruoEnModoAtaque_PierdeAtacante_DiferenciaDePuntosDaniaLosPuntosDeVidaDelAtacante() {
+        Integer puntosAtacante = 1000;
+        Jugador jugadorAtacante = new Jugador();
+        Integer puntosDefensor = 2000;
+        Jugador jugadorDefensor = new Jugador();
+
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0);
+
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+        monstruoAtacante.setJugador(jugadorAtacante);
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoAtaque();
+        monstruoDefensor.setJugador(jugadorDefensor);
+
+
+        monstruoAtacante.atacar(monstruoDefensor);
+
+        Integer puntosDeVidaJugadorAtacanteEsperados = 7000;
+        Integer puntosDeVidaJugadorDefensorEsperados = 8000;
+
+        Assert.assertFalse(monstruoAtacante.estaVivo());
         Assert.assertTrue(jugadorAtacante.estaEnJuego());
+        Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
+
+        Assert.assertTrue(monstruoDefensor.estaVivo());
+        Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
+    }
+
+    @Test
+    public void atacarMonstruoEnModoDefensa_PierdeAtacante_DiferenciaDePuntosNoDaniaLosPuntosDeVidaDelAtacante() {
+        Integer puntosAtacante = 1000;
+        Jugador jugadorAtacante = new Jugador();
+        Integer puntosDefensor = 2000;
+        Jugador jugadorDefensor = new Jugador();
+
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor);
+
+        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoAtaque();
+        monstruoAtacante.setJugador(jugadorAtacante);
+
+        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoDefensa();
+        monstruoDefensor.setJugador(jugadorDefensor);
+
+
+        monstruoAtacante.atacar(monstruoDefensor);
+
+        Integer puntosDeVidaJugadorAtacanteEsperados = 7000;
+        Integer puntosDeVidaJugadorDefensorEsperados = 8000;
+
+        Assert.assertTrue(monstruoAtacante.estaVivo());
+        Assert.assertTrue(jugadorAtacante.estaEnJuego());
+        Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
+
+        Assert.assertTrue(monstruoDefensor.estaVivo());
+        Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
 
 
