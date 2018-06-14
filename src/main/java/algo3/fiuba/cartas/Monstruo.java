@@ -5,8 +5,8 @@ import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.cartas.modo_monstruo.ModoAtaque;
-import algo3.fiuba.cartas.modo_monstruo.ModoDefensa;
+import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
+import algo3.fiuba.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.cartas.modo_monstruo.ModoMonstruo;
 
 public class Monstruo extends Carta {
@@ -32,20 +32,16 @@ public class Monstruo extends Carta {
         return resultadoCombate;
     }
 
-    public void pasarAModoJuego(EnJuego tipoEnJuego) {
-        estadoCarta = tipoEnJuego;
-    }
-
     public boolean estaVivo() {
         return estadoCarta.estaViva();
     }
 
     public void pasarAModoAtaque() {
-        modoMonstruo = ModoAtaque.INSTANCIA();
+        modoMonstruo = ModoDeAtaque.getInstancia();
     }
 
     public void pasarAModoDefensa() {
-        modoMonstruo = ModoDefensa.INSTANCIA();
+        modoMonstruo = ModoDeDefensa.getInstancia();
     }
 
     public void matarMonstruo() {
@@ -58,5 +54,14 @@ public class Monstruo extends Carta {
 
     public void daniarJugador(Integer puntosDeDanio) {
         jugador.modificarPuntosDeVida(-puntosDeDanio);
+    }
+
+    public void colocarEnCampo(EnJuego tipoEnJuego) {
+        estadoCarta = tipoEnJuego;
+        modoMonstruo = ModoDeAtaque.getInstancia();
+    }
+
+    public void cambiarModo() {
+        modoMonstruo = modoMonstruo.cambiarModoMonstruo();
     }
 }

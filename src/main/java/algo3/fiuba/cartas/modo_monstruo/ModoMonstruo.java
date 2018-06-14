@@ -24,4 +24,6 @@ public abstract class ModoMonstruo {
     public abstract ResultadoCombate perdioAtacante(Integer diferenciaPuntos);
 
     public abstract ResultadoCombate empataron();
+
+    public abstract ModoMonstruo cambiarModoMonstruo();
 }

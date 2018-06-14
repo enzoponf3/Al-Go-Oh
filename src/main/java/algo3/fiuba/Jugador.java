@@ -2,6 +2,7 @@ package algo3.fiuba;
 
 
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,11 +39,11 @@ public class Jugador {
         return puntosDeVida;
     }
 
-    public void colocarCartaEnTablero(Carta carta) {
+    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
         if(!mano.contains(carta)) {
             throw new RuntimeException("No se posee la carta que se quiere colocar en Tablero");
         }
-        tableroParcial.colocarCartaEnTablero(carta);
+        tableroParcial.colocarCartaEnTablero(carta, tipoEnJuego);
         mano.remove(carta);
     }
 

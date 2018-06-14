@@ -2,6 +2,7 @@ package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -20,9 +21,9 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public boolean colocarCartaEnTablero(Carta unaCarta) {
+    public boolean colocarCartaEnTablero(Carta unaCarta, EnJuego tipoEnJuego) {
 
-        return this.campo.campoColocarCarta(unaCarta);
+        return this.campo.colocarCarta(unaCarta, tipoEnJuego);
     }
 
     public void agregarCartaMuerta(Carta unaCarta) {
