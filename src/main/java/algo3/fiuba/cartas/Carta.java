@@ -1,7 +1,9 @@
 package algo3.fiuba.cartas;
 
+import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
+import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.estados_cartas.EstadoCarta;
 import algo3.fiuba.cartas.estados_cartas.FueraDeJuego;
 
@@ -17,5 +19,13 @@ public abstract class Carta {
         this.estadoCarta = new FueraDeJuego();
     }
 
+    public void pasarAModoJuego(EnJuego tipoEnJuego) {
+        estadoCarta = tipoEnJuego;
+    }
 
+    public void activar() {
+        estadoCarta.activar(efecto);
+    }
+
+    public abstract void colocarEnCampo(Campo campo);
 }

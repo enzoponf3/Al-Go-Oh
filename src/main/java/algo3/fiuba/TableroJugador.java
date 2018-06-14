@@ -45,4 +45,8 @@ public class TableroJugador {
     public boolean cartaEnCementerio(Monstruo monstruoAtacante) {
         return cementerio.contains(monstruoAtacante);
     }
+
+    public Integer monstruosEnJuego() {
+        return campo.cantidadMonstruos();
+    }
 }

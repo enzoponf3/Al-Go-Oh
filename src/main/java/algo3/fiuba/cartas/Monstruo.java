@@ -1,5 +1,6 @@
 package algo3.fiuba.cartas;
 
+import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
@@ -32,10 +33,6 @@ public class Monstruo extends Carta {
         return resultadoCombate;
     }
 
-    public void pasarAModoJuego(EnJuego tipoEnJuego) {
-        estadoCarta = tipoEnJuego;
-    }
-
     public boolean estaVivo() {
         return estadoCarta.estaViva();
     }
@@ -58,5 +55,10 @@ public class Monstruo extends Carta {
 
     public void daniarJugador(Integer puntosDeDanio) {
         jugador.modificarPuntosDeVida(-puntosDeDanio);
+    }
+
+    @Override
+    public void colocarEnCampo(Campo campo) {
+        campo.colocarCartaMonstruo(this);
     }
 }
