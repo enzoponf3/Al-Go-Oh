@@ -1,29 +1,24 @@
 package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
-import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
+import algo3.fiuba.cartas.estados_cartas.NoMonstro;
 
 import java.util.LinkedList;
 
 public class Campo {
 
     LinkedList<Carta> zonaMonstruos;
-    LinkedList<Carta> zonaEspeciales;
+    LinkedList<Carta> zonaNoMonstruos;
 
     public Campo() {
         zonaMonstruos = new LinkedList<>();
-        zonaEspeciales = new LinkedList<>();
-    }
-
-    public boolean campoColocarCarta(Carta carta, EnJuego tipoEnJuego ) {
-        carta.colocarEnCampo(tipoEnJuego);
-        return true;
+        zonaNoMonstruos = new LinkedList<>();
     }
 
     public boolean estaVacio() {
-        return (zonaMonstruos.isEmpty() && zonaEspeciales.isEmpty());
+        return (zonaMonstruos.isEmpty() && zonaNoMonstruos.isEmpty());
     }
 
     public Integer cantidadMonstruos() {
@@ -31,11 +26,14 @@ public class Campo {
     }
 
     public Integer cantidadEspeciales() {
-        return (zonaEspeciales.size());
+        return (zonaNoMonstruos.size());
     }
 
-    public void colocarCartaMonstruo(Monstruo monstruo) {
+    public void colocarCarta(Monstruo carta, EnJuego enJuego) {
+        carta.colocarEnCampo(enJuego);
 
+        zonaMonstruos.add(carta);
+        /*
         // Se supone que con la interfaz gráfica deberiamos ahorrarnos esto...
         if (this.cantidadMonstruos() < monstruo.sacrificiosParaInvocar)
             throw new RuntimeException("No tienes suficientes monstruos para sacrificar!");
@@ -43,10 +41,27 @@ public class Campo {
             zonaMonstruos.pop();
         }
         zonaMonstruos.add(monstruo);
+        */
     }
 
+    public void colocarCarta(NoMonstro carta, EnJuego enJuego) {
+        carta.colocarEnCampo(enJuego);
+
+        zonaNoMonstruos.add(carta);
+        /*
+        // Se supone que con la interfaz gráfica deberiamos ahorrarnos esto...
+        if (this.cantidadMonstruos() < monstruo.sacrificiosParaInvocar)
+            throw new RuntimeException("No tienes suficientes monstruos para sacrificar!");
+        for (int i = 0; i < monstruo.sacrificiosParaInvocar; i++) {
+            zonaMonstruos.pop();
+        }
+        zonaMonstruos.add(monstruo);
+        */
+    }
+
+
     public void colocarCartaEspecial(Carta especial) {
-        zonaEspeciales.add(especial);
+        zonaNoMonstruos.add(especial);
     }
 
     public boolean cartaSeEncuentaEnCampo(Carta carta) {
