@@ -1,7 +1,7 @@
 package algo3.fiuba.cartas;
 
 import algo3.fiuba.Jugador;
-import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.estados_cartas.EstadoCarta;

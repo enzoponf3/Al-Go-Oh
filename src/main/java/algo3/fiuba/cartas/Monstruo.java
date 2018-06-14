@@ -1,6 +1,6 @@
 package algo3.fiuba.cartas;
 
-import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
+import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
