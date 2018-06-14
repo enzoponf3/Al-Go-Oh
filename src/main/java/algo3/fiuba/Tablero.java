@@ -2,6 +2,7 @@ package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
+import algo3.fiuba.cartas.Trampa;
 
 public class Tablero {
 
@@ -32,5 +33,10 @@ public class Tablero {
 
     public Integer monstruosEnJuego() {
         return (tableroJ1.monstruosEnJuego() + tableroJ2.monstruosEnJuego());
+    }
+
+    // Se tiene que hacer dentro del campo del jugador correspondiente... Pero hardcodeo porque TDD. :)
+    public void activarCarta(Carta carta) {
+        carta.activar();
     }
 }

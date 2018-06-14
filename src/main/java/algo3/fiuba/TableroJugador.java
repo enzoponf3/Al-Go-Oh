@@ -2,6 +2,7 @@ package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.Trampa;
 
 import java.util.LinkedList;
 import java.util.Stack;
