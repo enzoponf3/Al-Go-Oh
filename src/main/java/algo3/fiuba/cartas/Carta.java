@@ -1,13 +1,11 @@
 package algo3.fiuba.cartas;
 
-import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.estados_cartas.EstadoCarta;
 import algo3.fiuba.cartas.estados_cartas.FueraDeJuego;
-import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
 
 import java.util.Objects;
 

@@ -1,5 +1,5 @@
 package algo3.fiuba.entrega1;
-
+/*
 import algo3.fiuba.Campo;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
@@ -10,12 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.event.MouseAdapter;
-
+*/
 public class CampoEntrega1Test {
-
+    /*
     private Campo campo;
 
-    /*
+
     @Before
     public void setUp() {
         campo = new Campo();
