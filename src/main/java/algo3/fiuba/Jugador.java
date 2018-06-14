@@ -17,7 +17,6 @@ public class Jugador {
     public Jugador() {
         this.puntosDeVida = 8000;
         this.mano = new HashSet<>();
-        this.tableroJugador = new TableroJugador();
     }
 
     public boolean estaEnJuego() {

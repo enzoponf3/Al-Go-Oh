@@ -1,6 +1,7 @@
 package algo3.fiuba.entrega1;
 
 import algo3.fiuba.Jugador;
+import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import org.junit.Assert;
@@ -10,11 +11,15 @@ import org.junit.Test;
 public class JugadorEntrega1Test {
 
     private Jugador jugador;
+    private Tablero tablero;
 
     @Before
     public void setUp() {
         jugador = new Jugador();
+        tablero = Tablero.getInstancia();
+        tablero.empezarDuelo(jugador,jugador);
     }
+
 
     @Test
     public void elJugadorRecienCreadoEstaEnJuego() {
