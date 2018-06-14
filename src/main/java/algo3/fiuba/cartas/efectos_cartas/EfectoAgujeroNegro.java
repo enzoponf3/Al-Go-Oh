@@ -1,9 +1,8 @@
 package algo3.fiuba.cartas.efectos_cartas;
 
-public class EfectoNulo implements EfectoCarta {
-
+public class EfectoAgujeroNegro implements EfectoCarta {
     @Override
     public void activar() {
-        // no hace nada
+        // to do
     }
 }

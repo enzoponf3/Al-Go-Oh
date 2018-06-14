@@ -1,5 +1,9 @@
 package algo3.fiuba;
 
+import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.Magica;
+import algo3.fiuba.cartas.Trampa;
+
 public class Tablero {
 
     private static Tablero INSTANCIA;
@@ -24,4 +28,24 @@ public class Tablero {
         jugador2.setTableroJugador(tableroJugador2);
     }
 
+    public void colocarCarta(Carta carta, int jugador) {
+        // Podemos modificarlo con algo de turno.
+        /*
+        if(jugador == 1) {
+            tableroJugador1.colocarCartaEnTablero(carta);
+        }
+        else {
+            tableroJugador2.colocarCartaEnTablero(carta);
+        }
+        */
+    }
+
+    public Integer monstruosEnJuego() {
+        return (tableroJugador1.monstruosEnJuego() + tableroJugador2.monstruosEnJuego());
+    }
+
+    // Se tiene que hacer dentro del campo del jugador correspondiente... Pero hardcodeo porque TDD. :)
+    public void activarCarta(Carta carta) {
+        carta.activar();
+    }
 }

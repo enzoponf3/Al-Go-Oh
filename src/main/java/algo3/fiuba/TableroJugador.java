@@ -3,6 +3,7 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
+import algo3.fiuba.cartas.Trampa;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -44,5 +45,9 @@ public class TableroJugador {
 
     public boolean cartaEstaEnCementerio(Carta carta) {
         return cementerio.contains(carta);
+    }
+
+    public Integer monstruosEnJuego() {
+        return campo.cantidadMonstruos();
     }
 }

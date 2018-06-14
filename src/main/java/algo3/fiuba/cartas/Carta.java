@@ -1,5 +1,6 @@
 package algo3.fiuba.cartas;
 
+import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
@@ -56,4 +57,8 @@ public abstract class Carta {
 
         return Objects.hash(nombre);
     }
+    public void activar() {
+        estadoCarta.activar(efecto);
+    }
+
 }
