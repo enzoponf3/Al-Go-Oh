@@ -3,18 +3,20 @@ package algo3.fiuba.entrega1;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.excepciones.MonstruoEnModoDefensaNoPuedeAtacarException;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class MonstruoEntrega1Test {
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = MonstruoEnModoDefensaNoPuedeAtacarException.class)
     public void monstruoNoPuedeAtacarEnModoDefensa() {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000);
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoAtacante.pasarAModoDefensa();
+        monstruoDefensor.setJugador(new Jugador());
 
         monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoDefensor.pasarAModoDefensa();
