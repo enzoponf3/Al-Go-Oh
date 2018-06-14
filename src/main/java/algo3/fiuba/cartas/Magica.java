@@ -1,7 +1,6 @@
 package algo3.fiuba.cartas;
 
-import algo3.fiuba.Campo;
-import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
 
 public class Magica extends Carta{
 

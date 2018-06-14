@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas.estados_cartas;
 
-import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
 
 public class BocaAbajo extends EnJuego {
 
@@ -19,6 +20,6 @@ public class BocaAbajo extends EnJuego {
 
     @Override
     public void activar(EfectoCarta efecto) {
-        throw new RuntimeException("No se puede activar efecto de una carta boca abajo");
+        throw new InhabilitadaParaActivarseExcepcion("No se puede activar efecto de una carta boca abajo");
     }
 }

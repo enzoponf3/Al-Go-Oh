@@ -2,9 +2,8 @@ package algo3.fiuba.entrega1;
 
 import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Trampa;
-import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
+import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 

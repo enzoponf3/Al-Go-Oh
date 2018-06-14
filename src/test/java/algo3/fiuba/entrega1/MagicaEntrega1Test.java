@@ -3,16 +3,17 @@ package algo3.fiuba.entrega1;
 import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.efectos_cartas.EfectoAgujeroNegro;
-import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoAgujeroNegro;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class MagicaEntrega1Test {
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = InhabilitadaParaActivarseExcepcion.class)
     public void cartaBocaAbajoNoActivaEfecto() {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica carta = new Magica("agujero negro", efectoCarta);
