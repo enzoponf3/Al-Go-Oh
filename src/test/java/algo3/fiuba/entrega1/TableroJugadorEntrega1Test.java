@@ -58,10 +58,10 @@ public class TableroJugadorEntrega1Test {
         monstruoAtacante.setJugador(jugadorAtacante);
         monstruoDefensor.setJugador(jugadorDefensor);
 
-        monstruoAtacante.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
 
-        monstruoDefensor.pasarAModoJuego(BocaArriba.INSTANCIA());
+        monstruoDefensor.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();
 
         monstruoAtacante.atacar(monstruoDefensor);

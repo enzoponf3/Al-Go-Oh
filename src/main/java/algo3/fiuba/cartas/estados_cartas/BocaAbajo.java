@@ -7,7 +7,7 @@ public class BocaAbajo extends EnJuego {
     private BocaAbajo() {
     }
 
-    public static BocaAbajo INSTANCIA() {
+    public static BocaAbajo getInstancia() {
         if (INSTANCIA == null){
             INSTANCIA = new BocaAbajo();
         }

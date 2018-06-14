@@ -12,6 +12,7 @@ public class PierdeContraModoAtaque implements ResultadoCombate {
 
     @Override
     public void afectarDefensor(Monstruo defensor) {
+        // no afecta al defensor
     }
 
     @Override

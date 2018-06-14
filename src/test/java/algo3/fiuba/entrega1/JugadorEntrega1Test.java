@@ -73,7 +73,7 @@ public class JugadorEntrega1Test {
         Carta carta = new Monstruo("m", 1000, 1000);
         jugador.agregarCartaAMazo(carta);
 
-        jugador.tomarCarta();
+        jugador.tomarCartaDelMazo();
         Assert.assertEquals(jugador.cantidadCartas(), cantidadInicialCartas);
     }
 
@@ -81,7 +81,7 @@ public class JugadorEntrega1Test {
     public void jugadorColocarCartaMonstruoEnManoEnTablero() {
         Carta carta = new Monstruo("m", 1000, 1000);
         jugador.agregarCartaAMazo(carta);
-        jugador.tomarCarta();
+        jugador.tomarCartaDelMazo();
         Integer cantidadFinalCartas = jugador.cantidadCartas() - 1;
 
         jugador.colocarCartaEnTablero(carta);

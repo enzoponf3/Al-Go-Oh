@@ -2,19 +2,26 @@ package algo3.fiuba;
 
 public class Tablero {
 
-    private static Tablero tableroInstance = new Tablero();
+    private static Tablero INSTANCIA;
 
-    public TableroJugador tableroJ1, tableroJ2;
+    private TableroJugador tableroJugador1;
+    private TableroJugador tableroJugador2;
 
-    public static Tablero getInstance() {
-
-        return tableroInstance;
+    private Tablero() {
+        this.tableroJugador1 = new TableroJugador();
+        this.tableroJugador2 = new TableroJugador();
     }
 
-    public Tablero() {
+    public static Tablero getInstancia() {
+        if (INSTANCIA == null)
+            INSTANCIA = new Tablero();
 
-        this.tableroJ1 = new TableroJugador();
-        this.tableroJ2 = new TableroJugador();
+        return INSTANCIA;
+    }
+
+    public void empezarDuelo(Jugador jugador1, Jugador jugador2) {
+        jugador1.setTableroParcial(tableroJugador1);
+        jugador2.setTableroParcial(tableroJugador2);
     }
 
 }

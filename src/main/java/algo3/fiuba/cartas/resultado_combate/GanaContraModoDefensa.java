@@ -11,6 +11,6 @@ public class GanaContraModoDefensa implements ResultadoCombate {
 
     @Override
     public void afectarAtacante(Monstruo atacante) {
-
+        // no afecta al atacante
     }
 }

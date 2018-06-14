@@ -4,18 +4,17 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class Jugador {
 
     private Integer puntosDeVida;
     private TableroJugador tableroParcial;
-    private HashSet<Carta> mano;
+    private Set<Carta> mano;
 
 
     public Jugador() {
-
         this.puntosDeVida = 8000;
-        this.tableroParcial = new TableroJugador();
         this.mano = new HashSet<>();
     }
 
@@ -27,8 +26,8 @@ public class Jugador {
         puntosDeVida += (-puntos > puntosDeVida) ? -puntosDeVida : puntos;
     }
 
-    public void tomarCarta() {
-        mano.add(tableroParcial.tomarCartaMazo());
+    public void tomarCartaDelMazo() {
+        mano.add(tableroParcial.tomarCartaDelMazo());
     }
 
     public Integer cantidadCartas() {
@@ -52,6 +51,10 @@ public class Jugador {
     }
 
     public void agregarCartaAMazo(Carta carta) {
-        tableroParcial.agregarCartaAMazo(carta);
+        tableroParcial.agregarCartaAlMazo(carta);
+    }
+
+    public void setTableroParcial(TableroJugador tableroParcial) {
+        this.tableroParcial = tableroParcial;
     }
 }

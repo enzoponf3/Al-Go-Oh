@@ -30,7 +30,7 @@ public class TableroJugador {
         this.cementerio.add(unaCarta);
     }
 
-    public Carta tomarCartaMazo() {
+    public Carta tomarCartaDelMazo() {
         return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
     }
 
@@ -38,7 +38,7 @@ public class TableroJugador {
         return true;
     }
 
-    public void agregarCartaAMazo(Carta carta) {
+    public void agregarCartaAlMazo(Carta carta) {
         mazo.push(carta);
     }
 
