@@ -59,8 +59,8 @@ public class MonstruoEntrega1Test {
         monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
-        Assert.assertTrue(monstruoAtacante.estaVivo());
-        Assert.assertFalse(monstruoDefensor.estaVivo());
+        Assert.assertTrue(monstruoAtacante.estaEnJuego());
+        Assert.assertFalse(monstruoDefensor.estaEnJuego());
     }
 
     @Test
@@ -80,8 +80,8 @@ public class MonstruoEntrega1Test {
         monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
-        Assert.assertTrue(monstruoAtacante.estaVivo());
-        Assert.assertTrue(monstruoDefensor.estaVivo());
+        Assert.assertTrue(monstruoAtacante.estaEnJuego());
+        Assert.assertTrue(monstruoDefensor.estaEnJuego());
     }
 
 
@@ -102,8 +102,8 @@ public class MonstruoEntrega1Test {
         monstruoDefensor.setJugador(new Jugador());
 
         monstruoAtacante.atacar(monstruoDefensor);
-        Assert.assertTrue(monstruoAtacante.estaVivo());
-        Assert.assertFalse(monstruoDefensor.estaVivo());
+        Assert.assertTrue(monstruoAtacante.estaEnJuego());
+        Assert.assertFalse(monstruoDefensor.estaEnJuego());
     }
 
     @Test
@@ -124,8 +124,8 @@ public class MonstruoEntrega1Test {
 
         monstruoAtacante.atacar(monstruoDefensor);
 
-        Assert.assertFalse(monstruoAtacante.estaVivo());
-        Assert.assertTrue(monstruoDefensor.estaVivo());
+        Assert.assertFalse(monstruoAtacante.estaEnJuego());
+        Assert.assertTrue(monstruoDefensor.estaEnJuego());
     }
 
     @Test
@@ -154,11 +154,11 @@ public class MonstruoEntrega1Test {
         Integer puntosDeVidaJugadorAtacanteEsperados = 8000;
         Integer puntosDeVidaJugadorDefensorEsperados = 100;
 
-        Assert.assertTrue(monstruoAtacante.estaVivo());
+        Assert.assertTrue(monstruoAtacante.estaEnJuego());
         Assert.assertTrue(jugadorAtacante.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
 
-        Assert.assertFalse(monstruoDefensor.estaVivo());
+        Assert.assertFalse(monstruoDefensor.estaEnJuego());
         Assert.assertTrue(jugadorDefensor.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
@@ -187,11 +187,11 @@ public class MonstruoEntrega1Test {
         Integer puntosDeVidaJugadorAtacanteEsperados = 8000;
         Integer puntosDeVidaJugadorDefensorEsperados = 8000;
 
-        Assert.assertTrue(monstruoAtacante.estaVivo());
+        Assert.assertTrue(monstruoAtacante.estaEnJuego());
         Assert.assertTrue(jugadorAtacante.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
 
-        Assert.assertFalse(monstruoDefensor.estaVivo());
+        Assert.assertFalse(monstruoDefensor.estaEnJuego());
         Assert.assertTrue(jugadorDefensor.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
@@ -220,11 +220,11 @@ public class MonstruoEntrega1Test {
         Integer puntosDeVidaJugadorAtacanteEsperados = 7000;
         Integer puntosDeVidaJugadorDefensorEsperados = 8000;
 
-        Assert.assertFalse(monstruoAtacante.estaVivo());
+        Assert.assertFalse(monstruoAtacante.estaEnJuego());
         Assert.assertTrue(jugadorAtacante.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
 
-        Assert.assertTrue(monstruoDefensor.estaVivo());
+        Assert.assertTrue(monstruoDefensor.estaEnJuego());
         Assert.assertTrue(jugadorDefensor.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
@@ -253,11 +253,11 @@ public class MonstruoEntrega1Test {
         Integer puntosDeVidaJugadorAtacanteEsperados = 7000;
         Integer puntosDeVidaJugadorDefensorEsperados = 8000;
 
-        Assert.assertTrue(monstruoAtacante.estaVivo());
+        Assert.assertTrue(monstruoAtacante.estaEnJuego());
         Assert.assertTrue(jugadorAtacante.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
 
-        Assert.assertTrue(monstruoDefensor.estaVivo());
+        Assert.assertTrue(monstruoDefensor.estaEnJuego());
         Assert.assertTrue(jugadorDefensor.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }

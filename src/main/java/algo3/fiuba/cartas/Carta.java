@@ -2,9 +2,13 @@ package algo3.fiuba.cartas;
 
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
+import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.estados_cartas.EstadoCarta;
 import algo3.fiuba.cartas.estados_cartas.FueraDeJuego;
+import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
+
+import java.util.Objects;
 
 public abstract class Carta {
 
@@ -22,4 +26,34 @@ public abstract class Carta {
         estadoCarta = tipoEnJuego;
     }
 
+    public void colocarEnCampo(EnJuego tipoEnJuego) {
+        estadoCarta = tipoEnJuego;
+    }
+
+    public boolean estaEnJuego() {
+        return estadoCarta.estaEnJuego();
+    }
+
+    public void descartar() {
+        jugador.mandarAlCementerio(this);
+        estadoCarta = new EnCementerio();
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Carta carta = (Carta) o;
+        return Objects.equals(nombre, carta.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(nombre);
+    }
 }

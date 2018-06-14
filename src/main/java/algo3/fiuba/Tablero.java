@@ -20,8 +20,8 @@ public class Tablero {
     }
 
     public void empezarDuelo(Jugador jugador1, Jugador jugador2) {
-        jugador1.setTableroParcial(tableroJugador1);
-        jugador2.setTableroParcial(tableroJugador2);
+        jugador1.setTableroJugador(tableroJugador1);
+        jugador2.setTableroJugador(tableroJugador2);
     }
 
 }

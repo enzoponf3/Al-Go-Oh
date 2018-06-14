@@ -14,6 +14,6 @@ public class GanaContraModoAtaqueTest {
         ResultadoCombate resultado = new GanaContraModoAtaque(1000);
         resultado.afectarAtacante(monstruoAtacante);
 
-        Assert.assertTrue(monstruoAtacante.estaVivo());
+        Assert.assertTrue(monstruoAtacante.estaEnJuego());
     }
 }

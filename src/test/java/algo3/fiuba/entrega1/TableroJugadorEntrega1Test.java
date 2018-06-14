@@ -67,10 +67,10 @@ public class TableroJugadorEntrega1Test {
 
         monstruoAtacante.atacar(monstruoDefensor);
 
-        Assert.assertFalse(monstruoAtacante.estaVivo());
+        Assert.assertFalse(monstruoAtacante.estaEnJuego());
 
-        tableroJugador.agregarCartaMuerta(monstruoAtacante);
-        Assert.assertTrue(tableroJugador.cartaEnCementerio(monstruoAtacante));
+        tableroJugador.agregarCartaAlCementerio(monstruoAtacante);
+        Assert.assertTrue(tableroJugador.cartaEstaEnCementerio(monstruoAtacante));
     }
 */
     /* - tomar carta del campo no se puede

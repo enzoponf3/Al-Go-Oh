@@ -26,9 +26,8 @@ public class TableroJugador {
         return this.campo.colocarCarta(unaCarta, tipoEnJuego);
     }
 
-    public void agregarCartaMuerta(Carta unaCarta) {
-
-        this.cementerio.add(unaCarta);
+    public void agregarCartaAlCementerio(Carta carta) {
+        this.cementerio.add(carta);
     }
 
     public Carta tomarCartaDelMazo() {
@@ -43,7 +42,7 @@ public class TableroJugador {
         mazo.push(carta);
     }
 
-    public boolean cartaEnCementerio(Monstruo monstruoAtacante) {
-        return cementerio.contains(monstruoAtacante);
+    public boolean cartaEstaEnCementerio(Carta carta) {
+        return cementerio.contains(carta);
     }
 }

@@ -10,7 +10,7 @@ import java.util.Set;
 public class Jugador {
 
     private Integer puntosDeVida;
-    private TableroJugador tableroParcial;
+    private TableroJugador tableroJugador;
     private Set<Carta> mano;
 
 
@@ -28,7 +28,7 @@ public class Jugador {
     }
 
     public void tomarCartaDelMazo() {
-        mano.add(tableroParcial.tomarCartaDelMazo());
+        mano.add(tableroJugador.tomarCartaDelMazo());
     }
 
     public Integer cantidadCartas() {
@@ -43,19 +43,27 @@ public class Jugador {
         if(!mano.contains(carta)) {
             throw new RuntimeException("No se posee la carta que se quiere colocar en Tablero");
         }
-        tableroParcial.colocarCartaEnTablero(carta, tipoEnJuego);
+        tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego);
         mano.remove(carta);
     }
 
     public boolean cartaEnTablero(Carta carta) {
-        return tableroParcial.cartaEnTablero(carta);
+        return tableroJugador.cartaEnTablero(carta);
     }
 
     public void agregarCartaAMazo(Carta carta) {
-        tableroParcial.agregarCartaAlMazo(carta);
+        tableroJugador.agregarCartaAlMazo(carta);
     }
 
-    public void setTableroParcial(TableroJugador tableroParcial) {
-        this.tableroParcial = tableroParcial;
+    public void setTableroJugador(TableroJugador tableroJugador) {
+        this.tableroJugador = tableroJugador;
+    }
+
+    public void mandarAlCementerio(Carta carta) {
+        tableroJugador.agregarCartaAlCementerio(carta);
+    }
+
+    public boolean cartaEstaEnCementerio(Carta carta) {
+        return tableroJugador.cartaEstaEnCementerio(carta);
     }
 }
