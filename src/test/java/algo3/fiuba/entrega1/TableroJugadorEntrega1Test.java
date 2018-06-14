@@ -24,7 +24,7 @@ public class TableroJugadorEntrega1Test {
     @Test
     public void colocarCartaMonstruoEnTableroJugador() {
 
-        Monstruo cartaMonstruo = new Monstruo("monstruo", 100, 100);
+        Monstruo cartaMonstruo = new Monstruo("monstruo", 100, 100, 0);
 
         Assert.assertTrue(tableroJugador.colocarCartaEnTablero(cartaMonstruo));
     }
@@ -49,8 +49,8 @@ public class TableroJugadorEntrega1Test {
         Integer puntosAtacante = 1000;
         Integer puntosDefensor = 1500;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0);
 
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
@@ -72,6 +72,4 @@ public class TableroJugadorEntrega1Test {
         Assert.assertTrue(tableroJugador.cartaEnCementerio(monstruoAtacante));
     }
 
-    /* - tomar carta del campo no se puede
-    *   -  */
 }

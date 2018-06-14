@@ -21,14 +21,14 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public boolean colocarCartaEnTablero(Carta unaCarta) {
+    public boolean colocarCartaEnTablero(Carta carta) {
 
-        return this.campo.campoColocarCarta(unaCarta);
+        return this.campo.campoColocarCarta(carta);
     }
 
-    public void agregarCartaMuerta(Carta unaCarta) {
+    public void agregarCartaMuerta(Carta carta) {
 
-        this.cementerio.add(unaCarta);
+        this.cementerio.add(carta);
     }
 
     public Carta tomarCartaMazo() {
@@ -36,7 +36,7 @@ public class TableroJugador {
     }
 
     public boolean cartaEnTablero(Carta carta) {
-        return true;
+        return this.campo.cartaSeEncuentaEnCampo(carta);
     }
 
     public void agregarCartaAMazo(Carta carta) {

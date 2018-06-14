@@ -16,8 +16,8 @@ public class Campo {
         zonaEspeciales = new LinkedList<>();
     }
 
-    public boolean campoColocarCarta(Carta unaCarta) {
-        unaCarta.colocarEnCampo(this);
+    public boolean campoColocarCarta(Carta carta) {
+        carta.colocarEnCampo(this);
         return true;
     }
 
@@ -34,10 +34,23 @@ public class Campo {
     }
 
     public void colocarCartaMonstruo(Monstruo monstruo) {
+
+        // Se supone que con la interfaz gráfica deberiamos ahorrarnos esto...
+        if (this.cantidadMonstruos() < monstruo.sacrificiosParaInvocar)
+            throw new RuntimeException("No tienes suficientes monstruos para sacrificar!");
+        for (int i = 0; i < monstruo.sacrificiosParaInvocar; i++) {
+            zonaMonstruos.pop();
+        }
         zonaMonstruos.add(monstruo);
     }
 
     public void colocarCartaEspecial(Carta especial) {
         zonaEspeciales.add(especial);
     }
+
+    public boolean cartaSeEncuentaEnCampo(Carta carta) {
+        return zonaMonstruos.contains(carta);
+    }
+
+
 }

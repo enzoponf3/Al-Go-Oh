@@ -27,7 +27,7 @@ public class CampoEntrega1Test {
 
     @Test
     public void campoSeAgregaMonstruoEnZonaCorrecta() {
-        Monstruo carta = new Monstruo("m", 100, 100);
+        Monstruo carta = new Monstruo("m", 100, 100, 0);
         campo.campoColocarCarta(carta);
         Assert.assertEquals(campo.cantidadMonstruos(), Integer.valueOf(1));
     }

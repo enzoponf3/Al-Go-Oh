@@ -35,7 +35,7 @@ public class MagicaEntrega1Test {
     public void cartaAgujeroNegroBocaArribaActivaEfectosConMonstruoEnOponenteBocaArriba() {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
-        Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100);
+        Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 0);
         Tablero tablero = new Tablero();
         agujeroNegro.pasarAModoJuego(BocaArriba.INSTANCIA());
         monstruoEnemigo.pasarAModoJuego(BocaArriba.INSTANCIA());

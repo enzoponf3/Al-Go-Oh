@@ -70,7 +70,7 @@ public class JugadorEntrega1Test {
     @Test
     public void agregoUnaCartaALaMano_LaCartaEstaEnLaMano() {
         Integer cantidadInicialCartas = jugador.cantidadCartas() + 1;
-        Carta carta = new Monstruo("m", 1000, 1000);
+        Carta carta = new Monstruo("m", 1000, 1000, 0);
         jugador.agregarCartaAMazo(carta);
 
         jugador.tomarCarta();
@@ -79,7 +79,7 @@ public class JugadorEntrega1Test {
 
     @Test
     public void jugadorColocarCartaMonstruoEnManoEnTablero() {
-        Carta carta = new Monstruo("m", 1000, 1000);
+        Carta carta = new Monstruo("m", 1000, 1000, 0);
         jugador.agregarCartaAMazo(carta);
         jugador.tomarCarta();
         Integer cantidadFinalCartas = jugador.cantidadCartas() - 1;
@@ -91,7 +91,55 @@ public class JugadorEntrega1Test {
 
     @Test (expected = RuntimeException.class)
     public void jugadorNoPuedeColocarCartaMonstruoEnTableroSinCartasEnMano() {
-        Carta carta = new Monstruo("m", 1000, 1000);
+        Carta carta = new Monstruo("m", 1000, 1000, 0);
         jugador.colocarCartaEnTablero(carta);
     }
+
+    @Test
+    public void jugadorColocarMonstruo5EstrellasOMasSeRequiereUnSacrifico() {
+        Carta cartaMonstruoASacrificar = new Monstruo("m", 1000, 1000, 0);
+        Carta cartaMonstruoAInvocar = new Monstruo("m", 2300, 2000,6);
+
+        jugador.agregarCartaAMazo(cartaMonstruoASacrificar);
+        jugador.agregarCartaAMazo(cartaMonstruoAInvocar);
+        jugador.tomarCarta();
+        jugador.tomarCarta();
+        jugador.colocarCartaEnTablero(cartaMonstruoASacrificar);
+        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoASacrificar));
+
+        jugador.colocarCartaEnTablero(cartaMonstruoAInvocar);
+        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoAInvocar));
+        Assert.assertFalse(jugador.cartaEnTablero(cartaMonstruoASacrificar));
+    }
+
+    @Test
+    public void jugadorColocarMonstruo7EstrellasOMasRequiereDosSacrificios() {
+        Carta cartaMonstruoASacrificar1 = new Monstruo("m", 1000, 1000, 0);
+        Carta cartaMonstruoASacrificar2 = new Monstruo("m", 1000, 1000, 0);
+        Carta cartaMonstruoAInvocar = new Monstruo("m", 2300, 2000,8);
+
+        jugador.agregarCartaAMazo(cartaMonstruoAInvocar);
+        jugador.agregarCartaAMazo(cartaMonstruoASacrificar1);
+        jugador.agregarCartaAMazo(cartaMonstruoASacrificar2);
+        jugador.tomarCarta();
+        jugador.tomarCarta();
+        jugador.colocarCartaEnTablero(cartaMonstruoASacrificar1);
+        jugador.colocarCartaEnTablero(cartaMonstruoASacrificar2);
+        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoASacrificar1));
+        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoASacrificar2));
+
+        jugador.tomarCarta();
+        jugador.colocarCartaEnTablero(cartaMonstruoAInvocar);
+        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoAInvocar));
+    }
+
+    @Test (expected = RuntimeException.class)
+    public void noHaySuficientesCartasParaSacrificar() {
+        Carta cartaMonstruoAInvocar = new Monstruo("m", 1000, 1000, 7);
+
+        jugador.agregarCartaAMazo(cartaMonstruoAInvocar);
+        jugador.tomarCarta();
+        jugador.colocarCartaEnTablero(cartaMonstruoAInvocar);
+    }
+
 }

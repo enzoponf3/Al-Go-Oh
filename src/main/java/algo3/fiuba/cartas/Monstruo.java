@@ -5,7 +5,6 @@ import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
-import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modo_monstruo.ModoAtaque;
 import algo3.fiuba.cartas.modo_monstruo.ModoDefensa;
 import algo3.fiuba.cartas.modo_monstruo.ModoMonstruo;
@@ -15,11 +14,16 @@ public class Monstruo extends Carta {
     private Integer ataque;
     private Integer defensa;
     private ModoMonstruo modoMonstruo;
+    private Integer estrellas;
+    public Integer sacrificiosParaInvocar;
 
-    public Monstruo(String nombre, Integer ataque, Integer defensa) {
+    public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas) {
+
         super(nombre,new EfectoNulo());
         this.ataque = ataque;
         this.defensa = defensa;
+        this.estrellas = estrellas;
+        this.sacrificiosParaInvocar = 0;
     }
 
     public void atacar(Monstruo otraCarta) {
@@ -59,6 +63,9 @@ public class Monstruo extends Carta {
 
     @Override
     public void colocarEnCampo(Campo campo) {
+        if (this.estrellas >= 7) this.sacrificiosParaInvocar = 2;
+        else if (this.estrellas >= 5) this.sacrificiosParaInvocar = 1;
         campo.colocarCartaMonstruo(this);
     }
+
 }
