@@ -1,20 +1,26 @@
 package algo3.fiuba.cartas.modo_monstruo;
 
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.resultado_combate.EmpataContraModoAtaque;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.resultado_combate.GanaContraModoAtaque;
 import algo3.fiuba.cartas.resultado_combate.PierdeContraModoAtaque;
 
-public class ModoAtaque extends ModoMonstruo {
+public class ModoDeAtaque extends ModoMonstruo {
 
-    private static ModoAtaque INSTANCIA;
+    private static ModoDeAtaque INSTANCIA;
 
-    public static ModoAtaque INSTANCIA() {
+    public static ModoDeAtaque getInstancia() {
         if (INSTANCIA == null){
-            INSTANCIA = new ModoAtaque();
+            INSTANCIA = new ModoDeAtaque();
         }
 
         return INSTANCIA;
+    }
+
+    @Override
+    public ModoMonstruo cambiarModoMonstruo() {
+        return ModoDeDefensa.getInstancia();
     }
 
     @Override
@@ -39,6 +45,6 @@ public class ModoAtaque extends ModoMonstruo {
 
     @Override
     public ResultadoCombate empataron() {
-        return new GanaContraModoAtaque(0);
+        return new EmpataContraModoAtaque();
     }
 }

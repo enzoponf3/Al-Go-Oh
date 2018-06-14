@@ -2,20 +2,20 @@ package algo3.fiuba;
 
 
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class Jugador {
 
     private Integer puntosDeVida;
-    private TableroJugador tableroParcial;
-    private HashSet<Carta> mano;
+    private TableroJugador tableroJugador;
+    private Set<Carta> mano;
 
 
     public Jugador() {
-
         this.puntosDeVida = 8000;
-        this.tableroParcial = new TableroJugador();
         this.mano = new HashSet<>();
     }
 
@@ -27,8 +27,8 @@ public class Jugador {
         puntosDeVida += (-puntos > puntosDeVida) ? -puntosDeVida : puntos;
     }
 
-    public void tomarCarta() {
-        mano.add(tableroParcial.tomarCartaMazo());
+    public void tomarCartaDelMazo() {
+        mano.add(tableroJugador.tomarCartaDelMazo());
     }
 
     public Integer cantidadCartas() {
@@ -39,19 +39,31 @@ public class Jugador {
         return puntosDeVida;
     }
 
-    public void colocarCartaEnTablero(Carta carta) {
+    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
         if(!mano.contains(carta)) {
             throw new RuntimeException("No se posee la carta que se quiere colocar en Tablero");
         }
-        tableroParcial.colocarCartaEnTablero(carta);
+        tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego);
         mano.remove(carta);
     }
 
     public boolean cartaEnTablero(Carta carta) {
-        return tableroParcial.cartaEnTablero(carta);
+        return tableroJugador.cartaEnTablero(carta);
     }
 
     public void agregarCartaAMazo(Carta carta) {
-        tableroParcial.agregarCartaAMazo(carta);
+        tableroJugador.agregarCartaAlMazo(carta);
+    }
+
+    public void setTableroJugador(TableroJugador tableroJugador) {
+        this.tableroJugador = tableroJugador;
+    }
+
+    public void mandarAlCementerio(Carta carta) {
+        tableroJugador.agregarCartaAlCementerio(carta);
+    }
+
+    public boolean cartaEstaEnCementerio(Carta carta) {
+        return tableroJugador.cartaEstaEnCementerio(carta);
     }
 }

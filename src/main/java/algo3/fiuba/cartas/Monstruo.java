@@ -5,8 +5,11 @@ import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
-import algo3.fiuba.cartas.modo_monstruo.ModoAtaque;
-import algo3.fiuba.cartas.modo_monstruo.ModoDefensa;
+import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
+import algo3.fiuba.cartas.modo_monstruo.ModoDeDefensa;
+import algo3.fiuba.cartas.estados_cartas.EnJuego;
+import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
+import algo3.fiuba.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.cartas.modo_monstruo.ModoMonstruo;
 
 public class Monstruo extends Carta {
@@ -37,35 +40,32 @@ public class Monstruo extends Carta {
         return resultadoCombate;
     }
 
-    public boolean estaVivo() {
-        return estadoCarta.estaViva();
-    }
-
     public void pasarAModoAtaque() {
-        modoMonstruo = ModoAtaque.INSTANCIA();
+        modoMonstruo = ModoDeAtaque.getInstancia();
     }
 
     public void pasarAModoDefensa() {
-        modoMonstruo = ModoDefensa.INSTANCIA();
-    }
-
-    public void matarMonstruo() {
-        estadoCarta = new EnCementerio();
-    }
-
-    public void setJugador(Jugador jugador) {
-        this.jugador = jugador;
+        modoMonstruo = ModoDeDefensa.getInstancia();
     }
 
     public void daniarJugador(Integer puntosDeDanio) {
         jugador.modificarPuntosDeVida(-puntosDeDanio);
     }
 
-    @Override
     public void colocarEnCampo(Campo campo) {
         if (this.estrellas >= 7) this.sacrificiosParaInvocar = 2;
         else if (this.estrellas >= 5) this.sacrificiosParaInvocar = 1;
         campo.colocarCartaMonstruo(this);
+    }
+
+    @Override
+    public void colocarEnCampo(EnJuego tipoEnJuego) {
+        estadoCarta = tipoEnJuego;
+        modoMonstruo = ModoDeAtaque.getInstancia();
+    }
+
+    public void cambiarModo() {
+        modoMonstruo = modoMonstruo.cambiarModoMonstruo();
     }
 
 }

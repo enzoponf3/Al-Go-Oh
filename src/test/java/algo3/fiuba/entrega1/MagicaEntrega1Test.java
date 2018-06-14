@@ -16,7 +16,7 @@ public class MagicaEntrega1Test {
     public void cartaBocaAbajoNoActivaEfecto() {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica carta = new Magica("agujero negro", efectoCarta);
-        carta.pasarAModoJuego(BocaAbajo.INSTANCIA());
+        carta.pasarAModoJuego(BocaAbajo.getInstancia());
         carta.activar();
     }
 
@@ -24,8 +24,8 @@ public class MagicaEntrega1Test {
     public void cartaAgujeroNegroBocaArribaActivaEfectosSinMonstruosEnJuego() {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica carta = new Magica("agujero negro", efectoCarta);
-        Tablero tablero = new Tablero();
-        carta.pasarAModoJuego(BocaArriba.INSTANCIA());
+        Tablero tablero = Tablero.getInstancia();
+        carta.pasarAModoJuego(BocaArriba.getInstancia());
         tablero.colocarCarta(carta, 1);
         carta.activar();
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
@@ -35,13 +35,15 @@ public class MagicaEntrega1Test {
     public void cartaAgujeroNegroBocaArribaActivaEfectosConMonstruoEnOponenteBocaArriba() {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
+
         Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 0);
-        Tablero tablero = new Tablero();
-        agujeroNegro.pasarAModoJuego(BocaArriba.INSTANCIA());
-        monstruoEnemigo.pasarAModoJuego(BocaArriba.INSTANCIA());
+        Tablero tablero = Tablero.getInstancia();
+        agujeroNegro.pasarAModoJuego(BocaArriba.getInstancia());
+        monstruoEnemigo.pasarAModoJuego(BocaArriba.getInstancia());
+
         tablero.colocarCarta(agujeroNegro, 1);
         tablero.colocarCarta(monstruoEnemigo, 2);
         agujeroNegro.activar();
-        Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
+        Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
     }
 }

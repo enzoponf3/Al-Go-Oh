@@ -7,9 +7,4 @@ public class Trampa extends Carta {
     public Trampa(String nombre, EfectoCarta efecto) {
         super(nombre, efecto);
     }
-
-    @Override
-    public void colocarEnCampo(Campo campo) {
-        campo.colocarCartaEspecial(this);
-    }
 }

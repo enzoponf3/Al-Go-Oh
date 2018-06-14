@@ -3,6 +3,7 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
 import java.util.LinkedList;
 
@@ -16,8 +17,8 @@ public class Campo {
         zonaEspeciales = new LinkedList<>();
     }
 
-    public boolean campoColocarCarta(Carta carta) {
-        carta.colocarEnCampo(this);
+    public boolean campoColocarCarta(Carta carta, EnJuego tipoEnJuego ) {
+        carta.colocarEnCampo(tipoEnJuego);
         return true;
     }
 

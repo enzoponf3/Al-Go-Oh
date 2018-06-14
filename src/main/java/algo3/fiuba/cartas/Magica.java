@@ -9,9 +9,4 @@ public class Magica extends Carta{
     public Magica(String nombre, EfectoCarta efecto) {
         super(nombre, efecto);
     }
-
-    @Override
-    public void colocarEnCampo(Campo campo) {
-        campo.colocarCartaEspecial(this);
-    }
 }

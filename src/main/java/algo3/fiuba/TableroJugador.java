@@ -2,6 +2,7 @@ package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.Trampa;
 
 import java.util.LinkedList;
@@ -21,17 +22,16 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public boolean colocarCartaEnTablero(Carta carta) {
+    public boolean colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
 
-        return this.campo.campoColocarCarta(carta);
+        return this.campo.campoColocarCarta(carta, tipoEnJuego);
     }
 
-    public void agregarCartaMuerta(Carta carta) {
-
+    public void agregarCartaAlCementerio(Carta carta) {
         this.cementerio.add(carta);
     }
 
-    public Carta tomarCartaMazo() {
+    public Carta tomarCartaDelMazo() {
         return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
     }
 
@@ -39,12 +39,12 @@ public class TableroJugador {
         return this.campo.cartaSeEncuentaEnCampo(carta);
     }
 
-    public void agregarCartaAMazo(Carta carta) {
+    public void agregarCartaAlMazo(Carta carta) {
         mazo.push(carta);
     }
 
-    public boolean cartaEnCementerio(Monstruo monstruoAtacante) {
-        return cementerio.contains(monstruoAtacante);
+    public boolean cartaEstaEnCementerio(Carta carta) {
+        return cementerio.contains(carta);
     }
 
     public Integer monstruosEnJuego() {

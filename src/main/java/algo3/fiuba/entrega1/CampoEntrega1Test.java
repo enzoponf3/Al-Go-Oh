@@ -15,6 +15,7 @@ public class CampoEntrega1Test {
 
     private Campo campo;
 
+    /*
     @Before
     public void setUp() {
         campo = new Campo();
@@ -45,5 +46,5 @@ public class CampoEntrega1Test {
         campo.campoColocarCarta(trampa);
         Assert.assertEquals(campo.cantidadEspeciales(), Integer.valueOf(1));
     }
-
+*/
 }

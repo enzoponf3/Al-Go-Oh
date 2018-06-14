@@ -15,12 +15,12 @@ public class TrampaEntrega1Test {
     @Before
     public void setUp() {
         trampa = new Trampa("n", new EfectoNulo());
-        tablero = new Tablero();
+        tablero = Tablero.getInstancia();
     }
 
     @Test(expected = RuntimeException.class)
     public void trampaBocaAbajoNoActivaEfecto() {
-        trampa.pasarAModoJuego(BocaAbajo.INSTANCIA());
+        trampa.pasarAModoJuego(BocaAbajo.getInstancia());
         tablero.colocarCarta(trampa, 1);
         trampa.activar();
     }

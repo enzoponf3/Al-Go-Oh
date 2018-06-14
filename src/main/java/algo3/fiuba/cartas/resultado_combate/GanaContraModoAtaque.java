@@ -12,12 +12,12 @@ public class GanaContraModoAtaque implements ResultadoCombate {
 
     @Override
     public void afectarDefensor(Monstruo defensor) {
-        defensor.matarMonstruo();
+        defensor.descartar();
         defensor.daniarJugador(-diferenciaPuntos);
     }
 
     @Override
     public void afectarAtacante(Monstruo atacante) {
-
+        // no afecta al atacante
     }
 }

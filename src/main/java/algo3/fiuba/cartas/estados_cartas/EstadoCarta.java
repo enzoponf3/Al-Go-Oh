@@ -4,7 +4,7 @@ import algo3.fiuba.cartas.efectos_cartas.EfectoCarta;
 
 public interface EstadoCarta {
 
-    boolean estaViva();
+    boolean estaEnJuego();
 
     public void activar(EfectoCarta efecto);
 }
