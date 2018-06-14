@@ -208,7 +208,7 @@ public class Entrega1PostaTest {
 
     @Ignore
     @Test
-    public void colocarMonstruosEnAmbosLadosDelCampo_colocarAgujeroNegroBocaArriva_seDestruyeronTodosLosMonstruosDeAmbosLadosDelCampoYNingunJugadorRecibioDanio() {
+    public void colocarMonstruosEnAmbosLadosDelCampo_colocarAgujeroNegroBocaArriba_seDestruyeronTodosLosMonstruosDeAmbosLadosDelCampoYNingunJugadorRecibioDanio() {
 
     }
 

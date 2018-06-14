@@ -1,7 +1,5 @@
 package algo3.fiuba.cartas;
 
-import algo3.fiuba.Campo;
-import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos_cartas.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;

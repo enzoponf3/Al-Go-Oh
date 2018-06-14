@@ -2,10 +2,7 @@ package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.cartas.Magica;
-import algo3.fiuba.cartas.Monstruo;
 
 import java.util.LinkedList;
 
