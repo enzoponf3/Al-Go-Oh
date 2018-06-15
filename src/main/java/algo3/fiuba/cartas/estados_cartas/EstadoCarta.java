@@ -1,10 +1,11 @@
 package algo3.fiuba.cartas.estados_cartas;
 
+import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 
 public interface EstadoCarta {
 
     boolean estaEnJuego();
 
-    public void activar(EfectoCarta efecto);
+    void activar(Tablero tablero, EfectoCarta efecto);
 }

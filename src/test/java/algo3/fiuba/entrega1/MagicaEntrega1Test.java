@@ -1,5 +1,6 @@
 package algo3.fiuba.entrega1;
 
+import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
@@ -18,7 +19,8 @@ public class MagicaEntrega1Test {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica carta = new Magica("agujero negro", efectoCarta);
         carta.pasarAModoJuego(BocaAbajo.getInstancia());
-        carta.activar();
+        Tablero tablero = new Tablero();
+        carta.activar(tablero);
     }
 
     @Test
@@ -26,9 +28,11 @@ public class MagicaEntrega1Test {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica carta = new Magica("agujero negro", efectoCarta);
         Tablero tablero = Tablero.getInstancia();
-        carta.pasarAModoJuego(BocaArriba.getInstancia());
-        tablero.colocarCarta(carta, 1);
-        carta.activar();
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
+        tablero.empezarDuelo(jugador1, jugador2);
+        jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+        carta.activar(tablero);
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
     }
 
@@ -37,14 +41,17 @@ public class MagicaEntrega1Test {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
 
-        Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 0);
+        Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 1);
         Tablero tablero = Tablero.getInstancia();
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
+        tablero.empezarDuelo(jugador1, jugador2);
         agujeroNegro.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoEnemigo.pasarAModoJuego(BocaArriba.getInstancia());
 
-        tablero.colocarCarta(agujeroNegro, 1);
-        tablero.colocarCarta(monstruoEnemigo, 2);
-        agujeroNegro.activar();
+        jugador1.colocarCartaEnTablero(agujeroNegro, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnTablero(monstruoEnemigo, BocaArriba.getInstancia());
+        agujeroNegro.activar(tablero);
         Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
     }
 }

@@ -2,6 +2,7 @@ package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
 
@@ -68,5 +69,12 @@ public class Campo {
     }
 
 
+    public void activarEfectoSobreElementos(EfectoCarta efecto) {
+        efecto.activar(zonaMonstruos);
+    }
 
+    public void eliminarCarta(Carta carta) {
+        // Solo elimina cartas monstruos por el momento.
+        zonaMonstruos.remove(carta);
+    }
 }

@@ -59,7 +59,7 @@ public class Monstruo extends Carta {
     @Override
     public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         if (!estrellas.sacrificiosSuficientes(sacrificios))
-            throw new RuntimeException(String.format("Se necesitan estrictamente %d sarificios para invocarlo.", estrellas.sacrificiosRequeridos()));
+            throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", estrellas.sacrificiosRequeridos()));
 
         this.sacrificar(sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();

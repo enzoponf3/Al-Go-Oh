@@ -14,7 +14,6 @@ import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -76,7 +75,7 @@ public class Entrega1PostaTest {
         Magica cartaMagica = new Magica("agujero negro", efectoCarta);
 
         cartaMagica.pasarAModoJuego(BocaAbajo.getInstancia());
-        cartaMagica.activar();
+        cartaMagica.activar(tablero);
         // Como no esta boca abajo no puede activar el efecto y lanza error
     }
 
@@ -98,6 +97,7 @@ public class Entrega1PostaTest {
         carta.descartar();
 
         Assert.assertFalse(carta.estaEnJuego());
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(carta));
     }
 
@@ -233,20 +233,17 @@ public class Entrega1PostaTest {
         Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
 
         Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 1);
-        Tablero tablero = Tablero.getInstancia();
-        agujeroNegro.pasarAModoJuego(BocaArriba.getInstancia());
-        monstruoEnemigo.pasarAModoJuego(BocaArriba.getInstancia());
 
-        tablero.colocarCarta(agujeroNegro, 1);
-        tablero.colocarCarta(monstruoEnemigo, 2);
-        agujeroNegro.activar();
+        jugador1.colocarCartaEnTablero(agujeroNegro, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnTablero(monstruoEnemigo, BocaArriba.getInstancia());
+        agujeroNegro.activar(tablero);
         Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
     }
 
     @Test
     public void seColocaUnMonstruoEnElCampo_seQuiereColocarUnMonstruoDe5o6Estrellas_seSacrificaAlPrimerMonstruoParaColocarAlSegundo() {
         Monstruo cartaMonstruoASacrificar = new Monstruo("m", 1000, 1000, 1);
-        Carta cartaMonstruoAInvocar = new Monstruo("m", 2300, 2000, 6);
+        Monstruo cartaMonstruoAInvocar = new Monstruo("m", 2300, 2000, 6);
 
         // Coloco el monstruo a sacrificar en el campo y verifico que esté
         jugador1.colocarCartaEnTablero(cartaMonstruoASacrificar, BocaArriba.getInstancia());
@@ -259,6 +256,7 @@ public class Entrega1PostaTest {
         Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnTablero(cartaMonstruoAInvocar));
         Assert.assertFalse(cartaMonstruoASacrificar.estaEnJuego());
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(cartaMonstruoASacrificar));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(cartaMonstruoASacrificar));
     }
 
@@ -267,7 +265,7 @@ public class Entrega1PostaTest {
     public void seColocan2MonstruosEnElCampo_seQuiereColocarUnMonstruoDe7OMasEstrellas_seSacrificanLosDosMonstruosParaInvocarlo() {
         Monstruo monstruoASacrificar1 = new Monstruo("m", 1000, 1000, 1);
         Monstruo monstruoASacrificar2 = new Monstruo("m", 1000, 1000, 1);
-        Carta cartaMonstruoAInvocar = new Monstruo("m", 2300, 2000, 7);
+        Monstruo cartaMonstruoAInvocar = new Monstruo("m", 2300, 2000, 7);
 
         // Coloco los monstruos a sacrificar en el campo y verifico que estén
         jugador1.colocarCartaEnTablero(monstruoASacrificar1, BocaArriba.getInstancia());
@@ -282,8 +280,10 @@ public class Entrega1PostaTest {
         Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnTablero(cartaMonstruoAInvocar));
         Assert.assertFalse(monstruoASacrificar1.estaEnJuego());
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoASacrificar1));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(monstruoASacrificar1));
         Assert.assertFalse(monstruoASacrificar2.estaEnJuego());
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoASacrificar2));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(monstruoASacrificar2));
     }
 

@@ -1,5 +1,6 @@
 package algo3.fiuba.cartas.estados_cartas;
 
+import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 
 public class BocaArriba extends EnJuego {
@@ -18,7 +19,7 @@ public class BocaArriba extends EnJuego {
     }
 
     @Override
-    public void activar(EfectoCarta efecto) {
-        // to do
+    public void activar(Tablero tablero, EfectoCarta efecto) {
+        efecto.activar(tablero);
     }
 }

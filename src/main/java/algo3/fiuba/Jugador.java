@@ -47,6 +47,7 @@ public class Jugador {
         mano.remove(carta);
     }
 
+
     public boolean cartaEstaEnTablero(Carta carta) {
         return carta.estaEnTablero(tableroJugador);
     }
@@ -69,6 +70,7 @@ public class Jugador {
 
     public void mandarAlCementerio(Carta carta) {
         tableroJugador.agregarCartaAlCementerio(carta);
+        //tableroJugador.eliminarCarta(carta);
     }
 
     public boolean cartaEstaEnCementerio(Carta carta) {

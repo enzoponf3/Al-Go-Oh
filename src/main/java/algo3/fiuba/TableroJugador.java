@@ -3,6 +3,7 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.NoMonstruo;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
 import java.util.LinkedList;
@@ -28,6 +29,7 @@ public class TableroJugador {
 
     public void agregarCartaAlCementerio(Carta carta) {
         this.cementerio.add(carta);
+        this.campo.eliminarCarta(carta);
     }
 
     public Carta tomarCartaDelMazo() {
@@ -53,5 +55,13 @@ public class TableroJugador {
 
     public Integer monstruosEnJuego() {
         return campo.cantidadMonstruos();
+    }
+
+    public void activarEfectoSobreElementos(EfectoCarta efecto) {
+        campo.activarEfectoSobreElementos(efecto);
+    }
+
+    public void eliminarCarta(Carta carta) {
+        campo.eliminarCarta(carta);
     }
 }
