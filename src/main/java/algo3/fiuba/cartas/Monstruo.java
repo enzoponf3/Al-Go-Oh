@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas;
 
 import algo3.fiuba.Campo;
+import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
@@ -51,16 +52,21 @@ public class Monstruo extends Carta {
         jugador.modificarPuntosDeVida(-puntosDeDanio);
     }
 
+
+    /*
     public void colocarEnCampo(Campo campo) {
         if (this.estrellas >= 7) this.sacrificiosParaInvocar = 2;
         else if (this.estrellas >= 5) this.sacrificiosParaInvocar = 1;
         campo.colocarCartaMonstruo(this);
     }
+    */
+
 
     @Override
-    public void colocarEnCampo(EnJuego tipoEnJuego) {
-        estadoCarta = tipoEnJuego;
+    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego) {
         modoMonstruo = ModoDeAtaque.getInstancia();
+        estadoCarta = tipoEnJuego;
+        campo.colocarCarta(this);
     }
 
     public void cambiarModo() {

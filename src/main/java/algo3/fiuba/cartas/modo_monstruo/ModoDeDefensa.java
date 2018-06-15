@@ -2,7 +2,7 @@ package algo3.fiuba.cartas.modo_monstruo;
 
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
-import algo3.fiuba.cartas.resultado_combate.GanaContraModoDefensa;
+import algo3.fiuba.cartas.GanaContraModoDefensa;
 import algo3.fiuba.cartas.resultado_combate.PierdeContraModoDefensa;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
 

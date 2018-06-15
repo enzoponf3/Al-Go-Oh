@@ -2,7 +2,9 @@ package algo3.fiuba;
 
 
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
+import algo3.fiuba.cartas.resultado_combate.NoMonstro;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,14 +42,24 @@ public class Jugador {
     }
 
     public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
+        /*
         if(!mano.contains(carta)) {
             throw new RuntimeException("No se posee la carta que se quiere colocar en Tablero");
         }
+        */
         tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego);
         mano.remove(carta);
     }
 
-    public boolean cartaEnTablero(Carta carta) {
+    public boolean cartaEstaEnTablero(Carta carta) {
+        return carta.estaEnTablero(this);
+    }
+
+    public boolean cartaEstaEnTablero(Monstruo carta) {
+        return tableroJugador.cartaEnTablero(carta);
+    }
+
+    public boolean cartaEstaEnTablero(NoMonstro carta) {
         return tableroJugador.cartaEnTablero(carta);
     }
 
@@ -65,5 +77,9 @@ public class Jugador {
 
     public boolean cartaEstaEnCementerio(Carta carta) {
         return tableroJugador.cartaEstaEnCementerio(carta);
+    }
+
+    public void agregarEnMano(Carta carta) {
+        mano.add(carta);
     }
 }

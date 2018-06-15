@@ -1,6 +1,7 @@
-package algo3.fiuba.cartas.resultado_combate;
+package algo3.fiuba.cartas;
 
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 
 public class GanaContraModoDefensa implements ResultadoCombate {
 

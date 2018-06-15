@@ -22,9 +22,8 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public boolean colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
-
-        return this.campo.campoColocarCarta(carta, tipoEnJuego);
+    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
+        this.campo.colocarCarta(carta, tipoEnJuego);
     }
 
     public void agregarCartaAlCementerio(Carta carta) {

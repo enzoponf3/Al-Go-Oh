@@ -1,5 +1,6 @@
 package algo3.fiuba.cartas;
 
+import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
@@ -25,9 +26,7 @@ public abstract class Carta {
         estadoCarta = tipoEnJuego;
     }
 
-    public void colocarEnCampo(EnJuego tipoEnJuego) {
-        estadoCarta = tipoEnJuego;
-    }
+    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego);
 
     public boolean estaEnJuego() {
         return estadoCarta.estaEnJuego();
@@ -58,5 +57,4 @@ public abstract class Carta {
     public void activar() {
         estadoCarta.activar(efecto);
     }
-
 }

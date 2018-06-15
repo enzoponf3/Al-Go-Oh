@@ -92,7 +92,7 @@ public class JugadorEntrega1Test {
 
         jugador.colocarCartaEnTablero(carta);
         Assert.assertEquals(cantidadFinalCartas, jugador.cantidadCartas());
-        Assert.assertTrue(jugador.cartaEnTablero(carta));
+        Assert.assertTrue(jugador.cartaEstaEnTablero(carta));
     }
 
 */
@@ -114,11 +114,11 @@ public class JugadorEntrega1Test {
         jugador.tomarCarta();
         jugador.tomarCarta();
         jugador.colocarCartaEnTablero(cartaMonstruoASacrificar);
-        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoASacrificar));
+        Assert.assertTrue(jugador.cartaEstaEnTablero(cartaMonstruoASacrificar));
 
         jugador.colocarCartaEnTablero(cartaMonstruoAInvocar);
-        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoAInvocar));
-        Assert.assertFalse(jugador.cartaEnTablero(cartaMonstruoASacrificar));
+        Assert.assertTrue(jugador.cartaEstaEnTablero(cartaMonstruoAInvocar));
+        Assert.assertFalse(jugador.cartaEstaEnTablero(cartaMonstruoASacrificar));
     }
 
     @Test
@@ -134,12 +134,12 @@ public class JugadorEntrega1Test {
         jugador.tomarCarta();
         jugador.colocarCartaEnTablero(cartaMonstruoASacrificar1);
         jugador.colocarCartaEnTablero(cartaMonstruoASacrificar2);
-        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoASacrificar1));
-        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoASacrificar2));
+        Assert.assertTrue(jugador.cartaEstaEnTablero(cartaMonstruoASacrificar1));
+        Assert.assertTrue(jugador.cartaEstaEnTablero(cartaMonstruoASacrificar2));
 
         jugador.tomarCarta();
         jugador.colocarCartaEnTablero(cartaMonstruoAInvocar);
-        Assert.assertTrue(jugador.cartaEnTablero(cartaMonstruoAInvocar));
+        Assert.assertTrue(jugador.cartaEstaEnTablero(cartaMonstruoAInvocar));
     }
 
     @Test (expected = RuntimeException.class)
