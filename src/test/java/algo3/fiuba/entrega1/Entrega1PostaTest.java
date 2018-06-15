@@ -232,10 +232,12 @@ public class Entrega1PostaTest {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
 
-        Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 1);
+        Monstruo monstruoJugador1 = new Monstruo("Rodri", 100, 100, 1);
+        Monstruo monstruoJugador2 = new Monstruo("Delfi", 2120, 0, 2);
 
-        jugador1.colocarCartaEnTablero(agujeroNegro, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnTablero(monstruoEnemigo, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnTablero(monstruoJugador1, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnTablero(monstruoJugador2, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnTablero(agujeroNegro, BocaArriba.getInstancia());
         agujeroNegro.activar(tablero);
         Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
     }
