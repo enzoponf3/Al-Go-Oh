@@ -2,12 +2,14 @@ package algo3.fiuba.cartas;
 
 import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
+import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.estados_cartas.EstadoCarta;
 import algo3.fiuba.cartas.estados_cartas.FueraDeJuego;
 
+import java.time.Month;
 import java.util.Objects;
 
 public abstract class Carta {
@@ -26,7 +28,7 @@ public abstract class Carta {
         estadoCarta = tipoEnJuego;
     }
 
-    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego);
+    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios);
 
     public boolean estaEnJuego() {
         return estadoCarta.estaEnJuego();
@@ -57,4 +59,8 @@ public abstract class Carta {
     public void activar() {
         estadoCarta.activar(efecto);
     }
+
+    public abstract boolean estaEnTablero(TableroJugador tableroJugador);
+
+    public abstract boolean esSacrificable();
 }

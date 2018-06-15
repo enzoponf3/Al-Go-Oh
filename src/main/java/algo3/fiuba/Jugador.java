@@ -4,7 +4,7 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.cartas.resultado_combate.NoMonstro;
+import algo3.fiuba.cartas.NoMonstruo;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,26 +41,22 @@ public class Jugador {
         return puntosDeVida;
     }
 
-    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
-        /*
-        if(!mano.contains(carta)) {
-            throw new RuntimeException("No se posee la carta que se quiere colocar en Tablero");
-        }
-        */
-        tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego);
+    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        carta.setJugador(this);
+        tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego, sacrificios);
         mano.remove(carta);
     }
 
     public boolean cartaEstaEnTablero(Carta carta) {
-        return carta.estaEnTablero(this);
+        return carta.estaEnTablero(tableroJugador);
     }
 
     public boolean cartaEstaEnTablero(Monstruo carta) {
-        return tableroJugador.cartaEnTablero(carta);
+        return tableroJugador.cartaEstaEnTablero(carta);
     }
 
-    public boolean cartaEstaEnTablero(NoMonstro carta) {
-        return tableroJugador.cartaEnTablero(carta);
+    public boolean cartaEstaEnTablero(NoMonstruo carta) {
+        return tableroJugador.cartaEstaEnTablero(carta);
     }
 
     public void agregarCartaAMazo(Carta carta) {

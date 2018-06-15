@@ -37,14 +37,14 @@ public class CampoEntrega1Test {
     public void campoSeAgregaCartaMagicaEnZonaCorrecta() {
         Magica carta = new Magica("n", new EfectoNulo());
         campo.campoColocarCarta(carta);
-        Assert.assertEquals(campo.cantidadEspeciales(), Integer.valueOf(1));
+        Assert.assertEquals(campo.cantidadNoEspeciales(), Integer.valueOf(1));
     }
 
     @Test
     public void campoSeAgregaCartaTrampaEnZonaCorrecta() {
         Trampa trampa = new Trampa("n", new EfectoNulo());
         campo.campoColocarCarta(trampa);
-        Assert.assertEquals(campo.cantidadEspeciales(), Integer.valueOf(1));
+        Assert.assertEquals(campo.cantidadNoEspeciales(), Integer.valueOf(1));
     }
 */
 }

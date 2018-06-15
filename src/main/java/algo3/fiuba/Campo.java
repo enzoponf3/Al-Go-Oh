@@ -3,14 +3,14 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.cartas.resultado_combate.NoMonstro;
+import algo3.fiuba.cartas.NoMonstruo;
 
 import java.util.LinkedList;
 
 public class Campo {
 
-    LinkedList<Carta> zonaMonstruos;
-    LinkedList<Carta> zonaNoMonstruos;
+    LinkedList<Monstruo> zonaMonstruos;
+    LinkedList<NoMonstruo> zonaNoMonstruos;
 
     public Campo() {
         zonaMonstruos = new LinkedList<>();
@@ -25,14 +25,12 @@ public class Campo {
         return (zonaMonstruos.size());
     }
 
-    public Integer cantidadEspeciales() {
+    public Integer cantidadNoEspeciales() {
         return (zonaNoMonstruos.size());
     }
 
-    public void colocarCarta(Carta carta, EnJuego enJuego) {
-        carta.colocarEnCampo(this, enJuego);
-
-        zonaMonstruos.add(carta);
+    public void colocarCarta(Carta carta, EnJuego enJuego, Monstruo... sacrificios) {
+        carta.colocarEnCampo(this, enJuego, sacrificios);
     }
 
     public void colocarCarta(Monstruo carta) {
@@ -48,7 +46,7 @@ public class Campo {
         */
     }
 
-    public void colocarCarta(NoMonstro carta) {
+    public void colocarCarta(NoMonstruo carta) {
         zonaNoMonstruos.add(carta);
         /*
         // Se supone que con la interfaz gráfica deberiamos ahorrarnos esto...
@@ -61,14 +59,14 @@ public class Campo {
         */
     }
 
-
-    public void colocarCartaEspecial(Carta especial) {
-        zonaNoMonstruos.add(especial);
-    }
-
-    public boolean cartaSeEncuentaEnCampo(Carta carta) {
+    public boolean cartaSeEncuentaEnCampo(Monstruo carta) {
         return zonaMonstruos.contains(carta);
     }
+
+    public boolean cartaSeEncuentaEnCampo(NoMonstruo carta) {
+        return zonaNoMonstruos.contains(carta);
+    }
+
 
 
 }
