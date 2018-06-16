@@ -4,6 +4,8 @@ import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,22 +15,24 @@ public class PierdeContraModoAtaqueTest {
 
     private Campo campo;
     private Jugador jugador;
+    private EfectoCarta efectoNulo;
 
     @Before
     public void setUp() {
         campo = new Campo();
         jugador = new Jugador();
         jugador.setTableroJugador(new TableroJugador());
+        efectoNulo = EfectoNulo.getInstancia();
     }
 
     @Test
     public void monstruoAtacanteMuere() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, efectoNulo);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
 
-        ResultadoCombate resultado = new PierdeContraModoAtaque(1000);
+        ResultadoCombate resultado = new PierdeContraModoDeAtaque(1000);
         resultado.afectarAtacante(monstruoAtacante);
 
         Assert.assertFalse(monstruoAtacante.estaEnJuego());
@@ -36,12 +40,12 @@ public class PierdeContraModoAtaqueTest {
 
     @Test
     public void monstruoDefensorSigueVivo() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, EfectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, efectoNulo);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();
 
-        ResultadoCombate resultado = new PierdeContraModoAtaque(1000);
+        ResultadoCombate resultado = new PierdeContraModoDeAtaque(1000);
         resultado.afectarDefensor(monstruoDefensor);
 
         Assert.assertTrue(monstruoDefensor.estaEnJuego());
@@ -49,12 +53,12 @@ public class PierdeContraModoAtaqueTest {
 
     @Test
     public void jugadorAtacantePierdePuntosDeVida() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, efectoNulo);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
 
-        ResultadoCombate resultado = new PierdeContraModoAtaque(1000);
+        ResultadoCombate resultado = new PierdeContraModoDeAtaque(1000);
         resultado.afectarAtacante(monstruoAtacante);
 
         // 7000 = 8000 - 1000
@@ -64,12 +68,12 @@ public class PierdeContraModoAtaqueTest {
 
     @Test
     public void jugadorDefensorNoPierdePuntosDeVida() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, EfectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, efectoNulo);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();
 
-        ResultadoCombate resultado = new PierdeContraModoAtaque(1000);
+        ResultadoCombate resultado = new PierdeContraModoDeAtaque(1000);
         resultado.afectarDefensor(monstruoDefensor);
 
         // 8000 porque no fue afectado.

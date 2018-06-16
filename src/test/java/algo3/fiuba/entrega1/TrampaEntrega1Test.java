@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TrampaEntrega1Test {
+    /*
     private Trampa trampa;
     private Tablero tablero;
 
@@ -28,5 +29,5 @@ public class TrampaEntrega1Test {
         jugador1.colocarCartaEnTablero(trampa, BocaAbajo.getInstancia());
         trampa.activar(tablero);
     }
-
+*/
 }

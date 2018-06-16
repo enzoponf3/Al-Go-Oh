@@ -4,25 +4,30 @@ import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class EmpataContraModoAtaqueTest {
+
     private Campo campo;
     private Jugador jugador;
+    private EfectoCarta efectoNulo;
 
     @Before
     public void setUp() {
         campo = new Campo();
         jugador = new Jugador();
         jugador.setTableroJugador(new TableroJugador());
+        efectoNulo = EfectoNulo.getInstancia();
     }
 
     @Test
     public void monstruoAtacanteMuere() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, efectoNulo);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -35,7 +40,7 @@ public class EmpataContraModoAtaqueTest {
 
     @Test
     public void monstruoDefensorMuere() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, EfectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, efectoNulo);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();
@@ -48,7 +53,7 @@ public class EmpataContraModoAtaqueTest {
 
     @Test
     public void jugadorAtacanteNoPierdePuntosDeVida() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, efectoNulo);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -63,7 +68,7 @@ public class EmpataContraModoAtaqueTest {
 
     @Test
     public void jugadorDefensorNoPierdePuntosDeVida() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, EfectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, efectoNulo);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();

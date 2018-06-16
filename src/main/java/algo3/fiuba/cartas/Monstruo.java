@@ -22,7 +22,7 @@ public class Monstruo extends Carta {
 
     public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas, EfectoCarta efecto) {
 
-        super(nombre,new EfectoNulo());
+        super(nombre, efecto);
         this.ataque = ataque;
         this.defensa = defensa;
         this.estrellas = EstrellasFactory.obtenerEstrellas(estrellas);

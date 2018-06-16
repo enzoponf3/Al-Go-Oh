@@ -13,7 +13,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class MagicaEntrega1Test {
-
+/*
     @Test(expected = InhabilitadaParaActivarseExcepcion.class)
     public void cartaBocaAbajoNoActivaEfecto() {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
@@ -54,4 +54,5 @@ public class MagicaEntrega1Test {
         agujeroNegro.activar(tablero);
         Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
     }
+    */
 }

@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class JugadorEntrega1Test {
-
+/*
     private Jugador jugador;
     private Tablero tablero;
 
