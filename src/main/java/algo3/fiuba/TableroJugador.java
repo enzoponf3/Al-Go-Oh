@@ -27,7 +27,7 @@ public class TableroJugador {
         this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
     }
 
-    public void agregarCartaAlCementerio(Carta carta) {
+    public void mandarCartaAlCementerio(Carta carta) {
         this.cementerio.add(carta);
         this.campo.eliminarCarta(carta);
     }
@@ -63,5 +63,29 @@ public class TableroJugador {
 
     public void eliminarCarta(Carta carta) {
         campo.eliminarCarta(carta);
+    }
+
+    public void removerCarta(Monstruo carta) {
+        campo.removerCarta(carta);
+        //carta.removerDelCampo(campo);
+    }
+
+    public void removerCarta(NoMonstruo carta) {
+        //carta.removerDelCampo(campo);
+    }
+
+
+    @Override
+    public String toString() {
+        return "TableroJugador{" +
+                "cartaCampo=" + cartaCampo +
+                ", mazo=" + mazo +
+                ", campo=" + campo +
+                ", cementerio=" + cementerio +
+                '}';
+    }
+
+    public void reiniciar() {
+        campo.reiniciar();
     }
 }

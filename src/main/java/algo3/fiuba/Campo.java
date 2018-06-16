@@ -7,11 +7,12 @@ import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Campo {
 
-    LinkedList<Monstruo> zonaMonstruos;
-    LinkedList<NoMonstruo> zonaNoMonstruos;
+    List<Monstruo> zonaMonstruos;
+    List<NoMonstruo> zonaNoMonstruos;
 
     public Campo() {
         zonaMonstruos = new LinkedList<>();
@@ -76,5 +77,26 @@ public class Campo {
     public void eliminarCarta(Carta carta) {
         // Solo elimina cartas monstruos por el momento.
         zonaMonstruos.remove(carta);
+    }
+
+    public void removerCarta(Monstruo carta) {
+        zonaNoMonstruos.remove(carta);
+    }
+
+    public void removerCarta(NoMonstruo carta) {
+        zonaNoMonstruos.remove(carta);
+    }
+
+    @Override
+    public String toString() {
+        return "Campo{" +
+                "zonaMonstruos=" + zonaMonstruos +
+                ", zonaNoMonstruos=" + zonaNoMonstruos +
+                '}';
+    }
+
+    public void reiniciar() {
+        zonaMonstruos = new LinkedList<>();
+        zonaNoMonstruos = new LinkedList<>();
     }
 }

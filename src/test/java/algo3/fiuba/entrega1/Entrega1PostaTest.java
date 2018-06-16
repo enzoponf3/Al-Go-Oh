@@ -14,11 +14,9 @@ import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+
 import java.lang.reflect.Field;
-import org.junit.After;
 
 
 public class Entrega1PostaTest {
@@ -26,6 +24,7 @@ public class Entrega1PostaTest {
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
+
     /*
     @After
     public void tearDown() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -45,9 +44,9 @@ public class Entrega1PostaTest {
 
     @Test
     public void colocarUnaCartaDeMonstruoEnModoDeAtaquePuedeAtacarOtroMonstruo() {
-        Monstruo monstruoAtacante = new Monstruo("monstruo test", 1000, 2000, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1);
         monstruoAtacante.setJugador(jugador1);
-        Monstruo monstruoDefensor = new Monstruo("monstruo test", 1000, 2000, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1);
         monstruoDefensor.setJugador(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
@@ -64,8 +63,8 @@ public class Entrega1PostaTest {
 
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)
     public void colocarUnaCartaDeMonstruoEnModoDeDefensaAlQuererAtacarLanzaExcepcion() {
-        Monstruo monstruoAtacante = new Monstruo("monstruo test", 1000, 2000, 1);
-        Monstruo monstruoDefensor = new Monstruo("monstruo test", 1000, 2000, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1);
 
         // Los monstruos se colocan por default en modo ataque, por eso luego se cambia el modo a modo de defensa
         jugador1.colocarCartaEnTablero(monstruoAtacante, BocaArriba.getInstancia());
@@ -79,6 +78,7 @@ public class Entrega1PostaTest {
         Assert.assertTrue(jugador2.cartaEstaEnTablero(monstruoDefensor));
         // Como está en modo defensa no puede atacar y tira exepción
     }
+
 
     @Test(expected = InhabilitadaParaActivarseExcepcion.class)
     public void colocarCartaMagicaEnCampoBocaAbajo_NoActivaNingunEfecto() {
@@ -255,16 +255,19 @@ public class Entrega1PostaTest {
 
     @Test
     public void seColocaUnMonstruoEnElCampo_seQuiereColocarUnMonstruoDe5o6Estrellas_seSacrificaAlPrimerMonstruoParaColocarAlSegundo() {
-        Monstruo cartaMonstruoASacrificar = new Monstruo("m", 1000, 1000, 1);
-        Monstruo cartaMonstruoAInvocar = new Monstruo("m", 2300, 2000, 6);
+        Monstruo cartaMonstruoASacrificar = new Monstruo("aSacrificar", 1000, 1000, 1);
+        Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 6);
         // Coloco el monstruo a sacrificar en el campo y verifico que esté
+        System.out.println(jugador1);
         jugador1.colocarCartaEnTablero(cartaMonstruoASacrificar, BocaArriba.getInstancia());
 
         Assert.assertTrue(cartaMonstruoASacrificar.estaEnJuego());
+        System.out.println(jugador1);
 
         // Coloco el monstruo a invocar en el campo y verifico la destrucción del anterior
         jugador1.colocarCartaEnTablero(cartaMonstruoAInvocar, BocaArriba.getInstancia(), cartaMonstruoASacrificar);
 
+        System.out.println(jugador1);
         Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnTablero(cartaMonstruoAInvocar));
         Assert.assertFalse(cartaMonstruoASacrificar.estaEnJuego());
@@ -275,19 +278,22 @@ public class Entrega1PostaTest {
 
     @Test
     public void seColocan2MonstruosEnElCampo_seQuiereColocarUnMonstruoDe7OMasEstrellas_seSacrificanLosDosMonstruosParaInvocarlo() {
-        Monstruo monstruoASacrificar1 = new Monstruo("m", 1000, 1000, 1);
-        Monstruo monstruoASacrificar2 = new Monstruo("m", 1000, 1000, 1);
-        Monstruo cartaMonstruoAInvocar = new Monstruo("m", 2300, 2000, 7);
+        Monstruo monstruoASacrificar1 = new Monstruo("aSacrificar 1", 1000, 1000, 1);
+        Monstruo monstruoASacrificar2 = new Monstruo("aSacrificar 2", 1000, 1000, 1);
+        Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 7);
 
         // Coloco los monstruos a sacrificar en el campo y verifico que estén
+        System.out.println(jugador1);
         jugador1.colocarCartaEnTablero(monstruoASacrificar1, BocaArriba.getInstancia());
         jugador1.colocarCartaEnTablero(monstruoASacrificar2, BocaArriba.getInstancia());
+        System.out.println(jugador1);
 
         Assert.assertTrue(monstruoASacrificar1.estaEnJuego());
         Assert.assertTrue(monstruoASacrificar2.estaEnJuego());
 
         // Coloco la carta a invocar y verificio que esté y, la destrucción de los anteriores
         jugador1.colocarCartaEnTablero(cartaMonstruoAInvocar, BocaArriba.getInstancia(), monstruoASacrificar1, monstruoASacrificar2);
+        System.out.println(jugador1);
 
         Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnTablero(cartaMonstruoAInvocar));

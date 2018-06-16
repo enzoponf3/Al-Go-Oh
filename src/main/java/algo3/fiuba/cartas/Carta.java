@@ -36,7 +36,7 @@ public abstract class Carta {
     }
 
     public void descartar() {
-        jugador.mandarAlCementerio(this);
+        jugador.mandarCartaDelTableroAlCementerio(this);
         estadoCarta = new EnCementerio();
     }
 
@@ -63,5 +63,17 @@ public abstract class Carta {
 
     public abstract boolean estaEnTablero(TableroJugador tableroJugador);
 
-    public abstract boolean esSacrificable();
+    //public abstract boolean esSacrificable();
+
+    public abstract void removerDelCampo(Campo campo);
+
+
+    @Override
+    public String toString() {
+        return "Carta{" +
+                "nombre='" + nombre + '\'' +
+                ", estadoCarta=" + estadoCarta +
+                ", efecto=" + efecto +
+                '}';
+    }
 }

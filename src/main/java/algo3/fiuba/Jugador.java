@@ -44,7 +44,7 @@ public class Jugador {
     public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         carta.setJugador(this);
         tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego, sacrificios);
-        mano.remove(carta);
+        // mano.remove(carta);
     }
 
 
@@ -68,10 +68,15 @@ public class Jugador {
         this.tableroJugador = tableroJugador;
     }
 
-    public void mandarAlCementerio(Carta carta) {
-        tableroJugador.agregarCartaAlCementerio(carta);
-        //tableroJugador.eliminarCarta(carta);
+    public void mandarCartaDelTableroAlCementerio(Carta carta) {
+        tableroJugador.mandarCartaAlCementerio(carta);
     }
+
+    /*
+    public void removerCartaDelTablero(Carta carta) {
+        tableroJugador.removerCarta(carta);
+    }
+    */
 
     public boolean cartaEstaEnCementerio(Carta carta) {
         return tableroJugador.cartaEstaEnCementerio(carta);
@@ -79,5 +84,23 @@ public class Jugador {
 
     public void agregarEnMano(Carta carta) {
         mano.add(carta);
+    }
+
+    public void removerCartaDelTablero(Monstruo carta) {
+        tableroJugador.removerCarta(carta);
+    }
+
+    public void removerCartaDelTablero(NoMonstruo carta) {
+        tableroJugador.removerCarta(carta);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "puntosDeVida=" + puntosDeVida +
+                ", tableroJugador=" + tableroJugador +
+                ", mano=" + mano +
+                '}';
     }
 }

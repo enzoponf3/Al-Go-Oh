@@ -1,9 +1,6 @@
 package algo3.fiuba;
 
-import algo3.fiuba.cartas.Carta;
-import algo3.fiuba.cartas.efectos.EfectoAgujeroNegro;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
-import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 
 public class Tablero {
 
@@ -25,6 +22,9 @@ public class Tablero {
     }
 
     public void empezarDuelo(Jugador jugador1, Jugador jugador2) {
+        tableroJugador1.reiniciar();
+        tableroJugador2.reiniciar();
+
         jugador1.setTableroJugador(tableroJugador1);
         jugador2.setTableroJugador(tableroJugador2);
     }

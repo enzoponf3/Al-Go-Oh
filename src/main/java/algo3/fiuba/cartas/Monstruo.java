@@ -61,24 +61,32 @@ public class Monstruo extends Carta {
         if (!estrellas.sacrificiosSuficientes(sacrificios))
             throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", estrellas.sacrificiosRequeridos()));
 
-        this.sacrificar(sacrificios);
+        this.realizarSacrificios(sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();
         estadoCarta = tipoEnJuego;
         campo.colocarCarta(this);
     }
 
+    /*
     @Override
     public boolean esSacrificable() {
         return true;
     }
+    */
 
     public void cambiarModo() {
         modoMonstruo = modoMonstruo.cambiarModoMonstruo();
     }
 
-    private void sacrificar(Monstruo... sacrificios) {
+    private void realizarSacrificios(Monstruo... sacrificios) {
         for (Monstruo sacrificio : sacrificios) {
             sacrificio.descartar();
+            jugador.removerCartaDelTablero(sacrificio);
         }
+    }
+
+    @Override
+    public void removerDelCampo(Campo campo) {
+        campo.removerCarta(this);
     }
 }

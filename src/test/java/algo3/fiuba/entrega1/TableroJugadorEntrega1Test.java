@@ -61,7 +61,7 @@ public class TableroJugadorEntrega1Test {
 
         Assert.assertFalse(monstruoAtacante.estaEnJuego());
 
-        tableroJugador.agregarCartaAlCementerio(monstruoAtacante);
+        tableroJugador.mandarCartaAlCementerio(monstruoAtacante);
         Assert.assertTrue(tableroJugador.cartaEstaEnCementerio(monstruoAtacante));
     }
 
