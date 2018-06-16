@@ -117,9 +117,9 @@ public class Entrega1PostaTest {
         Integer ataqueDefensor = 1000;
         Integer ataqueAtacante = 2000;
 
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor, 2000, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor, 0, 1);
         monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 2000, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1);
         monstruoAtacante.setJugador(jugador2);
 
         // Los monstruos se colocan por default en modo ataque

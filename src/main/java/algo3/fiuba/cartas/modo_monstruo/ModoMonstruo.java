@@ -9,11 +9,12 @@ public abstract class ModoMonstruo {
 
     public ResultadoCombate recibirAtaque(Integer ataqueAtacante, Integer ataqueDefensor, Integer defensaDefensor) {
         Integer diferenciaPuntos = puntosDefensivos(ataqueDefensor, defensaDefensor) - ataqueAtacante;
+        Integer moduloDiferenciaPuntos = Math.abs(diferenciaPuntos);
 
         if (diferenciaPuntos > 0)
-            return perdioAtacante(diferenciaPuntos);
+            return perdioAtacante(moduloDiferenciaPuntos);
         if (diferenciaPuntos < 0)
-            return ganoAtacante(diferenciaPuntos);
+            return ganoAtacante(moduloDiferenciaPuntos);
         return empataron();
     }
 
