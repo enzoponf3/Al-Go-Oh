@@ -2,6 +2,7 @@
 build/
 libs/
 tmp/
+out/
 .classpath
 .project
 .settings/
@@ -12,3 +13,4 @@ bin/
 build.xml.old
 *.jar
 *.iml
+out/
