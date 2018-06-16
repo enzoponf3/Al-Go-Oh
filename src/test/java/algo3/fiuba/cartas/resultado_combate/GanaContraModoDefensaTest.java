@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GanaContraModoAtaqueTest {
+public class GanaContraModoDefensaTest {
 
     private Campo campo;
     private Jugador jugador;
@@ -28,7 +28,7 @@ public class GanaContraModoAtaqueTest {
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
 
-        ResultadoCombate resultado = new GanaContraModoAtaque(1000);
+        ResultadoCombate resultado = new GanaContraModoDefensa();
         resultado.afectarAtacante(monstruoAtacante);
 
         Assert.assertTrue(monstruoAtacante.estaEnJuego());
@@ -39,9 +39,9 @@ public class GanaContraModoAtaqueTest {
         Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
-        monstruoDefensor.pasarAModoAtaque();
+        monstruoDefensor.pasarAModoDefensa();
 
-        ResultadoCombate resultado = new GanaContraModoAtaque(1000);
+        ResultadoCombate resultado = new GanaContraModoDefensa();
         resultado.afectarDefensor(monstruoDefensor);
 
         Assert.assertFalse(monstruoDefensor.estaEnJuego());
@@ -54,7 +54,7 @@ public class GanaContraModoAtaqueTest {
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
 
-        ResultadoCombate resultado = new GanaContraModoAtaque(1000);
+        ResultadoCombate resultado = new GanaContraModoDefensa();
         resultado.afectarAtacante(monstruoAtacante);
 
         // 8000 porque no fue afectado.
@@ -63,17 +63,17 @@ public class GanaContraModoAtaqueTest {
     }
 
     @Test
-    public void jugadorDefensorPierdePuntosDeVida() {
+    public void jugadorDefensorNoPierdePuntosDeVida() {
         Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
-        monstruoDefensor.pasarAModoAtaque();
+        monstruoDefensor.pasarAModoDefensa();
 
-        ResultadoCombate resultado = new GanaContraModoAtaque(1000);
+        ResultadoCombate resultado = new GanaContraModoDefensa();
         resultado.afectarDefensor(monstruoDefensor);
 
-        // 7000 = 8000 - 1000
-        Integer puntosDeVidaEsperados = 7000;
+        // 8000 porque no fue afectado.
+        Integer puntosDeVidaEsperados = 8000;
         Assert.assertEquals(puntosDeVidaEsperados, jugador.getPuntosDeVida());
     }
 }
