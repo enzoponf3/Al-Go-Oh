@@ -2,7 +2,6 @@ package algo3.fiuba.entrega1;
 
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
-import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
@@ -15,8 +14,6 @@ import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
 import org.junit.*;
-
-import java.lang.reflect.Field;
 
 
 public class Entrega1PostaTest {
@@ -44,9 +41,9 @@ public class Entrega1PostaTest {
 
     @Test
     public void colocarUnaCartaDeMonstruoEnModoDeAtaquePuedeAtacarOtroMonstruo() {
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1, EfectoNulo);
         monstruoAtacante.setJugador(jugador1);
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1, EfectoNulo);
         monstruoDefensor.setJugador(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
@@ -63,8 +60,8 @@ public class Entrega1PostaTest {
 
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)
     public void colocarUnaCartaDeMonstruoEnModoDeDefensaAlQuererAtacarLanzaExcepcion() {
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1);
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1, EfectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1, EfectoNulo);
 
         // Los monstruos se colocan por default en modo ataque, por eso luego se cambia el modo a modo de defensa
         jugador1.colocarCartaEnTablero(monstruoAtacante, BocaArriba.getInstancia());
@@ -76,7 +73,7 @@ public class Entrega1PostaTest {
 
         Assert.assertTrue(jugador1.cartaEstaEnTablero(monstruoAtacante));
         Assert.assertTrue(jugador2.cartaEstaEnTablero(monstruoDefensor));
-        // Como está en modo defensa no puede atacar y tira exepción
+        // Como está en modo defensa no puede atacar y tira excepción
     }
 
 
@@ -87,7 +84,7 @@ public class Entrega1PostaTest {
 
         cartaMagica.pasarAModoJuego(BocaAbajo.getInstancia());
         cartaMagica.activar(tablero);
-        // Como no esta boca abajo no puede activar el efecto y lanza error
+        // Como está boca abajo no puede activar el efecto y lanza error
     }
 
     @Test
@@ -101,7 +98,7 @@ public class Entrega1PostaTest {
 
     @Test
     public void mandarCartaAlCementerio() {
-        Carta carta = new Monstruo("monstruo test", 1000, 2000, 1);
+        Carta carta = new Monstruo("monstruo test", 1000, 2000, 1, EfectoNulo);
         carta.setJugador(jugador1);
 
         jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
@@ -117,9 +114,9 @@ public class Entrega1PostaTest {
         Integer ataqueDefensor = 1000;
         Integer ataqueAtacante = 2000;
 
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor, 0, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor, 0, 1, EfectoNulo);
         monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1, EfectoNulo);
         monstruoAtacante.setJugador(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
@@ -140,9 +137,9 @@ public class Entrega1PostaTest {
         Integer ataqueDefensor = 2000;
         Integer ataqueAtacante = 1000;
 
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor,2000, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor,2000, 1, EfectoNulo);
         monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante,2000, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante,2000, 1, EfectoNulo);
         monstruoAtacante.setJugador(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
@@ -163,9 +160,9 @@ public class Entrega1PostaTest {
         Integer ataqueDefensor = 2000;
         Integer ataqueAtacante = 2000;
 
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor,2000, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor,2000, 1, EfectoNulo);
         monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante,2000, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante,2000, 1, EfectoNulo);
         monstruoAtacante.setJugador(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
@@ -188,9 +185,9 @@ public class Entrega1PostaTest {
         Integer defensaDefensor = 1000;
         Integer ataqueAtacante = 2000;
 
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", 0, defensaDefensor, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", 0, defensaDefensor, 1, EfectoNulo);
         monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1, EfectoNulo);
         monstruoAtacante.setJugador(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
@@ -215,9 +212,9 @@ public class Entrega1PostaTest {
         Integer defensaDefensor = 2000;
         Integer ataqueAtacante = 1000;
 
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", 0, defensaDefensor, 1);
+        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", 0, defensaDefensor, 1, EfectoNulo);
         monstruoDefensor .setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1);
+        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1, EfectoNulo);
         monstruoAtacante.setJugador(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
@@ -243,20 +240,22 @@ public class Entrega1PostaTest {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
 
-        Monstruo monstruoJugador1 = new Monstruo("Rodri", 100, 100, 1);
-        Monstruo monstruoJugador2 = new Monstruo("Delfi", 2120, 0, 2);
+        Monstruo monstruoJugador1 = new Monstruo("Rodri", 100, 100, 1, EfectoNulo);
+        Monstruo monstruoJugador2 = new Monstruo("Delfi", 2120, 0, 2, EfectoNulo);
 
         jugador1.colocarCartaEnTablero(monstruoJugador1, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(monstruoJugador2, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(agujeroNegro, BocaArriba.getInstancia());
         agujeroNegro.activar(tablero);
         Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoJugador1));
+        Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoJugador2));
     }
 
     @Test
     public void seColocaUnMonstruoEnElCampo_seQuiereColocarUnMonstruoDe5o6Estrellas_seSacrificaAlPrimerMonstruoParaColocarAlSegundo() {
-        Monstruo cartaMonstruoASacrificar = new Monstruo("aSacrificar", 1000, 1000, 1);
-        Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 6);
+        Monstruo cartaMonstruoASacrificar = new Monstruo("aSacrificar", 1000, 1000, 1, EfectoNulo);
+        Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 6, EfectoNulo);
         // Coloco el monstruo a sacrificar en el campo y verifico que esté
         System.out.println(jugador1);
         jugador1.colocarCartaEnTablero(cartaMonstruoASacrificar, BocaArriba.getInstancia());
@@ -278,9 +277,9 @@ public class Entrega1PostaTest {
 
     @Test
     public void seColocan2MonstruosEnElCampo_seQuiereColocarUnMonstruoDe7OMasEstrellas_seSacrificanLosDosMonstruosParaInvocarlo() {
-        Monstruo monstruoASacrificar1 = new Monstruo("aSacrificar 1", 1000, 1000, 1);
-        Monstruo monstruoASacrificar2 = new Monstruo("aSacrificar 2", 1000, 1000, 1);
-        Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 7);
+        Monstruo monstruoASacrificar1 = new Monstruo("aSacrificar 1", 1000, 1000, 1, EfectoNulo);
+        Monstruo monstruoASacrificar2 = new Monstruo("aSacrificar 2", 1000, 1000, 1, EfectoNulo);
+        Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 7, EfectoNulo);
 
         // Coloco los monstruos a sacrificar en el campo y verifico que estén
         System.out.println(jugador1);

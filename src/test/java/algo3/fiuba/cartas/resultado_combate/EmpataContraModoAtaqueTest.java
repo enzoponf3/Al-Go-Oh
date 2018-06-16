@@ -22,7 +22,7 @@ public class EmpataContraModoAtaqueTest {
 
     @Test
     public void monstruoAtacanteMuere() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1);
+        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, EfectoNulo);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -35,7 +35,7 @@ public class EmpataContraModoAtaqueTest {
 
     @Test
     public void monstruoDefensorMuere() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1);
+        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, EfectoNulo);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();
@@ -48,7 +48,7 @@ public class EmpataContraModoAtaqueTest {
 
     @Test
     public void jugadorAtacanteNoPierdePuntosDeVida() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1);
+        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, EfectoNulo);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -63,7 +63,7 @@ public class EmpataContraModoAtaqueTest {
 
     @Test
     public void jugadorDefensorNoPierdePuntosDeVida() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1);
+        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, EfectoNulo);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();

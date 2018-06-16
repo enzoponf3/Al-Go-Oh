@@ -2,6 +2,7 @@ package algo3.fiuba.cartas;
 
 import algo3.fiuba.Campo;
 import algo3.fiuba.TableroJugador;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estrellas.Estrellas;
 import algo3.fiuba.cartas.estrellas.EstrellasFactory;
@@ -19,7 +20,7 @@ public class Monstruo extends Carta {
     private Estrellas estrellas;
     public Integer sacrificiosParaInvocar;
 
-    public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas) {
+    public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas, EfectoCarta efecto) {
 
         super(nombre,new EfectoNulo());
         this.ataque = ataque;

@@ -88,4 +88,8 @@ public class TableroJugador {
     public void reiniciar() {
         campo.reiniciar();
     }
+
+    public int cantidadCartasEnMazo() {
+        return mazo.size();
+    }
 }

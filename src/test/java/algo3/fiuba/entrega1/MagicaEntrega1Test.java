@@ -41,7 +41,7 @@ public class MagicaEntrega1Test {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
 
-        Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 1);
+        Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 1, EfectoNulo);
         Tablero tablero = Tablero.getInstancia();
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();

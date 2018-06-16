@@ -103,4 +103,12 @@ public class Jugador {
                 ", mano=" + mano +
                 '}';
     }
+
+    public boolean cartaEstaEnMano(Carta carta) {
+        return mano.contains(carta);
+    }
+
+    public int cantidadCartasEnMazo() {
+        return tableroJugador.cantidadCartasEnMazo();
+    }
 }
