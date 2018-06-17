@@ -33,7 +33,7 @@ public abstract class Carta {
     }
 
     public void descartar() {
-        jugador.agregarCartaACementerio(this);
+        jugador.mandarCartaACementerio(this);
         estadoCarta = EnCementerio.getInstancia();
     }
 

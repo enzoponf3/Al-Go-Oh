@@ -31,6 +31,8 @@ public class Enrega1NoOficialTest {
         efectoNulo = EfectoNulo.getInstancia();
     }
 
+    // VALIDAR QUE CARTA ESTÁ EN UN ÚNICO LUGAR
+
     @Test
     public void verificoQueSiAgregoUnaCartaALaManoDelJugador1SeEncuentraSoloAlli() {
         Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
@@ -73,7 +75,7 @@ public class Enrega1NoOficialTest {
     public void verificoQueSiColocarUnaCartaEnElCementerioDelJugador1SeEncuentraSoloAlli() {
         Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
 
-        jugador1.agregarCartaACementerio(carta);
+        jugador1.mandarCartaACementerio(carta);
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
@@ -92,7 +94,7 @@ public class Enrega1NoOficialTest {
     public void verificoQueSiColocarUnaCartaEnElCementerioDelJugador2SeEncuentraSoloAlli() {
         Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
 
-        jugador2.agregarCartaACementerio(carta);
+        jugador2.mandarCartaACementerio(carta);
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
@@ -185,6 +187,39 @@ public class Enrega1NoOficialTest {
     }
 
 
+    // VERIFICAR QUE CARTA NO DEBE ESTAR EN JUEGO CUANDO NO DEBE ESTARLO
+
+    @Test
+    public void siLaCartaEstaEnElCementerioEntoncesNoEstaEnJuego() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.mandarCartaACementerio(carta);
+
+        Assert.assertFalse(carta.estaEnJuego());
+    }
+
+    @Test
+    public void siLaCartaEstaEnLaManoEntoncesNoEstaEnJuego() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.agregarCartaAMano(carta);
+
+        Assert.assertFalse(carta.estaEnJuego());
+    }
+
+    @Test
+    public void siLaCartaEstaEnElMazoEntoncesNoEstaEnJuego() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.agregarCartaAMazo(carta);
+
+        Assert.assertFalse(carta.estaEnJuego());
+    }
+
+
+
+    // VALIDAR QUE MONSTRUO NO PUEDA ATACAR CUANDO NO DEBE PODER
+
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarDesdeLaMano() {
         Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
@@ -197,7 +232,16 @@ public class Enrega1NoOficialTest {
     public void monstruoNoPuedeAtacarDesdeElCementerio() {
         Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
 
-        jugador1.agregarCartaACementerio(monstruo);
+        jugador1.mandarCartaACementerio(monstruo);
+        monstruo.atacar(null);
+    }
+
+    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    public void monstruoNoPuedeAtacarSiEstaEnElMazo() {
+        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.agregarCartaAMazo(monstruo);
+
         monstruo.atacar(null);
     }
 
@@ -210,6 +254,7 @@ public class Enrega1NoOficialTest {
 
         monstruo.atacar(null);
     }
+
 
 
 }

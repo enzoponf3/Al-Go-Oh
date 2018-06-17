@@ -1,7 +1,9 @@
-package algo3.fiuba.entrega1;
+package algo3.fiuba.cartas;
 
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
@@ -9,11 +11,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MonstruoEntrega1Test {
-/*
+public class MonstruoTest {
+
     private Jugador jugador1;
     private Jugador jugador2;
     private Tablero tablero;
+    private EfectoCarta efectoNulo;
 
     @Before
     public void setUp() {
@@ -21,12 +24,14 @@ public class MonstruoEntrega1Test {
         jugador2 = new Jugador();
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1,jugador2);
+
+        efectoNulo = EfectoNulo.getInstancia();
     }
 
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarEnModoDefensa() {
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoDefensa();
@@ -41,8 +46,8 @@ public class MonstruoEntrega1Test {
 
     @Test
     public void monstruoEnModoAtaquePuedeAtacarAMonstruoEnJuego() {
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -62,8 +67,8 @@ public class MonstruoEntrega1Test {
         Integer puntosDefensor = 1500;
 
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -84,8 +89,8 @@ public class MonstruoEntrega1Test {
         Integer puntosAtacante = 1000;
         Integer puntosDefensor = 1500;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -106,8 +111,8 @@ public class MonstruoEntrega1Test {
         Integer puntosAtacante = 2000;
         Integer puntosDefensor = 1500;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -127,8 +132,8 @@ public class MonstruoEntrega1Test {
         Integer puntosAtacante = 1000;
         Integer puntosDefensor = 1500;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -152,8 +157,8 @@ public class MonstruoEntrega1Test {
         Jugador jugadorDefensor = jugador2;
 
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -186,8 +191,8 @@ public class MonstruoEntrega1Test {
         Integer puntosDefensor = 100;
         Jugador jugadorDefensor = jugador2;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -219,8 +224,8 @@ public class MonstruoEntrega1Test {
         Integer puntosDefensor = 2000;
         Jugador jugadorDefensor = jugador2;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -252,8 +257,8 @@ public class MonstruoEntrega1Test {
         Integer puntosDefensor = 2000;
         Jugador jugadorDefensor = jugador2;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, EfectoNulo);
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 0, EfectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 0, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 0, efectoNulo);
 
         monstruoAtacante.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -277,8 +282,6 @@ public class MonstruoEntrega1Test {
         Assert.assertTrue(jugadorDefensor.estaEnJuego());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
-
-*/
 
 
 

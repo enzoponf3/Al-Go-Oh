@@ -6,7 +6,7 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 public abstract class FueraDeJuego implements EstadoCarta {
 
     public boolean estaEnJuego() {
-        throw new RuntimeException("La carta no se ha jugado aún.");
+        return false;//throw new RuntimeException("La carta no se ha jugado aún.");
     }
 
     @Override

@@ -6,6 +6,7 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
+import algo3.fiuba.cartas.estados_cartas.EnMazo;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -61,6 +62,7 @@ public class Jugador {
     }
 
     public void agregarCartaAMazo(Carta carta) {
+        carta.setEstado(EnMazo.getInstancia());
         tableroJugador.agregarCartaAlMazo(carta);
     }
 
@@ -74,7 +76,7 @@ public class Jugador {
         //tableroJugador.mandarCartaACementerio(carta);
     }
 
-    public void agregarCartaACementerio(Carta carta) {
+    public void mandarCartaACementerio(Carta carta) {
         tableroJugador.agregarCartaACementerio(carta);
         carta.setEstado(EnCementerio.getInstancia());
     }

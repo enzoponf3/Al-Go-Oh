@@ -249,16 +249,13 @@ public class Entrega1OficialTest {
         Monstruo cartaMonstruoASacrificar = new Monstruo("aSacrificar", 1000, 1000, 1, efectoNulo);
         Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 6, efectoNulo);
         // Coloco el monstruo a sacrificar en el campo y verifico que esté
-        System.out.println(jugador1);
         jugador1.colocarCartaEnTablero(cartaMonstruoASacrificar, BocaArriba.getInstancia());
 
         Assert.assertTrue(cartaMonstruoASacrificar.estaEnJuego());
-        System.out.println(jugador1);
 
         // Coloco el monstruo a invocar en el campo y verifico la destrucción del anterior
         jugador1.colocarCartaEnTablero(cartaMonstruoAInvocar, BocaArriba.getInstancia(), cartaMonstruoASacrificar);
 
-        System.out.println(jugador1);
         Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnTablero(cartaMonstruoAInvocar));
         Assert.assertFalse(cartaMonstruoASacrificar.estaEnJuego());
@@ -274,17 +271,14 @@ public class Entrega1OficialTest {
         Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 7, efectoNulo);
 
         // Coloco los monstruos a sacrificar en el campo y verifico que estén.
-        System.out.println(jugador1);
         jugador1.colocarCartaEnTablero(monstruoASacrificar1, BocaArriba.getInstancia());
         jugador1.colocarCartaEnTablero(monstruoASacrificar2, BocaArriba.getInstancia());
-        System.out.println(jugador1);
 
         Assert.assertTrue(monstruoASacrificar1.estaEnJuego());
         Assert.assertTrue(monstruoASacrificar2.estaEnJuego());
 
         // Coloco la carta a invocar y verificio que esté y, la destrucción de los anteriores.
         jugador1.colocarCartaEnTablero(cartaMonstruoAInvocar, BocaArriba.getInstancia(), monstruoASacrificar1, monstruoASacrificar2);
-        System.out.println(jugador1);
 
         Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnTablero(cartaMonstruoAInvocar));

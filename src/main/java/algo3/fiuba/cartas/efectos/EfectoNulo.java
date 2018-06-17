@@ -10,7 +10,8 @@ public class EfectoNulo implements EfectoCarta {
 
     private static EfectoNulo INSTANCIA;
 
-    private EfectoNulo(){
+    private EfectoNulo() {
+
     }
 
     public static EfectoNulo getInstancia() {

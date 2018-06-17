@@ -27,7 +27,7 @@ public class Campo {
         return (zonaMonstruos.size());
     }
 
-    public Integer cantidadNoEspeciales() {
+    public Integer cantidadNoMonstruos() {
         return (zonaNoMonstruos.size());
     }
 
