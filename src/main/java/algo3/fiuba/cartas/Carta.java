@@ -5,10 +5,7 @@ import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
-import algo3.fiuba.cartas.estados_cartas.EnCementerio;
-import algo3.fiuba.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.cartas.estados_cartas.EstadoCarta;
-import algo3.fiuba.cartas.estados_cartas.FueraDeJuego;
+import algo3.fiuba.cartas.estados_cartas.*;
 
 import java.util.Objects;
 
@@ -21,7 +18,7 @@ public abstract class Carta {
 
     public Carta(String nombre, EfectoCarta efecto) {
         this.nombre = nombre;
-        this.estadoCarta = new FueraDeJuego();
+        this.estadoCarta = new EstadoNoInicializado();
         this.efecto = efecto;
     }
 
@@ -36,8 +33,12 @@ public abstract class Carta {
     }
 
     public void descartar() {
-        jugador.mandarCartaDelTableroAlCementerio(this);
-        estadoCarta = new EnCementerio();
+        jugador.agregarCartaACementerio(this);
+        estadoCarta = EnCementerio.getInstancia();
+    }
+
+    public void setEstado(EstadoCarta estadoCarta) {
+        this.estadoCarta = estadoCarta;
     }
 
     public void setJugador(Jugador jugador) {
@@ -75,5 +76,9 @@ public abstract class Carta {
                 ", estadoCarta=" + estadoCarta +
                 ", efecto=" + efecto +
                 '}';
+    }
+
+    public void colocarEnMano() {
+        estadoCarta = EnMano.getInstancia();
     }
 }

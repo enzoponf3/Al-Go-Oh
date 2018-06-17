@@ -6,4 +6,9 @@ public abstract class EnJuego implements EstadoCarta {
     public boolean estaEnJuego() {
         return true;
     }
+
+    @Override
+    public void verificarQuePuedeAtacar() {
+        return;
+    }
 }

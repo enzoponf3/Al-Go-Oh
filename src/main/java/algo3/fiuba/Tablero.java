@@ -21,9 +21,9 @@ public class Tablero {
         return INSTANCIA;
     }
 
-    public void empezarDuelo(Jugador jugador1, Jugador jugador2) {
-        tableroJugador1.reiniciar();
-        tableroJugador2.reiniciar();
+    public void inicializar(Jugador jugador1, Jugador jugador2) {
+        tableroJugador1.inicializar();
+        tableroJugador2.inicializar();
 
         jugador1.setTableroJugador(tableroJugador1);
         jugador2.setTableroJugador(tableroJugador2);

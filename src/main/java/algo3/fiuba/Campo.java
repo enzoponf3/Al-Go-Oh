@@ -37,28 +37,10 @@ public class Campo {
 
     public void colocarCarta(Monstruo carta) {
         zonaMonstruos.add(carta);
-        /*
-        // Se supone que con la interfaz gráfica deberiamos ahorrarnos esto...
-        if (this.cantidadMonstruos() < monstruo.sacrificiosParaInvocar)
-            throw new RuntimeException("No tienes suficientes monstruos para sacrificar!");
-        for (int i = 0; i < monstruo.sacrificiosParaInvocar; i++) {
-            zonaMonstruos.pop();
-        }
-        zonaMonstruos.add(monstruo);
-        */
     }
 
     public void colocarCarta(NoMonstruo carta) {
         zonaNoMonstruos.add(carta);
-        /*
-        // Se supone que con la interfaz gráfica deberiamos ahorrarnos esto...
-        if (this.cantidadMonstruos() < monstruo.sacrificiosParaInvocar)
-            throw new RuntimeException("No tienes suficientes monstruos para sacrificar!");
-        for (int i = 0; i < monstruo.sacrificiosParaInvocar; i++) {
-            zonaMonstruos.pop();
-        }
-        zonaMonstruos.add(monstruo);
-        */
     }
 
     public boolean cartaSeEncuentaEnCampo(Monstruo carta) {
@@ -74,13 +56,13 @@ public class Campo {
         efecto.activar(zonaMonstruos);
     }
 
-    public void eliminarCarta(Carta carta) {
+    public void removerCarta(Carta carta) {
         // Solo elimina cartas monstruos por el momento.
         zonaMonstruos.remove(carta);
     }
 
     public void removerCarta(Monstruo carta) {
-        zonaNoMonstruos.remove(carta);
+        zonaMonstruos.remove(carta);
     }
 
     public void removerCarta(NoMonstruo carta) {

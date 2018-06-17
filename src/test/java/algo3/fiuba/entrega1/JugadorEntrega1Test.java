@@ -17,7 +17,7 @@ public class JugadorEntrega1Test {
     public void setUp() {
         jugador = new Jugador();
         tablero = Tablero.getInstancia();
-        tablero.empezarDuelo(jugador,jugador);
+        tablero.inicializar(jugador,jugador);
     }
 
 

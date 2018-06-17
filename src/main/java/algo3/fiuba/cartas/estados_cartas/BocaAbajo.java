@@ -3,6 +3,7 @@ package algo3.fiuba.cartas.estados_cartas;
 import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
+import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
 
 public class BocaAbajo extends EnJuego {
 

@@ -3,7 +3,6 @@ package algo3.fiuba.cartas;
 import algo3.fiuba.Campo;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
-import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estrellas.Estrellas;
 import algo3.fiuba.cartas.estrellas.EstrellasFactory;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
@@ -30,6 +29,7 @@ public class Monstruo extends Carta {
     }
 
     public void atacar(Monstruo otraCarta) {
+        estadoCarta.verificarQuePuedeAtacar();
         ResultadoCombate resultadoCombate = modoMonstruo.atacar(otraCarta, ataque);
         resultadoCombate.afectarAtacante(this);
     }

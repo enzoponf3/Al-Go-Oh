@@ -5,7 +5,7 @@ import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
-public class NoMonstruo extends Carta {
+public abstract class NoMonstruo extends Carta {
 
     public NoMonstruo(String nombre, EfectoCarta efecto) {
         super(nombre, efecto);

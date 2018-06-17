@@ -20,7 +20,7 @@ public class MonstruoEntrega1Test {
         jugador1 = new Jugador();
         jugador2 = new Jugador();
         tablero = Tablero.getInstancia();
-        tablero.empezarDuelo(jugador1,jugador2);
+        tablero.inicializar(jugador1,jugador2);
     }
 
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)

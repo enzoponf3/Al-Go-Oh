@@ -2,8 +2,6 @@ package algo3.fiuba.cartas.resultado_combate;
 
 import algo3.fiuba.cartas.Monstruo;
 
-import java.util.Objects;
-
 public class EmpataContraModoAtaque implements ResultadoCombate {
 
     @Override

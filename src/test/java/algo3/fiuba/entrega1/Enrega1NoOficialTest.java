@@ -1,0 +1,215 @@
+package algo3.fiuba.entrega1;
+
+import algo3.fiuba.Jugador;
+import algo3.fiuba.Tablero;
+import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.Magica;
+import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoNulo;
+import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+public class Enrega1NoOficialTest {
+
+    private Tablero tablero;
+    private Jugador jugador1;
+    private Jugador jugador2;
+    private EfectoCarta efectoNulo;
+
+    @Before
+    public void setUp() {
+        jugador1 = new Jugador();
+        jugador2 = new Jugador();
+
+        tablero = Tablero.getInstancia();
+        tablero.inicializar(jugador1, jugador2);
+
+        efectoNulo = EfectoNulo.getInstancia();
+    }
+
+    @Test
+    public void verificoQueSiAgregoUnaCartaALaManoDelJugador1SeEncuentraSoloAlli() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.agregarCartaAMano(carta);
+
+        Assert.assertTrue(jugador1.cartaEstaEnMano(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnMazo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMazo(carta));
+    }
+
+    @Test
+    public void verificoQueSiAgregoUnaCartaALaManoDelJugador2SeEncuentraSoloAlli() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador2.agregarCartaAMano(carta);
+
+        Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
+        Assert.assertTrue(jugador2.cartaEstaEnMano(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnMazo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMazo(carta));
+    }
+
+    @Test
+    public void verificoQueSiColocarUnaCartaEnElCementerioDelJugador1SeEncuentraSoloAlli() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.agregarCartaACementerio(carta);
+
+        Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+
+        Assert.assertTrue(jugador1.cartaEstaEnCementerio(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnMazo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMazo(carta));
+    }
+
+    @Test
+    public void verificoQueSiColocarUnaCartaEnElCementerioDelJugador2SeEncuentraSoloAlli() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador2.agregarCartaACementerio(carta);
+
+        Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
+        Assert.assertTrue(jugador2.cartaEstaEnCementerio(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnMazo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMazo(carta));
+    }
+
+
+    @Test
+    public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador1SeEncuentraSoloAlli() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+
+        Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
+
+        Assert.assertTrue(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnMazo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMazo(carta));
+    }
+
+    @Test
+    public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador2.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+
+        Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertTrue(jugador2.cartaEstaEnTablero(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnMazo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMazo(carta));
+    }
+
+    @Test
+    public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador1SeEncuentraSoloAlli() {
+        Carta carta = new Magica("no monstruo test", efectoNulo);
+
+        jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+
+        Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
+
+        Assert.assertTrue(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnMazo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMazo(carta));
+    }
+
+    @Test
+    public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
+        Carta carta = new Magica("no monstruo test", efectoNulo);
+
+        jugador2.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+
+        Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertTrue(jugador2.cartaEstaEnTablero(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
+
+        Assert.assertFalse(jugador1.cartaEstaEnMazo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnMazo(carta));
+    }
+
+
+    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    public void monstruoNoPuedeAtacarDesdeLaMano() {
+        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.agregarCartaAMano(monstruo);
+        monstruo.atacar(null);
+    }
+
+    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    public void monstruoNoPuedeAtacarDesdeElCementerio() {
+        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.agregarCartaACementerio(monstruo);
+        monstruo.atacar(null);
+    }
+
+    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    public void monstruoNoPuedeAtacarSiEstaEnElTableroEnModoDefensa() {
+        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+
+        jugador1.colocarCartaEnTablero(monstruo, BocaArriba.getInstancia());
+        monstruo.cambiarModo();
+
+        monstruo.atacar(null);
+    }
+
+
+}

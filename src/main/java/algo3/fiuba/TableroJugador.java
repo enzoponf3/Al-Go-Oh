@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class TableroJugador {
@@ -14,7 +15,7 @@ public class TableroJugador {
     public ZonaCartaCampo cartaCampo;
     public Stack<Carta> mazo;
     private Campo campo;
-    public LinkedList<Carta> cementerio;
+    public List<Carta> cementerio;
 
     public TableroJugador() {
 
@@ -25,11 +26,6 @@ public class TableroJugador {
 
     public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
-    }
-
-    public void mandarCartaAlCementerio(Carta carta) {
-        this.cementerio.add(carta);
-        this.campo.eliminarCarta(carta);
     }
 
     public Carta tomarCartaDelMazo() {
@@ -61,16 +57,18 @@ public class TableroJugador {
         campo.activarEfectoSobreElementos(efecto);
     }
 
-    public void eliminarCarta(Carta carta) {
-        campo.eliminarCarta(carta);
+    public void removerCartaDelCampo(Carta carta) {
+        carta.removerDelCampo(campo);
+        //carta.removerDelCampo(campo);
     }
 
-    public void removerCarta(Monstruo carta) {
+    public void removerCartaDelCampo(Monstruo carta) {
         campo.removerCarta(carta);
         //carta.removerDelCampo(campo);
     }
 
-    public void removerCarta(NoMonstruo carta) {
+    public void removerCartaDelCampo(NoMonstruo carta) {
+        campo.removerCarta(carta);
         //carta.removerDelCampo(campo);
     }
 
@@ -85,11 +83,17 @@ public class TableroJugador {
                 '}';
     }
 
-    public void reiniciar() {
+    public void inicializar() {
+        cartaCampo = null;
+        cementerio = new LinkedList<>();
         campo.reiniciar();
     }
 
     public int cantidadCartasEnMazo() {
         return mazo.size();
+    }
+
+    public void agregarCartaACementerio(Carta carta) {
+        cementerio.add(carta);
     }
 }

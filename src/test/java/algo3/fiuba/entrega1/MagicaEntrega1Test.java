@@ -30,7 +30,7 @@ public class MagicaEntrega1Test {
         Tablero tablero = Tablero.getInstancia();
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
-        tablero.empezarDuelo(jugador1, jugador2);
+        tablero.inicializar(jugador1, jugador2);
         jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
         carta.activar(tablero);
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
@@ -45,7 +45,7 @@ public class MagicaEntrega1Test {
         Tablero tablero = Tablero.getInstancia();
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
-        tablero.empezarDuelo(jugador1, jugador2);
+        tablero.inicializar(jugador1, jugador2);
         agujeroNegro.pasarAModoJuego(BocaArriba.getInstancia());
         monstruoEnemigo.pasarAModoJuego(BocaArriba.getInstancia());
 

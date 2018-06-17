@@ -8,4 +8,6 @@ public interface EstadoCarta {
     boolean estaEnJuego();
 
     void activar(Tablero tablero, EfectoCarta efecto);
+
+    void verificarQuePuedeAtacar();
 }

@@ -1,21 +1,8 @@
 package algo3.fiuba.entrega2;
 
-import algo3.fiuba.Campo;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
-import algo3.fiuba.cartas.Magica;
-import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.Trampa;
-import algo3.fiuba.cartas.efectos.EfectoCarta;
-import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.cartas.efectos.EfectoOllaDeLaCodicia;
-import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
-import algo3.fiuba.cartas.estados_cartas.BocaArriba;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
-
-import java.awt.event.MouseAdapter;
 
 public class Entrega2Test {
 
@@ -28,7 +15,7 @@ public class Entrega2Test {
         jugador1 = new Jugador();
         jugador2 = new Jugador();
         tablero = Tablero.getInstancia();
-        tablero.empezarDuelo(jugador1, jugador2);
+        tablero.inicializar(jugador1, jugador2);
     }
 
     /*
@@ -307,11 +294,11 @@ public class Entrega2Test {
         Monstruo parteExodia4 = new Monstruo("Parte Exodia", 1000, 1000, 3, new EfectoPartesExodia());
         Monstruo parteExodia5 = new Monstruo("Parte Exodia", 1000, 1000, 3, new EfectoPartesExodia());
 
-        jugador1.agregarEnMano(parteExodia1);
-        jugador1.agregarEnMano(parteExodia2);
-        jugador1.agregarEnMano(parteExodia3);
-        jugador1.agregarEnMano(parteExodia4);
-        jugador1.agregarEnMano(parteExodia5);
+        jugador1.agregarCartaAMano(parteExodia1);
+        jugador1.agregarCartaAMano(parteExodia2);
+        jugador1.agregarCartaAMano(parteExodia3);
+        jugador1.agregarCartaAMano(parteExodia4);
+        jugador1.agregarCartaAMano(parteExodia5);
 
         // Cuando un jugador tiene las cinco partes en la mano, se termina la partida y este gana directamente.
         Assert.assertTrue(juego.terminoPartida());

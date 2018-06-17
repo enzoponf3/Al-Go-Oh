@@ -3,6 +3,7 @@ package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
 
@@ -44,7 +45,6 @@ public class Jugador {
     public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         carta.setJugador(this);
         tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego, sacrificios);
-        // mano.remove(carta);
     }
 
 
@@ -69,12 +69,19 @@ public class Jugador {
     }
 
     public void mandarCartaDelTableroAlCementerio(Carta carta) {
-        tableroJugador.mandarCartaAlCementerio(carta);
+        carta.descartar();
+        tableroJugador.removerCartaDelCampo(carta);
+        //tableroJugador.mandarCartaACementerio(carta);
+    }
+
+    public void agregarCartaACementerio(Carta carta) {
+        tableroJugador.agregarCartaACementerio(carta);
+        carta.setEstado(EnCementerio.getInstancia());
     }
 
     /*
     public void removerCartaDelTablero(Carta carta) {
-        tableroJugador.removerCarta(carta);
+        tableroJugador.removerCartaDelCampo(carta);
     }
     */
 
@@ -82,16 +89,17 @@ public class Jugador {
         return tableroJugador.cartaEstaEnCementerio(carta);
     }
 
-    public void agregarEnMano(Carta carta) {
+    public void agregarCartaAMano(Carta carta) {
+        carta.colocarEnMano();
         mano.add(carta);
     }
 
     public void removerCartaDelTablero(Monstruo carta) {
-        tableroJugador.removerCarta(carta);
+        tableroJugador.removerCartaDelCampo(carta);
     }
 
     public void removerCartaDelTablero(NoMonstruo carta) {
-        tableroJugador.removerCarta(carta);
+        tableroJugador.removerCartaDelCampo(carta);
     }
 
 
@@ -110,5 +118,9 @@ public class Jugador {
 
     public int cantidadCartasEnMazo() {
         return tableroJugador.cantidadCartasEnMazo();
+    }
+
+    public boolean cartaEstaEnMazo(Carta carta) {
+        return false;
     }
 }
