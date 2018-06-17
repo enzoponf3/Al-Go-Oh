@@ -14,7 +14,7 @@ public class ModoDeDefensaTest {
     }
 
     @Test
-    public void cambiarModoMonstruo_devuelveModoDeDefensa() {
+    public void cambiarModoMonstruo_devuelveModoDeAtaque() {
         ModoMonstruo modoDeAtaque = ModoDeAtaque.getInstancia();
 
         Assert.assertEquals(modoDeAtaque, modoDeDefensa.cambiarModoMonstruo());
