@@ -1,4 +1,4 @@
-package algo3.fiuba.entrega1;
+package algo3.fiuba.a_reacomodar;
 
 import algo3.fiuba.TableroJugador;
 
