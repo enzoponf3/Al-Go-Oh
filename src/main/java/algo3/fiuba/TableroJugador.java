@@ -96,4 +96,8 @@ public class TableroJugador {
     public void agregarCartaACementerio(Carta carta) {
         cementerio.add(carta);
     }
+
+    public void matarMonstruos() {
+        campo.matarMonstruos();
+    }
 }

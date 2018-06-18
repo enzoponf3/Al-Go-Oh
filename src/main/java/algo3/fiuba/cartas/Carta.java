@@ -1,9 +1,6 @@
 package algo3.fiuba.cartas;
 
-import algo3.fiuba.Campo;
-import algo3.fiuba.Jugador;
-import algo3.fiuba.Tablero;
-import algo3.fiuba.TableroJugador;
+import algo3.fiuba.*;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.*;
 
@@ -58,8 +55,8 @@ public abstract class Carta {
 
         return Objects.hash(nombre);
     }
-    public void activar(Tablero tablero) {
-        estadoCarta.activar(tablero, efecto);
+    public void activar(Juego juego) {
+        estadoCarta.activar(juego, this,  efecto);
     }
 
     public abstract boolean estaEnTablero(TableroJugador tableroJugador);

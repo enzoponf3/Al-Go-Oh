@@ -1,6 +1,8 @@
 package algo3.fiuba.cartas.estados_cartas;
 
+import algo3.fiuba.Juego;
 import algo3.fiuba.Tablero;
+import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 
 public abstract class FueraDeJuego implements EstadoCarta {
@@ -10,7 +12,7 @@ public abstract class FueraDeJuego implements EstadoCarta {
     }
 
     @Override
-    public void activar(Tablero tablero, EfectoCarta efecto) {
+    public void activar(Juego juego, Carta carta, EfectoCarta efecto) {
         // no hace nada.
     }
 }
