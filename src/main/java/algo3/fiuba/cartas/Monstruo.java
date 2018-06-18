@@ -57,7 +57,6 @@ public class Monstruo extends Carta {
         return tableroJugador.cartaEstaEnTablero(this);
     }
 
-    @Override
     public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         if (!estrellas.sacrificiosSuficientes(sacrificios))
             throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", estrellas.sacrificiosRequeridos()));
@@ -65,6 +64,13 @@ public class Monstruo extends Carta {
         this.realizarSacrificios(campo, sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();
         estadoCarta = tipoEnJuego;
+        campo.colocarCarta(this);
+    }
+
+    @Override
+    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego) {
+        estadoCarta = tipoEnJuego;
+        modoMonstruo = ModoDeAtaque.getInstancia();
         campo.colocarCarta(this);
     }
 

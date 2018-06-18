@@ -12,14 +12,6 @@ public abstract class NoMonstruo extends Carta {
     }
 
     @Override
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        if (sacrificios.length != 0)
-            throw new RuntimeException("No se pueden hacer sacrificios para una carta mágica.");
-        estadoCarta = tipoEnJuego;
-        campo.colocarCarta(this);
-    }
-
-    @Override
     public boolean estaEnTablero(TableroJugador tableroJugador) {
         return tableroJugador.cartaEstaEnTablero(this);
     }
@@ -34,6 +26,13 @@ public abstract class NoMonstruo extends Carta {
     @Override
     public void removerDelCampo(Campo campo) {
         campo.removerCarta(this);
+    }
+
+
+    @Override
+    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego) {
+        estadoCarta = tipoEnJuego;
+        campo.colocarCarta(this);
     }
 
 }

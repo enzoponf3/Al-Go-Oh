@@ -19,11 +19,11 @@ public abstract class Carta {
         this.efecto = efecto;
     }
 
+    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego);
+
     public void pasarAModoJuego(EnJuego tipoEnJuego) {
         estadoCarta = tipoEnJuego;
     }
-
-    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios);
 
     public boolean estaEnJuego() {
         return estadoCarta.estaEnJuego();

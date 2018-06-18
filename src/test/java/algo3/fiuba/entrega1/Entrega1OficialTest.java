@@ -209,7 +209,7 @@ public class Entrega1OficialTest {
         Integer ataqueAtacante = 1000;
 
         Monstruo monstruoDefensor = new Monstruo("monstruo test 1", 0, defensaDefensor, 1, efectoNulo);
-        monstruoDefensor .setJugador(jugador1);
+        monstruoDefensor.setJugador(jugador1);
         Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1, efectoNulo);
         monstruoAtacante.setJugador(jugador2);
 

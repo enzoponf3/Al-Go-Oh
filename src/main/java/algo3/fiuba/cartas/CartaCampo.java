@@ -11,11 +11,6 @@ public class CartaCampo extends Carta {
     }
 
     @Override
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-
-    }
-
-    @Override
     public boolean estaEnTablero(TableroJugador tableroJugador) {
         return false;
     }
@@ -24,4 +19,10 @@ public class CartaCampo extends Carta {
     public void removerDelCampo(Campo campo) {
 
     }
+
+    @Override
+    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego) {
+
+    }
+
 }

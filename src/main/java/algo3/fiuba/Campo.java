@@ -32,8 +32,12 @@ public class Campo {
         return (zonaNoMonstruos.size());
     }
 
-    public void colocarCarta(Carta carta, EnJuego enJuego, Monstruo... sacrificios) {
-        carta.colocarEnCampo(this, enJuego, sacrificios);
+    public void colocarCarta(Monstruo monstruo, EnJuego enJuego, Monstruo... sacrificios) {
+        monstruo.colocarEnCampo(this, enJuego, sacrificios);
+    }
+
+    public void colocarCarta(Carta carta, EnJuego enJuego) {
+        carta.colocarEnCampo(this, enJuego);
     }
 
     public void colocarCarta(Monstruo carta) {

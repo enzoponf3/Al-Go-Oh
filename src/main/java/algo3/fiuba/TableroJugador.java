@@ -1,6 +1,7 @@
 package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.NoMonstruo;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
@@ -12,7 +13,7 @@ import java.util.Stack;
 
 public class TableroJugador {
 
-    public ZonaCartaCampo cartaCampo;
+    public CartaCampo cartaCampo;
     public Stack<Carta> mazo;
     private Campo campo;
     public List<Carta> cementerio;
@@ -24,8 +25,17 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
+    public void colocarCartaEnTablero(Monstruo monstruo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        this.campo.colocarCarta(monstruo, tipoEnJuego, sacrificios);
+    }
+
+    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
+        campo.colocarCarta(carta, tipoEnJuego);
+    }
+
+    public void colocarCartaEnTablero(CartaCampo carta, EnJuego tipoEnJuego) {
+        carta.pasarAModoJuego(tipoEnJuego);
+        cartaCampo = carta;
     }
 
     public Carta tomarCartaDelMazo() {
