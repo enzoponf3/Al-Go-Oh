@@ -45,6 +45,23 @@ public abstract class Carta {
         this.jugador = jugador;
     }
 
+    public void activar(Tablero tablero) {
+        estadoCarta.activar(tablero, efecto);
+    }
+
+    public abstract boolean estaEnTablero(TableroJugador tableroJugador);
+
+    public abstract void removerDelCampo(Campo campo);
+
+    @Override
+    public String toString() {
+        return "Carta{" +
+                "nombre='" + nombre + '\'' +
+                ", estadoCarta=" + estadoCarta +
+                ", efecto=" + efecto +
+                '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,27 +75,5 @@ public abstract class Carta {
 
         return Objects.hash(nombre);
     }
-    public void activar(Tablero tablero) {
-        estadoCarta.activar(tablero, efecto);
-    }
 
-    public abstract boolean estaEnTablero(TableroJugador tableroJugador);
-
-    //public abstract boolean esSacrificable();
-
-    public abstract void removerDelCampo(Campo campo);
-
-
-    @Override
-    public String toString() {
-        return "Carta{" +
-                "nombre='" + nombre + '\'' +
-                ", estadoCarta=" + estadoCarta +
-                ", efecto=" + efecto +
-                '}';
-    }
-
-    public void colocarEnMano() {
-        estadoCarta = EnMano.getInstancia();
-    }
 }

@@ -24,13 +24,6 @@ public abstract class NoMonstruo extends Carta {
         return tableroJugador.cartaEstaEnTablero(this);
     }
 
-    /*
-    @Override
-    public boolean esSacrificable() {
-        return false;
-    }
-    */
-
     @Override
     public void removerDelCampo(Campo campo) {
         campo.removerCarta(this);

@@ -6,6 +6,7 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
+import algo3.fiuba.cartas.estados_cartas.EnMano;
 import algo3.fiuba.cartas.estados_cartas.EnMazo;
 
 import java.util.HashSet;
@@ -16,7 +17,6 @@ public class Jugador {
     private Integer puntosDeVida;
     private TableroJugador tableroJugador;
     private Set<Carta> mano;
-
 
     public Jugador() {
         this.puntosDeVida = 8000;
@@ -81,20 +81,21 @@ public class Jugador {
         carta.setEstado(EnCementerio.getInstancia());
     }
 
-    /*
-    public void removerCartaDelTablero(Carta carta) {
-        tableroJugador.removerCartaDelCampo(carta);
-    }
-    */
 
     public boolean cartaEstaEnCementerio(Carta carta) {
         return tableroJugador.cartaEstaEnCementerio(carta);
     }
 
     public void agregarCartaAMano(Carta carta) {
-        carta.colocarEnMano();
+        carta.setEstado(EnMano.getInstancia());
         mano.add(carta);
     }
+
+        /*
+    public void removerCartaDelTablero(Carta carta) {
+        tableroJugador.removerCartaDelCampo(carta);
+    }
+    */
 
     public void removerCartaDelTablero(Monstruo carta) {
         tableroJugador.removerCartaDelCampo(carta);
@@ -102,16 +103,6 @@ public class Jugador {
 
     public void removerCartaDelTablero(NoMonstruo carta) {
         tableroJugador.removerCartaDelCampo(carta);
-    }
-
-
-    @Override
-    public String toString() {
-        return "Jugador{" +
-                "puntosDeVida=" + puntosDeVida +
-                ", tableroJugador=" + tableroJugador +
-                ", mano=" + mano +
-                '}';
     }
 
     public boolean cartaEstaEnMano(Carta carta) {
@@ -124,5 +115,15 @@ public class Jugador {
 
     public boolean cartaEstaEnMazo(Carta carta) {
         return false;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "puntosDeVida=" + puntosDeVida +
+                ", tableroJugador=" + tableroJugador +
+                ", mano=" + mano +
+                '}';
     }
 }

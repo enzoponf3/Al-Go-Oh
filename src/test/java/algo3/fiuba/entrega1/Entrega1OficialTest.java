@@ -238,8 +238,12 @@ public class Entrega1OficialTest {
         jugador1.colocarCartaEnTablero(monstruoJugador1, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(monstruoJugador2, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(agujeroNegro, BocaArriba.getInstancia());
+
+        Assert.assertEquals(Integer.valueOf(2), tablero.monstruosEnJuego());
+
         agujeroNegro.activar(tablero);
-        Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
+
+        Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
         Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoJugador1));
         Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoJugador2));
     }
