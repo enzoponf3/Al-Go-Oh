@@ -7,11 +7,11 @@ public class EstrellasFactory {
     }
 
     public static Estrellas obtenerEstrellas(Integer cantidadDeEstrellas) {
-        if (cantidadDeEstrellas < 0)
-            throw new RuntimeException("No puede tener estrellas negativas"); // !!!
-        if (cantidadDeEstrellas <= 4)
+        if (cantidadDeEstrellas < 1)
+            throw new RuntimeException("No puede tener estrellas negativas o nulas"); // !!!
+        if (cantidadDeEstrellas < 5)
             return UnaACuatroEstrellas.getInstancia();
-        if (cantidadDeEstrellas == 5 || cantidadDeEstrellas == 6)
+        if (cantidadDeEstrellas < 7)
             return CincoOSeisEstrellas.getInstancia();
 
         return MasDe7Estrellas.getInstancia();

@@ -37,4 +37,9 @@ public class Tablero {
         tableroJugador1.activarEfectoSobreElementos(efecto);
         tableroJugador2.activarEfectoSobreElementos(efecto);
     }
+
+    public void matarMonstruos() {
+        tableroJugador2.matarMonstruos();
+        tableroJugador1.matarMonstruos();
+    }
 }

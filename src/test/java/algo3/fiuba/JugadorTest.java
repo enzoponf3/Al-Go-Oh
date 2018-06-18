@@ -76,7 +76,7 @@ public class JugadorTest {
     @Test
     public void agregoUnaCartaALaMano_laCartaEstaEnLaMano() {
         Integer cantidadInicialCartas = jugador.cantidadCartas() + 1;
-        Carta carta = new Monstruo("m", 1000, 1000, 0, EfectoNulo.getInstancia());
+        Carta carta = new Monstruo("m", 1000, 1000, 1, EfectoNulo.getInstancia());
         jugador.agregarCartaAMazo(carta);
 
         jugador.tomarCartaDelMazo();

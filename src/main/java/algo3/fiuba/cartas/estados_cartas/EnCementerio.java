@@ -25,4 +25,5 @@ public class EnCementerio extends FueraDeJuego {
     public void verificarQuePuedeAtacar() {
         throw new InhabilitadoParaAtacarExcepcion("No puede atacar si se encuentra en el cementerio.");
     }
+
 }

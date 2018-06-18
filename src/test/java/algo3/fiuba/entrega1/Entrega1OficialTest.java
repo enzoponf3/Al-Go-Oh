@@ -1,5 +1,6 @@
 package algo3.fiuba.entrega1;
 
+import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Carta;
@@ -22,6 +23,7 @@ public class Entrega1OficialTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private EfectoCarta efectoNulo;
+    private Juego juego;
 
     @Before
     public void setUp() {
@@ -30,6 +32,8 @@ public class Entrega1OficialTest {
 
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
+
+        juego = new Juego(jugador1, jugador2, tablero);
 
         efectoNulo = EfectoNulo.getInstancia();
     }
@@ -75,7 +79,7 @@ public class Entrega1OficialTest {
         Magica cartaMagica = new Magica("agujero negro", efectoCarta);
 
         cartaMagica.pasarAModoJuego(BocaAbajo.getInstancia());
-        cartaMagica.activar(tablero);
+        cartaMagica.activar(juego);
         // Como está boca abajo no puede activar el efecto y lanza error.
     }
 
@@ -205,7 +209,7 @@ public class Entrega1OficialTest {
         Integer ataqueAtacante = 1000;
 
         Monstruo monstruoDefensor = new Monstruo("monstruo test 1", 0, defensaDefensor, 1, efectoNulo);
-        monstruoDefensor .setJugador(jugador1);
+        monstruoDefensor.setJugador(jugador1);
         Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1, efectoNulo);
         monstruoAtacante.setJugador(jugador2);
 
@@ -241,7 +245,7 @@ public class Entrega1OficialTest {
 
         Assert.assertEquals(Integer.valueOf(2), tablero.monstruosEnJuego());
 
-        agujeroNegro.activar(tablero);
+        Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
 
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
         Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoJugador1));

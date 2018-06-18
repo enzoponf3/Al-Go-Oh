@@ -1,9 +1,6 @@
 package algo3.fiuba.cartas;
 
-import algo3.fiuba.Campo;
-import algo3.fiuba.Jugador;
-import algo3.fiuba.Tablero;
-import algo3.fiuba.TableroJugador;
+import algo3.fiuba.*;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.*;
 
@@ -22,11 +19,11 @@ public abstract class Carta {
         this.efecto = efecto;
     }
 
+    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios);
+
     public void pasarAModoJuego(EnJuego tipoEnJuego) {
         estadoCarta = tipoEnJuego;
     }
-
-    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios);
 
     public boolean estaEnJuego() {
         return estadoCarta.estaEnJuego();
@@ -45,22 +42,14 @@ public abstract class Carta {
         this.jugador = jugador;
     }
 
-    public void activar(Tablero tablero) {
-        estadoCarta.activar(tablero, efecto);
+    public void activar(Juego juego) {
+        estadoCarta.activar(juego, this,  efecto);
     }
 
     public abstract boolean estaEnTablero(TableroJugador tableroJugador);
 
     public abstract void removerDelCampo(Campo campo);
 
-    @Override
-    public String toString() {
-        return "Carta{" +
-                "nombre='" + nombre + '\'' +
-                ", estadoCarta=" + estadoCarta +
-                ", efecto=" + efecto +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {

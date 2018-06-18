@@ -1,6 +1,7 @@
 package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
@@ -31,8 +32,12 @@ public class Campo {
         return (zonaNoMonstruos.size());
     }
 
-    public void colocarCarta(Carta carta, EnJuego enJuego, Monstruo... sacrificios) {
-        carta.colocarEnCampo(this, enJuego, sacrificios);
+    public void colocarCarta(Monstruo monstruo, EnJuego enJuego, Monstruo... sacrificios) {
+        monstruo.colocarEnCampo(this, enJuego, sacrificios);
+    }
+
+    public void colocarCarta(Carta carta, EnJuego enJuego) {
+        carta.colocarEnCampo(this, enJuego);
     }
 
     public void colocarCarta(Monstruo carta) {
@@ -53,7 +58,7 @@ public class Campo {
 
 
     public void activarEfectoSobreElementos(EfectoCarta efecto) {
-        efecto.activar(zonaMonstruos);
+        // sin funcionalidad por el momento.
     }
 
     public void removerCarta(Carta carta) {
@@ -81,4 +86,12 @@ public class Campo {
         zonaMonstruos = new LinkedList<>();
         zonaNoMonstruos = new LinkedList<>();
     }
+
+    public void matarMonstruos() {
+        // Se deberían de agregar al cementerio también...
+        for(Monstruo monstruo: zonaMonstruos) {
+           monstruo.removerDelCampo(this);
+        }
+    }
+
 }
