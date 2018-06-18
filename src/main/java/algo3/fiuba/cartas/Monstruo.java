@@ -67,13 +67,6 @@ public class Monstruo extends Carta {
         campo.colocarCarta(this);
     }
 
-    /*
-    @Override
-    public boolean esSacrificable() {
-        return true;
-    }
-    */
-
     public void cambiarModo() {
         modoMonstruo = modoMonstruo.cambiarModoMonstruo();
     }
@@ -88,5 +81,13 @@ public class Monstruo extends Carta {
     @Override
     public void removerDelCampo(Campo campo) {
         campo.removerCarta(this);
+    }
+
+    public Integer getAtaque() {
+        return ataque;
+    }
+
+    public Integer getDefensa() {
+        return defensa;
     }
 }

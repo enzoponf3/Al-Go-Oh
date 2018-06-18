@@ -9,18 +9,18 @@ import algo3.fiuba.cartas.NoMonstruo;
 import algo3.fiuba.cartas.estados_cartas.EnMano;
 import algo3.fiuba.cartas.estados_cartas.EnMazo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Jugador {
 
     private Integer puntosDeVida;
     private TableroJugador tableroJugador;
-    private Set<Carta> mano;
+    private List<Carta> mano;
 
     public Jugador() {
         this.puntosDeVida = 8000;
-        this.mano = new HashSet<>();
+        this.mano = new LinkedList<>();
     }
 
     public boolean estaEnJuego() {
@@ -96,12 +96,6 @@ public class Jugador {
         mano.add(carta);
     }
 
-        /*
-    public void removerCartaDelTablero(Carta carta) {
-        tableroJugador.removerCartaDelCampo(carta);
-    }
-    */
-
     public void removerCartaDelTablero(Monstruo carta) {
         tableroJugador.removerCartaDelCampo(carta);
     }
@@ -122,6 +116,9 @@ public class Jugador {
         return false;
     }
 
+    public List<Carta> getMano() {
+        return mano;
+    }
 
     @Override
     public String toString() {

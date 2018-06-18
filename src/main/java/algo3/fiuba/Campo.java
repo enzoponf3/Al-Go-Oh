@@ -94,4 +94,13 @@ public class Campo {
         }
     }
 
+    public List<Monstruo> getMonstruos() {
+        return zonaMonstruos;
+    }
+
+
+    public List<NoMonstruo> getNoMonstruos() {
+        return zonaNoMonstruos;
+    }
+
 }

@@ -110,4 +110,17 @@ public class TableroJugador {
     public void matarMonstruos() {
         campo.matarMonstruos();
     }
+
+    public List<Monstruo> getMonstruos() {
+        return campo.getMonstruos();
+    }
+
+    public List<NoMonstruo> getNoMonstruos() {
+        return campo.getNoMonstruos();
+    }
+
+    public CartaCampo getCartaCampo() {
+        return cartaCampo;
+    }
+
 }
