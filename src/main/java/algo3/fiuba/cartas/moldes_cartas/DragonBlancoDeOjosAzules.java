@@ -4,10 +4,10 @@ import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 
-public class MagoOscuro extends Monstruo {
+public class DragonBlancoDeOjosAzules extends Monstruo {
 
-    public MagoOscuro(Jugador jugador) {
-        super("Mago Oscuro", 2500, 2100, 7, new EfectoNulo());
+    public DragonBlancoDeOjosAzules(Jugador jugador) {
+        super("Dragon Blanco de Ojos Azules", 3000, 2500, 8, new EfectoNulo());
         setJugador(jugador);
     }
 }

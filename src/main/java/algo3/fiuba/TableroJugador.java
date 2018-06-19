@@ -72,17 +72,6 @@ public class TableroJugador {
         //carta.removerDelCampo(campo);
     }
 
-    public void removerCartaDelCampo(Monstruo carta) {
-        campo.removerCarta(carta);
-        //carta.removerDelCampo(campo);
-    }
-
-    public void removerCartaDelCampo(NoMonstruo carta) {
-        campo.removerCarta(carta);
-        //carta.removerDelCampo(campo);
-    }
-
-
     @Override
     public String toString() {
         return "TableroJugador{" +

@@ -19,7 +19,6 @@ public class Entrega2Test {
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
-    private EfectoCarta efectoNulo;
 
     @Before
     public void setUp() {
@@ -28,7 +27,6 @@ public class Entrega2Test {
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
         
-        efectoNulo = EfectoNulo.getInstancia();
     }
 
     /*

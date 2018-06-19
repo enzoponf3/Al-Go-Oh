@@ -78,7 +78,6 @@ public class Jugador {
     public void mandarCartaDelTableroAlCementerio(Carta carta) {
         carta.descartar();
         tableroJugador.removerCartaDelCampo(carta);
-        //tableroJugador.mandarCartaACementerio(carta);
     }
 
     public void mandarCartaACementerio(Carta carta) {
@@ -94,14 +93,6 @@ public class Jugador {
     public void agregarCartaAMano(Carta carta) {
         carta.setEstado(EnMano.getInstancia());
         mano.add(carta);
-    }
-
-    public void removerCartaDelTablero(Monstruo carta) {
-        tableroJugador.removerCartaDelCampo(carta);
-    }
-
-    public void removerCartaDelTablero(NoMonstruo carta) {
-        tableroJugador.removerCartaDelCampo(carta);
     }
 
     public boolean cartaEstaEnMano(Carta carta) {

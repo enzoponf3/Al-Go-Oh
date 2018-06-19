@@ -18,7 +18,6 @@ public class Enrega1NoOficialTest {
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
-    private EfectoCarta efectoNulo;
 
     @Before
     public void setUp() {
@@ -28,14 +27,13 @@ public class Enrega1NoOficialTest {
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
 
-        efectoNulo = EfectoNulo.getInstancia();
     }
 
     // VALIDAR QUE CARTA ESTÁ EN UN ÚNICO LUGAR
 
     @Test
     public void verificoQueSiAgregoUnaCartaALaManoDelJugador1SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.agregarCartaAMano(carta);
 
@@ -54,7 +52,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiAgregoUnaCartaALaManoDelJugador2SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador2.agregarCartaAMano(carta);
 
@@ -73,7 +71,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnaCartaEnElCementerioDelJugador1SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.mandarCartaACementerio(carta);
 
@@ -92,7 +90,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnaCartaEnElCementerioDelJugador2SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador2.mandarCartaACementerio(carta);
 
@@ -112,7 +110,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador1SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
 
@@ -131,7 +129,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador2.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
 
@@ -150,7 +148,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador1SeEncuentraSoloAlli() {
-        Carta carta = new Magica("no monstruo test", efectoNulo);
+        Carta carta = new Magica("no monstruo test", new EfectoNulo());
 
         jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
 
@@ -169,7 +167,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
-        Carta carta = new Magica("no monstruo test", efectoNulo);
+        Carta carta = new Magica("no monstruo test", new EfectoNulo());
 
         jugador2.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
 
@@ -191,7 +189,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void siLaCartaEstaEnElCementerioEntoncesNoEstaEnJuego() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.mandarCartaACementerio(carta);
 
@@ -200,7 +198,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void siLaCartaEstaEnLaManoEntoncesNoEstaEnJuego() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.agregarCartaAMano(carta);
 
@@ -209,7 +207,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void siLaCartaEstaEnElMazoEntoncesNoEstaEnJuego() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.agregarCartaAMazo(carta);
 
@@ -222,7 +220,7 @@ public class Enrega1NoOficialTest {
 
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarDesdeLaMano() {
-        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.agregarCartaAMano(monstruo);
         monstruo.atacar(null);
@@ -230,7 +228,7 @@ public class Enrega1NoOficialTest {
 
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarDesdeElCementerio() {
-        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.mandarCartaACementerio(monstruo);
         monstruo.atacar(null);
@@ -238,7 +236,7 @@ public class Enrega1NoOficialTest {
 
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarSiEstaEnElMazo() {
-        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.agregarCartaAMazo(monstruo);
 
@@ -247,7 +245,7 @@ public class Enrega1NoOficialTest {
 
     @Test(expected = InhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarSiEstaEnElTableroEnModoDefensa() {
-        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, efectoNulo);
+        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
         jugador1.colocarCartaEnTablero(monstruo, BocaArriba.getInstancia());
         monstruo.cambiarModo();

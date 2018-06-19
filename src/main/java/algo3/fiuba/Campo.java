@@ -32,19 +32,16 @@ public class Campo {
         return (zonaNoMonstruos.size());
     }
 
-    public void colocarCarta(Monstruo monstruo, EnJuego enJuego, Monstruo... sacrificios) {
-        monstruo.colocarEnCampo(this, enJuego, sacrificios);
-    }
-
     public void colocarCarta(Carta carta, EnJuego enJuego) {
         carta.colocarEnCampo(this, enJuego);
     }
 
-    public void colocarCarta(Monstruo carta) {
-        zonaMonstruos.add(carta);
+
+    public void colocarCarta(Monstruo monstruo, EnJuego enJuego, Monstruo... sacrificios) {
+        monstruo.colocarEnCampo(this, enJuego, sacrificios);
     }
 
-    public void colocarCarta(NoMonstruo carta) {
+    public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         zonaNoMonstruos.add(carta);
     }
 
@@ -59,11 +56,6 @@ public class Campo {
 
     public void activarEfectoSobreElementos(EfectoCarta efecto) {
         // sin funcionalidad por el momento.
-    }
-
-    public void removerCarta(Carta carta) {
-        // Solo elimina cartas monstruos por el momento.
-        zonaMonstruos.remove(carta);
     }
 
     public void removerCarta(Monstruo carta) {
