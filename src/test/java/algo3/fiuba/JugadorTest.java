@@ -1,7 +1,5 @@
 package algo3.fiuba;
 
-import algo3.fiuba.Jugador;
-import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
@@ -76,7 +74,7 @@ public class JugadorTest {
     @Test
     public void agregoUnaCartaALaMano_laCartaEstaEnLaMano() {
         Integer cantidadInicialCartas = jugador.cantidadCartas() + 1;
-        Carta carta = new Monstruo("m", 1000, 1000, 1, EfectoNulo.getInstancia());
+        Carta carta = new Monstruo("m", 1000, 1000, 1, new EfectoNulo());
         jugador.agregarCartaAMazo(carta);
 
         jugador.tomarCartaDelMazo();

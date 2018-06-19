@@ -15,19 +15,17 @@ public class PierdeContraModoAtaqueTest {
 
     private Campo campo;
     private Jugador jugador;
-    private EfectoCarta efectoNulo;
 
     @Before
     public void setUp() {
         campo = new Campo();
         jugador = new Jugador();
         jugador.setTableroJugador(new TableroJugador());
-        efectoNulo = EfectoNulo.getInstancia();
     }
 
     @Test
     public void monstruoAtacanteMuere() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, efectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -40,7 +38,7 @@ public class PierdeContraModoAtaqueTest {
 
     @Test
     public void monstruoDefensorSigueVivo() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();
@@ -53,7 +51,7 @@ public class PierdeContraModoAtaqueTest {
 
     @Test
     public void jugadorAtacantePierdePuntosDeVida() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, efectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoAtacante.pasarAModoAtaque();
@@ -68,7 +66,7 @@ public class PierdeContraModoAtaqueTest {
 
     @Test
     public void jugadorDefensorNoPierdePuntosDeVida() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, efectoNulo);
+        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(campo, BocaArriba.getInstancia());
         monstruoDefensor.pasarAModoAtaque();

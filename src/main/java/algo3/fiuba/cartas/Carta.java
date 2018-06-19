@@ -65,4 +65,7 @@ public abstract class Carta {
         return Objects.hash(nombre);
     }
 
+    public void daniaPuntosDeVidaDelRival(Integer ataque) {
+        throw new RuntimeException("Implementar esto");
+    }
 }

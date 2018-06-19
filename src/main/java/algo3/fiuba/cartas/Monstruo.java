@@ -3,6 +3,7 @@ package algo3.fiuba.cartas;
 import algo3.fiuba.Campo;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoJinzo;
 import algo3.fiuba.cartas.estrellas.Estrellas;
 import algo3.fiuba.cartas.estrellas.EstrellasFactory;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
@@ -35,6 +36,7 @@ public class Monstruo extends Carta {
     }
 
     public ResultadoCombate recibirAtaque(Integer puntosAtaqueRival) {
+        estadoCarta.recibirAtaque(this);
         ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, ataque, defensa);
         resultadoCombate.afectarDefensor(this);
         return resultadoCombate;
@@ -89,5 +91,9 @@ public class Monstruo extends Carta {
 
     public Integer getDefensa() {
         return defensa;
+    }
+
+    protected void setEfecto(EfectoJinzo efecto) {
+        this.efecto = efecto;
     }
 }
