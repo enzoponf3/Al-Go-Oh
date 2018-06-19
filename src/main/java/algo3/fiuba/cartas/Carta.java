@@ -44,12 +44,16 @@ public abstract class Carta {
 
     public void activar(Juego juego) {
         estadoCarta.activar(juego, this,  efecto);
+        jugador.mandarCartaDelTableroAlCementerio(this);
     }
 
     public abstract boolean estaEnTablero(TableroJugador tableroJugador);
 
     public abstract void removerDelCampo(Campo campo);
 
+    protected void setEfecto(EfectoCarta efecto) {
+        this.efecto =efecto;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -67,5 +71,9 @@ public abstract class Carta {
 
     public void daniaPuntosDeVidaDelRival(Integer ataque) {
         throw new RuntimeException("Implementar esto");
+    }
+
+    public Jugador obtenerJugador() {
+        return jugador;
     }
 }

@@ -22,8 +22,9 @@ public class Juego {
     public void activarEfecto(EfectoAgujeroNegro agujeroNegro) {
         agujeroNegro.matarMonstruos(tablero);
     }
-
+    /*
     public void activarEfecto(EfectoOllaDeLaCodicia ollaDeLaCodicia) {
-        // to do
+        ollaDeLaCodicia.robar2Cartas()
     }
+    */
 }

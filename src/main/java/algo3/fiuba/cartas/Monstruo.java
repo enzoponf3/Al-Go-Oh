@@ -92,8 +92,9 @@ public class Monstruo extends Carta {
     public Integer getDefensa() {
         return defensa;
     }
-
+/*
     protected void setEfecto(EfectoCarta efecto) {
-        this.efecto = efecto;
+       this.efecto = efecto;
     }
+    */
 }

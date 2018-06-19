@@ -12,6 +12,7 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
 import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
 import org.junit.*;
@@ -231,8 +232,7 @@ public class Entrega1OficialTest {
 
     @Test
     public void colocarMonstruosEnAmbosLadosDelCampo_colocarAgujeroNegroBocaArriba_seDestruyeronTodosLosMonstruosDeAmbosLadosDelCampoYNingunJugadorRecibioDanio() {
-        EfectoCarta efectoCarta = new EfectoAgujeroNegro();
-        Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
+        Magica agujeroNegro = new AgujeroNegro();
 
         Monstruo monstruoJugador1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
         Monstruo monstruoJugador2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
@@ -243,6 +243,8 @@ public class Entrega1OficialTest {
 
         Assert.assertEquals(Integer.valueOf(2), tablero.monstruosEnJuego());
 
+
+        agujeroNegro.activar(juego);
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
 
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
