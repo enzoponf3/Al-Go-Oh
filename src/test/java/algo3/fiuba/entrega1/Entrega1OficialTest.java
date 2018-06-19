@@ -50,6 +50,7 @@ public class Entrega1OficialTest {
         jugador2.colocarCartaEnTablero(monstruoDefensor, BocaArriba.getInstancia());
 
         monstruoAtacante.atacar(monstruoDefensor);
+
         // Como está en modo ataque puede atacar sin tirar excepción.
     }
 

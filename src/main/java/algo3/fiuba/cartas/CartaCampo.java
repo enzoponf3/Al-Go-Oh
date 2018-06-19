@@ -21,8 +21,8 @@ public class CartaCampo extends Carta {
     }
 
     @Override
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego) {
-
+    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... monstruos) {
+        estadoCarta = tipoEnJuego;
+        campo.colocarCarta(this);
     }
-
 }

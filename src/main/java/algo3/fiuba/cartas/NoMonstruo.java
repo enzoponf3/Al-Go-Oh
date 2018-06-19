@@ -30,7 +30,9 @@ public abstract class NoMonstruo extends Carta {
 
 
     @Override
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego) {
+    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... monstruos) {
+        if (monstruos.length == 0)
+            throw new RuntimeException();
         estadoCarta = tipoEnJuego;
         campo.colocarCarta(this);
     }

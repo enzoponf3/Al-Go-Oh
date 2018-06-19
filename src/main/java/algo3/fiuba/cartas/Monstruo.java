@@ -67,12 +67,7 @@ public class Monstruo extends Carta {
         campo.colocarCarta(this);
     }
 
-    @Override
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego) {
-        estadoCarta = tipoEnJuego;
-        modoMonstruo = ModoDeAtaque.getInstancia();
-        campo.colocarCarta(this);
-    }
+
 
     /*
     @Override
@@ -95,5 +90,21 @@ public class Monstruo extends Carta {
     @Override
     public void removerDelCampo(Campo campo) {
         campo.removerCarta(this);
+    }
+
+    public void aumentarATK(int aumento) {
+        ataque += aumento;
+    }
+
+    public void aumentarDEF(int aumento) {
+        defensa += aumento;
+    }
+
+    public int getDefensa() {
+        return defensa;
+    }
+
+    public int getAtaque() {
+        return ataque;
     }
 }

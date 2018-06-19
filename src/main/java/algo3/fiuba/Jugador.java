@@ -16,6 +16,7 @@ public class Jugador {
     private Integer puntosDeVida;
     private TableroJugador tableroJugador;
     private Set<Carta> mano;
+    private Jugador oponente;
 
 
     public Jugador() {
@@ -129,5 +130,25 @@ public class Jugador {
 
     public boolean cartaEstaEnMazo(Carta carta) {
         return false;
+    }
+
+    public void aumentarATK(int aumento) {
+        tableroJugador.aumentarATK(aumento);
+    }
+
+    public void setOponente(Jugador oponente) {
+        this.oponente = oponente;
+    }
+
+    public void aumentarDEFOponente(int aumento) {
+        oponente.aumentarDEF(aumento);
+    }
+
+    public void aumentarDEF(int aumento) {
+        tableroJugador.aumentarDEF(aumento);
+    }
+
+    public void aumentarATKOponente(int aumento) {
+        oponente.aumentarATK(aumento);
     }
 }

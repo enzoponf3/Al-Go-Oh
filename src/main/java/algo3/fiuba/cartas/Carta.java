@@ -19,7 +19,7 @@ public abstract class Carta {
         this.efecto = efecto;
     }
 
-    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego);
+    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... monstruos);
 
     public void pasarAModoJuego(EnJuego tipoEnJuego) {
         estadoCarta = tipoEnJuego;
@@ -77,5 +77,21 @@ public abstract class Carta {
 
     public void colocarEnMano() {
         estadoCarta = EnMano.getInstancia();
+    }
+
+    public void aumentarATKPropio(int aumento) {
+        jugador.aumentarATK(aumento);
+    }
+
+    public void aumentarDEFOponente(int aumento) {
+        jugador.aumentarDEFOponente(aumento);
+    }
+
+    public void aumentarDEFPropio(int aumento) {
+        jugador.aumentarDEF(aumento);
+    }
+
+    public void aumentarATKOponente(int aumento) {
+        jugador.aumentarATKOponente(aumento);
     }
 }

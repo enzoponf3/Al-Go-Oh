@@ -1,14 +1,25 @@
 package algo3.fiuba.entrega2;
 
+import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
+import algo3.fiuba.cartas.CartaCampo;
+import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.efectos.EfectoNulo;
+import algo3.fiuba.cartas.efectos.EfectoSogen;
+import algo3.fiuba.cartas.efectos.EfectoWasteland;
+import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 public class Entrega2Test {
 
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
+    private Juego juego;
 
     @Before
     public void setUp() {
@@ -16,13 +27,14 @@ public class Entrega2Test {
         jugador2 = new Jugador();
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
+        juego = new Juego(jugador1, jugador2, tablero);
     }
 
-    /*
+
     @Test
     public void colocoMonstruoACadaLadoDeCampo_activoCartaCampoWasteland_aumenta200ATKPropio_aumenta300DEFOponente() {
-        Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, new EfectoNulo());
-        Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, new EfectoNulo());
+        Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, EfectoNulo.getInstancia());
+        Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, EfectoNulo.getInstancia());
 
         CartaCampo wasteland = new CartaCampo("Wasteland", new EfectoWasteland());
 
@@ -32,6 +44,11 @@ public class Entrega2Test {
         // Ni bien se coloca carta de campo esta se activa.
         jugador1.colocarCartaEnTablero(wasteland, BocaArriba.getInstancia());
 
+        // El efecto anda, pero se tiene que activar directo cuando se agrega al tablero. Creo se debería de subir el agregar a Juego.
+        juego.activarEfecto(new EfectoWasteland(), wasteland);
+
+
+        // No deberíamos usar getters para las pruebas, cambiar!
         // Se suma 300 a la defensa del oponente.
         int defensaFinalOponente = 300;
         Assert.assertEquals(defensaFinalOponente, monstruo2.getDefensa());
@@ -44,15 +61,19 @@ public class Entrega2Test {
 
     @Test
     public void colocoMounstruoDeCadaLadoDeCampo_activoCartaCampoSogen_aumenta500DEFPropio_aumenta200ATKOponente() {
-        Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, new EfectoNulo());
-        Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, new EfectoNulo());
-        CartaCampo sogen = new CartaCampo("Sogen", new EfectoSogen);
+        Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, EfectoNulo.getInstancia());
+        Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, EfectoNulo.getInstancia());
+        CartaCampo sogen = new CartaCampo("Sogen", new EfectoSogen());
 
         jugador1.colocarCartaEnTablero(monstruoPropio, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(monstruoOponente, BocaArriba.getInstancia());
 
         // Ni bien se coloca una carta de campo esta se debe de activar.
         jugador1.colocarCartaEnTablero(sogen, BocaArriba.getInstancia());
+
+
+        // El efecto anda, pero se tiene que activar directo cuando se agrega al tablero. Creo se debería de subir el agregar a Juego.
+        juego.activarEfecto(new EfectoSogen(), sogen);
 
         // Se suma 200 al ataque de las cartas en el campo del oponente.
         int ataqueFinalOponente = 200;
@@ -63,7 +84,7 @@ public class Entrega2Test {
         Assert.assertEquals(defensaFinalPropio, (int)monstruoPropio.getDefensa());
 
     }
-
+/*
     @Test
     public void activoCartaOllaDelaCodicia_TomoDosCartasDelMazo() {
         Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
