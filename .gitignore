@@ -8,6 +8,7 @@ out/
 .settings/
 .idea/
 target/
+out/
 bin/
 build.xml.old
 *.jar
