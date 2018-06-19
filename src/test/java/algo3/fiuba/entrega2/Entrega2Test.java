@@ -10,6 +10,8 @@ import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.efectos.EfectoWasteland;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.DragonBlancoDeOjosAzules;
+import algo3.fiuba.cartas.moldes_cartas.SevenColoredFish;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -146,37 +148,37 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnTablero(jinzo));
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(jinzo));
     }
-
+*/
     @Test
     public void invocarDragonDefinitivo_seSacrifiacanTresDragonesBlancosOjosAzules() {
-        Monstruo dragonASacrificar1 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, efectoNulo);
-        Monstruo dragonASacrificar2 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, efectoNulo);
-        Monstruo dragonASacrificar3 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, efectoNulo);
+        Monstruo dragonASacrificar1 = new DragonBlancoDeOjosAzules(jugador1);
+        Monstruo dragonASacrificar2 = new DragonBlancoDeOjosAzules(jugador1);
+        Monstruo dragonASacrificar3 = new DragonBlancoDeOjosAzules(jugador1);
 
         // Monstruos de sacrificio para poder invocar a los tres dragones blancos de ojos azúles.
-        Monstruo monstruoASacrificar1 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
-        Monstruo monstruoASacrificar2 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
-        Monstruo monstruoASacrificar3 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
-        Monstruo monstruoASacrificar4 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
-        Monstruo monstruoASacrificar5 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
-        Monstruo monstruoASacrificar6 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
+        Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador1);
+        Monstruo monstruoASacrificar2 = new SevenColoredFish(jugador1);
+        Monstruo monstruoASacrificar3 = new SevenColoredFish(jugador1);
+        Monstruo monstruoASacrificar4 = new SevenColoredFish(jugador1);
+        Monstruo monstruoASacrificar5 = new SevenColoredFish(jugador1);
+        Monstruo monstruoASacrificar6 = new SevenColoredFish(jugador1);
 
         // Invoco los dragones, con sus respectivos sacrificios.
         jugador1.colocarCartaEnTablero(monstruoASacrificar1, BocaAbajo.getInstancia());
         jugador1.colocarCartaEnTablero(monstruoASacrificar2, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnTablero(dragonASacrificar1, BocaAbajo.getInstancia());
+        jugador1.colocarCartaEnTablero(dragonASacrificar1, BocaAbajo.getInstancia(), monstruoASacrificar1, monstruoASacrificar2);
 
         jugador1.colocarCartaEnTablero(monstruoASacrificar3, BocaAbajo.getInstancia());
         jugador1.colocarCartaEnTablero(monstruoASacrificar4, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnTablero(dragonASacrificar2, BocaAbajo.getInstancia());
+        jugador1.colocarCartaEnTablero(dragonASacrificar2, BocaAbajo.getInstancia(), monstruoASacrificar3, monstruoASacrificar4);
 
         jugador1.colocarCartaEnTablero(monstruoASacrificar5, BocaAbajo.getInstancia());
         jugador1.colocarCartaEnTablero(monstruoASacrificar6, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnTablero(dragonASacrificar3, BocaAbajo.getInstancia());
+        jugador1.colocarCartaEnTablero(dragonASacrificar3, BocaAbajo.getInstancia(), monstruoASacrificar5, monstruoASacrificar6);
 
-        Monstruo dragonDefinitivo = new Monstruo("Dragón Definitivo", 4500, 3800, 12, efectoNulo);
+        Monstruo dragonDefinitivo = new Monstruo("Dragón Definitivo", 4500, 3800, 12, new EfectoNulo());
 
-        jugador1.colocarCartaEnTablero(dragonDefinitivo, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnTablero(dragonDefinitivo, BocaArriba.getInstancia(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
 
         // Para invocar al Dragón definitivo se tuvo que sacrificar a los tres dragones.
         Assert.assertFalse(jugador1.cartaEstaEnTablero(dragonASacrificar1));
@@ -189,7 +191,7 @@ public class Entrega2Test {
         // Se debería de haber colocado al dragón definitivo.
         Assert.assertTrue(jugador1.cartaEstaEnTablero(dragonDefinitivo));
     }
-
+/*
     @Test
     public void colocoInsectoComeHombresBocaAbajo_monstruoOponenteLoAtaca_seActivaEfectoYSeDestruyeAtacante() {
         Monstruo insectoComeHombres = new Monstruo("Insecto Come Hombres", 450, 600, 2, new EfectoInsectoComeHombres);

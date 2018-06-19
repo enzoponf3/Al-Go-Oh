@@ -25,12 +25,8 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public void colocarCartaEnTablero(Monstruo monstruo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        this.campo.colocarCarta(monstruo, tipoEnJuego, sacrificios);
-    }
-
-    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
-        campo.colocarCarta(carta, tipoEnJuego);
+    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
     }
 
     public void colocarCartaEnTablero(CartaCampo carta, EnJuego tipoEnJuego) {

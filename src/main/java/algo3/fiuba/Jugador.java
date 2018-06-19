@@ -43,14 +43,9 @@ public class Jugador {
         return puntosDeVida;
     }
 
-    public void colocarCartaEnTablero(Monstruo monstruo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        monstruo.setJugador(this);
-        tableroJugador.colocarCartaEnTablero(monstruo, tipoEnJuego, sacrificios);
-    }
-
-    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
+    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         carta.setJugador(this);
-        tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego);
+        tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego, sacrificios);
     }
 
 
