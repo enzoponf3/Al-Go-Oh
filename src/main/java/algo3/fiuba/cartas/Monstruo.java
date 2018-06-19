@@ -3,6 +3,7 @@ package algo3.fiuba.cartas;
 import algo3.fiuba.Campo;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.cartas.efectos.EfectoJinzo;
 import algo3.fiuba.cartas.estrellas.Estrellas;
 import algo3.fiuba.cartas.estrellas.EstrellasFactory;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
@@ -15,7 +16,7 @@ public class Monstruo extends Carta {
 
     private Integer ataque;
     private Integer defensa;
-    private ModoMonstruo modoMonstruo;
+    protected ModoMonstruo modoMonstruo;
     private Estrellas estrellas;
     public Integer sacrificiosParaInvocar;
 
@@ -35,6 +36,7 @@ public class Monstruo extends Carta {
     }
 
     public ResultadoCombate recibirAtaque(Integer puntosAtaqueRival) {
+        estadoCarta.recibirAtaque(this);
         ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, ataque, defensa);
         resultadoCombate.afectarDefensor(this);
         return resultadoCombate;
@@ -64,23 +66,14 @@ public class Monstruo extends Carta {
         this.realizarSacrificios(campo, sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();
         estadoCarta = tipoEnJuego;
-        campo.colocarCarta(this);
+        campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
-
-
-
-    /*
-    @Override
-    public boolean esSacrificable() {
-        return true;
-    }
-    */
 
     public void cambiarModo() {
         modoMonstruo = modoMonstruo.cambiarModoMonstruo();
     }
 
-    private void realizarSacrificios(Campo campo, Monstruo... sacrificios) {
+    protected void realizarSacrificios(Campo campo, Monstruo... sacrificios) {
         for (Monstruo sacrificio : sacrificios) {
             sacrificio.descartar();
             campo.removerCarta(sacrificio);
@@ -92,19 +85,15 @@ public class Monstruo extends Carta {
         campo.removerCarta(this);
     }
 
-    public void aumentarATK(int aumento) {
-        ataque += aumento;
+    public Integer getAtaque() {
+        return ataque;
     }
 
-    public void aumentarDEF(int aumento) {
-        defensa += aumento;
-    }
-
-    public int getDefensa() {
+    public Integer getDefensa() {
         return defensa;
     }
 
-    public int getAtaque() {
-        return ataque;
+    protected void setEfecto(EfectoCarta efecto) {
+        this.efecto = efecto;
     }
 }

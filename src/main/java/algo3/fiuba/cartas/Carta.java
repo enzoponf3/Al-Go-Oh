@@ -19,7 +19,7 @@ public abstract class Carta {
         this.efecto = efecto;
     }
 
-    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... monstruos);
+    public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios);
 
     public void pasarAModoJuego(EnJuego tipoEnJuego) {
         estadoCarta = tipoEnJuego;
@@ -42,6 +42,15 @@ public abstract class Carta {
         this.jugador = jugador;
     }
 
+    public void activar(Juego juego) {
+        estadoCarta.activar(juego, this,  efecto);
+    }
+
+    public abstract boolean estaEnTablero(TableroJugador tableroJugador);
+
+    public abstract void removerDelCampo(Campo campo);
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,43 +64,8 @@ public abstract class Carta {
 
         return Objects.hash(nombre);
     }
-    public void activar(Juego juego) {
-        estadoCarta.activar(juego, this,  efecto);
-    }
 
-    public abstract boolean estaEnTablero(TableroJugador tableroJugador);
-
-    //public abstract boolean esSacrificable();
-
-    public abstract void removerDelCampo(Campo campo);
-
-
-    @Override
-    public String toString() {
-        return "Carta{" +
-                "nombre='" + nombre + '\'' +
-                ", estadoCarta=" + estadoCarta +
-                ", efecto=" + efecto +
-                '}';
-    }
-
-    public void colocarEnMano() {
-        estadoCarta = EnMano.getInstancia();
-    }
-
-    public void aumentarATKPropio(int aumento) {
-        jugador.aumentarATK(aumento);
-    }
-
-    public void aumentarDEFOponente(int aumento) {
-        jugador.aumentarDEFOponente(aumento);
-    }
-
-    public void aumentarDEFPropio(int aumento) {
-        jugador.aumentarDEF(aumento);
-    }
-
-    public void aumentarATKOponente(int aumento) {
-        jugador.aumentarATKOponente(aumento);
+    public void daniaPuntosDeVidaDelRival(Integer ataque) {
+        throw new RuntimeException("Implementar esto");
     }
 }

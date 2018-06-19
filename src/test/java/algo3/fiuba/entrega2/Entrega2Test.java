@@ -1,12 +1,12 @@
 package algo3.fiuba.entrega2;
 
-import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
-import algo3.fiuba.cartas.CartaCampo;
+import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.Trampa;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.cartas.efectos.EfectoSogen;
 import algo3.fiuba.cartas.efectos.EfectoWasteland;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
@@ -19,7 +19,6 @@ public class Entrega2Test {
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
-    private Juego juego;
 
     @Before
     public void setUp() {
@@ -27,14 +26,14 @@ public class Entrega2Test {
         jugador2 = new Jugador();
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
-        juego = new Juego(jugador1, jugador2, tablero);
+        
     }
 
-
+    /*
     @Test
     public void colocoMonstruoACadaLadoDeCampo_activoCartaCampoWasteland_aumenta200ATKPropio_aumenta300DEFOponente() {
-        Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, EfectoNulo.getInstancia());
-        Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, EfectoNulo.getInstancia());
+        Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, efectoNulo);
+        Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, efectoNulo);
 
         CartaCampo wasteland = new CartaCampo("Wasteland", new EfectoWasteland());
 
@@ -44,11 +43,6 @@ public class Entrega2Test {
         // Ni bien se coloca carta de campo esta se activa.
         jugador1.colocarCartaEnTablero(wasteland, BocaArriba.getInstancia());
 
-        // El efecto anda, pero se tiene que activar directo cuando se agrega al tablero. Creo se debería de subir el agregar a Juego.
-        juego.activarEfecto(new EfectoWasteland(), wasteland);
-
-
-        // No deberíamos usar getters para las pruebas, cambiar!
         // Se suma 300 a la defensa del oponente.
         int defensaFinalOponente = 300;
         Assert.assertEquals(defensaFinalOponente, monstruo2.getDefensa());
@@ -61,19 +55,15 @@ public class Entrega2Test {
 
     @Test
     public void colocoMounstruoDeCadaLadoDeCampo_activoCartaCampoSogen_aumenta500DEFPropio_aumenta200ATKOponente() {
-        Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, EfectoNulo.getInstancia());
-        Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, EfectoNulo.getInstancia());
-        CartaCampo sogen = new CartaCampo("Sogen", new EfectoSogen());
+        Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, efectoNulo);
+        Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, efectoNulo);
+        CartaCampo sogen = new CartaCampo("Sogen", new EfectoSogen);
 
         jugador1.colocarCartaEnTablero(monstruoPropio, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(monstruoOponente, BocaArriba.getInstancia());
 
         // Ni bien se coloca una carta de campo esta se debe de activar.
         jugador1.colocarCartaEnTablero(sogen, BocaArriba.getInstancia());
-
-
-        // El efecto anda, pero se tiene que activar directo cuando se agrega al tablero. Creo se debería de subir el agregar a Juego.
-        juego.activarEfecto(new EfectoSogen(), sogen);
 
         // Se suma 200 al ataque de las cartas en el campo del oponente.
         int ataqueFinalOponente = 200;
@@ -84,11 +74,11 @@ public class Entrega2Test {
         Assert.assertEquals(defensaFinalPropio, (int)monstruoPropio.getDefensa());
 
     }
-/*
+
     @Test
     public void activoCartaOllaDelaCodicia_TomoDosCartasDelMazo() {
-        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
-        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
+        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
+        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, efectoNulo);
         EfectoCarta efectoOllaDeLaCodicia = new EfectoOllaDeLaCodicia();
         Magica ollaDeLaCodicia = new Magica("ollaDeLaCodicia", efectoOllaDeLaCodicia);
 
@@ -111,8 +101,8 @@ public class Entrega2Test {
 
     @Test
     public void colocoDosCartasMonstruoEnCampoEnemigo_activoFisura_elDeMenorAtaqueEsDestruido() {
-        Monstruo monstruoFuerte = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
-        Monstruo monstruoDebil = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
+        Monstruo monstruoFuerte = new Monstruo("Delfi", 2120, 0, 2, efectoNulo);
+        Monstruo monstruoDebil = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
         EfectoCarta efectoFisura = new EfectoFisura();
         Magica fisura = new Magica("Fisura", efectoFisura);
 
@@ -135,7 +125,7 @@ public class Entrega2Test {
 
     @Test
     public void invocoAJinzo7_atacaDirectoALosPuntosDeVidaDelOponente() {
-        Monstruo monstruo = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
+        Monstruo monstruo = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
         EfectoCarta efectoJinzo = new EfectoJinzo();
         Monstruo jinzo = new Monstruo("Jinzo #7", 500, 400, 2, efectoJinzo);
 
@@ -159,17 +149,17 @@ public class Entrega2Test {
 
     @Test
     public void invocarDragonDefinitivo_seSacrifiacanTresDragonesBlancosOjosAzules() {
-        Monstruo dragonASacrificar1 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, new EfectoNulo());
-        Monstruo dragonASacrificar2 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, new EfectoNulo());
-        Monstruo dragonASacrificar3 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, new EfectoNulo());
+        Monstruo dragonASacrificar1 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, efectoNulo);
+        Monstruo dragonASacrificar2 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, efectoNulo);
+        Monstruo dragonASacrificar3 = new Monstruo("Dragón Blanco de Ojos Azúles", 3000, 2500, 8, efectoNulo);
 
         // Monstruos de sacrificio para poder invocar a los tres dragones blancos de ojos azúles.
-        Monstruo monstruoASacrificar1 = new Monstruo("Flan", 100, 10, 3, new EfectoNulo());
-        Monstruo monstruoASacrificar2 = new Monstruo("Flan", 100, 10, 3, new EfectoNulo());
-        Monstruo monstruoASacrificar3 = new Monstruo("Flan", 100, 10, 3, new EfectoNulo());
-        Monstruo monstruoASacrificar4 = new Monstruo("Flan", 100, 10, 3, new EfectoNulo());
-        Monstruo monstruoASacrificar5 = new Monstruo("Flan", 100, 10, 3, new EfectoNulo());
-        Monstruo monstruoASacrificar6 = new Monstruo("Flan", 100, 10, 3, new EfectoNulo());
+        Monstruo monstruoASacrificar1 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
+        Monstruo monstruoASacrificar2 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
+        Monstruo monstruoASacrificar3 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
+        Monstruo monstruoASacrificar4 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
+        Monstruo monstruoASacrificar5 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
+        Monstruo monstruoASacrificar6 = new Monstruo("Flan", 100, 10, 3, efectoNulo);
 
         // Invoco los dragones, con sus respectivos sacrificios.
         jugador1.colocarCartaEnTablero(monstruoASacrificar1, BocaAbajo.getInstancia());
@@ -184,7 +174,7 @@ public class Entrega2Test {
         jugador1.colocarCartaEnTablero(monstruoASacrificar6, BocaAbajo.getInstancia());
         jugador1.colocarCartaEnTablero(dragonASacrificar3, BocaAbajo.getInstancia());
 
-        Monstruo dragonDefinitivo = new Monstruo("Dragón Definitivo", 4500, 3800, 12, new EfectoNulo());
+        Monstruo dragonDefinitivo = new Monstruo("Dragón Definitivo", 4500, 3800, 12, efectoNulo);
 
         jugador1.colocarCartaEnTablero(dragonDefinitivo, BocaArriba.getInstancia());
 
@@ -203,7 +193,7 @@ public class Entrega2Test {
     @Test
     public void colocoInsectoComeHombresBocaAbajo_monstruoOponenteLoAtaca_seActivaEfectoYSeDestruyeAtacante() {
         Monstruo insectoComeHombres = new Monstruo("Insecto Come Hombres", 450, 600, 2, new EfectoInsectoComeHombres);
-        Monstruo monstruoAtacante = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
 
         jugador1.colocarCartaEnTablero(insectoComeHombres, BocaAbajo.getInstancia());
         insectoComeHombres.pasarAModoDefensa();
@@ -226,8 +216,8 @@ public class Entrega2Test {
 
     @Test
     public void atacarATrampaCilindroMagico_seNiegaAtaqueYSeEfectuaALosPuntosDeVidaDelAtacante() {
-        Monstruo monstruoAtacante = new Monstruo("Caro", 500, 250, 3, new EfectoNulo());
-        Monstruo monstruoAtacado = new Monstruo("Flan", 100, 10, 3, new EfectoNulo());
+        Monstruo monstruoAtacante = new Monstruo("Caro", 500, 250, 3, efectoNulo);
+        Monstruo monstruoAtacado = new Monstruo("Flan", 100, 10, 3, efectoNulo);
         Trampa cilindroMagico = new Trampa("Cilindro Mágico", new EfectoCilindroMagico());
 
         jugador1.colocarCartaEnTablero(monstruoAtacado, BocaAbajo.getInstancia());
@@ -257,8 +247,8 @@ public class Entrega2Test {
 
     @Test
     public void colocoTrampaReinforcement_seAtacaConMonstruoDe400ATKMas_monstruoAtacadoAumenta500ATKAlActivarTrampa() {
-        Monstruo monstruoAtacado = new Monstruo("Monstruo incompetente", 0, 100, 1, new EfectoNulo());
-        Monstruo monstruoAtacante = new Monstruo("Pepi", 400, 100, 2, new EfectoNulo());
+        Monstruo monstruoAtacado = new Monstruo("Monstruo incompetente", 0, 100, 1, efectoNulo);
+        Monstruo monstruoAtacante = new Monstruo("Pepi", 400, 100, 2, efectoNulo);
         Trampa reinforcement = new Trampa("Reinforcement", new EfectoReinforcement());
 
         jugador1.colocarCartaEnTablero(monstruoAtacado, BocaAbajo.getInstancia());
@@ -287,8 +277,8 @@ public class Entrega2Test {
 
     @Test
     public void extraerTodasLasCartasDeMazo_jugadorSinCartasPerdio() {
-        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
-        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
+        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
+        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, efectoNulo);
 
         jugador1.agregarCartaAMazo(monstruo1);
         jugador2.agregarCartaAMazo(monstruo2);

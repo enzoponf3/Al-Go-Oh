@@ -14,7 +14,6 @@ public class Campo {
 
     List<Monstruo> zonaMonstruos;
     List<NoMonstruo> zonaNoMonstruos;
-    public CartaCampo cartaCampo;
 
     public Campo() {
         zonaMonstruos = new LinkedList<>();
@@ -33,24 +32,17 @@ public class Campo {
         return (zonaNoMonstruos.size());
     }
 
-    public void colocarCarta(Monstruo monstruo, EnJuego enJuego, Monstruo... sacrificios) {
-        monstruo.colocarEnCampo(this, enJuego, sacrificios);
-    }
-
     public void colocarCarta(Carta carta, EnJuego enJuego) {
         carta.colocarEnCampo(this, enJuego);
     }
 
-    public void colocarCarta(Monstruo carta) {
-        zonaMonstruos.add(carta);
+
+    public void colocarCarta(Monstruo monstruo, EnJuego enJuego, Monstruo... sacrificios) {
+        monstruo.colocarEnCampo(this, enJuego, sacrificios);
     }
 
-    public void colocarCarta(NoMonstruo carta) {
+    public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         zonaNoMonstruos.add(carta);
-    }
-
-    public void colocarCarta(CartaCampo carta) {
-        cartaCampo = carta;
     }
 
     public boolean cartaSeEncuentaEnCampo(Monstruo carta) {
@@ -59,6 +51,11 @@ public class Campo {
 
     public boolean cartaSeEncuentaEnCampo(NoMonstruo carta) {
         return zonaNoMonstruos.contains(carta);
+    }
+
+
+    public void activarEfectoSobreElementos(EfectoCarta efecto) {
+        // sin funcionalidad por el momento.
     }
 
     public void removerCarta(Monstruo carta) {
@@ -80,7 +77,6 @@ public class Campo {
     public void reiniciar() {
         zonaMonstruos = new LinkedList<>();
         zonaNoMonstruos = new LinkedList<>();
-        cartaCampo = null;
     }
 
     public void matarMonstruos() {
@@ -90,15 +86,13 @@ public class Campo {
         }
     }
 
-    public void aumentarATK(int aumento) {
-        for(Monstruo monstruo: zonaMonstruos) {
-            monstruo.aumentarATK(aumento);
-        }
+    public List<Monstruo> getMonstruos() {
+        return zonaMonstruos;
     }
 
-    public void aumentarDEF(int aumento) {
-        for(Monstruo monstruo: zonaMonstruos) {
-            monstruo.aumentarDEF(aumento);
-        }
+
+    public List<NoMonstruo> getNoMonstruos() {
+        return zonaNoMonstruos;
     }
+
 }

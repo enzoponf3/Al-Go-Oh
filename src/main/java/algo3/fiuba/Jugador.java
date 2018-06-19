@@ -6,22 +6,21 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
+import algo3.fiuba.cartas.estados_cartas.EnMano;
 import algo3.fiuba.cartas.estados_cartas.EnMazo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Jugador {
 
     private Integer puntosDeVida;
     private TableroJugador tableroJugador;
-    private Set<Carta> mano;
-    private Jugador oponente;
-
+    private List<Carta> mano;
 
     public Jugador() {
         this.puntosDeVida = 8000;
-        this.mano = new HashSet<>();
+        this.mano = new LinkedList<>();
     }
 
     public boolean estaEnJuego() {
@@ -79,7 +78,6 @@ public class Jugador {
     public void mandarCartaDelTableroAlCementerio(Carta carta) {
         carta.descartar();
         tableroJugador.removerCartaDelCampo(carta);
-        //tableroJugador.mandarCartaACementerio(carta);
     }
 
     public void mandarCartaACementerio(Carta carta) {
@@ -87,37 +85,14 @@ public class Jugador {
         carta.setEstado(EnCementerio.getInstancia());
     }
 
-    /*
-    public void removerCartaDelTablero(Carta carta) {
-        tableroJugador.removerCartaDelCampo(carta);
-    }
-    */
 
     public boolean cartaEstaEnCementerio(Carta carta) {
         return tableroJugador.cartaEstaEnCementerio(carta);
     }
 
     public void agregarCartaAMano(Carta carta) {
-        carta.colocarEnMano();
+        carta.setEstado(EnMano.getInstancia());
         mano.add(carta);
-    }
-
-    public void removerCartaDelTablero(Monstruo carta) {
-        tableroJugador.removerCartaDelCampo(carta);
-    }
-
-    public void removerCartaDelTablero(NoMonstruo carta) {
-        tableroJugador.removerCartaDelCampo(carta);
-    }
-
-
-    @Override
-    public String toString() {
-        return "Jugador{" +
-                "puntosDeVida=" + puntosDeVida +
-                ", tableroJugador=" + tableroJugador +
-                ", mano=" + mano +
-                '}';
     }
 
     public boolean cartaEstaEnMano(Carta carta) {
@@ -132,23 +107,16 @@ public class Jugador {
         return false;
     }
 
-    public void aumentarATK(int aumento) {
-        tableroJugador.aumentarATK(aumento);
+    public List<Carta> getMano() {
+        return mano;
     }
 
-    public void setOponente(Jugador oponente) {
-        this.oponente = oponente;
-    }
-
-    public void aumentarDEFOponente(int aumento) {
-        oponente.aumentarDEF(aumento);
-    }
-
-    public void aumentarDEF(int aumento) {
-        tableroJugador.aumentarDEF(aumento);
-    }
-
-    public void aumentarATKOponente(int aumento) {
-        oponente.aumentarATK(aumento);
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "puntosDeVida=" + puntosDeVida +
+                ", tableroJugador=" + tableroJugador +
+                ", mano=" + mano +
+                '}';
     }
 }

@@ -13,6 +13,7 @@ import java.util.Stack;
 
 public class TableroJugador {
 
+    public CartaCampo cartaCampo;
     public Stack<Carta> mazo;
     private Campo campo;
     public List<Carta> cementerio;
@@ -30,6 +31,11 @@ public class TableroJugador {
 
     public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego) {
         campo.colocarCarta(carta, tipoEnJuego);
+    }
+
+    public void colocarCartaEnTablero(CartaCampo carta, EnJuego tipoEnJuego) {
+        carta.pasarAModoJuego(tipoEnJuego);
+        cartaCampo = carta;
     }
 
     public Carta tomarCartaDelMazo() {
@@ -57,25 +63,19 @@ public class TableroJugador {
         return campo.cantidadMonstruos();
     }
 
+    public void activarEfectoSobreElementos(EfectoCarta efecto) {
+        campo.activarEfectoSobreElementos(efecto);
+    }
+
     public void removerCartaDelCampo(Carta carta) {
         carta.removerDelCampo(campo);
         //carta.removerDelCampo(campo);
     }
 
-    public void removerCartaDelCampo(Monstruo carta) {
-        campo.removerCarta(carta);
-        //carta.removerDelCampo(campo);
-    }
-
-    public void removerCartaDelCampo(NoMonstruo carta) {
-        campo.removerCarta(carta);
-        //carta.removerDelCampo(campo);
-    }
-
-
     @Override
     public String toString() {
         return "TableroJugador{" +
+                "cartaCampo=" + cartaCampo +
                 ", mazo=" + mazo +
                 ", campo=" + campo +
                 ", cementerio=" + cementerio +
@@ -83,6 +83,7 @@ public class TableroJugador {
     }
 
     public void inicializar() {
+        cartaCampo = null;
         cementerio = new LinkedList<>();
         campo.reiniciar();
     }
@@ -99,11 +100,16 @@ public class TableroJugador {
         campo.matarMonstruos();
     }
 
-    public void aumentarATK(int aumento) {
-        campo.aumentarATK(aumento);
+    public List<Monstruo> getMonstruos() {
+        return campo.getMonstruos();
     }
 
-    public void aumentarDEF(int aumento) {
-        campo.aumentarDEF(aumento);
+    public List<NoMonstruo> getNoMonstruos() {
+        return campo.getNoMonstruos();
     }
+
+    public CartaCampo getCartaCampo() {
+        return cartaCampo;
+    }
+
 }

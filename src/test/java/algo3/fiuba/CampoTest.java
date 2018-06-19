@@ -1,6 +1,5 @@
 package algo3.fiuba;
 
-import algo3.fiuba.Campo;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
@@ -15,13 +14,11 @@ import org.junit.Test;
 public class CampoTest {
 
     private Campo campo;
-    private EfectoCarta efectoNulo;
 
 
     @Before
     public void setUp() {
         campo = new Campo();
-        efectoNulo = EfectoNulo.getInstancia();
     }
 
     @Test
@@ -31,7 +28,7 @@ public class CampoTest {
 
     @Test
     public void seAgrega1MonstruoEnZonaCorrecta_laCantidadDeMonstruosEs1() {
-        Carta carta = new Monstruo("m", 100, 100, 1, efectoNulo);
+        Carta carta = new Monstruo("m", 100, 100, 1, new EfectoNulo());
         campo.colocarCarta(carta, BocaAbajo.getInstancia());
 
         Integer cantidadDeMonstruos = 1;
@@ -43,7 +40,7 @@ public class CampoTest {
 
     @Test
     public void seAgrega1CartaMagicaEnZonaCorrecta_laCantidadDeNoMonstruosEs1() {
-        Carta carta = new Magica("n", efectoNulo);
+        Carta carta = new Magica("n", new EfectoNulo());
         campo.colocarCarta(carta, BocaAbajo.getInstancia());
 
         Integer cantidadDeMonstruos = 0;
@@ -55,7 +52,7 @@ public class CampoTest {
 
     @Test
     public void seAgrega1CartaTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs1() {
-        Carta trampa = new Trampa("n", efectoNulo);
+        Carta trampa = new Trampa("n", new EfectoNulo());
         campo.colocarCarta(trampa, BocaAbajo.getInstancia());
 
         Integer cantidadDeMonstruos = 0;
@@ -67,8 +64,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2MonstruosEnZonaCorrecta_laCantidadDeMonstruosEs2() {
-        Carta carta1 = new Monstruo("m1", 100, 100, 1, efectoNulo);
-        Carta carta2 = new Monstruo("m2", 100, 100, 1, efectoNulo);
+        Carta carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
+        Carta carta2 = new Monstruo("m2", 100, 100, 1, new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -82,8 +79,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2CartasMagicasEnZonaCorrecta_laCantidadDeNoMonstruosEs2() {
-        Carta carta1 = new Magica("nm1", efectoNulo);
-        Carta carta2 = new Magica("nm2", efectoNulo);
+        Carta carta1 = new Magica("nm1", new EfectoNulo());
+        Carta carta2 = new Magica("nm2", new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -97,8 +94,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2CartasTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs2() {
-        Carta carta1 = new Trampa("nm1", efectoNulo);
-        Carta carta2 = new Trampa("nm2", efectoNulo);
+        Carta carta1 = new Trampa("nm1", new EfectoNulo());
+        Carta carta2 = new Trampa("nm2", new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -112,8 +109,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega1CartaMagicaY1CartaTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs2() {
-        Carta carta1 = new Magica("nm1", efectoNulo);
-        Carta carta2 = new Trampa("nm2", efectoNulo);
+        Carta carta1 = new Magica("nm1", new EfectoNulo());
+        Carta carta2 = new Trampa("nm2", new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -127,9 +124,9 @@ public class CampoTest {
 
     @Test
     public void seAgrega1Monstruo1CartaMagicaY1CartaTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs2() {
-        Carta carta1 = new Magica("nm1", efectoNulo);
-        Carta carta2 = new Trampa("nm2", efectoNulo);
-        Carta carta3 = new Monstruo("m1", 100, 100, 1, efectoNulo);
+        Carta carta1 = new Magica("nm1", new EfectoNulo());
+        Carta carta2 = new Trampa("nm2", new EfectoNulo());
+        Carta carta3 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -144,12 +141,12 @@ public class CampoTest {
 
     @Test(expected = RuntimeException.class)
     public void seAgrega6MonstruosEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
-        Carta carta1 = new Monstruo("m1", 100, 100, 1, efectoNulo);
-        Carta carta2 = new Monstruo("m2", 100, 100, 1, efectoNulo);
-        Carta carta3 = new Monstruo("m3", 100, 100, 1, efectoNulo);
-        Carta carta4 = new Monstruo("m4", 100, 100, 1, efectoNulo);
-        Carta carta5 = new Monstruo("m5", 100, 100, 1, efectoNulo);
-        Carta carta6 = new Monstruo("m6", 100, 100, 1, efectoNulo);
+        Carta carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
+        Carta carta2 = new Monstruo("m2", 100, 100, 1, new EfectoNulo());
+        Carta carta3 = new Monstruo("m3", 100, 100, 1, new EfectoNulo());
+        Carta carta4 = new Monstruo("m4", 100, 100, 1, new EfectoNulo());
+        Carta carta5 = new Monstruo("m5", 100, 100, 1, new EfectoNulo());
+        Carta carta6 = new Monstruo("m6", 100, 100, 1, new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -161,12 +158,12 @@ public class CampoTest {
 
     @Test(expected = RuntimeException.class)
     public void seAgrega6CartasMagicasEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
-        Carta carta1 = new Magica("nm1", efectoNulo);
-        Carta carta2 = new Magica("nm2", efectoNulo);
-        Carta carta3 = new Magica("nm3", efectoNulo);
-        Carta carta4 = new Magica("nm4", efectoNulo);
-        Carta carta5 = new Magica("nm5", efectoNulo);
-        Carta carta6 = new Magica("nm6", efectoNulo);
+        Carta carta1 = new Magica("nm1", new EfectoNulo());
+        Carta carta2 = new Magica("nm2", new EfectoNulo());
+        Carta carta3 = new Magica("nm3", new EfectoNulo());
+        Carta carta4 = new Magica("nm4", new EfectoNulo());
+        Carta carta5 = new Magica("nm5", new EfectoNulo());
+        Carta carta6 = new Magica("nm6", new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -178,12 +175,12 @@ public class CampoTest {
 
     @Test(expected = RuntimeException.class)
     public void seAgrega6CartasTrampaEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
-        Carta carta1 = new Trampa("nm1", efectoNulo);
-        Carta carta2 = new Trampa("nm2", efectoNulo);
-        Carta carta3 = new Trampa("nm3", efectoNulo);
-        Carta carta4 = new Trampa("nm4", efectoNulo);
-        Carta carta5 = new Trampa("nm5", efectoNulo);
-        Carta carta6 = new Trampa("nm6", efectoNulo);
+        Carta carta1 = new Trampa("nm1", new EfectoNulo());
+        Carta carta2 = new Trampa("nm2", new EfectoNulo());
+        Carta carta3 = new Trampa("nm3", new EfectoNulo());
+        Carta carta4 = new Trampa("nm4", new EfectoNulo());
+        Carta carta5 = new Trampa("nm5", new EfectoNulo());
+        Carta carta6 = new Trampa("nm6", new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -195,8 +192,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2MonstruosConElMimoNombre_laCantidadDeMonstruosEs2() {
-        Carta carta1 = new Monstruo("m1", 100, 100, 1, efectoNulo);
-        Carta carta2 = new Monstruo("m1", 100, 100, 1, efectoNulo);
+        Carta carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
+        Carta carta2 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -210,8 +207,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2CartasMagicasConElMismoNombre_laCantidadDeNoMonstruosEs2() {
-        Carta carta1 = new Magica("nm1", efectoNulo);
-        Carta carta2 = new Magica("nm1", efectoNulo);
+        Carta carta1 = new Magica("nm1", new EfectoNulo());
+        Carta carta2 = new Magica("nm1", new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
@@ -225,8 +222,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2CartasTrampaConElMismoNombre_laCantidadDeNoMonstruosEs2() {
-        Carta carta1 = new Trampa("nm1", efectoNulo);
-        Carta carta2 = new Trampa("nm1", efectoNulo);
+        Carta carta1 = new Trampa("nm1", new EfectoNulo());
+        Carta carta2 = new Trampa("nm1", new EfectoNulo());
 
         campo.colocarCarta(carta1, BocaAbajo.getInstancia());
         campo.colocarCarta(carta2, BocaAbajo.getInstancia());
