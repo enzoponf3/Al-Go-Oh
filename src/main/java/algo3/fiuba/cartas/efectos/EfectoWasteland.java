@@ -11,6 +11,14 @@ import java.util.List;
 public class EfectoWasteland implements EfectoCarta {
     @Override
     public void activar(Juego juego, Carta carta) {
-        // to do
+        juego.activarEfecto(this, carta);
+    }
+
+    public void aumentarATKPropio(Carta carta) {
+        carta.aumentarATKPropio(200);
+    }
+
+    public void aumentarDEFOponente(Carta carta) {
+        carta.aumentarDEFOponente(300);
     }
 }

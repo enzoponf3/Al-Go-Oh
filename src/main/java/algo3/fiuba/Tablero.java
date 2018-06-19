@@ -27,15 +27,12 @@ public class Tablero {
 
         jugador1.setTableroJugador(tableroJugador1);
         jugador2.setTableroJugador(tableroJugador2);
+        jugador1.setOponente(jugador2);
+        jugador2.setOponente(jugador1);
     }
 
     public Integer monstruosEnJuego() {
         return (tableroJugador1.monstruosEnJuego() + tableroJugador2.monstruosEnJuego());
-    }
-
-    public void activarEfectoSobreElementos(EfectoCarta efecto) {
-        tableroJugador1.activarEfectoSobreElementos(efecto);
-        tableroJugador2.activarEfectoSobreElementos(efecto);
     }
 
     public void matarMonstruos() {

@@ -1,5 +1,6 @@
 package algo3.fiuba;
 
+import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.efectos.*;
 
@@ -15,8 +16,14 @@ public class Juego {
         this.tablero = tablero;
     }
 
-    public  void activarEfecto(EfectoWasteland wasteland, CartaCampo carta) {
-        //wasteland.aumentarATKPropio();
+    public void activarEfecto(EfectoWasteland wasteland, Carta carta) {
+        wasteland.aumentarATKPropio(carta);
+        wasteland.aumentarDEFOponente(carta);
+    }
+
+    public void activarEfecto(EfectoSogen sogen, Carta carta) {
+        sogen.aumentarDEFPropio(carta);
+        sogen.aumentarATKOponente(carta);
     }
 
     public void activarEfecto(EfectoAgujeroNegro agujeroNegro) {

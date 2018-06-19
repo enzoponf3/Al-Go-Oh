@@ -6,7 +6,6 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
 public class CartaCampo extends Carta {
-
     public CartaCampo(String nombre, EfectoCarta efecto) {
         super(nombre, efecto);
     }
@@ -22,7 +21,7 @@ public class CartaCampo extends Carta {
     }
 
     @Override
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego) {
 
     }
 
