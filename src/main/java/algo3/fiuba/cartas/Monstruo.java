@@ -16,7 +16,7 @@ public class Monstruo extends Carta {
 
     private Integer ataque;
     private Integer defensa;
-    private ModoMonstruo modoMonstruo;
+    protected ModoMonstruo modoMonstruo;
     private Estrellas estrellas;
     public Integer sacrificiosParaInvocar;
 
@@ -66,14 +66,14 @@ public class Monstruo extends Carta {
         this.realizarSacrificios(campo, sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();
         estadoCarta = tipoEnJuego;
-        campo.colocarCarta(this);
+        campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
 
     public void cambiarModo() {
         modoMonstruo = modoMonstruo.cambiarModoMonstruo();
     }
 
-    private void realizarSacrificios(Campo campo, Monstruo... sacrificios) {
+    protected void realizarSacrificios(Campo campo, Monstruo... sacrificios) {
         for (Monstruo sacrificio : sacrificios) {
             sacrificio.descartar();
             campo.removerCarta(sacrificio);
@@ -93,7 +93,7 @@ public class Monstruo extends Carta {
         return defensa;
     }
 
-    protected void setEfecto(EfectoJinzo efecto) {
+    protected void setEfecto(EfectoCarta efecto) {
         this.efecto = efecto;
     }
 }

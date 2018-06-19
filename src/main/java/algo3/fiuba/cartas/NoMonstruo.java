@@ -28,7 +28,7 @@ public abstract class NoMonstruo extends Carta {
             throw new RuntimeException(String.format("No se pueden hacer sacrificios para invocar esta carta."));
 
         estadoCarta = tipoEnJuego;
-        campo.colocarCarta(this);
+        campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
 
 }
