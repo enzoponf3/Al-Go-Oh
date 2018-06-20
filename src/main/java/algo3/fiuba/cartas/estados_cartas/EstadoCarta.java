@@ -4,6 +4,7 @@ import algo3.fiuba.Juego;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.NoMonstruo;
+import algo3.fiuba.cartas.Trampa;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 
 public interface EstadoCarta {
@@ -13,6 +14,12 @@ public interface EstadoCarta {
     void verificarQuePuedeAtacar();
 
     void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto);
+
+    void activarEfecto(Carta carta, EfectoCarta efecto);
+
+    void activarEfecto(Carta carta, Monstruo otraCarta, EfectoCarta efecto);
+
+    void activarEfecto(Trampa trampa, Monstruo atacante, EfectoCarta efecto);
 
     void recibirAtaque(Monstruo carta);
 

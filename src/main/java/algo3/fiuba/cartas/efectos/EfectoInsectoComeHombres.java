@@ -5,7 +5,7 @@ import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Carta;
 
-public class EfectoInsectoComeHombres implements EfectoCarta {
+public class EfectoInsectoComeHombres extends EfectoCarta {
 
     private Tablero tablero;
     private Jugador jugadorRival;

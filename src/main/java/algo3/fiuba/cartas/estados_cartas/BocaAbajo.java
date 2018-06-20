@@ -4,6 +4,7 @@ import algo3.fiuba.Juego;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.NoMonstruo;
+import algo3.fiuba.cartas.Trampa;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
 
@@ -24,7 +25,23 @@ public class BocaAbajo extends EnJuego {
 
     @Override
     public void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto) {
+        activarEfecto(carta, efecto);
+        //activarEfecto(carta, efecto);
+    }
+
+    @Override
+    public void activarEfecto(Carta carta, EfectoCarta efecto) {
         throw new InhabilitadaParaActivarseExcepcion("No se puede activarEfecto efecto de una carta boca abajo");
+    }
+
+    @Override
+    public void activarEfecto(Carta carta, Monstruo otraCarta, EfectoCarta efecto) {
+        activarEfecto(carta, efecto);
+    }
+
+    @Override
+    public void activarEfecto(Trampa trampa, Monstruo atacante, EfectoCarta efecto) {
+        efecto.activar(trampa, atacante);
     }
 
     @Override

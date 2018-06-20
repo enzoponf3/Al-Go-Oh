@@ -47,6 +47,17 @@ public abstract class Carta {
         // jugador.mandarCartaDelTableroAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
     }
 
+    public void activarEfecto() {
+        estadoCarta.activarEfecto(this,  efecto);
+        // jugador.mandarCartaDelTableroAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
+    }
+
+    public void activarEfecto(Monstruo otraCarta) {
+        estadoCarta.activarEfecto(this,  otraCarta, efecto);
+        // jugador.mandarCartaDelTableroAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
+    }
+
+
     public abstract boolean estaEnTablero(TableroJugador tableroJugador);
 
     public abstract void removerDelCampo(Campo campo);

@@ -27,7 +27,7 @@ public class ModoDeDefensa extends ModoMonstruo {
     }
 
     @Override
-    public ResultadoCombate atacar(Monstruo otraCarta, Integer puntosAtaque) {
+    public ResultadoCombate atacar(Monstruo monstruoAtacante, Monstruo otraCarta, Integer puntosAtaque) {
         throw new InhabilitadoParaAtacarExcepcion("No puede atacar estando en Modo de Defensa.");
     }
 

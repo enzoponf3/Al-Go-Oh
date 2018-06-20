@@ -9,11 +9,12 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
-import algo3.fiuba.cartas.moldes_cartas.DragonBlancoDeOjosAzules;
-import algo3.fiuba.cartas.moldes_cartas.DragonDefinitivoDeOjosAzules;
-import algo3.fiuba.cartas.moldes_cartas.SevenColoredFish;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.DragonBlancoDeOjosAzules;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.DragonDefinitivoDeOjosAzules;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
-import algo3.fiuba.cartas.moldes_cartas.Jinzo7;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
+import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.CilindroMagico;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -90,7 +91,7 @@ public class Entrega2Test {
         jugador1.agregarCartaAMazo(monstruo2);
         jugador1.colocarCartaEnTablero(ollaDeLaCodicia, BocaArriba.getInstancia());
 
-        ollaDeLaCodicia.activarEfecto(juego);
+        ollaDeLaCodicia.activarEfecto();
         // Se agregaron dos cartas a la mano del jugador, sacadas del mazo de este.
         Assert.assertTrue(jugador1.cartaEstaEnMano(monstruo1));
         Assert.assertTrue(jugador1.cartaEstaEnMano(monstruo2));
@@ -134,7 +135,7 @@ public class Entrega2Test {
 
         jugador1.colocarCartaEnTablero(jinzo7, BocaArriba.getInstancia());
 
-        jinzo7.activarEfecto(juego);
+        jinzo7.activarEfecto();
 
         // No se ataca a las cartas en el campo enemigo.
 
@@ -214,14 +215,14 @@ public class Entrega2Test {
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
         Assert.assertEquals(puntosInicialesDeVida, (int)jugador1.getPuntosDeVida());
     }
-
+*/
     @Test
     public void atacarATrampaCilindroMagico_seNiegaAtaqueYSeEfectuaALosPuntosDeVidaDelAtacante() {
-        Monstruo monstruoAtacante = new Monstruo("Caro", 500, 250, 3, efectoNulo);
-        Monstruo monstruoAtacado = new Monstruo("Flan", 100, 10, 3, efectoNulo);
-        Trampa cilindroMagico = new Trampa("Cilindro Mágico", new EfectoCilindroMagico());
+        Monstruo monstruoAtacante = new SevenColoredFish(jugador2);
+        Monstruo monstruoAtacado = new Jinzo7(jugador1);
+        Carta cilindroMagico = new CilindroMagico(jugador1);
 
-        jugador1.colocarCartaEnTablero(monstruoAtacado, BocaAbajo.getInstancia());
+        jugador1.colocarCartaEnTablero(monstruoAtacado, BocaArriba.getInstancia());
         jugador1.colocarCartaEnTablero(cilindroMagico, BocaAbajo.getInstancia());
         jugador2.colocarCartaEnTablero(monstruoAtacante, BocaArriba.getInstancia());
 
@@ -234,18 +235,18 @@ public class Entrega2Test {
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoAtacante));
 
         // El que ataco recibió ataque a sus puntos de vida igual al ataque de la carta con la que atacó.
-        int vidaFinalAtacante = 8000 - 500;
-        Assert.assertEquals(vidaFinalAtacante, (int)jugador2.getPuntosDeVida());
+        Integer vidaFinalAtacante = 8000 - monstruoAtacante.getAtaque();
+        Assert.assertEquals(vidaFinalAtacante, jugador2.getPuntosDeVida());
 
         // El atacado no recibe daño alguno.
-        int vidaFinalAtacado = 8000;
-        Assert.assertEquals(vidaFinalAtacado, (int)jugador1.getPuntosDeVida());
+        Integer vidaFinalAtacado = 8000;
+        Assert.assertEquals(vidaFinalAtacado, jugador1.getPuntosDeVida());
 
         // Después de ser activada una carta Trampa va al cementerio.
         Assert.assertFalse(jugador1.cartaEstaEnTablero(cilindroMagico));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(cilindroMagico));
     }
-
+/*
     @Test
     public void colocoTrampaReinforcement_seAtacaConMonstruoDe400ATKMas_monstruoAtacadoAumenta500ATKAlActivarTrampa() {
         Monstruo monstruoAtacado = new Monstruo("Monstruo incompetente", 0, 100, 1, efectoNulo);

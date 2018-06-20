@@ -4,7 +4,7 @@ import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Carta;
 
-public class EfectoFisura implements EfectoCarta {
+public class EfectoFisura extends EfectoCarta {
     private Jugador jugador;
 
     public EfectoFisura(Jugador jugador) {

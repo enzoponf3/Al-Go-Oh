@@ -8,11 +8,11 @@ import algo3.fiuba.cartas.Monstruo;
 
 import java.util.List;
 
-public class EfectoOllaDeLaCodicia implements EfectoCarta {
+public class EfectoOllaDeLaCodicia extends EfectoCarta {
     private Jugador jugador;
 
     @Override
-    public void activar(Juego juego, Carta carta) {
+    public void activar(Carta carta) {
         robar2Cartas(jugador);
     }
 
@@ -20,6 +20,7 @@ public class EfectoOllaDeLaCodicia implements EfectoCarta {
         this.jugador = jugador;
 
     }
+
     public void robar2Cartas(Jugador jugador) {
         jugador.tomarCartaDelMazo();
         jugador.tomarCartaDelMazo();

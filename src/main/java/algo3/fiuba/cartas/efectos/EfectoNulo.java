@@ -9,7 +9,7 @@ import algo3.fiuba.cartas.NoMonstruo;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EfectoNulo implements EfectoCarta {
+public class EfectoNulo extends EfectoCarta {
 
     @Override
     public void activar(Juego juego, Carta carta) {

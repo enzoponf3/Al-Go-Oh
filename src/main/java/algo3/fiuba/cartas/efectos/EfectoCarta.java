@@ -8,8 +8,18 @@ import algo3.fiuba.cartas.Monstruo;
 import java.util.LinkedList;
 import java.util.List;
 
-public interface EfectoCarta {
+public abstract class EfectoCarta {
 
-    void activar(Juego juego, Carta carta);
+    public void activar(Juego juego, Carta carta) {
+        return;
+    }
+
+    public void activar(Carta carta) {
+        return;
+    }
+
+    public void activar(Carta carta, Monstruo otraCarta) {
+        return;
+    }
 
 }

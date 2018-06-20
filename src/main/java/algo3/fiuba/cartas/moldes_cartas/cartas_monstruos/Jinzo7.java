@@ -1,4 +1,4 @@
-package algo3.fiuba.cartas.moldes_cartas;
+package algo3.fiuba.cartas.moldes_cartas.cartas_monstruos;
 
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Monstruo;
@@ -11,6 +11,6 @@ public class Jinzo7 extends Monstruo {
     public Jinzo7(Jugador jugador) {
         super("Jinzo7 #7", 500, 400, 2, new EfectoNulo());
         setJugador(jugador);
-        setEfecto(new EfectoJinzo(jugador.getOponente(), getAtaque()));
+        setEfecto(new EfectoJinzo(jugador, getAtaque()));
     }
 }

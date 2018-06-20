@@ -31,4 +31,5 @@ public abstract class NoMonstruo extends Carta {
         campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
 
+    public abstract boolean activarTrampa();
 }

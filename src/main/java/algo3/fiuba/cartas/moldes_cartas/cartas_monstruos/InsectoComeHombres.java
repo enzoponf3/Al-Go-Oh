@@ -1,4 +1,4 @@
-package algo3.fiuba.cartas.moldes_cartas;
+package algo3.fiuba.cartas.moldes_cartas.cartas_monstruos;
 
 import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
@@ -17,8 +17,8 @@ public class InsectoComeHombres extends Monstruo {
     }
 
     @Override
-    public ResultadoCombate recibirAtaque(Integer puntosAtaqueRival) {
-        efecto.activar(null, this);
-        return super.recibirAtaque(puntosAtaqueRival);
+    public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
+        efecto.activar(this);
+        return super.recibirAtaque(monstruoAtacante, puntosAtaqueRival);
     }
 }

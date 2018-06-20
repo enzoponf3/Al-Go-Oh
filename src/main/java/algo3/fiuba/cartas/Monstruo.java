@@ -3,14 +3,18 @@ package algo3.fiuba.cartas;
 import algo3.fiuba.Campo;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
-import algo3.fiuba.cartas.efectos.EfectoJinzo;
 import algo3.fiuba.cartas.estrellas.Estrellas;
 import algo3.fiuba.cartas.estrellas.EstrellasFactory;
+import algo3.fiuba.cartas.modificadores.Modificador;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
 import algo3.fiuba.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modo_monstruo.ModoMonstruo;
+import algo3.fiuba.cartas.resultado_combate.ResultadoCombateNulo;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Monstruo extends Carta {
 
@@ -18,7 +22,8 @@ public class Monstruo extends Carta {
     private Integer defensa;
     protected ModoMonstruo modoMonstruo;
     private Estrellas estrellas;
-    public Integer sacrificiosParaInvocar;
+    private Integer sacrificiosParaInvocar;
+    private Set<Modificador> modificadores;
 
     public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas, EfectoCarta efecto) {
 
@@ -27,19 +32,24 @@ public class Monstruo extends Carta {
         this.defensa = defensa;
         this.estrellas = EstrellasFactory.obtenerEstrellas(estrellas);
         this.sacrificiosParaInvocar = 0;
+        this.modificadores = new HashSet<>();
     }
 
     public void atacar(Monstruo otraCarta) {
         estadoCarta.verificarQuePuedeAtacar();
-        ResultadoCombate resultadoCombate = modoMonstruo.atacar(otraCarta, ataque);
+        ResultadoCombate resultadoCombate = modoMonstruo.atacar(this, otraCarta, ataque);
         resultadoCombate.afectarAtacante(this);
     }
 
-    public ResultadoCombate recibirAtaque(Integer puntosAtaqueRival) {
-        estadoCarta.recibirAtaque(this);
-        ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, ataque, defensa);
-        resultadoCombate.afectarDefensor(this);
-        return resultadoCombate;
+    public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
+        if (!jugador.recibirAtaque(monstruoAtacante)) {
+            estadoCarta.recibirAtaque(this);
+            ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, ataque, defensa);
+            resultadoCombate.afectarDefensor(this);
+            return resultadoCombate;
+        }
+        return new ResultadoCombateNulo();
+
     }
 
     public void pasarAModoAtaque() {
@@ -86,11 +96,21 @@ public class Monstruo extends Carta {
     }
 
     public Integer getAtaque() {
-        return ataque;
+        Integer ataqueModificado = ataque;
+        for (Modificador modificador : modificadores) {
+            ataqueModificado = modificador.modificarAtaque(ataqueModificado);
+        }
+
+        return ataqueModificado;
     }
 
     public Integer getDefensa() {
-        return defensa;
+        Integer defensaModificada = defensa;
+        for (Modificador modificador : modificadores) {
+            defensaModificada = modificador.modificarDefensa(defensaModificada);
+        }
+
+        return defensaModificada;
     }
 
 }

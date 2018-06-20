@@ -120,7 +120,20 @@ public class Jugador {
         this.oponente = oponente;
     }
 
-    public Jugador getOponente() {
-        return oponente;
+    public boolean recibirAtaque(Monstruo monstruo) {
+        boolean continuarAtaque = true;
+        List<NoMonstruo> noMonstruos = tableroJugador.getNoMonstruos();
+        for (NoMonstruo noMonstruo : noMonstruos) {
+            if ((continuarAtaque = noMonstruo.activarTrampa())) {
+                noMonstruo.activarEfecto(monstruo);
+                return continuarAtaque;
+            }
+        }
+        return !continuarAtaque;
     }
+
+    public void daniarPuntosDeVidaOponente(Integer danio) {
+        oponente.modificarPuntosDeVida(-danio);
+    }
+
 }

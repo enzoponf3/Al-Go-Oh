@@ -8,4 +8,9 @@ public class Magica extends NoMonstruo {
     public Magica(String nombre, EfectoCarta efecto) {
         super(nombre, efecto);
     }
+
+    @Override
+    public boolean activarTrampa() {
+        return false;
+    }
 }
