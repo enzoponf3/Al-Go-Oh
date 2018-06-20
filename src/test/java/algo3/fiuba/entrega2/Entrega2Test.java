@@ -3,31 +3,30 @@ package algo3.fiuba.entrega2;
 import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
+import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.Trampa;
-import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.cartas.efectos.EfectoWasteland;
-import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.moldes_cartas.DragonBlancoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.DragonDefinitivoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.SevenColoredFish;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
+import algo3.fiuba.cartas.moldes_cartas.Jinzo7;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class Entrega2Test {
 
+    private Juego juego;
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
-    private Juego juego;
 
     @Before
     public void setUp() {
+        juego = new Juego(jugador1, jugador2, tablero);
         jugador1 = new Jugador();
         jugador2 = new Jugador();
         tablero = Tablero.getInstancia();
@@ -127,31 +126,26 @@ public class Entrega2Test {
         Assert.assertFalse(jugador1.cartaEstaEnTablero(fisura));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(fisura));
     }
-
+*/
     @Test
     public void invocoAJinzo7_atacaDirectoALosPuntosDeVidaDelOponente() {
-        Monstruo monstruo = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
-        EfectoCarta efectoJinzo = new EfectoJinzo();
-        Monstruo jinzo = new Monstruo("Jinzo #7", 500, 400, 2, efectoJinzo);
+        Carta jinzo7 = new Jinzo7(jugador1);
 
-        jugador2.colocarCartaEnTablero(monstruo, BocaArriba.getInstancia());
-        jugador1.colocarCartaEnTablero(jinzo, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnTablero(jinzo7, BocaArriba.getInstancia());
 
-        jinzo.atacar(monstruo);
+        jinzo7.activar(juego);
 
         // No se ataca a las cartas en el campo enemigo.
-        Assert.assertTrue(jugador2.cartaEstaEnTablero(monstruo));
-        Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruo));
 
         // Se atacan los puntos de vida del oponente.
-        int vidaFinalEnemigo = 8000 - 500;
-        Assert.assertEquals(vidaFinalEnemigo, (int)jugador2.getPuntosDeVida());
+        Integer vidaFinalEnemigo = 8000 - 500;
+        Assert.assertEquals(vidaFinalEnemigo, jugador2.getPuntosDeVida());
 
-        // Después de atacar Jinzo se mantiene en el tablero.
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(jinzo));
-        Assert.assertFalse(jugador1.cartaEstaEnCementerio(jinzo));
+        // Después de atacar Jinzo7 se mantiene en el tablero.
+        Assert.assertTrue(jugador1.cartaEstaEnTablero(jinzo7));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(jinzo7));
     }
-*/
+/*
     @Test
     public void invocarDragonDefinitivo_seSacrifiacanTresDragonesBlancosOjosAzules() {
         Monstruo dragonASacrificar1 = new DragonBlancoDeOjosAzules(jugador1);
@@ -192,6 +186,7 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(dragonASacrificar3));
 
         // Se debería de haber colocado al dragón definitivo.
+        Assert.assertFalse(dragonDefinitivo.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnTablero(dragonDefinitivo));
     }
 /*

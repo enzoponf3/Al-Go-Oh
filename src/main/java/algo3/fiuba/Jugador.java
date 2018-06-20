@@ -119,4 +119,8 @@ public class Jugador {
     public void setOponente(Jugador oponente) {
         this.oponente = oponente;
     }
+
+    public Jugador getOponente() {
+        return oponente;
+    }
 }

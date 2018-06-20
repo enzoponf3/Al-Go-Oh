@@ -6,11 +6,11 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoJinzo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 
-public class Jinzo extends Monstruo {
+public class Jinzo7 extends Monstruo {
 
-    public Jinzo(Jugador jugador) {
-        super("Jinzo #7", 500, 400, 2, new EfectoNulo());
+    public Jinzo7(Jugador jugador) {
+        super("Jinzo7 #7", 500, 400, 2, new EfectoNulo());
         setJugador(jugador);
-        setEfecto(new EfectoJinzo(null, getAtaque()));
+        setEfecto(new EfectoJinzo(jugador.getOponente(), getAtaque()));
     }
 }
