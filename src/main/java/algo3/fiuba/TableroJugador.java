@@ -61,7 +61,6 @@ public class TableroJugador {
 
     public void removerCartaDelCampo(Carta carta) {
         carta.removerDelCampo(campo);
-        //carta.removerDelCampo(campo);
     }
 
     @Override
