@@ -18,33 +18,35 @@ import java.util.Set;
 
 public class Monstruo extends Carta {
 
-    private Integer ataque;
-    private Integer defensa;
+    private Integer ataqueBase;
+    private Integer defensaBase;
     protected ModoMonstruo modoMonstruo;
     private Estrellas estrellas;
     private Integer sacrificiosParaInvocar;
-    private Set<Modificador> modificadores;
+    private Set<Modificador> modificadoresAtaque;
+    private Set<Modificador> modificadoresDefensa;
 
     public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas, EfectoCarta efecto) {
 
         super(nombre, efecto);
-        this.ataque = ataque;
-        this.defensa = defensa;
+        this.ataqueBase = ataque;
+        this.defensaBase = defensa;
         this.estrellas = EstrellasFactory.obtenerEstrellas(estrellas);
         this.sacrificiosParaInvocar = 0;
-        this.modificadores = new HashSet<>();
+        this.modificadoresAtaque = new HashSet<>();
+        this.modificadoresDefensa = new HashSet<>();
     }
 
     public void atacar(Monstruo otraCarta) {
         estadoCarta.verificarQuePuedeAtacar();
-        ResultadoCombate resultadoCombate = modoMonstruo.atacar(this, otraCarta, ataque);
+        ResultadoCombate resultadoCombate = modoMonstruo.atacar(this, otraCarta, this.getAtaque());
         resultadoCombate.afectarAtacante(this);
     }
 
     public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
         if (!jugador.recibirAtaque(monstruoAtacante)) {
             estadoCarta.recibirAtaque(this);
-            ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, ataque, defensa);
+            ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, this.getAtaque(), this.getDefensa());
             resultadoCombate.afectarDefensor(this);
             return resultadoCombate;
         }
@@ -96,8 +98,8 @@ public class Monstruo extends Carta {
     }
 
     public Integer getAtaque() {
-        Integer ataqueModificado = ataque;
-        for (Modificador modificador : modificadores) {
+        Integer ataqueModificado = ataqueBase;
+        for (Modificador modificador : modificadoresAtaque) {
             ataqueModificado = modificador.modificarAtaque(ataqueModificado);
         }
 
@@ -105,8 +107,8 @@ public class Monstruo extends Carta {
     }
 
     public Integer getDefensa() {
-        Integer defensaModificada = defensa;
-        for (Modificador modificador : modificadores) {
+        Integer defensaModificada = defensaBase;
+        for (Modificador modificador : modificadoresDefensa) {
             defensaModificada = modificador.modificarDefensa(defensaModificada);
         }
 
