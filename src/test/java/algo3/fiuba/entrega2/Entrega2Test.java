@@ -11,6 +11,7 @@ import algo3.fiuba.cartas.efectos.EfectoWasteland;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.moldes_cartas.DragonBlancoDeOjosAzules;
+import algo3.fiuba.cartas.moldes_cartas.DragonDefinitivoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.SevenColoredFish;
 import org.junit.Assert;
 import org.junit.Before;
@@ -176,7 +177,7 @@ public class Entrega2Test {
         jugador1.colocarCartaEnTablero(monstruoASacrificar6, BocaAbajo.getInstancia());
         jugador1.colocarCartaEnTablero(dragonASacrificar3, BocaAbajo.getInstancia(), monstruoASacrificar5, monstruoASacrificar6);
 
-        Monstruo dragonDefinitivo = new Monstruo("Dragón Definitivo", 4500, 3800, 12, new EfectoNulo());
+        Monstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador1);
 
         jugador1.colocarCartaEnTablero(dragonDefinitivo, BocaArriba.getInstancia(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
 

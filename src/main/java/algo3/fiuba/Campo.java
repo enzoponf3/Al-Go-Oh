@@ -43,6 +43,7 @@ public class Campo {
     }
 
     public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
+        carta.setEstado(enJuego);
         zonaNoMonstruos.add(carta);
     }
 

@@ -17,6 +17,7 @@ public class Jugador {
     private Integer puntosDeVida;
     private TableroJugador tableroJugador;
     private List<Carta> mano;
+    private Jugador oponente;
 
     public Jugador() {
         this.puntosDeVida = 8000;
@@ -113,5 +114,9 @@ public class Jugador {
                 ", tableroJugador=" + tableroJugador +
                 ", mano=" + mano +
                 '}';
+    }
+
+    public void setOponente(Jugador oponente) {
+        this.oponente = oponente;
     }
 }

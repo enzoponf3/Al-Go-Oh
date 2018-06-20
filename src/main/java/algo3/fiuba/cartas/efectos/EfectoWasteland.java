@@ -14,11 +14,4 @@ public class EfectoWasteland implements EfectoCarta {
         juego.activarEfecto(this, carta);
     }
 
-    public void aumentarATKPropio(Carta carta) {
-        carta.aumentarATKPropio(200);
-    }
-
-    public void aumentarDEFOponente(Carta carta) {
-        carta.aumentarDEFOponente(300);
-    }
 }

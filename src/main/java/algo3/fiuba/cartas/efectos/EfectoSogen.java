@@ -9,12 +9,4 @@ public class EfectoSogen implements EfectoCarta{
     public void activar(Juego juego, Carta carta) {
         juego.activarEfecto(this, carta);
     }
-
-    public void aumentarDEFPropio(Carta carta) {
-        carta.aumentarDEFPropio(500);
-    }
-
-    public void aumentarATKOponente(Carta carta) {
-        carta.aumentarATKOponente(200);
-    }
 }

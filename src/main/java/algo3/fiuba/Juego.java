@@ -17,13 +17,11 @@ public class Juego {
     }
 
     public void activarEfecto(EfectoWasteland wasteland, Carta carta) {
-        wasteland.aumentarATKPropio(carta);
-        wasteland.aumentarDEFOponente(carta);
+
     }
 
     public void activarEfecto(EfectoSogen sogen, Carta carta) {
-        sogen.aumentarDEFPropio(carta);
-        sogen.aumentarATKOponente(carta);
+
     }
 
     public void activarEfecto(EfectoAgujeroNegro agujeroNegro) {
