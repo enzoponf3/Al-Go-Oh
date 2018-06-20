@@ -93,7 +93,4 @@ public class Monstruo extends Carta {
         return defensa;
     }
 
-    protected void setEfecto(EfectoCarta efecto) {
-        this.efecto = efecto;
-    }
 }

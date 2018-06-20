@@ -3,7 +3,7 @@ package algo3.fiuba.cartas.modo_monstruo;
 import algo3.fiuba.cartas.resultado_combate.EmpataContraModoAtaque;
 import algo3.fiuba.cartas.resultado_combate.GanaContraModoDeAtaque;
 import algo3.fiuba.cartas.resultado_combate.PierdeContraModoDeAtaque;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+//import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

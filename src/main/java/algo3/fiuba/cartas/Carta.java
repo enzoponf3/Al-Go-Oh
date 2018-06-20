@@ -44,11 +44,16 @@ public abstract class Carta {
 
     public void activar(Juego juego) {
         estadoCarta.activar(juego, this,  efecto);
+        jugador.mandarCartaDelTableroAlCementerio(this);
     }
 
     public abstract boolean estaEnTablero(TableroJugador tableroJugador);
 
     public abstract void removerDelCampo(Campo campo);
+
+    protected void setEfecto(EfectoCarta efecto) {
+        this.efecto = efecto;
+    }
 
 
     @Override

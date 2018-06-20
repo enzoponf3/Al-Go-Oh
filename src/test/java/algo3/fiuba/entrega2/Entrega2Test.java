@@ -1,5 +1,6 @@
 package algo3.fiuba.entrega2;
 
+import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Magica;
@@ -13,6 +14,7 @@ import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.moldes_cartas.DragonBlancoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.DragonDefinitivoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.SevenColoredFish;
+import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +24,7 @@ public class Entrega2Test {
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
+    private Juego juego;
 
     @Before
     public void setUp() {
@@ -29,7 +32,8 @@ public class Entrega2Test {
         jugador2 = new Jugador();
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
-        
+
+        juego = new Juego(jugador1, jugador2, tablero);
     }
 
     /*
@@ -77,20 +81,18 @@ public class Entrega2Test {
         Assert.assertEquals(defensaFinalPropio, (int)monstruoPropio.getDefensa());
 
     }
-
+*/
     @Test
     public void activoCartaOllaDelaCodicia_TomoDosCartasDelMazo() {
-        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
-        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, efectoNulo);
-        EfectoCarta efectoOllaDeLaCodicia = new EfectoOllaDeLaCodicia();
-        Magica ollaDeLaCodicia = new Magica("ollaDeLaCodicia", efectoOllaDeLaCodicia);
+        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
+        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
+        Magica ollaDeLaCodicia = new OllaDeLaCodicia(jugador1);
 
         jugador1.agregarCartaAMazo(monstruo1);
         jugador1.agregarCartaAMazo(monstruo2);
         jugador1.colocarCartaEnTablero(ollaDeLaCodicia, BocaArriba.getInstancia());
 
-        ollaDeLaCodicia.activar(tablero);
-
+        ollaDeLaCodicia.activar(juego);
         // Se agregaron dos cartas a la mano del jugador, sacadas del mazo de este.
         Assert.assertTrue(jugador1.cartaEstaEnMano(monstruo1));
         Assert.assertTrue(jugador1.cartaEstaEnMano(monstruo2));
@@ -101,7 +103,7 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(ollaDeLaCodicia));
         Assert.assertFalse(jugador1.cartaEstaEnTablero(ollaDeLaCodicia));
     }
-
+    /*
     @Test
     public void colocoDosCartasMonstruoEnCampoEnemigo_activoFisura_elDeMenorAtaqueEsDestruido() {
         Monstruo monstruoFuerte = new Monstruo("Delfi", 2120, 0, 2, efectoNulo);
