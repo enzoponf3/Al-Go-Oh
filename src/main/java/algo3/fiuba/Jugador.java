@@ -136,4 +136,11 @@ public class Jugador {
         oponente.modificarPuntosDeVida(-danio);
     }
 
+    public void destruirCartaMenorAtaqueEnTableroOponente() {
+        oponente.destruirCartaMenorAtaqueEnTablero();
+    }
+
+    private void destruirCartaMenorAtaqueEnTablero() {
+        tableroJugador.destruirCartaMenorAtaque(this);
+    }
 }

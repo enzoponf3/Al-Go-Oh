@@ -104,4 +104,7 @@ public class TableroJugador {
         return cartaCampo;
     }
 
+    public void destruirCartaMenorAtaque(Jugador jugador) {
+        campo.destruirCartaMenorAtaque(jugador);
+    }
 }

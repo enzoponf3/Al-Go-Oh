@@ -9,6 +9,7 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.Fisura;
 import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.DragonBlancoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.DragonDefinitivoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
@@ -104,31 +105,31 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(ollaDeLaCodicia));
         Assert.assertFalse(jugador1.cartaEstaEnTablero(ollaDeLaCodicia));
     }
-    /*
+
+
     @Test
     public void colocoDosCartasMonstruoEnCampoEnemigo_activoFisura_elDeMenorAtaqueEsDestruido() {
-        Monstruo monstruoFuerte = new Monstruo("Delfi", 2120, 0, 2, efectoNulo);
-        Monstruo monstruoDebil = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
-        EfectoCarta efectoFisura = new EfectoFisura();
-        Magica fisura = new Magica("Fisura", efectoFisura);
+        Monstruo monstruoFuerte = new SevenColoredFish(jugador2);
+        Monstruo monstruoDebil = new Jinzo7(jugador2);
+        Magica fisura = new Fisura(jugador1);
 
         jugador2.colocarCartaEnTablero(monstruoDebil, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(monstruoFuerte, BocaArriba.getInstancia());
         jugador1.colocarCartaEnTablero(fisura, BocaArriba.getInstancia());
 
-        fisura.activarEfecto(tablero);
+        fisura.activarEfecto();
 
         // La carta de menor ataque del enemigo va al cementerio.
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoDebil));
-        Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoDebil));
         Assert.assertTrue(jugador2.cartaEstaEnTablero(monstruoFuerte));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoFuerte));
+        Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoDebil));
+        Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoDebil));
 
         // Después de ser usada la carta mágica va al cementerio.
         Assert.assertFalse(jugador1.cartaEstaEnTablero(fisura));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(fisura));
     }
-*/
+
     @Test
     public void invocoAJinzo7_atacaDirectoALosPuntosDeVidaDelOponente() {
         Carta jinzo7 = new Jinzo7(jugador1);

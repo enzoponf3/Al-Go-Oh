@@ -98,4 +98,17 @@ public class Campo {
         return zonaNoMonstruos;
     }
 
+    public void destruirCartaMenorAtaque(Jugador jugador) {
+        if (zonaMonstruos.isEmpty())
+            return;
+        Monstruo monstruo = zonaMonstruos.stream().reduce(zonaMonstruos.get(0), (x, acc) -> {
+            System.out.println(x + "  vs  " + acc);
+            if (x.getAtaque() < acc.getAtaque())
+                return x;
+            return acc;
+        });
+
+        System.out.println(monstruo);
+        jugador.mandarCartaDelTableroAlCementerio(monstruo);
+    }
 }
