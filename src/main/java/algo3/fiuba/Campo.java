@@ -40,6 +40,7 @@ public class Campo {
     public void colocarCarta(Monstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         carta.setEstado(enJuego);
         zonaMonstruos.add(carta);
+        System.out.printf("a");
     }
 
     public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
@@ -47,11 +48,11 @@ public class Campo {
         zonaNoMonstruos.add(carta);
     }
 
-    public boolean cartaSeEncuentaEnCampo(Monstruo carta) {
+    public boolean cartaEstaEnCampo(Monstruo carta) {
         return zonaMonstruos.contains(carta);
     }
 
-    public boolean cartaSeEncuentaEnCampo(NoMonstruo carta) {
+    public boolean cartaEstaEnCampo(NoMonstruo carta) {
         return zonaNoMonstruos.contains(carta);
     }
 

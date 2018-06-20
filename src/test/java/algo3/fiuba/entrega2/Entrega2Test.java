@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
+import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.moldes_cartas.DragonBlancoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.DragonDefinitivoDeOjosAzules;
@@ -31,8 +32,6 @@ public class Entrega2Test {
         jugador2 = new Jugador();
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
-
-        juego = new Juego(jugador1, jugador2, tablero);
     }
 
     /*
@@ -68,7 +67,7 @@ public class Entrega2Test {
         jugador1.colocarCartaEnTablero(monstruoPropio, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(monstruoOponente, BocaArriba.getInstancia());
 
-        // Ni bien se coloca una carta de campo esta se debe de activar.
+        // Ni bien se coloca una carta de campo esta se debe de activarEfecto.
         jugador1.colocarCartaEnTablero(sogen, BocaArriba.getInstancia());
 
         // Se suma 200 al ataque de las cartas en el campo del oponente.
@@ -91,11 +90,13 @@ public class Entrega2Test {
         jugador1.agregarCartaAMazo(monstruo2);
         jugador1.colocarCartaEnTablero(ollaDeLaCodicia, BocaArriba.getInstancia());
 
-        ollaDeLaCodicia.activar(juego);
+        ollaDeLaCodicia.activarEfecto(juego);
         // Se agregaron dos cartas a la mano del jugador, sacadas del mazo de este.
         Assert.assertTrue(jugador1.cartaEstaEnMano(monstruo1));
         Assert.assertTrue(jugador1.cartaEstaEnMano(monstruo2));
-        Assert.assertEquals(2, (int)jugador1.cantidadCartas());
+
+        Integer cartasEnMano = 2;
+        Assert.assertEquals(cartasEnMano, jugador1.cantidadCartasEnMano());
         Assert.assertEquals(0, jugador1.cantidadCartasEnMazo());
 
         // Luego de ser usada la carta mágica va al cementerio.
@@ -114,7 +115,7 @@ public class Entrega2Test {
         jugador2.colocarCartaEnTablero(monstruoFuerte, BocaArriba.getInstancia());
         jugador1.colocarCartaEnTablero(fisura, BocaArriba.getInstancia());
 
-        fisura.activar(tablero);
+        fisura.activarEfecto(tablero);
 
         // La carta de menor ataque del enemigo va al cementerio.
         Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoDebil));
@@ -133,7 +134,7 @@ public class Entrega2Test {
 
         jugador1.colocarCartaEnTablero(jinzo7, BocaArriba.getInstancia());
 
-        jinzo7.activar(juego);
+        jinzo7.activarEfecto(juego);
 
         // No se ataca a las cartas en el campo enemigo.
 
@@ -145,7 +146,7 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnTablero(jinzo7));
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(jinzo7));
     }
-/*
+
     @Test
     public void invocarDragonDefinitivo_seSacrifiacanTresDragonesBlancosOjosAzules() {
         Monstruo dragonASacrificar1 = new DragonBlancoDeOjosAzules(jugador1);
@@ -173,7 +174,7 @@ public class Entrega2Test {
         jugador1.colocarCartaEnTablero(monstruoASacrificar6, BocaAbajo.getInstancia());
         jugador1.colocarCartaEnTablero(dragonASacrificar3, BocaAbajo.getInstancia(), monstruoASacrificar5, monstruoASacrificar6);
 
-        Monstruo dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador1);
+        Carta dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador1);
 
         jugador1.colocarCartaEnTablero(dragonDefinitivo, BocaArriba.getInstancia(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
 
@@ -186,8 +187,8 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(dragonASacrificar3));
 
         // Se debería de haber colocado al dragón definitivo.
-        Assert.assertFalse(dragonDefinitivo.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnTablero(dragonDefinitivo));
+        Assert.assertTrue(dragonDefinitivo.estaEnJuego());
     }
 /*
     @Test

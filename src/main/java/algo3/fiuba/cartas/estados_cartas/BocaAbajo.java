@@ -23,8 +23,8 @@ public class BocaAbajo extends EnJuego {
     }
 
     @Override
-    public void activar(Juego juego, Carta carta, EfectoCarta efecto) {
-        throw new InhabilitadaParaActivarseExcepcion("No se puede activar efecto de una carta boca abajo");
+    public void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto) {
+        throw new InhabilitadaParaActivarseExcepcion("No se puede activarEfecto efecto de una carta boca abajo");
     }
 
     @Override

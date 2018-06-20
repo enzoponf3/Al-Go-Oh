@@ -13,7 +13,7 @@ public abstract class FueraDeJuego implements EstadoCarta {
     }
 
     @Override
-    public void activar(Juego juego, Carta carta, EfectoCarta efecto) {
+    public void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto) {
         // no hace nada.
     }
     

@@ -79,8 +79,8 @@ public class Entrega1OficialTest {
         Magica cartaMagica = new Magica("agujero negro", efectoCarta);
 
         cartaMagica.pasarAModoJuego(BocaAbajo.getInstancia());
-        cartaMagica.activar(juego);
-        // Como está boca abajo no puede activar el efecto y lanza error.
+        cartaMagica.activarEfecto(juego);
+        // Como está boca abajo no puede activarEfecto el efecto y lanza error.
     }
 
     @Test
@@ -245,7 +245,7 @@ public class Entrega1OficialTest {
         Assert.assertEquals(Integer.valueOf(2), tablero.monstruosEnJuego());
 
 
-        agujeroNegro.activar(juego);
+        agujeroNegro.activarEfecto(juego);
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
 
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());

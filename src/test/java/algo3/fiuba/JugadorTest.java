@@ -27,7 +27,7 @@ public class JugadorTest {
 
     @Test
     public void elJugadorRecienCreadoNoTieneCartas() {
-        Assert.assertEquals(jugador.cantidadCartas(), Integer.valueOf(0));
+        Assert.assertEquals(jugador.cantidadCartasEnMano(), Integer.valueOf(0));
     }
 
     @Test
@@ -73,11 +73,11 @@ public class JugadorTest {
 
     @Test
     public void agregoUnaCartaALaMano_laCartaEstaEnLaMano() {
-        Integer cantidadInicialCartas = jugador.cantidadCartas() + 1;
+        Integer cantidadInicialCartas = jugador.cantidadCartasEnMano() + 1;
         Carta carta = new Monstruo("m", 1000, 1000, 1, new EfectoNulo());
         jugador.agregarCartaAMazo(carta);
 
         jugador.tomarCartaDelMazo();
-        Assert.assertEquals(jugador.cantidadCartas(), cantidadInicialCartas);
+        Assert.assertEquals(jugador.cantidadCartasEnMano(), cantidadInicialCartas);
     }
 }

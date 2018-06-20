@@ -42,9 +42,9 @@ public abstract class Carta {
         this.jugador = jugador;
     }
 
-    public void activar(Juego juego) {
-        estadoCarta.activar(juego, this,  efecto);
-        jugador.mandarCartaDelTableroAlCementerio(this);
+    public void activarEfecto(Juego juego) {
+        estadoCarta.activarEfecto(juego, this,  efecto);
+        // jugador.mandarCartaDelTableroAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
     }
 
     public abstract boolean estaEnTablero(TableroJugador tableroJugador);

@@ -20,7 +20,7 @@ public class MagicaEntrega1Test {
         Magica carta = new Magica("agujero negro", efectoCarta);
         carta.pasarAModoJuego(BocaAbajo.getInstancia());
         Tablero tablero = new Tablero();
-        carta.activar(tablero);
+        carta.activarEfecto(tablero);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class MagicaEntrega1Test {
         Jugador jugador2 = new Jugador();
         tablero.inicializar(jugador1, jugador2);
         jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
-        carta.activar(tablero);
+        carta.activarEfecto(tablero);
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
     }
 
@@ -51,7 +51,7 @@ public class MagicaEntrega1Test {
 
         jugador1.colocarCartaEnTablero(agujeroNegro, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(monstruoEnemigo, BocaArriba.getInstancia());
-        agujeroNegro.activar(tablero);
+        agujeroNegro.activarEfecto(tablero);
         Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
     }
     */

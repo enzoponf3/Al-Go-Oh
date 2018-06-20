@@ -12,7 +12,7 @@ public interface EstadoCarta {
 
     void verificarQuePuedeAtacar();
 
-    void activar(Juego juego, Carta carta, EfectoCarta efecto);
+    void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto);
 
     void recibirAtaque(Monstruo carta);
 

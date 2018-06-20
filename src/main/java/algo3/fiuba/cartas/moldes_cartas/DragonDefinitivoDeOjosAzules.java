@@ -31,7 +31,7 @@ public class DragonDefinitivoDeOjosAzules extends Monstruo {
         for (Monstruo sacrificio : sacrificios) {
             sacrificioValido &= sacrificio.equals(new DragonBlancoDeOjosAzules(jugador));
         }
-        System.out.println("sadas");
+
         return sacrificioValido;
     }
 }

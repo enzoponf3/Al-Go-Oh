@@ -22,7 +22,7 @@ public class BocaArriba extends EnJuego {
     }
 
     @Override
-    public void activar(Juego juego, Carta carta, EfectoCarta efecto) {
+    public void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto) {
         efecto.activar(juego, carta);
     }
 

@@ -27,7 +27,7 @@ public class TrampaEntrega1Test {
         Jugador jugador2 = new Jugador();
         tablero.inicializar(jugador1, jugador2);
         jugador1.colocarCartaEnTablero(trampa, BocaAbajo.getInstancia());
-        trampa.activar(tablero);
+        trampa.activarEfecto(tablero);
     }
 */
 }

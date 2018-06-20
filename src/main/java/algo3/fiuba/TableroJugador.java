@@ -35,11 +35,11 @@ public class TableroJugador {
     }
 
     public boolean cartaEstaEnTablero(Monstruo carta) {
-        return this.campo.cartaSeEncuentaEnCampo(carta);
+        return this.campo.cartaEstaEnCampo(carta);
     }
 
     public boolean cartaEstaEnTablero(NoMonstruo carta) {
-        return this.campo.cartaSeEncuentaEnCampo(carta);
+        return this.campo.cartaEstaEnCampo(carta);
     }
 
 

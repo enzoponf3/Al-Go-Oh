@@ -36,7 +36,7 @@ public class Jugador {
         mano.add(tableroJugador.tomarCartaDelMazo());
     }
 
-    public Integer cantidadCartas() {
+    public Integer cantidadCartasEnMano() {
         return mano.size();
     }
 

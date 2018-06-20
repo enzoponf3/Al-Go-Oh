@@ -19,7 +19,7 @@ public class EstadoNoInicializado implements EstadoCarta {
     }
 
     @Override
-    public void activar(Juego juego, Carta carta, EfectoCarta efecto) {
+    public void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto) {
         throw new RuntimeException("La carta nunca se ha inicializado en el duelo.");
     }
 
