@@ -4,9 +4,12 @@ import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
+import algo3.fiuba.cartas.efectos.EfectoSogen;
+import algo3.fiuba.cartas.efectos.EfectoWasteland;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.Fisura;
@@ -36,11 +39,11 @@ public class Entrega2Test {
         tablero.inicializar(jugador1, jugador2);
     }
 
-    /*
+/*
     @Test
     public void colocoMonstruoACadaLadoDeCampo_activoCartaCampoWasteland_aumenta200ATKPropio_aumenta300DEFOponente() {
-        Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, efectoNulo);
-        Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, efectoNulo);
+        Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, new EfectoNulo());
+        Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, new EfectoNulo());
 
         CartaCampo wasteland = new CartaCampo("Wasteland", new EfectoWasteland());
 
@@ -52,18 +55,28 @@ public class Entrega2Test {
 
         // Se suma 300 a la defensa del oponente.
         int defensaFinalOponente = 300;
-        Assert.assertEquals(defensaFinalOponente, monstruo2.getDefensa());
+        Assert.assertEquals(defensaFinalOponente, (int)monstruo2.getDefensa());
 
         // Se suma 200 al ataque propio.
         int ataqueFinalPropio = 200;
-        Assert.assertEquals(ataqueFinalPropio, monstruo1.getAtaque());
+        Assert.assertEquals(ataqueFinalPropio, (int)monstruo1.getAtaque());
+
+        Monstruo monstruo3 = new Monstruo("Monstruo 3", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruo4 = new Monstruo("Monstruo 4", 0, 0, 1, new EfectoNulo());
+
+        jugador1.colocarCartaEnTablero(monstruo3, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnTablero(monstruo4, BocaArriba.getInstancia());
+
+        // El efecto de las cartas de campo se mantienen activas, aún para cartas agregadas después de colocar estas.
+        Assert.assertEquals(defensaFinalOponente, (int) monstruo4.getDefensa());
+        Assert.assertEquals(ataqueFinalPropio, (int)monstruo3.getAtaque());
     }
 
 
     @Test
     public void colocoMounstruoDeCadaLadoDeCampo_activoCartaCampoSogen_aumenta500DEFPropio_aumenta200ATKOponente() {
-        Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, efectoNulo);
-        Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, efectoNulo);
+        Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         CartaCampo sogen = new CartaCampo("Sogen", new EfectoSogen);
 
         jugador1.colocarCartaEnTablero(monstruoPropio, BocaArriba.getInstancia());
@@ -79,6 +92,16 @@ public class Entrega2Test {
         // Se suma 500 a la defenza de las cartas en el campo propio.
         int defensaFinalPropio = 500;
         Assert.assertEquals(defensaFinalPropio, (int)monstruoPropio.getDefensa());
+
+        Monstruo monstruo3 = new Monstruo("Monstruo 3", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruo4 = new Monstruo("Monstruo 4", 0, 0, 1, new EfectoNulo());
+
+        jugador1.colocarCartaEnTablero(monstruo3, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnTablero(monstruo4, BocaArriba.getInstancia());
+
+        // El efecto de las cartas de campo se mantienen activas, aún para cartas agregadas después de colocar estas.
+        Assert.assertEquals(ataqueFinalOponente, (int) monstruo4.getAtaque());
+        Assert.assertEquals(defensaFinalPropio, (int)monstruo3.getDefensa());
 
     }
 */
