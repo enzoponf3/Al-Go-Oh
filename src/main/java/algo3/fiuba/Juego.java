@@ -2,6 +2,7 @@ package algo3.fiuba;
 
 import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.efectos.*;
+import algo3.fiuba.cartas.moldes_cartas.Exodia;
 
 public class Juego {
 
@@ -15,6 +16,7 @@ public class Juego {
         this.tablero = tablero;
     }
 
+
     public  void activarEfecto(EfectoWasteland wasteland, CartaCampo carta) {
         //wasteland.aumentarATKPropio();
     }
@@ -27,4 +29,11 @@ public class Juego {
         ollaDeLaCodicia.robar2Cartas()
     }
     */
+
+    public void activarEfecto(EfectoReinforcements refuerzos) {
+        refuerzos.
+    }
+
+
+
 }

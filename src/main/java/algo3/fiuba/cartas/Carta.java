@@ -52,7 +52,7 @@ public abstract class Carta {
     public abstract void removerDelCampo(Campo campo);
 
     protected void setEfecto(EfectoCarta efecto) {
-        this.efecto =efecto;
+        this.efecto = efecto;
     }
 
     @Override

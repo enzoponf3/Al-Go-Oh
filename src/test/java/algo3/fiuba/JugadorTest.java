@@ -3,6 +3,7 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
+import algo3.fiuba.cartas.moldes_cartas.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,7 +55,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void leSacoLaMismaCantidadPuntosDeVidaDeLosQueTiene_elJugadorMuere() {
+    public void leSacoLaMismaCantidadPuntosDeVidaDeLosQueTiene_elJugadorPierde() {
         Integer puntosASacar = 8000;
         jugador.modificarPuntosDeVida(-puntosASacar);
 
@@ -80,4 +81,44 @@ public class JugadorTest {
         jugador.tomarCartaDelMazo();
         Assert.assertEquals(jugador.cantidadCartas(), cantidadInicialCartas);
     }
+
+ /*   @Test
+    public void jugadorConsigueAExodia() {
+
+        Juego
+        Monstruo parteExodia1 = new PiernaDerechaExodia(jugador);
+        Monstruo parteExodia2 = new PiernaIzquierdaExodia(jugador);
+        Monstruo parteExodia3 = new CabezaExodia(jugador);
+        Monstruo parteExodia4 = new BrazoDerechoExodia(jugador);
+        Monstruo parteExodia5 = new BrazoIzquierdoExodia(jugador);
+
+        Integer cant = 5;
+
+        jugador.agregarCartaAMano(parteExodia1);
+        jugador.agregarCartaAMano(parteExodia2);
+        jugador.agregarCartaAMano(parteExodia3);
+        jugador.agregarCartaAMano(parteExodia4);
+        jugador.agregarCartaAMano(parteExodia5);
+
+        jugador.cartaEstaEnMano(parteExodia5);
+        parteExodia5.activar(new Juego(jugador, jugador, tablero));
+        //Assert.assertEquals(jugador.cantidadCartas(), cant);
+    }
+   /*
+    test de mazo vacio del jugador... ver inicializar mazo apenas empieza el juego o cargarlo...
+    @Test
+    public void extraerTodasLasCartasDelMazo_elJugadorPierde() {
+
+        //Agrego dos cartas iguales al mazo
+        Carta carta = new Monstruo("m", 1000, 1000, 1, new EfectoNulo());
+        jugador.agregarCartaAMazo(carta);
+        jugador.agregarCartaAMazo(carta);
+
+        //Las tomo
+        jugador.tomarCartaDelMazo();
+        jugador.tomarCartaDelMazo();
+
+        //Sin cartas, el jugador esta fuera de juego
+        Assert.assertFalse(jugador.estaEnJuego());
+    }*/
 }
