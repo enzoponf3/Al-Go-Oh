@@ -31,6 +31,11 @@ public class TableroJugador {
         return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
     }
 
+    public boolean cartaEstaEnTablero(Carta carta) {
+        return this.campo.cartaEstaEnCampo(carta);
+    }
+
+    /*
     public boolean cartaEstaEnTablero(Monstruo carta) {
         return this.campo.cartaEstaEnCampo(carta);
     }
@@ -38,6 +43,11 @@ public class TableroJugador {
     public boolean cartaEstaEnTablero(NoMonstruo carta) {
         return this.campo.cartaEstaEnCampo(carta);
     }
+
+    public boolean cartaEstaEnTablero(CartaCampo cartaCampo) {
+        return this.campo.cartaEstaEnCampo(cartaCampo);
+    }
+*/
 
 
     public void agregarCartaAlMazo(Carta carta) {
@@ -102,7 +112,4 @@ public class TableroJugador {
         campo.destruirCartaMenorAtaque(jugador);
     }
 
-    public boolean cartaEstaEnTablero(CartaCampo cartaCampo) {
-        return this.campo.cartaEstaEnTablero(cartaCampo);
-    }
 }

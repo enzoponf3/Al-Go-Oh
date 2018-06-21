@@ -1,10 +1,8 @@
 package algo3.fiuba.cartas;
 
 import algo3.fiuba.Campo;
-import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estado_en_turno.NoUsadaEnTurno;
-import algo3.fiuba.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.cartas.estrellas.Estrellas;
 import algo3.fiuba.cartas.estrellas.EstrellasFactory;
 import algo3.fiuba.cartas.modificadores.Modificador;
@@ -71,8 +69,8 @@ public class Monstruo extends Carta {
     }
 
     @Override
-    public boolean estaEnTablero(TableroJugador tableroJugador) {
-        return tableroJugador.cartaEstaEnTablero(this);
+    public boolean estaEnTablero(Campo campo) {
+        return campo.cartaEstaEnCampo(this);
     }
 
     public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {

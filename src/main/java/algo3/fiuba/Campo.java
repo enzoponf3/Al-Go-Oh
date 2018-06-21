@@ -64,6 +64,10 @@ public class Campo {
         cartaCampo = carta;
     }
 
+    public boolean cartaEstaEnCampo(Carta carta) {
+        return carta.estaEnTablero(this);
+    }
+
     public boolean cartaEstaEnCampo(Monstruo carta) {
         return zonaMonstruos.contains(carta);
     }
@@ -71,6 +75,12 @@ public class Campo {
     public boolean cartaEstaEnCampo(NoMonstruo carta) {
         return zonaNoMonstruos.contains(carta);
     }
+
+    // Eh..... ?
+    public boolean cartaEstaEnCampo(CartaCampo cartaCampo) {
+        return this.cartaCampo == cartaCampo;
+    }
+
 
     public void activarEfectoSobreElementos(EfectoCarta efecto) {
         // sin funcionalidad por el momento.
@@ -131,8 +141,4 @@ public class Campo {
         return cartaCampo;
     }
 
-    // Eh..... ?
-    public boolean cartaEstaEnTablero(CartaCampo cartaCampo) {
-        return this.cartaCampo == cartaCampo;
-    }
 }

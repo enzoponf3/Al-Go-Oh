@@ -231,11 +231,11 @@ public class Entrega2Test {
 
         // El monstruo atacante fue destruído.
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoAtacante));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoAtacante));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoAtacante));
         Assert.assertEquals(puntosInicialesDeVida, (int)jugador2.getPuntosDeVida());
 
         // El insecto come-hombres sigue vivo y jugador no perdió vida.
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(insectoComeHombres));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
         Assert.assertEquals(puntosInicialesDeVida, (int)jugador1.getPuntosDeVida());
     }
@@ -286,7 +286,7 @@ public class Entrega2Test {
 
         // Muere el monstruo atacante.
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoAtacante));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoAtacante));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoAtacante));
 
         // Se le resta a los puntos de vida del atacante la diferencia de ataques.
         int vidaFinalAtacante = 8000 - (500 - 400);
@@ -298,7 +298,7 @@ public class Entrega2Test {
 
         // La carta Trampa después de activada va al cementerio.
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(reinforcement));
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(reinforcement));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(reinforcement));
     }
 
     @Test

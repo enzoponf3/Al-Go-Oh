@@ -2,7 +2,6 @@ package algo3.fiuba.cartas;
 
 import algo3.fiuba.Campo;
 import algo3.fiuba.Juego;
-import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 
@@ -13,8 +12,8 @@ public abstract class NoMonstruo extends Carta {
     }
 
     @Override
-    public boolean estaEnTablero(TableroJugador tableroJugador) {
-        return tableroJugador.cartaEstaEnTablero(this);
+    public boolean estaEnTablero(Campo campo) {
+        return campo.cartaEstaEnCampo(this);
     }
 
     @Override

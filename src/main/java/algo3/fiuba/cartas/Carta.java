@@ -67,7 +67,7 @@ public abstract class Carta implements Observer {
     }
 
 
-    public abstract boolean estaEnTablero(TableroJugador tableroJugador);
+    public abstract boolean estaEnTablero(Campo campo);
 
     public abstract void removerDelCampo(Campo campo);
 

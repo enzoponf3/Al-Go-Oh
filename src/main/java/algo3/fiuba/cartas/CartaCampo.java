@@ -21,10 +21,16 @@ public class CartaCampo extends Carta {
     }
 
     @Override
+    public boolean estaEnTablero(Campo campo) {
+        return campo.cartaEstaEnCampo(this);
+    }
+
+    /*
+    @Override
     public boolean estaEnTablero(TableroJugador tableroJugador) {
         return tableroJugador.cartaEstaEnTablero(this);
     }
-
+*/
     @Override
     public void removerDelCampo(Campo campo) {
 
