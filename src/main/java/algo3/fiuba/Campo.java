@@ -1,6 +1,7 @@
 package algo3.fiuba;
 
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
@@ -11,9 +12,11 @@ import java.util.List;
 
 public class Campo {
 
-    List<Monstruo> zonaMonstruos;
-    List<NoMonstruo> zonaNoMonstruos;
-    CartaCampo cartaCampo;
+    private List<Monstruo> zonaMonstruos;
+    private List<NoMonstruo> zonaNoMonstruos;
+    private CartaCampo cartaCampo;
+
+    private static final Integer LIMITE_CARTAS_EN_ZONA = 5;
 
     public Campo() {
         zonaMonstruos = new LinkedList<>();
@@ -38,12 +41,19 @@ public class Campo {
     }
 
     public void colocarCarta(Monstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
+        if (zonaMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
+            throw new RuntimeException("No se puede tener más de 5 monstruos en el tablero.");
+
+
         carta.setEstado(enJuego);
         zonaMonstruos.add(carta);
-        System.out.printf("a");
     }
 
     public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
+        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
+            throw new RuntimeException("No se puede tener más de 5 no monstruos en el tablero.");
+
+
         carta.setEstado(enJuego);
         zonaNoMonstruos.add(carta);
     }
@@ -109,13 +119,11 @@ public class Campo {
         if (zonaMonstruos.isEmpty())
             return;
         Monstruo monstruo = zonaMonstruos.stream().reduce(zonaMonstruos.get(0), (x, acc) -> {
-            System.out.println(x + "  vs  " + acc);
             if (x.getAtaque() < acc.getAtaque())
                 return x;
             return acc;
         });
 
-        System.out.println(monstruo);
         jugador.mandarCartaDelTableroAlCementerio(monstruo);
     }
 
