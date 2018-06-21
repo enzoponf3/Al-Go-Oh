@@ -13,13 +13,11 @@ import java.util.Stack;
 
 public class TableroJugador {
 
-    public CartaCampo cartaCampo;
     public Stack<Carta> mazo;
     private Campo campo;
     public List<Carta> cementerio;
 
     public TableroJugador() {
-
         this.campo = new Campo();
         this.cementerio = new LinkedList<>();
         this.mazo = new Stack<>();
@@ -28,7 +26,6 @@ public class TableroJugador {
     public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
     }
-
 
     public Carta tomarCartaDelMazo() {
         return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
@@ -66,7 +63,6 @@ public class TableroJugador {
     @Override
     public String toString() {
         return "TableroJugador{" +
-                "cartaCampo=" + cartaCampo +
                 ", mazo=" + mazo +
                 ", campo=" + campo +
                 ", cementerio=" + cementerio +
@@ -74,7 +70,6 @@ public class TableroJugador {
     }
 
     public void inicializar() {
-        cartaCampo = null;
         cementerio = new LinkedList<>();
         campo.reiniciar();
     }
@@ -100,10 +95,14 @@ public class TableroJugador {
     }
 
     public CartaCampo getCartaCampo() {
-        return cartaCampo;
+        return campo.getCartaCampo();
     }
 
     public void destruirCartaMenorAtaque(Jugador jugador) {
         campo.destruirCartaMenorAtaque(jugador);
+    }
+
+    public boolean cartaEstaEnTablero(CartaCampo cartaCampo) {
+        return this.campo.cartaEstaEnTablero(cartaCampo);
     }
 }
