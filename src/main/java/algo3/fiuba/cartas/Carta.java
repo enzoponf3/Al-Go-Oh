@@ -2,21 +2,30 @@ package algo3.fiuba.cartas;
 
 import algo3.fiuba.*;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.cartas.estado_en_turno.EstadoEnTurno;
 import algo3.fiuba.cartas.estados_cartas.*;
 
 import java.util.Objects;
+import java.util.Observable;
+import java.util.Observer;
 
-public abstract class Carta {
+public abstract class Carta implements Observer {
 
     private String nombre;
     protected EstadoCarta estadoCarta;
     protected Jugador jugador;
     protected EfectoCarta efecto;
+    protected EstadoEnTurno estadoEnTurno;
 
     public Carta(String nombre, EfectoCarta efecto) {
         this.nombre = nombre;
         this.estadoCarta = new EstadoNoInicializado();
         this.efecto = efecto;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        estadoEnTurno = estadoEnTurno.pasarTurno();
     }
 
     public abstract void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios);

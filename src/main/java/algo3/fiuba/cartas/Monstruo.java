@@ -3,6 +3,8 @@ package algo3.fiuba.cartas;
 import algo3.fiuba.Campo;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
+import algo3.fiuba.cartas.estado_en_turno.NoUsadaEnTurno;
+import algo3.fiuba.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.cartas.estrellas.Estrellas;
 import algo3.fiuba.cartas.estrellas.EstrellasFactory;
 import algo3.fiuba.cartas.modificadores.Modificador;
@@ -33,12 +35,14 @@ public class Monstruo extends Carta {
         this.defensaBase = defensa;
         this.estrellas = EstrellasFactory.obtenerEstrellas(estrellas);
         this.sacrificiosParaInvocar = 0;
+        this.estadoEnTurno = new NoUsadaEnTurno(); // está solo para que pasen los tests
         this.modificadoresAtaque = new HashSet<>();
         this.modificadoresDefensa = new HashSet<>();
     }
 
     public void atacar(Monstruo otraCarta) {
         estadoCarta.verificarQuePuedeAtacar();
+        estadoEnTurno = estadoEnTurno.verificarQueSePuedeUsar();
         ResultadoCombate resultadoCombate = modoMonstruo.atacar(this, otraCarta, this.getAtaque());
         resultadoCombate.afectarAtacante(this);
     }
@@ -78,6 +82,7 @@ public class Monstruo extends Carta {
         this.realizarSacrificios(campo, sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();
         estadoCarta = tipoEnJuego;
+        estadoEnTurno = new NoUsadaEnTurno();
         campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
 
