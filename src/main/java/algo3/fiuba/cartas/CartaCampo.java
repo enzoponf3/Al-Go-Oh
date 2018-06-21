@@ -13,12 +13,16 @@ public class CartaCampo extends Carta {
 
     @Override
     public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        if (sacrificios.length != 0)
+            throw new RuntimeException(String.format("No se pueden hacer sacrificios para invocar esta carta."));
 
+        estadoCarta = tipoEnJuego;
+        campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
 
     @Override
     public boolean estaEnTablero(TableroJugador tableroJugador) {
-        return false;
+        return tableroJugador.cartaEstaEnTablero(this);
     }
 
     @Override

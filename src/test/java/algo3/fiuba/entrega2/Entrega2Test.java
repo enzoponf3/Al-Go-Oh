@@ -39,7 +39,7 @@ public class Entrega2Test {
         tablero.inicializar(jugador1, jugador2);
     }
 
-/*
+
     @Test
     public void colocoMonstruoACadaLadoDeCampo_activoCartaCampoWasteland_aumenta200ATKPropio_aumenta300DEFOponente() {
         Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, new EfectoNulo());
@@ -72,7 +72,7 @@ public class Entrega2Test {
         Assert.assertEquals(ataqueFinalPropio, (int)monstruo3.getAtaque());
     }
 
-
+/*
     @Test
     public void colocoMounstruoDeCadaLadoDeCampo_activoCartaCampoSogen_aumenta500DEFPropio_aumenta200ATKOponente() {
         Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, new EfectoNulo());

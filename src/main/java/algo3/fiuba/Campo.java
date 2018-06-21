@@ -14,10 +14,12 @@ public class Campo {
 
     List<Monstruo> zonaMonstruos;
     List<NoMonstruo> zonaNoMonstruos;
+    CartaCampo cartaCampo;
 
     public Campo() {
         zonaMonstruos = new LinkedList<>();
         zonaNoMonstruos = new LinkedList<>();
+        cartaCampo = null;
     }
 
     public boolean estaVacio() {
@@ -36,7 +38,6 @@ public class Campo {
         carta.colocarEnCampo(this, enJuego, sacrificios);
     }
 
-
     public void colocarCarta(Monstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         carta.setEstado(enJuego);
         zonaMonstruos.add(carta);
@@ -48,6 +49,12 @@ public class Campo {
         zonaNoMonstruos.add(carta);
     }
 
+    public void colocarCarta(CartaCampo carta, EnJuego enJuego, Monstruo... sacrificios) {
+        // Debería de verificar si ya había otra carta de campo.
+        carta.setEstado(enJuego);
+        cartaCampo = carta;
+    }
+
     public boolean cartaEstaEnCampo(Monstruo carta) {
         return zonaMonstruos.contains(carta);
     }
@@ -55,7 +62,6 @@ public class Campo {
     public boolean cartaEstaEnCampo(NoMonstruo carta) {
         return zonaNoMonstruos.contains(carta);
     }
-
 
     public void activarEfectoSobreElementos(EfectoCarta efecto) {
         // sin funcionalidad por el momento.
@@ -74,12 +80,14 @@ public class Campo {
         return "Campo{" +
                 "zonaMonstruos=" + zonaMonstruos +
                 ", zonaNoMonstruos=" + zonaNoMonstruos +
+                ", cartaCampo=" + cartaCampo +
                 '}';
     }
 
     public void reiniciar() {
         zonaMonstruos = new LinkedList<>();
         zonaNoMonstruos = new LinkedList<>();
+        cartaCampo = null;
     }
 
     public void matarMonstruos() {
@@ -110,5 +118,14 @@ public class Campo {
 
         System.out.println(monstruo);
         jugador.mandarCartaDelTableroAlCementerio(monstruo);
+    }
+
+    public CartaCampo getCartaCampo() {
+        return cartaCampo;
+    }
+
+    // Eh..... ?
+    public boolean cartaEstaEnTablero(CartaCampo cartaCampo) {
+        return this.cartaCampo == cartaCampo;
     }
 }
