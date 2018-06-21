@@ -51,7 +51,6 @@ public class Jugador {
 
 
     public boolean cartaEstaEnTablero(Carta carta) {
-        //return carta.estaEnTablero(tableroJugador);
         return tableroJugador.cartaEstaEnTablero(carta);
     }
 

@@ -112,7 +112,7 @@ public class Campo {
     public void matarMonstruos() {
         for(Monstruo monstruo: zonaMonstruos) {
            monstruo.descartar();
-           monstruo.removerDelCampo(this);
+           zonaMonstruos.remove(monstruo);
         }
     }
 
