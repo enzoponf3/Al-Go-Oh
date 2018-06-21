@@ -15,18 +15,6 @@ public class Trampa extends NoMonstruo {
     }
 
     @Override
-    public void activarEfecto(Juego juego) {
-        estadoCarta.activarEfecto(juego, this,  efecto);
-        jugador.mandarCartaDelTableroAlCementerio(this);
-    }
-
-    @Override
-    public void activarEfecto() {
-        estadoCarta.activarEfecto(this,  efecto);
-        jugador.mandarCartaDelTableroAlCementerio(this);
-    }
-
-    @Override
     public void activarEfecto(Monstruo atacante) {
         estadoCarta.activarEfecto(this,  atacante, efecto);
         jugador.mandarCartaDelTableroAlCementerio(this);
