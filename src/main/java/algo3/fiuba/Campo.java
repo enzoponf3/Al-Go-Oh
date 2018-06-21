@@ -84,6 +84,7 @@ public class Campo {
     public void matarMonstruos() {
         // Se deberían de agregar al cementerio también...
         for(Monstruo monstruo: zonaMonstruos) {
+           monstruo.descartar();
            monstruo.removerDelCampo(this);
         }
     }

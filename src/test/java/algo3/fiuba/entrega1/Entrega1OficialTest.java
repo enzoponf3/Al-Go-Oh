@@ -246,11 +246,13 @@ public class Entrega1OficialTest {
 
 
         agujeroNegro.activarEfecto(juego);
-        Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
 
         Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
+
         Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoJugador1));
+        Assert.assertTrue(jugador1.cartaEstaEnCementerio(monstruoJugador1));
         Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoJugador2));
+        Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoJugador2));
     }
 
     @Test
