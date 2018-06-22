@@ -19,8 +19,8 @@ public class JugadorTest {
 
 
     @Test
-    public void elJugadorRecienCreadoEstaEnJuego() {
-        Assert.assertTrue(jugador.estaEnJuego());
+    public void elJugadorRecienCreadoEstaVivo() {
+        Assert.assertTrue(jugador.estaVivo());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class JugadorTest {
         Integer puntosASacar = 7999;
         jugador.modificarPuntosDeVida(-puntosASacar);
 
-        Assert.assertTrue(jugador.estaEnJuego());
+        Assert.assertTrue(jugador.estaVivo());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class JugadorTest {
         Integer puntosASacar = 8000;
         jugador.modificarPuntosDeVida(-puntosASacar);
 
-        Assert.assertFalse(jugador.estaEnJuego());
+        Assert.assertFalse(jugador.estaVivo());
         Assert.assertEquals(jugador.getPuntosDeVida(), Integer.valueOf(0));
     }
 
@@ -65,7 +65,7 @@ public class JugadorTest {
         Integer puntosASacar = 8001;
         jugador.modificarPuntosDeVida(-puntosASacar);
 
-        Assert.assertFalse(jugador.estaEnJuego());
+        Assert.assertFalse(jugador.estaVivo());
         Assert.assertEquals(jugador.getPuntosDeVida(), Integer.valueOf(0));
     }
 

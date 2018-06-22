@@ -214,11 +214,11 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnCampo(dragonDefinitivo));
         Assert.assertTrue(dragonDefinitivo.estaEnJuego());
     }
-/*
+
     @Test
     public void colocoInsectoComeHombresBocaAbajo_monstruoOponenteLoAtaca_seActivaEfectoYSeDestruyeAtacante() {
-        Monstruo insectoComeHombres = new Monstruo("Insecto Come Hombres", 450, 600, 2, new EfectoInsectoComeHombres);
-        Monstruo monstruoAtacante = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
+        Monstruo insectoComeHombres = new InsectoComeHombres(jugador1);
+        Monstruo monstruoAtacante = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, BocaAbajo.getInstancia());
         insectoComeHombres.pasarAModoDefensa();
@@ -238,7 +238,7 @@ public class Entrega2Test {
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
         Assert.assertEquals(puntosInicialesDeVida, (int)jugador1.getPuntosDeVida());
     }
-*/
+
     @Test
     public void atacarATrampaCilindroMagico_seNiegaAtaqueYSeEfectuaALosPuntosDeVidaDelAtacante() {
         Monstruo monstruoAtacante = new SevenColoredFish(jugador2);
@@ -307,11 +307,11 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(refuerzos));
         Assert.assertFalse(jugador1.cartaEstaEnCampo(refuerzos));
     }
-/*
+
     @Test
     public void extraerTodasLasCartasDeMazo_jugadorSinCartasPerdio() {
-        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
-        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, efectoNulo);
+        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
+        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
 
         jugador1.agregarCartaAMazo(monstruo1);
         jugador2.agregarCartaAMazo(monstruo2);
@@ -323,13 +323,12 @@ public class Entrega2Test {
         // Se toma la última carta que había (se debería de poder jugar el último turno).
         // Cuando se quiere empezar otro turno sin cartas en mazo se termina partida.
         jugador1.tomarCartaDelMazo();
-        jugador1.tomarCartaDelMazo();
+        //jugador1.tomarCartaDelMazo(); aca lanza excepcion, porque sacar una carta del mazo sin cartas no es posible (falta turnos)
 
         // Al no tener más cartas en mazo se termina la partida y el jugador sin cartas pierde.
         Assert.assertTrue(juego.terminoPartida());
         Assert.assertEquals(jugador2, juego.ganadorPartida());
     }
-*/
 
     @Ignore
     @Test

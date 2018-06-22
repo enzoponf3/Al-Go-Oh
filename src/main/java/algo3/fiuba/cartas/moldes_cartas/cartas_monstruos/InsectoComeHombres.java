@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoInsectoComeHombres;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
+import algo3.fiuba.cartas.resultado_combate.ResultadoCombateNulo;
 
 public class InsectoComeHombres extends Monstruo {
 
@@ -18,7 +19,7 @@ public class InsectoComeHombres extends Monstruo {
 
     @Override
     public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
-        efecto.activar(this);
-        return super.recibirAtaque(monstruoAtacante, puntosAtaqueRival);
+        efecto.activar(monstruoAtacante);
+        return new ResultadoCombateNulo();
     }
 }

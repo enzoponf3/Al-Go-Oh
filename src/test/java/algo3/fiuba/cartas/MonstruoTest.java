@@ -174,11 +174,11 @@ public class MonstruoTest {
         Integer puntosDeVidaJugadorDefensorEsperados = 100;
 
         Assert.assertTrue(monstruoAtacante.estaEnJuego());
-        Assert.assertTrue(jugadorAtacante.estaEnJuego());
+        Assert.assertTrue(jugadorAtacante.estaVivo());
         Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
 
         Assert.assertFalse(monstruoDefensor.estaEnJuego());
-        Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertTrue(jugadorDefensor.estaVivo());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
 
@@ -207,11 +207,11 @@ public class MonstruoTest {
         Integer puntosDeVidaJugadorDefensorEsperados = 8000;
 
         Assert.assertTrue(monstruoAtacante.estaEnJuego());
-        Assert.assertTrue(jugadorAtacante.estaEnJuego());
+        Assert.assertTrue(jugadorAtacante.estaVivo());
         Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
 
         Assert.assertFalse(monstruoDefensor.estaEnJuego());
-        Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertTrue(jugadorDefensor.estaVivo());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
 
@@ -240,11 +240,11 @@ public class MonstruoTest {
         Integer puntosDeVidaJugadorDefensorEsperados = 8000;
 
         Assert.assertFalse(monstruoAtacante.estaEnJuego());
-        Assert.assertTrue(jugadorAtacante.estaEnJuego());
+        Assert.assertTrue(jugadorAtacante.estaVivo());
         Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
 
         Assert.assertTrue(monstruoDefensor.estaEnJuego());
-        Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertTrue(jugadorDefensor.estaVivo());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
 
@@ -273,11 +273,11 @@ public class MonstruoTest {
         Integer puntosDeVidaJugadorDefensorEsperados = 8000;
 
         Assert.assertTrue(monstruoAtacante.estaEnJuego());
-        Assert.assertTrue(jugadorAtacante.estaEnJuego());
+        Assert.assertTrue(jugadorAtacante.estaVivo());
         Assert.assertEquals(puntosDeVidaJugadorAtacanteEsperados, jugadorAtacante.getPuntosDeVida());
 
         Assert.assertTrue(monstruoDefensor.estaEnJuego());
-        Assert.assertTrue(jugadorDefensor.estaEnJuego());
+        Assert.assertTrue(jugadorDefensor.estaVivo());
         Assert.assertEquals(puntosDeVidaJugadorDefensorEsperados, jugadorDefensor.getPuntosDeVida());
     }
 
