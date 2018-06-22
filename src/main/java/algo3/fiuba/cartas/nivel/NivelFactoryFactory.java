@@ -1,12 +1,12 @@
-package algo3.fiuba.cartas.estrellas;
+package algo3.fiuba.cartas.nivel;
 
-public class EstrellasFactory {
+public class NivelFactoryFactory {
 
-    private EstrellasFactory() {
+    private NivelFactoryFactory() {
         // No tiene constructor
     }
 
-    public static Estrellas obtenerEstrellas(Integer cantidadDeEstrellas) {
+    public static Nivel obtenerEstrellas(Integer cantidadDeEstrellas) {
         if (cantidadDeEstrellas < 1)
             throw new RuntimeException("No puede tener estrellas negativas o nulas"); // !!!
         if (cantidadDeEstrellas < 5)

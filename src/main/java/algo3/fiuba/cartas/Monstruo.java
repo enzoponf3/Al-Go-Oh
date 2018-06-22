@@ -3,8 +3,8 @@ package algo3.fiuba.cartas;
 import algo3.fiuba.Campo;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estado_en_turno.NoUsadaEnTurno;
-import algo3.fiuba.cartas.estrellas.Estrellas;
-import algo3.fiuba.cartas.estrellas.EstrellasFactory;
+import algo3.fiuba.cartas.nivel.Nivel;
+import algo3.fiuba.cartas.nivel.NivelFactoryFactory;
 import algo3.fiuba.cartas.modificadores.Modificador;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
@@ -21,8 +21,7 @@ public class Monstruo extends Carta {
     private Integer ataqueBase;
     private Integer defensaBase;
     protected ModoMonstruo modoMonstruo;
-    private Estrellas estrellas;
-    private Integer sacrificiosParaInvocar;
+    private Nivel nivel;
     private Set<Modificador> modificadoresAtaque;
     private Set<Modificador> modificadoresDefensa;
 
@@ -31,8 +30,7 @@ public class Monstruo extends Carta {
         super(nombre, efecto);
         this.ataqueBase = ataque;
         this.defensaBase = defensa;
-        this.estrellas = EstrellasFactory.obtenerEstrellas(estrellas);
-        this.sacrificiosParaInvocar = 0;
+        this.nivel = NivelFactoryFactory.obtenerEstrellas(estrellas);
         this.estadoEnTurno = new NoUsadaEnTurno(); // está solo para que pasen los tests
         this.modificadoresAtaque = new HashSet<>();
         this.modificadoresDefensa = new HashSet<>();
@@ -74,8 +72,8 @@ public class Monstruo extends Carta {
     }
 
     public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        if (!estrellas.sacrificiosSuficientes(sacrificios))
-            throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", estrellas.sacrificiosRequeridos()));
+        if (!nivel.sacrificiosSuficientes(sacrificios))
+            throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", nivel.sacrificiosRequeridos()));
 
         this.realizarSacrificios(campo, sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();

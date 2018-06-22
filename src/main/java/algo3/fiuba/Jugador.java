@@ -158,4 +158,8 @@ public class Jugador {
     public void matarMonstruosEnCampo() {
         tableroJugador.matarMonstruos();
     }
+
+    public List<Monstruo> getMonstuosEnCampo() {
+        return tableroJugador.getMonstruos();
+    }
 }

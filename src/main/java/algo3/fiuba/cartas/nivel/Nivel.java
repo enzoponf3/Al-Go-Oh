@@ -1,8 +1,8 @@
-package algo3.fiuba.cartas.estrellas;
+package algo3.fiuba.cartas.nivel;
 
 import algo3.fiuba.cartas.Monstruo;
 
-public interface Estrellas {
+public interface Nivel {
     
     boolean sacrificiosSuficientes(Monstruo... sacrificios);
 

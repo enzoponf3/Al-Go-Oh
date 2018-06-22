@@ -19,7 +19,6 @@ import org.junit.*;
 
 public class Entrega1OficialTest {
 
-    //private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
     private Juego juego;
@@ -29,10 +28,6 @@ public class Entrega1OficialTest {
         jugador1 = new Jugador();
         jugador2 = new Jugador();
 
-        /*
-        tablero = Tablero.getInstancia();
-        tablero.inicializar(jugador1, jugador2);
-*/
         juego = Juego.getInstancia();
         juego.inicializar(jugador1, jugador2);
 

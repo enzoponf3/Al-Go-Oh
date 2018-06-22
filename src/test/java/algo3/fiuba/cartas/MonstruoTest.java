@@ -13,17 +13,13 @@ public class MonstruoTest {
 
     private Jugador jugador1;
     private Jugador jugador2;
-//    private Tablero tablero;
     private Juego juego;
 
     @Before
     public void setUp() {
         jugador1 = new Jugador();
         jugador2 = new Jugador();
-        /*
-        tablero = Tablero.getInstancia();
-        tablero.inicializar(jugador1,jugador2);
-*/
+
         juego = Juego.getInstancia();
         juego.inicializar(jugador1, jugador2);
 

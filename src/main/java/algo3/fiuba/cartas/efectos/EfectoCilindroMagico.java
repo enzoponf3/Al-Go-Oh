@@ -14,6 +14,6 @@ public class EfectoCilindroMagico extends EfectoCarta {
 
     @Override
     public void activar(Carta carta, Monstruo atacante) {
-        jugador.daniarPuntosDeVidaOponente(atacante.getAtaque());
+        jugador.getOponente().modificarPuntosDeVida(-atacante.getAtaque());
     }
 }

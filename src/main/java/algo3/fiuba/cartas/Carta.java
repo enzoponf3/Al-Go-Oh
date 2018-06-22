@@ -40,7 +40,6 @@ public abstract class Carta implements Observer {
 
     public void descartar() {
         jugador.mandarCartaACementerio(this);
-        estadoCarta = EnCementerio.getInstancia();
     }
 
     public void setEstado(EstadoCarta estadoCarta) {

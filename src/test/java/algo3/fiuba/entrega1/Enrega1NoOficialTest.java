@@ -14,7 +14,6 @@ import org.junit.Test;
 
 public class Enrega1NoOficialTest {
 
-    //private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
     private Juego juego;
@@ -23,10 +22,7 @@ public class Enrega1NoOficialTest {
     public void setUp() {
         jugador1 = new Jugador();
         jugador2 = new Jugador();
-/*
-        tablero = Tablero.getInstancia();
-        tablero.inicializar(jugador1, jugador2);
-*/
+
         juego = Juego.getInstancia();
         juego.inicializar(jugador1, jugador2);
 

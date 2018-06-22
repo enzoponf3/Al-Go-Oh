@@ -1,4 +1,4 @@
-package algo3.fiuba.cartas.estrellas;
+package algo3.fiuba.cartas.nivel;
 
 import algo3.fiuba.cartas.Monstruo;
 import org.junit.Assert;

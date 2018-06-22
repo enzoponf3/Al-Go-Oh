@@ -10,15 +10,10 @@ import org.junit.Test;
 public class JugadorTest {
 
     private Jugador jugador;
-    //private Tablero tablero;
 
     @Before
     public void setUp() {
         jugador = new Jugador();
-        /*
-        tablero = Tablero.getInstancia();
-        tablero.inicializar(jugador,jugador);
-        */
     }
 
 

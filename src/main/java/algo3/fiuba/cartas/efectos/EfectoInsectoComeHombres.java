@@ -6,11 +6,9 @@ import algo3.fiuba.cartas.Carta;
 
 public class EfectoInsectoComeHombres extends EfectoCarta {
 
-    //private Tablero tablero;
-    private Jugador jugadorRival;
+    private Jugador oponente;
 
     public EfectoInsectoComeHombres() {
-      //  this.tablero = Tablero.getInstancia();
 
     }
 }

@@ -1,8 +1,8 @@
-package algo3.fiuba.cartas.estrellas;
+package algo3.fiuba.cartas.nivel;
 
 import algo3.fiuba.cartas.Monstruo;
 
-public class CincoOSeisEstrellas implements Estrellas {
+public class CincoOSeisEstrellas implements Nivel {
 
     private Integer CANTIDAD_DE_SACRIFICIOS;
     private static CincoOSeisEstrellas INSTANCIA;
