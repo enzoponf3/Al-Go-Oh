@@ -59,7 +59,6 @@ public class Campo {
         if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
             throw new RuntimeException("No se puede tener más de 5 no monstruos en el tablero.");
 
-
         carta.setEstado(enJuego);
         zonaNoMonstruos.add(carta);
     }
@@ -113,7 +112,6 @@ public class Campo {
     public List<Monstruo> getMonstruos() {
         return zonaMonstruos;
     }
-
 
     public List<NoMonstruo> getNoMonstruos() {
         return zonaNoMonstruos;

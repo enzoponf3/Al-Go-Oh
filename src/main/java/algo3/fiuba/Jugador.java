@@ -42,6 +42,10 @@ public class Jugador {
         puntosDeVida += (-puntos > puntosDeVida) ? -puntosDeVida : puntos;
     }
 
+    public void matarJugador() {
+        puntosDeVida = 0;
+    }
+
     public void tomarCartaDelMazo() {
         mano.add(tableroJugador.tomarCartaDelMazo());
     }
@@ -96,6 +100,7 @@ public class Jugador {
     }
 
     public void agregarCartaAMano(Carta carta) {
+        carta.activarEfecto(carta, this);
         carta.setEstado(EnMano.getInstancia());
         mano.add(carta);
     }
@@ -115,7 +120,6 @@ public class Jugador {
     public List<Carta> getMano() {
         return mano;
     }
-
 
 
     @Override
@@ -160,4 +164,6 @@ public class Jugador {
     public void agregarModificador(Modificador modificador) {
         tableroJugador.agregarModificador(modificador);
     }
+
+
 }

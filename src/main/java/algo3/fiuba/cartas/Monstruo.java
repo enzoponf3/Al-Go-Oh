@@ -64,7 +64,6 @@ public class Monstruo extends Carta {
         jugador.modificarPuntosDeVida(-puntosDeDanio);
     }
 
-
     public boolean estaEnTablero(Campo campo) {
         return campo.cartaEstaEnCampo(this);
     }

@@ -14,6 +14,7 @@ import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
 import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.*;
 import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.CilindroMagico;
 import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.Refuerzos;
+import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -339,17 +340,18 @@ public class Entrega2Test {
         Monstruo parteExodia4 = new BrazoDerechoExodia(jugador1);
         Monstruo parteExodia5 = new BrazoIzquierdoExodia(jugador1);
 
+        jugador1.setOponente(jugador2);
+        jugador2.setOponente(jugador1);
+
         jugador1.agregarCartaAMano(parteExodia1);
         jugador1.agregarCartaAMano(parteExodia2);
         jugador1.agregarCartaAMano(parteExodia3);
         jugador1.agregarCartaAMano(parteExodia4);
         jugador1.agregarCartaAMano(parteExodia5);
 
-        //parteExodia5.activar();
         // Cuando un jugador tiene las cinco partes en la mano, se termina la partida y este gana directamente.
-        //Assert.assertTrue(juego.terminoPartida());
-       // Assert.assertEquals(juego.ganadorPartida(), jugador1);
+        Assert.assertTrue(juego.terminoPartida());
+        Assert.assertEquals(juego.ganadorPartida(), jugador1);
     }
-
 }
 

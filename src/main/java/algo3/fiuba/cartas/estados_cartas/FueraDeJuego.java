@@ -1,42 +1,1 @@
-package algo3.fiuba.cartas.estados_cartas;
-
-import algo3.fiuba.Juego;
-import algo3.fiuba.cartas.Carta;
-import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.NoMonstruo;
-import algo3.fiuba.cartas.Trampa;
-import algo3.fiuba.cartas.efectos.EfectoCarta;
-
-import java.awt.*;
-
-public abstract class FueraDeJuego implements EstadoCarta {
-
-    public boolean estaEnJuego() {
-        return false;
-    }
-
-    @Override
-    public void activarEfecto(Carta carta, EfectoCarta efecto) {
-        activarEfecto(carta, efecto);
-    }
-    
-    @Override
-    public void recibirAtaque(Monstruo carta) {
-        throw new RuntimeException("No se pueden atacar Monstruos que están fuera de juego.");
-    }
-
-    @Override
-    public void recibirAtaque(NoMonstruo carta) {
-        throw new RuntimeException("No se pueden atacar cartas No Monstruos.");
-    }
-
-    @Override
-    public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
-        throw new RuntimeException("No se pueden activar cartas trampas que están fuera de juego");
-    }
-
-    @Override
-    public void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto) {
-        activarEfecto(carta, efecto);
-    }
-}
+package algo3.fiuba.cartas.estados_cartas;import algo3.fiuba.Juego;import algo3.fiuba.Jugador;import algo3.fiuba.cartas.Carta;import algo3.fiuba.cartas.Monstruo;import algo3.fiuba.cartas.NoMonstruo;import algo3.fiuba.cartas.Trampa;import algo3.fiuba.cartas.efectos.EfectoCarta;import java.awt.*;public abstract class FueraDeJuego implements EstadoCarta {    public boolean estaEnJuego() {        return false;    }    @Override    public void activarEfecto(Carta carta, EfectoCarta efecto) {        activarEfecto(carta, efecto);    }        @Override    public void recibirAtaque(Monstruo carta) {        throw new RuntimeException("No se pueden atacar Monstruos que están fuera de juego.");    }    @Override    public void recibirAtaque(NoMonstruo carta) {        throw new RuntimeException("No se pueden atacar cartas No Monstruos.");    }    @Override    public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {        throw new RuntimeException("No se pueden activar cartas trampas que están fuera de juego");    }    @Override    public void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto) {        activarEfecto(carta, efecto);    }    @Override    public void activarEfecto(Carta carta, Jugador jugador){        activarEfecto(carta, jugador);    }}
