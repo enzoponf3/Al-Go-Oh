@@ -69,7 +69,6 @@ public abstract class Carta implements Observer {
         this.efecto = efecto;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

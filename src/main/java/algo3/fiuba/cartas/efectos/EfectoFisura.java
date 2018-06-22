@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.Monstruo;
 import java.util.List;
 
 public class EfectoFisura extends EfectoCarta {
+
     private Jugador jugador;
 
     public EfectoFisura(Jugador jugador) {

@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas.efectos;
 
 import algo3.fiuba.Jugador;
+import algo3.fiuba.Juego;
 import algo3.fiuba.cartas.Carta;
 
 public class EfectoOllaDeLaCodicia extends EfectoCarta {
@@ -15,7 +16,6 @@ public class EfectoOllaDeLaCodicia extends EfectoCarta {
         this.jugador = jugador;
 
     }
-
     public void robar2Cartas(Jugador jugador) {
         jugador.tomarCartaDelMazo();
         jugador.tomarCartaDelMazo();

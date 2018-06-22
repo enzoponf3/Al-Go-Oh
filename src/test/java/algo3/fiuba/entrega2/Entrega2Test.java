@@ -23,9 +23,9 @@ import org.junit.Test;
 
 public class Entrega2Test {
 
-    private Juego juego;
     private Jugador jugador1;
     private Jugador jugador2;
+    private Juego juego;
 
     @Before
     public void setUp() {
@@ -102,6 +102,7 @@ public class Entrega2Test {
 
     }
 */
+
     @Test
     public void activoCartaOllaDelaCodicia_TomoDosCartasDelMazo() {
         Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
@@ -125,7 +126,6 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(ollaDeLaCodicia));
         Assert.assertFalse(jugador1.cartaEstaEnTablero(ollaDeLaCodicia));
     }
-
 
     @Test
     public void colocoDosCartasMonstruoEnCampoEnemigo_activoFisura_elDeMenorAtaqueEsDestruido() {
@@ -267,6 +267,7 @@ public class Entrega2Test {
         Assert.assertFalse(jugador1.cartaEstaEnTablero(cilindroMagico));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(cilindroMagico));
     }
+
 /*
     @Test
     public void colocoTrampaReinforcement_seAtacaConMonstruoDe400ATKMas_monstruoAtacadoAumenta500ATKAlActivarTrampa() {
@@ -319,14 +320,15 @@ public class Entrega2Test {
         Assert.assertTrue(juego.terminoPartida());
         Assert.assertEquals(jugador2, juego.ganadorPartida());
     }
-
+*/
+/*
     @Test
     public void colocarCincoPartesDeExodia_jugadorConPartesGanaPartido() {
-        Monstruo parteExodia1 = new Monstruo("Parte Exodia", 1000, 1000, 3, new EfectoPartesExodia());
-        Monstruo parteExodia2 = new Monstruo("Parte Exodia", 1000, 1000, 3, new EfectoPartesExodia());
-        Monstruo parteExodia3 = new Monstruo("Parte Exodia", 1000, 1000, 3, new EfectoPartesExodia());
-        Monstruo parteExodia4 = new Monstruo("Parte Exodia", 1000, 1000, 3, new EfectoPartesExodia());
-        Monstruo parteExodia5 = new Monstruo("Parte Exodia", 1000, 1000, 3, new EfectoPartesExodia());
+        Monstruo parteExodia1 = new PiernaDerechaExodia(jugador1);
+        Monstruo parteExodia2 = new PiernaIzquierdaExodia(jugador1);
+        Monstruo parteExodia3 = new CabezaExodia(jugador1);
+        Monstruo parteExodia4 = new BrazoDerechoExodia(jugador1);
+        Monstruo parteExodia5 = new BrazoIzquierdoExodia(jugador1);
 
         jugador1.agregarCartaAMano(parteExodia1);
         jugador1.agregarCartaAMano(parteExodia2);
@@ -334,10 +336,11 @@ public class Entrega2Test {
         jugador1.agregarCartaAMano(parteExodia4);
         jugador1.agregarCartaAMano(parteExodia5);
 
+        parteExodia5.activar(juego);
         // Cuando un jugador tiene las cinco partes en la mano, se termina la partida y este gana directamente.
-        Assert.assertTrue(juego.terminoPartida());
-        Assert.assertEquals(juego.ganadorPartida(), jugador1);
+        //Assert.assertTrue(juego.terminoPartida());
+       // Assert.assertEquals(juego.ganadorPartida(), jugador1);
     }
-    */
+*/
 }
 

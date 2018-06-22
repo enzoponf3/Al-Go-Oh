@@ -27,6 +27,7 @@ public class Jugador {
 
     public boolean estaEnJuego() {
         return puntosDeVida > 0;
+        //return ((puntosDeVida > 0) && (this.cantidadCartasEnMazo() > 0));
     }
 
     public void modificarPuntosDeVida(Integer puntos) {
@@ -49,7 +50,6 @@ public class Jugador {
         carta.setJugador(this);
         tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
     }
-
 
     public boolean cartaEstaEnTablero(Carta carta) {
         return tableroJugador.cartaEstaEnCampo(carta);
@@ -82,7 +82,6 @@ public class Jugador {
         carta.setEstado(EnCementerio.getInstancia());
     }
 
-
     public boolean cartaEstaEnCementerio(Carta carta) {
         return tableroJugador.cartaEstaEnCementerio(carta);
     }
@@ -107,6 +106,8 @@ public class Jugador {
     public List<Carta> getMano() {
         return mano;
     }
+
+
 
     @Override
     public String toString() {

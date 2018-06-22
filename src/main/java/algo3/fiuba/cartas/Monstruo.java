@@ -66,9 +66,14 @@ public class Monstruo extends Carta {
         jugador.modificarPuntosDeVida(-puntosDeDanio);
     }
 
-    @Override
+
     public boolean estaEnTablero(Campo campo) {
         return campo.cartaEstaEnCampo(this);
+    }
+
+    @Override
+    public void removerDelCampo(Campo campo) {
+        campo.removerCarta(this);
     }
 
     public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
@@ -93,11 +98,6 @@ public class Monstruo extends Carta {
         }
     }
 
-    @Override
-    public void removerDelCampo(Campo campo) {
-        campo.removerCarta(this);
-    }
-
     public Integer getAtaque() {
         Integer ataqueModificado = ataqueBase;
         for (Modificador modificador : modificadoresAtaque) {
@@ -115,5 +115,9 @@ public class Monstruo extends Carta {
 
         return defensaModificada;
     }
-
+/*
+    protected void setEfecto(EfectoCarta efecto) {
+       this.efecto = efecto;
+    }
+    */
 }

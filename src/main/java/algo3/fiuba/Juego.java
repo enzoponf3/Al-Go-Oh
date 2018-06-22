@@ -3,6 +3,7 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.efectos.*;
+import algo3.fiuba.cartas.moldes_cartas.Exodia;
 
 public class Juego {
 
@@ -33,6 +34,10 @@ public class Juego {
         jugador2.setOponente(jugador1);
     }
 
+    public void activarEfecto(EfectoWasteland wasteland, CartaCampo carta) {
+        //wasteland.aumentarATKPropio();
+    }
+
 
 
     public void activarEfecto(EfectoWasteland wasteland, Carta carta) {
@@ -40,6 +45,13 @@ public class Juego {
     }
 
     public void activarEfecto(EfectoSogen sogen, Carta carta) {
-
     }
+
+/*
+    public void activarEfecto(EfectoReinforcements refuerzos) {
+        refuerzos.
+    }
+*/
+
+
 }
