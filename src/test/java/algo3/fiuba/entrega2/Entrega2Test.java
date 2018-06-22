@@ -4,8 +4,10 @@ import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.*;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
+import algo3.fiuba.cartas.efectos.EfectoSogen;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.cartas_campo.Sogen;
 import algo3.fiuba.cartas.moldes_cartas.cartas_campo.Wasteland;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.Fisura;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
@@ -69,12 +71,12 @@ public class Entrega2Test {
         Assert.assertEquals(ataqueFinalPropio, (int)monstruo3.getAtaque());
     }
 
-/*
+
     @Test
     public void colocoMounstruoDeCadaLadoDeCampo_activoCartaCampoSogen_aumenta500DEFPropio_aumenta200ATKOponente() {
         Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, new EfectoNulo());
-        CartaCampo sogen = new CartaCampo("Sogen", new EfectoSogen);
+        CartaCampo sogen = new Sogen(jugador1, jugador2);
 
         jugador1.colocarCartaEnCampo(monstruoPropio, BocaArriba.getInstancia());
         jugador2.colocarCartaEnCampo(monstruoOponente, BocaArriba.getInstancia());
@@ -101,7 +103,7 @@ public class Entrega2Test {
         Assert.assertEquals(defensaFinalPropio, (int)monstruo3.getDefensa());
 
     }
-*/
+
 
     @Test
     public void activoCartaOllaDelaCodicia_TomoDosCartasDelMazo() {

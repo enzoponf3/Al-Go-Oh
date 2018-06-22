@@ -117,13 +117,5 @@ public class Monstruo extends Carta {
     public void agregarModificador(Modificador modificador) {
         modificadores.add(modificador);
     }
-<<<<<<< HEAD
-    */
 
-    public void agregarModificador(Modificador modificador) {
-        modificadores.add(modificador);
-    }
-
-=======
->>>>>>> 4df76ffb1857e2e4eed0c22d9d518768c8e43fba
 }

@@ -56,14 +56,8 @@ public abstract class Carta implements Observer {
         estadoCarta.activarEfecto(this,  efecto);
     }
 
-<<<<<<< HEAD
-    public void activarEfecto(Monstruo otraCarta) {
-        estadoCarta.activarEfecto(this,  otraCarta, efecto);
-=======
     public void activarEfecto(Monstruo atacante, Monstruo atacado) {
         estadoCarta.activarEfecto(this,  atacante, atacado, efecto);
-        // jugador.mandarCartaDelCampoAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
->>>>>>> 4df76ffb1857e2e4eed0c22d9d518768c8e43fba
     }
 
 
