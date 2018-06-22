@@ -4,24 +4,30 @@ import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Carta;
 
-import java.util.ArrayList;
-
 public class EfectoPartesExodia extends EfectoCarta {
 
-    private ArrayList efectosAcumulados = new ArrayList();
+    private static Integer contadorPartes = 0;
+    private Jugador jugador;
+
+    public EfectoPartesExodia(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
+    public void efectoExodia(Jugador jugador) {
+        contadorPartes += 1;
+        if (contadorPartes == 5)
+            jugador.getOponente().modificarPuntosDeVida(8000);
+    }
 
     @Override
     public void activar(Carta carta) {
-        efectosAcumulados.add(carta);
-        if (efectosAcumulados.size() == 5)
-            efectoExodia();
+        efectoExodia(jugador);
     }
 
-    public void efectoExodia() {
-        // juego.terminar()
-        throw new Error();
-
+    public void desactivarEfecto() {
+        // Por lo menos hay una parte
+        contadorPartes -= 1;
     }
 
-    public Integer getTam(){return efectosAcumulados.size();}
+
 }

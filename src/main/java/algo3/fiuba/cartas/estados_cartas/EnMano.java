@@ -1,5 +1,7 @@
 package algo3.fiuba.cartas.estados_cartas;
 
+import algo3.fiuba.Jugador;
+import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
 
 public class EnMano extends FueraDeJuego {
@@ -19,5 +21,11 @@ public class EnMano extends FueraDeJuego {
     @Override
     public void verificarQuePuedeAtacar() {
         throw new InhabilitadoParaAtacarExcepcion("No puede atacar si está en la mano.");
+    }
+
+    // exodia aca deberia activarse
+    @Override
+    public void activarEfecto(Carta carta, Jugador jugador) {
+        carta.activarEfecto(carta, jugador);
     }
 }

@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas.estados_cartas;
 
 import algo3.fiuba.Juego;
+import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.NoMonstruo;
@@ -42,5 +43,10 @@ public class EstadoNoInicializado implements EstadoCarta {
     @Override
     public void recibirAtaque(NoMonstruo carta) {
         throw new RuntimeException("No se pueden atacar cartas No Monstruos.");
+    }
+
+    @Override
+    public void activarEfecto(Carta carta, Jugador jugador){
+       return;
     }
 }

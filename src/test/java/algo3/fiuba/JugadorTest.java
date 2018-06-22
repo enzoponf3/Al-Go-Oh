@@ -3,7 +3,6 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.cartas.moldes_cartas.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

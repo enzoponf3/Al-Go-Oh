@@ -60,6 +60,9 @@ public abstract class Carta implements Observer {
         estadoCarta.activarEfecto(this,  atacante, atacado, efecto);
     }
 
+    public void activarEfecto(Carta carta, Jugador jugador) {
+        estadoCarta.activarEfecto(this, jugador);
+    }
 
     public abstract boolean estaEnTablero(Campo campo);
 
