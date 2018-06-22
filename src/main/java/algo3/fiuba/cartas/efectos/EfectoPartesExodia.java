@@ -6,24 +6,21 @@ import algo3.fiuba.cartas.Carta;
 
 public class EfectoPartesExodia extends EfectoCarta {
 
-    private Integer contadorPartes = 0;
-    private static EfectoPartesExodia INSTANCIA;
+    private static Integer contadorPartes = 0;
+    private Jugador jugador;
 
-    public static EfectoPartesExodia getInstancia() {
-        if (INSTANCIA == null){
-            INSTANCIA = new EfectoPartesExodia();
-        }
-        return INSTANCIA;
+    public EfectoPartesExodia(Jugador jugador) {
+        this.jugador = jugador;
     }
 
     public void efectoExodia(Jugador jugador) {
         contadorPartes += 1;
         if (contadorPartes == 5)
-            jugador.getOponente().matarJugador();
+            jugador.getOponente().modificarPuntosDeVida(8000);
     }
 
     @Override
-    public void activar(Jugador jugador) {
+    public void activar(Carta carta) {
         efectoExodia(jugador);
     }
 

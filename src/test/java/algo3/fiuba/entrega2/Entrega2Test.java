@@ -340,9 +340,6 @@ public class Entrega2Test {
         Monstruo parteExodia4 = new BrazoDerechoExodia(jugador1);
         Monstruo parteExodia5 = new BrazoIzquierdoExodia(jugador1);
 
-        jugador1.setOponente(jugador2);
-        jugador2.setOponente(jugador1);
-
         jugador1.agregarCartaAMano(parteExodia1);
         jugador1.agregarCartaAMano(parteExodia2);
         jugador1.agregarCartaAMano(parteExodia3);
@@ -351,7 +348,7 @@ public class Entrega2Test {
 
         // Cuando un jugador tiene las cinco partes en la mano, se termina la partida y este gana directamente.
         Assert.assertTrue(juego.terminoPartida());
-        Assert.assertEquals(juego.ganadorPartida(), jugador1);
+        Assert.assertEquals(jugador1, juego.ganadorPartida());
     }
 }
 

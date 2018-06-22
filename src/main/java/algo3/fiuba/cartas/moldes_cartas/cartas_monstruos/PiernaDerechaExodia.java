@@ -8,7 +8,7 @@ public class PiernaDerechaExodia extends Monstruo {
 
     public PiernaDerechaExodia(Jugador jugador) {
 
-        super("Pierna derecha del prohibido", 200, 300, 1,EfectoPartesExodia.getInstancia());
+        super("Pierna derecha del prohibido", 200, 300, 1,new EfectoPartesExodia(jugador));
         setJugador(jugador);
     }
 }

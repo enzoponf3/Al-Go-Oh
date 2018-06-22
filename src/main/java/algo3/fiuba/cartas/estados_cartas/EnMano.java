@@ -26,6 +26,6 @@ public class EnMano extends FueraDeJuego {
     // exodia aca deberia activarse
     @Override
     public void activarEfecto(Carta carta, Jugador jugador) {
-        activarEfecto(carta, jugador);
+        carta.activarEfecto(carta, jugador);
     }
 }

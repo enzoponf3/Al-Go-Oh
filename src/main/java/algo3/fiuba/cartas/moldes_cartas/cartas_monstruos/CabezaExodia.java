@@ -8,7 +8,7 @@ public class CabezaExodia extends Monstruo {
 
     public CabezaExodia(Jugador jugador) {
 
-        super("Exodia, el prohibido", 1000, 1000, 3, EfectoPartesExodia.getInstancia());
+        super("Exodia, el prohibido", 1000, 1000, 3, new EfectoPartesExodia(jugador));
         setJugador(jugador);
     }
 }

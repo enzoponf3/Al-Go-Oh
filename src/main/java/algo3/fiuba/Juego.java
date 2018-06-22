@@ -30,7 +30,7 @@ public class Juego {
     }
 
     public boolean terminoPartida(){
-        return !(jugador1.estaEnJuego() || jugador2.estaEnJuego());
+        return !(jugador1.estaEnJuego() && jugador2.estaEnJuego());
     }
 
     public Jugador ganadorPartida() {
