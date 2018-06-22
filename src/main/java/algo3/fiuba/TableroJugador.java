@@ -72,10 +72,6 @@ public class TableroJugador {
         cementerio.add(carta);
     }
 
-    public void matarMonstruos() {
-        campo.matarMonstruos();
-    }
-
     public List<Monstruo> getMonstruos() {
         return campo.getMonstruos();
     }

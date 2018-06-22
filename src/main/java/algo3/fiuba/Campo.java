@@ -103,13 +103,6 @@ public class Campo {
                 '}';
     }
 
-    public void matarMonstruos() {
-        for(Monstruo monstruo: zonaMonstruos) {
-           monstruo.descartar();
-           zonaMonstruos.remove(monstruo);
-        }
-    }
-
     public List<Monstruo> getMonstruos() {
         return zonaMonstruos;
     }

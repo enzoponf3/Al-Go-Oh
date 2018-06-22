@@ -143,10 +143,6 @@ public class Jugador {
         return oponente;
     }
 
-    public void matarMonstruosEnCampo() {
-        tableroJugador.matarMonstruos();
-    }
-
     public List<Monstruo> getMonstuosEnCampo() {
         return tableroJugador.getMonstruos();
     }
