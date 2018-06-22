@@ -1,6 +1,5 @@
 package algo3.fiuba.cartas.estados_cartas;
 
-import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
@@ -49,10 +48,8 @@ public class BocaAbajo extends EnJuego {
         throw new RuntimeException("No se pueden atacar cartas No Monstruos.");
     }
 
-
-    // exodia, esto deberia desactivar el efecto
     @Override
-    public void activarEfecto(Carta carta, Jugador jugador){
-        activarEfecto(carta, jugador);
+    public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto){
+        activarEfecto(carta, efecto);
     }
 }

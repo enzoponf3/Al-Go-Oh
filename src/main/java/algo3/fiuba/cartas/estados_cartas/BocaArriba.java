@@ -1,6 +1,5 @@
 package algo3.fiuba.cartas.estados_cartas;
 
-import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
@@ -49,7 +48,7 @@ public class BocaArriba extends EnJuego {
     }
 
     @Override
-    public void activarEfecto(Carta carta, Jugador jugador) {
+    public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto) {
         throw new RuntimeException("Ya no puedes activar a exodia!");
     }
 }

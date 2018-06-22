@@ -14,9 +14,9 @@ public class EfectoPartesExodia extends EfectoCarta {
     }
 
     public void efectoExodia(Jugador jugador) {
-        contadorPartes += 1;
+        contadorPartes++;
         if (contadorPartes == 5)
-            jugador.getOponente().modificarPuntosDeVida(8000);
+            jugador.getOponente().modificarPuntosDeVida(-8000);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class EfectoPartesExodia extends EfectoCarta {
 
     public void desactivarEfecto() {
         // Por lo menos hay una parte
-        contadorPartes -= 1;
+        contadorPartes--;
     }
 
 

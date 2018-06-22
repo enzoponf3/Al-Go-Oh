@@ -2,6 +2,7 @@ package algo3.fiuba.cartas.estados_cartas;
 
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
 
 public class EnMano extends FueraDeJuego {
@@ -25,7 +26,7 @@ public class EnMano extends FueraDeJuego {
 
     // exodia aca deberia activarse
     @Override
-    public void activarEfecto(Carta carta, Jugador jugador) {
-        carta.activarEfecto(carta, jugador);
+    public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto) {
+        efecto.activar(carta);
     }
 }

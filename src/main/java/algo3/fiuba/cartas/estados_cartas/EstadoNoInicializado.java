@@ -1,6 +1,5 @@
 package algo3.fiuba.cartas.estados_cartas;
 
-import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
@@ -46,7 +45,7 @@ public class EstadoNoInicializado implements EstadoCarta {
     }
 
     @Override
-    public void activarEfecto(Carta carta, Jugador jugador){
-       return;
+    public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto){
+        throw new RuntimeException("La carta nunca se ha inicializado en el duelo.");
     }
 }

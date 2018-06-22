@@ -100,8 +100,8 @@ public class Jugador {
     }
 
     public void agregarCartaAMano(Carta carta) {
-        carta.activarEfecto(carta, this);
         carta.setEstado(EnMano.getInstancia());
+        carta.activarEfecto(carta, this);
         mano.add(carta);
     }
 
