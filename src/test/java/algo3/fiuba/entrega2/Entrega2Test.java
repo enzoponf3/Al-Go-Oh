@@ -10,6 +10,7 @@ import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.efectos.EfectoWasteland;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.cartas_campo.Wasteland;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.Fisura;
 import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.DragonBlancoDeOjosAzules;
 import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.DragonDefinitivoDeOjosAzules;
@@ -42,7 +43,7 @@ public class Entrega2Test {
         Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, new EfectoNulo());
         Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, new EfectoNulo());
 
-        CartaCampo wasteland = new CartaCampo("Wasteland", new EfectoWasteland());
+        CartaCampo wasteland = new Wasteland(jugador1, jugador2);
 
         jugador1.colocarCartaEnCampo(monstruo1, BocaArriba.getInstancia());
         jugador2.colocarCartaEnCampo(monstruo2, BocaAbajo.getInstancia());
@@ -50,13 +51,17 @@ public class Entrega2Test {
         // Ni bien se coloca carta de campo esta se activa.
         jugador1.colocarCartaEnCampo(wasteland, BocaArriba.getInstancia());
 
-        // Se suma 300 a la defensa del oponente.
+        // Se suma 300 a la defensa del oponente y el ataque permanece igual.
         int defensaFinalOponente = 300;
         Assert.assertEquals(defensaFinalOponente, (int)monstruo2.getDefensa());
+        int ataqueFinalOponente = 0;
+        Assert.assertEquals(ataqueFinalOponente, (int)monstruo2.getAtaque());
 
-        // Se suma 200 al ataque propio.
+        // Se suma 200 al ataque propio y la defensa permanece igual.
         int ataqueFinalPropio = 200;
         Assert.assertEquals(ataqueFinalPropio, (int)monstruo1.getAtaque());
+        int defensaFinalPropio = 0;
+        Assert.assertEquals(defensaFinalPropio, (int)monstruo1.getDefensa());
 
         Monstruo monstruo3 = new Monstruo("Monstruo 3", 0, 0, 1, new EfectoNulo());
         Monstruo monstruo4 = new Monstruo("Monstruo 4", 0, 0, 1, new EfectoNulo());

@@ -22,8 +22,7 @@ public class Monstruo extends Carta {
     private Integer defensaBase;
     protected ModoMonstruo modoMonstruo;
     private Nivel nivel;
-    private Set<Modificador> modificadoresAtaque;
-    private Set<Modificador> modificadoresDefensa;
+    private Set<Modificador> modificadores;
 
     public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas, EfectoCarta efecto) {
 
@@ -32,8 +31,7 @@ public class Monstruo extends Carta {
         this.defensaBase = defensa;
         this.nivel = NivelFactoryFactory.obtenerEstrellas(estrellas);
         this.estadoEnTurno = new NoUsadaEnTurno(); // está solo para que pasen los tests
-        this.modificadoresAtaque = new HashSet<>();
-        this.modificadoresDefensa = new HashSet<>();
+        this.modificadores = new HashSet<>();
     }
 
     public void atacar(Monstruo otraCarta) {
@@ -100,7 +98,7 @@ public class Monstruo extends Carta {
 
     public Integer getAtaque() {
         Integer ataqueModificado = ataqueBase;
-        for (Modificador modificador : modificadoresAtaque) {
+        for (Modificador modificador : modificadores) {
             ataqueModificado = modificador.modificarAtaque(ataqueModificado);
         }
 
@@ -109,7 +107,7 @@ public class Monstruo extends Carta {
 
     public Integer getDefensa() {
         Integer defensaModificada = defensaBase;
-        for (Modificador modificador : modificadoresDefensa) {
+        for (Modificador modificador : modificadores) {
             defensaModificada = modificador.modificarDefensa(defensaModificada);
         }
 
@@ -120,4 +118,9 @@ public class Monstruo extends Carta {
        this.efecto = efecto;
     }
     */
+
+    public void agregarModificador(Modificador modificador) {
+        modificadores.add(modificador);
+    }
+
 }

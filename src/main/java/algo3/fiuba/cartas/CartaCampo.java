@@ -16,8 +16,9 @@ public class CartaCampo extends Carta {
         if (sacrificios.length != 0)
             throw new RuntimeException(String.format("No se pueden hacer sacrificios para invocar esta carta."));
 
-        estadoCarta = tipoEnJuego;
+        estadoCarta = tipoEnJuego; // siempre se coloca boca arriba.
         campo.colocarCarta(this, tipoEnJuego, sacrificios);
+        this.activarEfecto();
     }
 
     @Override

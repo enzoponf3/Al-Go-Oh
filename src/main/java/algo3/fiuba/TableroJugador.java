@@ -6,6 +6,7 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.NoMonstruo;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
+import algo3.fiuba.cartas.modificadores.Modificador;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -83,4 +84,13 @@ public class TableroJugador {
     public CartaCampo getCartaCampo() {
         return campo.getCartaCampo();
     }
+
+    public void destruirCartaMenorAtaque(Jugador jugador) {
+        campo.destruirCartaMenorAtaque(jugador);
+    }
+
+    public void agregarModificador(Modificador modificador) {
+        campo.agregarModificador(modificador);
+    }
+
 }

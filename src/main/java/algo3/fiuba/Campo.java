@@ -6,15 +6,19 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
+import algo3.fiuba.cartas.modificadores.Modificador;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Campo {
 
     private List<Monstruo> zonaMonstruos;
     private List<NoMonstruo> zonaNoMonstruos;
     private CartaCampo cartaCampo;
+    private Set<Modificador> modificadoresActivos;
 
     private static final Integer LIMITE_CARTAS_EN_ZONA = 5;
 
@@ -22,6 +26,7 @@ public class Campo {
         zonaMonstruos = new LinkedList<>();
         zonaNoMonstruos = new LinkedList<>();
         cartaCampo = null;
+        modificadoresActivos = new HashSet<>();
     }
 
     public boolean estaVacio() {
@@ -47,6 +52,7 @@ public class Campo {
 
         carta.setEstado(enJuego);
         zonaMonstruos.add(carta);
+        this.agregarModificadoresAMonstruos();
     }
 
     public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
@@ -59,6 +65,7 @@ public class Campo {
     }
 
     public void colocarCarta(CartaCampo carta, EnJuego enJuego, Monstruo... sacrificios) {
+        
         // Debería de verificar si ya había otra carta de campo.
         carta.setEstado(enJuego);
         cartaCampo = carta;
@@ -128,4 +135,16 @@ public class Campo {
         return cartaCampo;
     }
 
+    public void agregarModificador(Modificador modificador) {
+        modificadoresActivos.add(modificador);
+        this.agregarModificadoresAMonstruos();
+    }
+
+    private void agregarModificadoresAMonstruos() {
+        for(Monstruo monstruo: zonaMonstruos) {
+            for(Modificador modificador: modificadoresActivos) {
+                monstruo.agregarModificador(modificador);
+            }
+        }
+    }
 }

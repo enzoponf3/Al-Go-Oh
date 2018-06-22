@@ -8,6 +8,7 @@ import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
 import algo3.fiuba.cartas.estados_cartas.EnMano;
 import algo3.fiuba.cartas.estados_cartas.EnMazo;
+import algo3.fiuba.cartas.modificadores.Modificador;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -146,5 +147,9 @@ public class Jugador {
 
     public List<Monstruo> getMonstuosEnCampo() {
         return tableroJugador.getMonstruos();
+    }
+
+    public void agregarModificador(Modificador modificador) {
+        tableroJugador.agregarModificador(modificador);
     }
 }
