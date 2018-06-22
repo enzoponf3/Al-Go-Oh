@@ -25,12 +25,12 @@ public class EstadoNoInicializado implements EstadoCarta {
     }
 
     @Override
-    public void activarEfecto(Trampa trampa, Monstruo atacante, EfectoCarta efecto) {
+    public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
         activarEfecto(trampa, efecto);
     }
 
     @Override
-    public void activarEfecto(Carta carta, Monstruo otraCarta, EfectoCarta efecto) {
+    public void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto) {
         activarEfecto(carta, efecto);
     }
 

@@ -10,7 +10,7 @@ public abstract class EfectoCarta {
         return;
     }
 
-    public void activar(Carta carta, Monstruo otraCarta) {
+    public void activar(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2) {
         return;
     }
 

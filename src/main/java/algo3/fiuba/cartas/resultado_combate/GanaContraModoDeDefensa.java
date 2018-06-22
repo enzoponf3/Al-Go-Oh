@@ -6,7 +6,7 @@ public class GanaContraModoDeDefensa implements ResultadoCombate {
 
     @Override
     public void afectarDefensor(Monstruo defensor) {
-        defensor.descartar();
+        defensor.mandarDelCampoAlCementerio();
     }
 
     @Override

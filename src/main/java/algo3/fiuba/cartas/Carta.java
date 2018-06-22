@@ -4,6 +4,8 @@ import algo3.fiuba.*;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estado_en_turno.EstadoEnTurno;
 import algo3.fiuba.cartas.estados_cartas.*;
+import algo3.fiuba.cartas.modificadores.Modificador;
+import algo3.fiuba.cartas.modificadores.ModificadorRefuerzos;
 
 import java.util.Objects;
 import java.util.Observable;
@@ -38,8 +40,8 @@ public abstract class Carta implements Observer {
         return estadoCarta.estaEnJuego();
     }
 
-    public void descartar() {
-        jugador.mandarCartaACementerio(this);
+    public void mandarDelCampoAlCementerio() {
+        jugador.mandarCartaDelCampoAlCementerio(this);
     }
 
     public void setEstado(EstadoCarta estadoCarta) {
@@ -54,8 +56,14 @@ public abstract class Carta implements Observer {
         estadoCarta.activarEfecto(this,  efecto);
     }
 
+<<<<<<< HEAD
     public void activarEfecto(Monstruo otraCarta) {
         estadoCarta.activarEfecto(this,  otraCarta, efecto);
+=======
+    public void activarEfecto(Monstruo atacante, Monstruo atacado) {
+        estadoCarta.activarEfecto(this,  atacante, atacado, efecto);
+        // jugador.mandarCartaDelCampoAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
+>>>>>>> 4df76ffb1857e2e4eed0c22d9d518768c8e43fba
     }
 
 

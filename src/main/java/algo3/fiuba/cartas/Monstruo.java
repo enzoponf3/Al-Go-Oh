@@ -42,7 +42,7 @@ public class Monstruo extends Carta {
     }
 
     public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
-        if (!jugador.recibirAtaque(monstruoAtacante)) {
+        if (!jugador.recibirAtaque(monstruoAtacante, this)) {
             estadoCarta.recibirAtaque(this);
             ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, this.getAtaque(), this.getDefensa());
             resultadoCombate.afectarDefensor(this);
@@ -91,7 +91,7 @@ public class Monstruo extends Carta {
 
     protected void realizarSacrificios(Campo campo, Monstruo... sacrificios) {
         for (Monstruo sacrificio : sacrificios) {
-            sacrificio.descartar();
+            sacrificio.mandarDelCampoAlCementerio();
             campo.removerCarta(sacrificio);
         }
     }
@@ -102,7 +102,7 @@ public class Monstruo extends Carta {
             ataqueModificado = modificador.modificarAtaque(ataqueModificado);
         }
 
-        return ataqueModificado;
+        return ataqueModificado > 0 ? ataqueModificado : 0;
     }
 
     public Integer getDefensa() {
@@ -111,16 +111,19 @@ public class Monstruo extends Carta {
             defensaModificada = modificador.modificarDefensa(defensaModificada);
         }
 
-        return defensaModificada;
+        return defensaModificada > 0 ? defensaModificada : 0;
     }
-/*
-    protected void setEfecto(EfectoCarta efecto) {
-       this.efecto = efecto;
+
+    public void agregarModificador(Modificador modificador) {
+        modificadores.add(modificador);
     }
+<<<<<<< HEAD
     */
 
     public void agregarModificador(Modificador modificador) {
         modificadores.add(modificador);
     }
 
+=======
+>>>>>>> 4df76ffb1857e2e4eed0c22d9d518768c8e43fba
 }

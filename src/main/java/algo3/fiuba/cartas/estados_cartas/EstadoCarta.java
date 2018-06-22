@@ -15,9 +15,9 @@ public interface EstadoCarta {
 
     void activarEfecto(Carta carta, EfectoCarta efecto);
 
-    void activarEfecto(Carta carta, Monstruo otraCarta, EfectoCarta efecto);
+    void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto);
 
-    void activarEfecto(Trampa trampa, Monstruo atacante, EfectoCarta efecto);
+    void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo defensor, EfectoCarta efecto);
 
     void recibirAtaque(Monstruo carta);
 

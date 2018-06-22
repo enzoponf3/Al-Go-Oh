@@ -26,7 +26,6 @@ public class EfectoFisura extends EfectoCarta {
 
     private Monstruo obtenerMonstruoConMenorAtaque(List<Monstruo> monstruos) {
         Monstruo monstruo = monstruos.stream().reduce(monstruos.get(0), (m, acc) -> {
-            System.out.println(m + " vs " + acc);
             if (m.getAtaque() < acc.getAtaque())
                 return m;
             return acc;
