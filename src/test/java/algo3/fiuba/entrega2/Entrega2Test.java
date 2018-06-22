@@ -339,6 +339,9 @@ public class Entrega2Test {
         Monstruo parteExodia4 = new BrazoDerechoExodia(jugador1);
         Monstruo parteExodia5 = new BrazoIzquierdoExodia(jugador1);
 
+        jugador2.agregarCartaAMazo(new MagoOscuro(jugador2));
+        jugador1.agregarCartaAMazo(new SevenColoredFish(jugador1));
+
         jugador1.agregarCartaAMano(parteExodia1);
         jugador1.agregarCartaAMano(parteExodia2);
         jugador1.agregarCartaAMano(parteExodia3);
