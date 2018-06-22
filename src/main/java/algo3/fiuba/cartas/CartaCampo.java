@@ -28,7 +28,7 @@ public class CartaCampo extends Carta {
     /*
     @Override
     public boolean estaEnTablero(TableroJugador tableroJugador) {
-        return tableroJugador.cartaEstaEnTablero(this);
+        return tableroJugador.cartaEstaEnCampo(this);
     }
 */
     @Override

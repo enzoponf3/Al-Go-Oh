@@ -15,15 +15,11 @@ public class EfectoFisura extends EfectoCarta {
 
     @Override
     public void activar(Carta carta) {
-        /*
-        jugador.destruirCartaMenorAtaqueEnTableroOponente();
-        jugador.mandarCartaDelTableroAlCementerio(carta);
-        */
         Jugador oponente = jugador.getOponente();
         List<Monstruo> monstruosOponenteEnCampo = oponente.getMonstuosEnCampo();
         if (!monstruosOponenteEnCampo.isEmpty()) {
             Monstruo monstruoOponenteConMenorAtaque = obtenerMonstruoConMenorAtaque(monstruosOponenteEnCampo);
-            oponente.mandarCartaDelTableroAlCementerio(monstruoOponenteConMenorAtaque);
+            oponente.mandarCartaDelCampoAlCementerio(monstruoOponenteConMenorAtaque);
         }
     }
 

@@ -23,7 +23,7 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+    public void colocarCartaEnCampo(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
     }
 
@@ -31,7 +31,7 @@ public class TableroJugador {
         return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
     }
 
-    public boolean cartaEstaEnTablero(Carta carta) {
+    public boolean cartaEstaEnCampo(Carta carta) {
         return this.campo.cartaEstaEnCampo(carta);
     }
 
@@ -87,9 +87,4 @@ public class TableroJugador {
     public CartaCampo getCartaCampo() {
         return campo.getCartaCampo();
     }
-
-    public void destruirCartaMenorAtaque(Jugador jugador) {
-        campo.destruirCartaMenorAtaque(jugador);
-    }
-
 }

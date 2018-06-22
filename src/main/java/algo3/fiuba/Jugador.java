@@ -45,22 +45,22 @@ public class Jugador {
         return puntosDeVida;
     }
 
-    public void colocarCartaEnTablero(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+    public void colocarCartaEnCampo(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         carta.setJugador(this);
-        tableroJugador.colocarCartaEnTablero(carta, tipoEnJuego, sacrificios);
+        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
     }
 
 
     public boolean cartaEstaEnTablero(Carta carta) {
-        return tableroJugador.cartaEstaEnTablero(carta);
+        return tableroJugador.cartaEstaEnCampo(carta);
     }
 
     public boolean cartaEstaEnTablero(Monstruo carta) {
-        return tableroJugador.cartaEstaEnTablero(carta);
+        return tableroJugador.cartaEstaEnCampo(carta);
     }
 
     public boolean cartaEstaEnTablero(NoMonstruo carta) {
-        return tableroJugador.cartaEstaEnTablero(carta);
+        return tableroJugador.cartaEstaEnCampo(carta);
     }
 
     public void agregarCartaAMazo(Carta carta) {
@@ -72,7 +72,7 @@ public class Jugador {
         this.tableroJugador = tableroJugador;
     }
 
-    public void mandarCartaDelTableroAlCementerio(Carta carta) {
+    public void mandarCartaDelCampoAlCementerio(Carta carta) {
         carta.descartar();
         tableroJugador.removerCartaDelCampo(carta);
     }
@@ -131,18 +131,6 @@ public class Jugador {
             }
         }
         return !continuarAtaque;
-    }
-
-    public void daniarPuntosDeVidaOponente(Integer danio) {
-        oponente.modificarPuntosDeVida(-danio);
-    }
-
-    public void destruirCartaMenorAtaqueEnTableroOponente() {
-        oponente.destruirCartaMenorAtaqueEnTablero();
-    }
-
-    private void destruirCartaMenorAtaqueEnTablero() {
-        tableroJugador.destruirCartaMenorAtaque(this);
     }
 
     public void inicializar() {

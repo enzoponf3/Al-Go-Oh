@@ -52,12 +52,12 @@ public abstract class Carta implements Observer {
 
     public void activarEfecto() {
         estadoCarta.activarEfecto(this,  efecto);
-        // jugador.mandarCartaDelTableroAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
+        // jugador.mandarCartaDelCampoAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
     }
 
     public void activarEfecto(Monstruo otraCarta) {
         estadoCarta.activarEfecto(this,  otraCarta, efecto);
-        // jugador.mandarCartaDelTableroAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
+        // jugador.mandarCartaDelCampoAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
     }
 
 

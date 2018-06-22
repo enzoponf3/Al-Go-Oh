@@ -111,7 +111,7 @@ public class Enrega1NoOficialTest {
     public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador1SeEncuentraSoloAlli() {
         Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
-        jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(carta, BocaArriba.getInstancia());
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
@@ -130,7 +130,7 @@ public class Enrega1NoOficialTest {
     public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
         Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
-        jugador2.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnCampo(carta, BocaArriba.getInstancia());
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
@@ -149,7 +149,7 @@ public class Enrega1NoOficialTest {
     public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador1SeEncuentraSoloAlli() {
         Carta carta = new Magica("no monstruo test", new EfectoNulo());
 
-        jugador1.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(carta, BocaArriba.getInstancia());
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
@@ -168,7 +168,7 @@ public class Enrega1NoOficialTest {
     public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
         Carta carta = new Magica("no monstruo test", new EfectoNulo());
 
-        jugador2.colocarCartaEnTablero(carta, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnCampo(carta, BocaArriba.getInstancia());
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
@@ -246,7 +246,7 @@ public class Enrega1NoOficialTest {
     public void monstruoNoPuedeAtacarSiEstaEnElTableroEnModoDefensa() {
         Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
-        jugador1.colocarCartaEnTablero(monstruo, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruo, BocaArriba.getInstancia());
         monstruo.cambiarModo();
 
         monstruo.atacar(null);

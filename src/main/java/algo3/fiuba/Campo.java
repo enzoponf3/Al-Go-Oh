@@ -128,7 +128,7 @@ public class Campo {
             return acc;
         });
 
-        jugador.mandarCartaDelTableroAlCementerio(monstruo);
+        jugador.mandarCartaDelCampoAlCementerio(monstruo);
     }
 
     public CartaCampo getCartaCampo() {

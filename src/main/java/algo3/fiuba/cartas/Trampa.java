@@ -1,6 +1,5 @@
 package algo3.fiuba.cartas;
 
-import algo3.fiuba.Juego;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 
 public class Trampa extends NoMonstruo {
@@ -17,7 +16,7 @@ public class Trampa extends NoMonstruo {
     @Override
     public void activarEfecto(Monstruo atacante) {
         estadoCarta.activarEfecto(this,  atacante, efecto);
-        jugador.mandarCartaDelTableroAlCementerio(this);
+        jugador.mandarCartaDelCampoAlCementerio(this);
     }
 
 }
