@@ -11,4 +11,9 @@ public class EfectoInsectoComeHombres extends EfectoCarta {
     public EfectoInsectoComeHombres() {
 
     }
+
+    @Override
+    public void activar(Carta carta) {
+        carta.mandarDelCampoAlCementerio();
+    }
 }

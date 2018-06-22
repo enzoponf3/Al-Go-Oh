@@ -214,11 +214,11 @@ public class Entrega2Test {
         Assert.assertTrue(jugador1.cartaEstaEnCampo(dragonDefinitivo));
         Assert.assertTrue(dragonDefinitivo.estaEnJuego());
     }
-/*
+
     @Test
     public void colocoInsectoComeHombresBocaAbajo_monstruoOponenteLoAtaca_seActivaEfectoYSeDestruyeAtacante() {
-        Monstruo insectoComeHombres = new Monstruo("Insecto Come Hombres", 450, 600, 2, new EfectoInsectoComeHombres);
-        Monstruo monstruoAtacante = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
+        Monstruo insectoComeHombres = new InsectoComeHombres(jugador1);
+        Monstruo monstruoAtacante = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, BocaAbajo.getInstancia());
         insectoComeHombres.pasarAModoDefensa();
@@ -238,7 +238,7 @@ public class Entrega2Test {
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
         Assert.assertEquals(puntosInicialesDeVida, (int)jugador1.getPuntosDeVida());
     }
-*/
+
     @Test
     public void atacarATrampaCilindroMagico_seNiegaAtaqueYSeEfectuaALosPuntosDeVidaDelAtacante() {
         Monstruo monstruoAtacante = new SevenColoredFish(jugador2);

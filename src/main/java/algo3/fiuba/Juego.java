@@ -25,10 +25,6 @@ public class Juego {
     public void inicializar(Jugador jugador1, Jugador jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
-
-        jugador1.inicializar();
-        jugador2.inicializar();
-
         jugador1.setOponente(jugador2);
         jugador2.setOponente(jugador1);
     }
