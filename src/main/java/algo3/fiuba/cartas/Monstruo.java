@@ -92,7 +92,6 @@ public class Monstruo extends Carta {
     protected void realizarSacrificios(Campo campo, Monstruo... sacrificios) {
         for (Monstruo sacrificio : sacrificios) {
             sacrificio.mandarDelCampoAlCementerio();
-            campo.removerCarta(sacrificio);
         }
     }
 
