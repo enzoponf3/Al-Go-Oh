@@ -2,7 +2,6 @@ package algo3.fiuba.entrega1;
 
 import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
-import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
@@ -20,7 +19,7 @@ import org.junit.*;
 
 public class Entrega1OficialTest {
 
-    private Tablero tablero;
+    //private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
     private Juego juego;
@@ -30,10 +29,12 @@ public class Entrega1OficialTest {
         jugador1 = new Jugador();
         jugador2 = new Jugador();
 
+        /*
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
-
-        juego = new Juego(jugador1, jugador2, tablero);
+*/
+        juego = Juego.getInstancia();
+        juego.inicializar(jugador1, jugador2);
 
     }
 
@@ -75,11 +76,14 @@ public class Entrega1OficialTest {
 
     @Test(expected = InhabilitadaParaActivarseExcepcion.class)
     public void colocarCartaMagicaEnCampoBocaAbajo_NoActivaNingunEfecto() {
+        /*
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica cartaMagica = new Magica("agujero negro", efectoCarta);
+*/
+        Magica cartaMagica = new AgujeroNegro(jugador1);
 
         cartaMagica.pasarAModoJuego(BocaAbajo.getInstancia());
-        cartaMagica.activarEfecto(juego);
+        cartaMagica.activarEfecto();
         // Como está boca abajo no puede activarEfecto el efecto y lanza error.
     }
 
@@ -233,7 +237,7 @@ public class Entrega1OficialTest {
 
     @Test
     public void colocarMonstruosEnAmbosLadosDelCampo_colocarAgujeroNegroBocaArriba_seDestruyeronTodosLosMonstruosDeAmbosLadosDelCampoYNingunJugadorRecibioDanio() {
-        Magica agujeroNegro = new AgujeroNegro();
+        Magica agujeroNegro = new AgujeroNegro(jugador1);
 
         Monstruo monstruoJugador1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
         Monstruo monstruoJugador2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
@@ -242,12 +246,7 @@ public class Entrega1OficialTest {
         jugador2.colocarCartaEnTablero(monstruoJugador2, BocaArriba.getInstancia());
         jugador2.colocarCartaEnTablero(agujeroNegro, BocaArriba.getInstancia());
 
-        Assert.assertEquals(Integer.valueOf(2), tablero.monstruosEnJuego());
-
-
-        agujeroNegro.activarEfecto(juego);
-
-        Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
+        agujeroNegro.activarEfecto();
 
         Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoJugador1));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(monstruoJugador1));

@@ -64,11 +64,6 @@ public class TableroJugador {
                 '}';
     }
 
-    public void inicializar() {
-        cementerio = new LinkedList<>();
-        campo.reiniciar();
-    }
-
     public int cantidadCartasEnMazo() {
         return mazo.size();
     }

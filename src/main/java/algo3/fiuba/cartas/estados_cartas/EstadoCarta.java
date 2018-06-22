@@ -13,8 +13,6 @@ public interface EstadoCarta {
 
     void verificarQuePuedeAtacar();
 
-    void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto);
-
     void activarEfecto(Carta carta, EfectoCarta efecto);
 
     void activarEfecto(Carta carta, Monstruo otraCarta, EfectoCarta efecto);

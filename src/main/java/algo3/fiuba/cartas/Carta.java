@@ -51,11 +51,6 @@ public abstract class Carta implements Observer {
         this.jugador = jugador;
     }
 
-    public void activarEfecto(Juego juego) {
-        estadoCarta.activarEfecto(juego, this,  efecto);
-        // jugador.mandarCartaDelTableroAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
-    }
-
     public void activarEfecto() {
         estadoCarta.activarEfecto(this,  efecto);
         // jugador.mandarCartaDelTableroAlCementerio(this); Por qué? Ah, por las mágicas, pasarlo a override de NoMonstruo
@@ -88,9 +83,5 @@ public abstract class Carta implements Observer {
     public int hashCode() {
 
         return Objects.hash(nombre);
-    }
-
-    public void daniaPuntosDeVidaDelRival(Integer ataque) {
-        throw new RuntimeException("Implementar esto");
     }
 }

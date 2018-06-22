@@ -6,15 +6,34 @@ import algo3.fiuba.cartas.efectos.*;
 
 public class Juego {
 
+    private static Juego INSTANCIA;
+
     private Jugador jugador1;
     private Jugador jugador2;
-    private Tablero tablero;
 
-    public Juego(Jugador jugador1, Jugador jugador2, Tablero tablero) {
+    private Juego() {
+
+    }
+
+    public static Juego getInstancia() {
+        if (INSTANCIA == null)
+            INSTANCIA = new Juego();
+
+        return INSTANCIA;
+    }
+
+    public void inicializar(Jugador jugador1, Jugador jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
-        this.tablero = tablero;
+
+        jugador1.inicializar();
+        jugador2.inicializar();
+
+        jugador1.setOponente(jugador2);
+        jugador2.setOponente(jugador1);
     }
+
+
 
     public void activarEfecto(EfectoWasteland wasteland, Carta carta) {
 
@@ -22,13 +41,5 @@ public class Juego {
 
     public void activarEfecto(EfectoSogen sogen, Carta carta) {
 
-    }
-
-    public void activarEfecto(EfectoAgujeroNegro agujeroNegro) {
-        agujeroNegro.matarMonstruos(tablero);
-    }
-
-    public void activarEfecto(EfectoOllaDeLaCodicia ollaDeLaCodicia) {
-        // to do
     }
 }

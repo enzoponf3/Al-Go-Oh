@@ -103,12 +103,6 @@ public class Campo {
                 '}';
     }
 
-    public void reiniciar() {
-        zonaMonstruos = new LinkedList<>();
-        zonaNoMonstruos = new LinkedList<>();
-        cartaCampo = null;
-    }
-
     public void matarMonstruos() {
         for(Monstruo monstruo: zonaMonstruos) {
            monstruo.descartar();

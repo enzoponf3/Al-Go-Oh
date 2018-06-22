@@ -1,21 +1,31 @@
 package algo3.fiuba.cartas.efectos;
 
 import algo3.fiuba.Juego;
-import algo3.fiuba.Tablero;
+import algo3.fiuba.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class EfectoAgujeroNegro extends EfectoCarta {
+
+    private Jugador jugador;
+    private Jugador oponente;
+
+    public EfectoAgujeroNegro(Jugador jugador, Jugador oponente) {
+        this.jugador = jugador;
+        this.oponente = oponente;
+    }
+
+    /*
     @Override
     public void activar(Juego juego, Carta carta) {
         juego.activarEfecto(this);
     }
-
+*/
     @Override
     public void activar(Carta carta) {
+        jugador.matarMonstruosEnCampo();
+        oponente.matarMonstruosEnCampo();
+
     }
 
     @Override
@@ -23,8 +33,9 @@ public class EfectoAgujeroNegro extends EfectoCarta {
 
     }
 
-
+/*
     public void matarMonstruos(Tablero tablero) {
         tablero.matarMonstruos();
     }
+    */
 }

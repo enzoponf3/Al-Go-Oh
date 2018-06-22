@@ -2,13 +2,11 @@ package algo3.fiuba.entrega2;
 
 import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
-import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.cartas.efectos.EfectoSogen;
 import algo3.fiuba.cartas.efectos.EfectoWasteland;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
@@ -26,17 +24,17 @@ import org.junit.Test;
 public class Entrega2Test {
 
     private Juego juego;
-    private Tablero tablero;
+    //private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
 
     @Before
     public void setUp() {
-        juego = new Juego(jugador1, jugador2, tablero);
         jugador1 = new Jugador();
         jugador2 = new Jugador();
-        tablero = Tablero.getInstancia();
-        tablero.inicializar(jugador1, jugador2);
+        //tablero = Tablero.getInstancia();
+        juego = Juego.getInstancia();
+        juego.inicializar(jugador1, jugador2);
     }
 
 

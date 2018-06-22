@@ -22,6 +22,7 @@ public class Jugador {
     public Jugador() {
         this.puntosDeVida = 8000;
         this.mano = new LinkedList<>();
+        this.tableroJugador = new TableroJugador();
     }
 
     public boolean estaEnJuego() {
@@ -142,5 +143,19 @@ public class Jugador {
 
     private void destruirCartaMenorAtaqueEnTablero() {
         tableroJugador.destruirCartaMenorAtaque(this);
+    }
+
+    public void inicializar() {
+        this.puntosDeVida = 8000;
+        this.mano = new LinkedList<>();
+        this.tableroJugador = new TableroJugador();
+    }
+
+    public Jugador getOponente() {
+        return oponente;
+    }
+
+    public void matarMonstruosEnCampo() {
+        tableroJugador.matarMonstruos();
     }
 }

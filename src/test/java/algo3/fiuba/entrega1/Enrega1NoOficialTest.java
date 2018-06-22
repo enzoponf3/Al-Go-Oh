@@ -1,11 +1,10 @@
 package algo3.fiuba.entrega1;
 
+import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
-import algo3.fiuba.Tablero;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
@@ -15,17 +14,21 @@ import org.junit.Test;
 
 public class Enrega1NoOficialTest {
 
-    private Tablero tablero;
+    //private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
+    private Juego juego;
 
     @Before
     public void setUp() {
         jugador1 = new Jugador();
         jugador2 = new Jugador();
-
+/*
         tablero = Tablero.getInstancia();
         tablero.inicializar(jugador1, jugador2);
+*/
+        juego = Juego.getInstancia();
+        juego.inicializar(jugador1, jugador2);
 
     }
 

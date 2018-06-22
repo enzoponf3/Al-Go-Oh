@@ -1,17 +1,5 @@
 package algo3.fiuba.a_reacomodar;
 
-import algo3.fiuba.Jugador;
-import algo3.fiuba.Tablero;
-import algo3.fiuba.cartas.Magica;
-import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.efectos.EfectoAgujeroNegro;
-import algo3.fiuba.cartas.efectos.EfectoCarta;
-import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
-import algo3.fiuba.cartas.estados_cartas.BocaArriba;
-import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
-import org.junit.Assert;
-import org.junit.Test;
-
 public class MagicaEntrega1Test {
 /*
     @Test(expected = InhabilitadaParaActivarseExcepcion.class)

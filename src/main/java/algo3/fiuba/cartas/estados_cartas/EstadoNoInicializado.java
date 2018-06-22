@@ -15,11 +15,6 @@ public class EstadoNoInicializado implements EstadoCarta {
     }
 
     @Override
-    public void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto) {
-        activarEfecto(carta, efecto);
-    }
-
-    @Override
     public boolean estaEnJuego() {
         throw new RuntimeException("La carta nunca se ha inicializado en el duelo.");
     }

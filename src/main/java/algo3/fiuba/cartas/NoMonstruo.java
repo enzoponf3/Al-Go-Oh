@@ -11,6 +11,8 @@ public abstract class NoMonstruo extends Carta {
         super(nombre, efecto);
     }
 
+    public abstract boolean activarTrampa();
+
     @Override
     public boolean estaEnTablero(Campo campo) {
         return campo.cartaEstaEnCampo(this);
@@ -29,14 +31,6 @@ public abstract class NoMonstruo extends Carta {
 
         estadoCarta = tipoEnJuego;
         campo.colocarCarta(this, tipoEnJuego, sacrificios);
-    }
-
-    public abstract boolean activarTrampa();
-
-    @Override
-    public void activarEfecto(Juego juego) {
-        estadoCarta.activarEfecto(juego, this,  efecto);
-        jugador.mandarCartaDelTableroAlCementerio(this);
     }
 
     @Override

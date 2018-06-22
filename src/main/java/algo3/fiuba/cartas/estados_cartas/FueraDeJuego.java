@@ -12,7 +12,7 @@ import java.awt.*;
 public abstract class FueraDeJuego implements EstadoCarta {
 
     public boolean estaEnJuego() {
-        return false;//throw new RuntimeException("La carta no se ha jugado aún.");
+        return false;
     }
 
     @Override
@@ -28,11 +28,6 @@ public abstract class FueraDeJuego implements EstadoCarta {
     @Override
     public void recibirAtaque(NoMonstruo carta) {
         throw new RuntimeException("No se pueden atacar cartas No Monstruos.");
-    }
-
-    @Override
-    public void activarEfecto(Juego juego, Carta carta, EfectoCarta efecto) {
-        throw new RuntimeException("No se pueden atacar Monstruos que están fuera de juego.");
     }
 
     @Override
