@@ -13,4 +13,9 @@ public class Magica extends NoMonstruo {
     public boolean activarTrampa() {
         return false;
     }
+
+    @Override
+    public boolean bloquearAtaque() {
+        return false;
+    }
 }

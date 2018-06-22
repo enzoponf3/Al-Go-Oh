@@ -61,8 +61,8 @@ public class Entrega1OficialTest {
 
         monstruoAtacante.atacar(monstruoDefensor);
 
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(monstruoAtacante));
-        Assert.assertTrue(jugador2.cartaEstaEnTablero(monstruoDefensor));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(monstruoAtacante));
+        Assert.assertTrue(jugador2.cartaEstaEnCampo(monstruoDefensor));
         // Como está en modo defensa no puede atacar y tira excepción.
     }
 
@@ -86,7 +86,7 @@ public class Entrega1OficialTest {
         trampa.setJugador(jugador1);
 
         jugador1.colocarCartaEnCampo(trampa, BocaAbajo.getInstancia());
-        jugador1.cartaEstaEnTablero(trampa);
+        jugador1.cartaEstaEnCampo(trampa);
     }
 
     @Test
@@ -98,7 +98,7 @@ public class Entrega1OficialTest {
         jugador1.mandarCartaDelCampoAlCementerio(carta);
 
         Assert.assertFalse(carta.estaEnJuego());
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(carta));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(carta));
     }
 
@@ -241,9 +241,9 @@ public class Entrega1OficialTest {
 
         agujeroNegro.activarEfecto();
 
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoJugador1));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(monstruoJugador1));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(monstruoJugador1));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoJugador2));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoJugador2));
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoJugador2));
     }
 
@@ -260,9 +260,9 @@ public class Entrega1OficialTest {
         jugador1.colocarCartaEnCampo(cartaMonstruoAInvocar, BocaArriba.getInstancia(), cartaMonstruoASacrificar);
 
         Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(cartaMonstruoAInvocar));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(cartaMonstruoAInvocar));
         Assert.assertFalse(cartaMonstruoASacrificar.estaEnJuego());
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(cartaMonstruoASacrificar));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(cartaMonstruoASacrificar));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(cartaMonstruoASacrificar));
     }
 
@@ -284,12 +284,12 @@ public class Entrega1OficialTest {
         jugador1.colocarCartaEnCampo(cartaMonstruoAInvocar, BocaArriba.getInstancia(), monstruoASacrificar1, monstruoASacrificar2);
 
         Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(cartaMonstruoAInvocar));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(cartaMonstruoAInvocar));
         Assert.assertFalse(monstruoASacrificar1.estaEnJuego());
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoASacrificar1));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(monstruoASacrificar1));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(monstruoASacrificar1));
         Assert.assertFalse(monstruoASacrificar2.estaEnJuego());
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(monstruoASacrificar2));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(monstruoASacrificar2));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(monstruoASacrificar2));
     }
 

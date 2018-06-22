@@ -6,12 +6,12 @@ public class EmpataContraModoAtaque implements ResultadoCombate {
 
     @Override
     public void afectarDefensor(Monstruo defensor) {
-        defensor.descartar();
+        defensor.mandarDelCampoAlCementerio();
     }
 
     @Override
     public void afectarAtacante(Monstruo atacante) {
-        atacante.descartar();
+        atacante.mandarDelCampoAlCementerio();
     }
 
     @Override

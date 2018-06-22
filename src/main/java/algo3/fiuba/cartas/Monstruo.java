@@ -22,8 +22,7 @@ public class Monstruo extends Carta {
     private Integer defensaBase;
     protected ModoMonstruo modoMonstruo;
     private Nivel nivel;
-    private Set<Modificador> modificadoresAtaque;
-    private Set<Modificador> modificadoresDefensa;
+    private Set<Modificador> modificadores;
 
     public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas, EfectoCarta efecto) {
 
@@ -32,8 +31,7 @@ public class Monstruo extends Carta {
         this.defensaBase = defensa;
         this.nivel = NivelFactoryFactory.obtenerEstrellas(estrellas);
         this.estadoEnTurno = new NoUsadaEnTurno(); // está solo para que pasen los tests
-        this.modificadoresAtaque = new HashSet<>();
-        this.modificadoresDefensa = new HashSet<>();
+        this.modificadores = new HashSet<>();
     }
 
     public void atacar(Monstruo otraCarta) {
@@ -44,7 +42,7 @@ public class Monstruo extends Carta {
     }
 
     public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
-        if (!jugador.recibirAtaque(monstruoAtacante)) {
+        if (!jugador.recibirAtaque(monstruoAtacante, this)) {
             estadoCarta.recibirAtaque(this);
             ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, this.getAtaque(), this.getDefensa());
             resultadoCombate.afectarDefensor(this);
@@ -93,31 +91,30 @@ public class Monstruo extends Carta {
 
     protected void realizarSacrificios(Campo campo, Monstruo... sacrificios) {
         for (Monstruo sacrificio : sacrificios) {
-            sacrificio.descartar();
+            sacrificio.mandarDelCampoAlCementerio();
             campo.removerCarta(sacrificio);
         }
     }
 
     public Integer getAtaque() {
         Integer ataqueModificado = ataqueBase;
-        for (Modificador modificador : modificadoresAtaque) {
+        for (Modificador modificador : modificadores) {
             ataqueModificado = modificador.modificarAtaque(ataqueModificado);
         }
 
-        return ataqueModificado;
+        return ataqueModificado > 0 ? ataqueModificado : 0;
     }
 
     public Integer getDefensa() {
         Integer defensaModificada = defensaBase;
-        for (Modificador modificador : modificadoresDefensa) {
+        for (Modificador modificador : modificadores) {
             defensaModificada = modificador.modificarDefensa(defensaModificada);
         }
 
-        return defensaModificada;
+        return defensaModificada > 0 ? defensaModificada : 0;
     }
-/*
-    protected void setEfecto(EfectoCarta efecto) {
-       this.efecto = efecto;
+
+    public void agregarModificador(Modificador modificador) {
+        modificadores.add(modificador);
     }
-    */
 }

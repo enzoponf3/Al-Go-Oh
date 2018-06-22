@@ -29,13 +29,13 @@ public class BocaAbajo extends EnJuego {
     }
 
     @Override
-    public void activarEfecto(Carta carta, Monstruo otraCarta, EfectoCarta efecto) {
+    public void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto) {
         activarEfecto(carta, efecto);
     }
 
     @Override
-    public void activarEfecto(Trampa trampa, Monstruo atacante, EfectoCarta efecto) {
-        efecto.activar(trampa, atacante);
+    public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
+        efecto.activar(trampa, atacante, atacado);
     }
 
     @Override

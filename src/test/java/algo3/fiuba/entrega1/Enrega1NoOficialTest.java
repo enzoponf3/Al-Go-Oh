@@ -29,7 +29,6 @@ public class Enrega1NoOficialTest {
     }
 
     // VALIDAR QUE CARTA ESTÁ EN UN ÚNICO LUGAR
-
     @Test
     public void verificoQueSiAgregoUnaCartaALaManoDelJugador1SeEncuentraSoloAlli() {
         Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
@@ -39,8 +38,8 @@ public class Enrega1NoOficialTest {
         Assert.assertTrue(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
 
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(carta));
 
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
@@ -58,8 +57,8 @@ public class Enrega1NoOficialTest {
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertTrue(jugador2.cartaEstaEnMano(carta));
 
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(carta));
 
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
@@ -77,8 +76,8 @@ public class Enrega1NoOficialTest {
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
 
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(carta));
 
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(carta));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
@@ -96,8 +95,8 @@ public class Enrega1NoOficialTest {
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
 
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(carta));
 
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(carta));
@@ -116,8 +115,8 @@ public class Enrega1NoOficialTest {
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
 
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(carta));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(carta));
 
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
@@ -135,8 +134,8 @@ public class Enrega1NoOficialTest {
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
 
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
-        Assert.assertTrue(jugador2.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(carta));
+        Assert.assertTrue(jugador2.cartaEstaEnCampo(carta));
 
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
@@ -154,8 +153,8 @@ public class Enrega1NoOficialTest {
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
 
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(carta));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(carta));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(carta));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(carta));
 
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));
@@ -173,8 +172,8 @@ public class Enrega1NoOficialTest {
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
 
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(carta));
-        Assert.assertTrue(jugador2.cartaEstaEnTablero(carta));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(carta));
+        Assert.assertTrue(jugador2.cartaEstaEnCampo(carta));
 
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(carta));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(carta));

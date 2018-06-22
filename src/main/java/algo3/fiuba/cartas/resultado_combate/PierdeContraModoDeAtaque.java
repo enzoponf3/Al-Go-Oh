@@ -19,7 +19,7 @@ public class PierdeContraModoDeAtaque implements ResultadoCombate {
 
     @Override
     public void afectarAtacante(Monstruo atacante) {
-        atacante.descartar();
+        atacante.mandarDelCampoAlCementerio();
         atacante.daniarJugador(diferenciaPuntos);
     }
 

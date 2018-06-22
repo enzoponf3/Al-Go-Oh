@@ -3,7 +3,6 @@ package algo3.fiuba;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.efectos.*;
-import algo3.fiuba.cartas.moldes_cartas.Exodia;
 
 public class Juego {
 
@@ -48,7 +47,7 @@ public class Juego {
     }
 
 /*
-    public void activarEfecto(EfectoReinforcements refuerzos) {
+    public void activarEfecto(EfectoRefuerzos refuerzos) {
         refuerzos.
     }
 */

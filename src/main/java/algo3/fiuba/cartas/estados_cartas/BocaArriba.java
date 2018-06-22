@@ -28,8 +28,8 @@ public class BocaArriba extends EnJuego {
     }
 
     @Override
-    public void activarEfecto(Carta carta, Monstruo otraCarta, EfectoCarta efecto) {
-        efecto.activar(carta, otraCarta);
+    public void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto) {
+        efecto.activar(carta, otraCarta1, otraCarta2);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class BocaArriba extends EnJuego {
     }
 
     @Override
-    public void activarEfecto(Trampa trampa, Monstruo atacante, EfectoCarta efecto) {
+    public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
         throw new RuntimeException("No se puede Activar una carta Trampa en modo defensa");
     }
 }

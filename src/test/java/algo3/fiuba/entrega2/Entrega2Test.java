@@ -2,23 +2,19 @@ package algo3.fiuba.entrega2;
 
 import algo3.fiuba.Juego;
 import algo3.fiuba.Jugador;
-import algo3.fiuba.cartas.Carta;
-import algo3.fiuba.cartas.CartaCampo;
-import algo3.fiuba.cartas.Magica;
-import algo3.fiuba.cartas.Monstruo;
+import algo3.fiuba.cartas.*;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.efectos.EfectoWasteland;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.*;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.Fisura;
-import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.DragonBlancoDeOjosAzules;
-import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.DragonDefinitivoDeOjosAzules;
-import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
-import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
 import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.CilindroMagico;
+import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.Refuerzos;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class Entrega2Test {
@@ -124,7 +120,7 @@ public class Entrega2Test {
 
         // Luego de ser usada la carta mágica va al cementerio.
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(ollaDeLaCodicia));
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(ollaDeLaCodicia));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(ollaDeLaCodicia));
     }
 
     @Test
@@ -140,13 +136,13 @@ public class Entrega2Test {
         fisura.activarEfecto();
 
         // Después de ser usada la carta mágica va al cementerio.
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(fisura));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(fisura));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(fisura));
 
         // La carta de menor ataque del enemigo va al cementerio.
-        Assert.assertTrue(jugador2.cartaEstaEnTablero(monstruoFuerte));
+        Assert.assertTrue(jugador2.cartaEstaEnCampo(monstruoFuerte));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoFuerte));
-        Assert.assertFalse(jugador2.cartaEstaEnTablero(monstruoDebil));
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoDebil));
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoDebil));
         }
 
@@ -165,7 +161,7 @@ public class Entrega2Test {
         Assert.assertEquals(vidaFinalEnemigo, jugador2.getPuntosDeVida());
 
         // Después de atacar Jinzo7 se mantiene en el tablero.
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(jinzo7));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(jinzo7));
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(jinzo7));
     }
 
@@ -201,15 +197,15 @@ public class Entrega2Test {
         jugador1.colocarCartaEnCampo(dragonDefinitivo, BocaArriba.getInstancia(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
 
         // Para invocar al Dragón definitivo se tuvo que sacrificar a los tres dragones.
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(dragonASacrificar1));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(dragonASacrificar1));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(dragonASacrificar1));
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(dragonASacrificar2));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(dragonASacrificar2));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(dragonASacrificar2));
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(dragonASacrificar3));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(dragonASacrificar3));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(dragonASacrificar3));
 
         // Se debería de haber colocado al dragón definitivo.
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(dragonDefinitivo));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(dragonDefinitivo));
         Assert.assertTrue(dragonDefinitivo.estaEnJuego());
     }
 /*
@@ -250,9 +246,9 @@ public class Entrega2Test {
         monstruoAtacante.atacar(monstruoAtacado);
 
         // Las cartas monstruo de ambos lados del tablero siguen vivas.
-        Assert.assertTrue(jugador1.cartaEstaEnTablero(monstruoAtacado));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(monstruoAtacado));
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(monstruoAtacado));
-        Assert.assertTrue(jugador2.cartaEstaEnTablero(monstruoAtacante));
+        Assert.assertTrue(jugador2.cartaEstaEnCampo(monstruoAtacante));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoAtacante));
 
         // El que ataco recibió ataque a sus puntos de vida igual al ataque de la carta con la que atacó.
@@ -264,41 +260,48 @@ public class Entrega2Test {
         Assert.assertEquals(vidaFinalAtacado, jugador1.getPuntosDeVida());
 
         // Después de ser activada una carta Trampa va al cementerio.
-        Assert.assertFalse(jugador1.cartaEstaEnTablero(cilindroMagico));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(cilindroMagico));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(cilindroMagico));
     }
 
-/*
-    @Test
-    public void colocoTrampaReinforcement_seAtacaConMonstruoDe400ATKMas_monstruoAtacadoAumenta500ATKAlActivarTrampa() {
-        Monstruo monstruoAtacado = new Monstruo("Monstruo incompetente", 0, 100, 1, efectoNulo);
-        Monstruo monstruoAtacante = new Monstruo("Pepi", 400, 100, 2, efectoNulo);
-        Trampa reinforcement = new Trampa("Reinforcement", new EfectoReinforcement());
 
+    @Test
+    public void colocoTrampaRefuerzos_seAtacaConMonstruoDe400ATKMas_monstruoAtacadoAumenta500ATKAlActivarTrampa() {
+        Monstruo monstruoAtacado = new Kuriboh(jugador1); // ATK 300
+        Trampa refuerzos = new Refuerzos(jugador1); // ATK 500
+        Monstruo monstruoAtacante = new Jinzo7(jugador2);
+
+        // Los monstruos por default se colocan en modo ataque
         jugador1.colocarCartaEnCampo(monstruoAtacado, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnCampo(reinforcement, BocaAbajo.getInstancia());
+        jugador1.colocarCartaEnCampo(refuerzos, BocaAbajo.getInstancia());
         jugador2.colocarCartaEnCampo(monstruoAtacante, BocaArriba.getInstancia());
 
         // Al atacar al monstruoAtacado se activa la trampa, que le suma 500ATK a este mismo.
         monstruoAtacante.atacar(monstruoAtacado);
 
         // Muere el monstruo atacante.
+        Assert.assertFalse(monstruoAtacante.estaEnJuego());
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoAtacante));
         Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoAtacante));
 
+        Assert.assertTrue(monstruoAtacado.estaEnJuego());
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(monstruoAtacado));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(monstruoAtacado));
+
         // Se le resta a los puntos de vida del atacante la diferencia de ataques.
-        int vidaFinalAtacante = 8000 - (500 - 400);
-        Assert.assertEquals(vidaFinalAtacante, (int)jugador2.getPuntosDeVida());
+        Integer vidaFinalAtacante = 8000 - ((300 + 500) - 500);
+        Assert.assertEquals(vidaFinalAtacante, jugador2.getPuntosDeVida());
 
         // El jugador atacado no recibe daño.
-        int vidaFinalAtacado = 8000;
-        Assert.assertEquals(vidaFinalAtacado, (int)jugador1.getPuntosDeVida());
+        Integer vidaFinalAtacado = 8000;
+        Assert.assertEquals(vidaFinalAtacado, jugador1.getPuntosDeVida());
 
         // La carta Trampa después de activada va al cementerio.
-        Assert.assertTrue(jugador1.cartaEstaEnCementerio(reinforcement));
-        Assert.assertFalse(jugador1.cartaEstaEnCampo(reinforcement));
+        Assert.assertFalse(refuerzos.estaEnJuego());
+        Assert.assertTrue(jugador1.cartaEstaEnCementerio(refuerzos));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(refuerzos));
     }
-
+/*
     @Test
     public void extraerTodasLasCartasDeMazo_jugadorSinCartasPerdio() {
         Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, efectoNulo);
@@ -321,7 +324,8 @@ public class Entrega2Test {
         Assert.assertEquals(jugador2, juego.ganadorPartida());
     }
 */
-/*
+
+    @Ignore
     @Test
     public void colocarCincoPartesDeExodia_jugadorConPartesGanaPartido() {
         Monstruo parteExodia1 = new PiernaDerechaExodia(jugador1);
@@ -336,11 +340,11 @@ public class Entrega2Test {
         jugador1.agregarCartaAMano(parteExodia4);
         jugador1.agregarCartaAMano(parteExodia5);
 
-        parteExodia5.activar(juego);
+        //parteExodia5.activar();
         // Cuando un jugador tiene las cinco partes en la mano, se termina la partida y este gana directamente.
         //Assert.assertTrue(juego.terminoPartida());
        // Assert.assertEquals(juego.ganadorPartida(), jugador1);
     }
-*/
+
 }
 

@@ -51,15 +51,15 @@ public class Jugador {
         tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
     }
 
-    public boolean cartaEstaEnTablero(Carta carta) {
+    public boolean cartaEstaEnCampo(Carta carta) {
         return tableroJugador.cartaEstaEnCampo(carta);
     }
 
-    public boolean cartaEstaEnTablero(Monstruo carta) {
+    public boolean cartaEstaEnCampo(Monstruo carta) {
         return tableroJugador.cartaEstaEnCampo(carta);
     }
 
-    public boolean cartaEstaEnTablero(NoMonstruo carta) {
+    public boolean cartaEstaEnCampo(NoMonstruo carta) {
         return tableroJugador.cartaEstaEnCampo(carta);
     }
 
@@ -73,8 +73,9 @@ public class Jugador {
     }
 
     public void mandarCartaDelCampoAlCementerio(Carta carta) {
-        carta.descartar();
+        carta.setEstado(EnCementerio.getInstancia());
         tableroJugador.removerCartaDelCampo(carta);
+        tableroJugador.agregarCartaACementerio(carta);
     }
 
     public void mandarCartaACementerio(Carta carta) {
@@ -122,13 +123,13 @@ public class Jugador {
         this.oponente = oponente;
     }
 
-    public boolean recibirAtaque(Monstruo monstruo) {
+    public boolean recibirAtaque(Monstruo monstruoAtacante, Monstruo monstruoAtacado) {
         boolean continuarAtaque = true;
         List<NoMonstruo> noMonstruos = tableroJugador.getNoMonstruos();
         for (NoMonstruo noMonstruo : noMonstruos) {
             if ((continuarAtaque = noMonstruo.activarTrampa())) {
-                noMonstruo.activarEfecto(monstruo);
-                return continuarAtaque;
+                noMonstruo.activarEfecto(monstruoAtacante, monstruoAtacado);
+                return noMonstruo.bloquearAtaque();
             }
         }
         return !continuarAtaque;

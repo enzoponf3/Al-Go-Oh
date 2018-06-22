@@ -31,12 +31,12 @@ public abstract class FueraDeJuego implements EstadoCarta {
     }
 
     @Override
-    public void activarEfecto(Trampa trampa, Monstruo atacante, EfectoCarta efecto) {
+    public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
         throw new RuntimeException("No se pueden activar cartas trampas que están fuera de juego");
     }
 
     @Override
-    public void activarEfecto(Carta carta, Monstruo otraCarta, EfectoCarta efecto) {
+    public void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto) {
         activarEfecto(carta, efecto);
     }
 }

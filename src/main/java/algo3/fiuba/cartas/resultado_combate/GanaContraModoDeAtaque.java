@@ -14,7 +14,7 @@ public class GanaContraModoDeAtaque implements ResultadoCombate {
 
     @Override
     public void afectarDefensor(Monstruo defensor) {
-        defensor.descartar();
+        defensor.mandarDelCampoAlCementerio();
         defensor.daniarJugador(diferenciaPuntos);
     }
 
