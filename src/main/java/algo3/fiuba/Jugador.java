@@ -27,8 +27,15 @@ public class Jugador {
     }
 
     public boolean estaEnJuego() {
+        return estaVivo() && tieneCartas();
+    }
+
+    public boolean estaVivo() {
         return puntosDeVida > 0;
-        //return ((puntosDeVida > 0) && (this.cantidadCartasEnMazo() > 0));
+    }
+
+    public boolean tieneCartas() {
+        return this.cantidadCartasEnMazo() > 0;
     }
 
     public void modificarPuntosDeVida(Integer puntos) {

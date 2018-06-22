@@ -42,6 +42,15 @@ public class Juego {
     public void activarEfecto(EfectoSogen sogen, Carta carta) {
     }
 
+    public boolean terminoPartida() {
+        return !(jugador1.estaEnJuego() && jugador2.estaEnJuego());
+    }
+
+    public Jugador ganadorPartida() {
+        if (terminoPartida()) return jugador1.estaEnJuego() ? jugador1 : jugador2;
+        return null;
+    }
+
 /*
     public void activarEfecto(EfectoRefuerzos refuerzos) {
         refuerzos.
