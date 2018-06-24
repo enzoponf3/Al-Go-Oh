@@ -104,7 +104,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Assert.assertFalse(dragonDefinitivo.estaEnJuego());
     }
 
-    @Test
+    @Test(expected = SacrificiosInsuficientesExcepcion.class)
     public void sacrificandoUnDragonesDeOjosAzulesNoSePuedeInvocar() {
         Monstruo dragonASacrificar1 = new DragonBlancoDeOjosAzules(jugador);
         Monstruo dragonASacrificar2 = new DragonBlancoDeOjosAzules(jugador);
@@ -139,7 +139,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Assert.assertFalse(dragonDefinitivo.estaEnJuego());
     }
 
-    @Test
+    @Test(expected = SacrificiosInsuficientesExcepcion.class)
     public void sacrificandoDosDragonesDeOjosAzulesSePuedeInvocar() {
         Monstruo dragonASacrificar1 = new DragonBlancoDeOjosAzules(jugador);
 

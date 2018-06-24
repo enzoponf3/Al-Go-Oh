@@ -27,7 +27,7 @@ public class DragonDefinitivoDeOjosAzules extends Monstruo {
     }
 
     private boolean sacrificiosSuficientes(Monstruo... sacrificios) {
-        if (sacrificios.length == 0)
+        if (sacrificios.length != 3)
             return false;
 
         boolean sacrificioValido = true;
