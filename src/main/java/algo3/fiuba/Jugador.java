@@ -43,7 +43,8 @@ public class Jugador {
     }
 
     public void tomarCartaDelMazo() {
-        mano.add(tableroJugador.tomarCartaDelMazo());
+        Carta carta = tableroJugador.tomarCartaDelMazo();
+        carta.agregarAMano(mano);
     }
 
     public Integer cantidadCartasEnMano() {

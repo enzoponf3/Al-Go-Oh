@@ -1,8 +1,11 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_monstruos;
 
 import algo3.fiuba.Jugador;
+import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoPartesExodia;
+
+import java.util.List;
 
 public class CabezaExodia extends Monstruo {
 
@@ -10,5 +13,11 @@ public class CabezaExodia extends Monstruo {
 
         super("Exodia, el prohibido", 1000, 1000, 3, new EfectoPartesExodia(jugador.getOponente()));
         setJugador(jugador);
+    }
+
+    @Override
+    public void agregarAMano(List<Carta> mano) {
+        super.agregarAMano(mano);
+        activarEfecto(this, jugador);
     }
 }

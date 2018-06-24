@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.estados_cartas.*;
 import algo3.fiuba.cartas.modificadores.Modificador;
 import algo3.fiuba.cartas.modificadores.ModificadorRefuerzos;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
@@ -84,5 +85,10 @@ public abstract class Carta implements Observer {
     public int hashCode() {
 
         return Objects.hash(nombre);
+    }
+
+    public void agregarAMano(List<Carta> mano) {
+        estadoCarta = EnMano.getInstancia();
+        mano.add(this);
     }
 }
