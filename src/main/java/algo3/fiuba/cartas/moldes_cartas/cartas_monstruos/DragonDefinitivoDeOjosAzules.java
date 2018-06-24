@@ -6,6 +6,7 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
+import algo3.fiuba.excepciones.SacrificiosInsuficientesExcepcion;
 
 public class DragonDefinitivoDeOjosAzules extends Monstruo {
 
@@ -17,7 +18,7 @@ public class DragonDefinitivoDeOjosAzules extends Monstruo {
     @Override
     public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         if (!sacrificiosSuficientes(sacrificios))
-            throw new RuntimeException(String.format("Se necesitan estrictamente 3 Dragones Blancos de Ojos Azules para invocarlo."));
+            throw new SacrificiosInsuficientesExcepcion("Se necesitan estrictamente 3 Dragones Blancos de Ojos Azules para invocarlo.");
 
         realizarSacrificios(campo, sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();
@@ -26,6 +27,9 @@ public class DragonDefinitivoDeOjosAzules extends Monstruo {
     }
 
     private boolean sacrificiosSuficientes(Monstruo... sacrificios) {
+        if (sacrificios.length == 0)
+            return false;
+
         boolean sacrificioValido = true;
         for (Monstruo sacrificio : sacrificios) {
             sacrificioValido &= sacrificio.equals(new DragonBlancoDeOjosAzules(jugador));
