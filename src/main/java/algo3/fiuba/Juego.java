@@ -37,25 +37,4 @@ public class Juego {
         if (terminoPartida()) return jugador1.estaEnJuego() ? jugador1 : jugador2;
         return null;
     }
-
-    public void activarEfecto(EfectoWasteland wasteland, CartaCampo carta) {
-        //wasteland.aumentarATKPropio();
-    }
-
-
-    public void activarEfecto(EfectoWasteland wasteland, Carta carta) {
-
-    }
-
-    public void activarEfecto(EfectoSogen sogen, Carta carta) {
-    }
-
-
-/*
-    public void activarEfecto(EfectoRefuerzos refuerzos) {
-        refuerzos.
-    }
-*/
-
-
 }

@@ -5,18 +5,19 @@ import algo3.fiuba.Juego;
 import algo3.fiuba.cartas.Carta;
 
 public class EfectoOllaDeLaCodicia extends EfectoCarta {
+
     private Jugador jugador;
 
     @Override
     public void activar(Carta carta) {
-        robar2Cartas(jugador);
+        robar2Cartas();
     }
 
-    public EfectoOllaDeLaCodicia(Jugador jugador){
+    public EfectoOllaDeLaCodicia(Jugador jugador) {
         this.jugador = jugador;
-
     }
-    public void robar2Cartas(Jugador jugador) {
+
+    public void robar2Cartas() {
         jugador.tomarCartaDelMazo();
         jugador.tomarCartaDelMazo();
     }

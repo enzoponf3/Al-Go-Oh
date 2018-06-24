@@ -6,14 +6,14 @@ import algo3.fiuba.cartas.Monstruo;
 
 public class EfectoCilindroMagico extends EfectoCarta {
 
-    private Jugador jugador;
+    private Jugador oponente;
 
-    public EfectoCilindroMagico(Jugador jugador) {
-        this.jugador = jugador;
+    public EfectoCilindroMagico(Jugador oponente) {
+        this.oponente = oponente;
     }
 
     @Override
     public void activar(Carta carta, Monstruo atacante, Monstruo atacado) {
-        jugador.getOponente().modificarPuntosDeVida(-atacante.getAtaque());
+        oponente.modificarPuntosDeVida(-atacante.getAtaque());
     }
 }

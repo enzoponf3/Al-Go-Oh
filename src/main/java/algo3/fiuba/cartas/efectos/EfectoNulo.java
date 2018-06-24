@@ -7,7 +7,7 @@ public class EfectoNulo extends EfectoCarta {
 
     @Override
     public void activar(Carta carta) {
-        // no hace nada
+
     }
 
 }

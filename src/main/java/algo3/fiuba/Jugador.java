@@ -42,10 +42,6 @@ public class Jugador {
         puntosDeVida += (-puntos > puntosDeVida) ? -puntosDeVida : puntos;
     }
 
-    public void matarJugador() {
-        puntosDeVida = 0;
-    }
-
     public void tomarCartaDelMazo() {
         mano.add(tableroJugador.tomarCartaDelMazo());
     }
@@ -131,10 +127,6 @@ public class Jugador {
                 '}';
     }
 
-    public void setOponente(Jugador oponente) {
-        this.oponente = oponente;
-    }
-
     public boolean recibirAtaque(Monstruo monstruoAtacante, Monstruo monstruoAtacado) {
         boolean continuarAtaque = true;
         List<NoMonstruo> noMonstruos = tableroJugador.getNoMonstruos();
@@ -155,6 +147,10 @@ public class Jugador {
 
     public Jugador getOponente() {
         return oponente;
+    }
+
+    public void setOponente(Jugador oponente) {
+        this.oponente = oponente;
     }
 
     public List<Monstruo> getMonstuosEnCampo() {

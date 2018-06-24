@@ -7,8 +7,7 @@ import algo3.fiuba.cartas.efectos.EfectoNulo;
 
 public class Fisura extends Magica {
     public Fisura(Jugador jugador) {
-        super("Fisura", new EfectoNulo());
+        super("Fisura", new EfectoFisura(jugador.getOponente()));
         setJugador(jugador);
-        setEfecto(new EfectoFisura(jugador));
     }
 }

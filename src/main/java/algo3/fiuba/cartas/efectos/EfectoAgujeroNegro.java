@@ -18,7 +18,6 @@ public class EfectoAgujeroNegro extends EfectoCarta {
 
     @Override
     public void activar(Carta carta) {
-        Jugador oponente = jugador.getOponente();
         mandarMonstruosDelCampoAlCementerio(jugador, jugador.getMonstuosEnCampo());
         mandarMonstruosDelCampoAlCementerio(oponente, oponente.getMonstuosEnCampo());
     }

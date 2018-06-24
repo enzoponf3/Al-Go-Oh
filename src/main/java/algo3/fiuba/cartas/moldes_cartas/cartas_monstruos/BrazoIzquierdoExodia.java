@@ -8,7 +8,7 @@ public class BrazoIzquierdoExodia extends Monstruo {
 
     public BrazoIzquierdoExodia(Jugador jugador) {
 
-        super("Brazo izquierdo del prohibido", 200, 300, 1, new EfectoPartesExodia(jugador));
+        super("Brazo izquierdo del prohibido", 200, 300, 1, new EfectoPartesExodia(jugador.getOponente()));
         setJugador(jugador);
     }
 }

@@ -8,15 +8,14 @@ import java.util.List;
 
 public class EfectoFisura extends EfectoCarta {
 
-    private Jugador jugador;
+    private Jugador oponente;
 
-    public EfectoFisura(Jugador jugador) {
-        this.jugador = jugador;
+    public EfectoFisura(Jugador oponente) {
+        this.oponente = oponente;
     }
 
     @Override
     public void activar(Carta carta) {
-        Jugador oponente = jugador.getOponente();
         List<Monstruo> monstruosOponenteEnCampo = oponente.getMonstuosEnCampo();
         if (!monstruosOponenteEnCampo.isEmpty()) {
             Monstruo monstruoOponenteConMenorAtaque = obtenerMonstruoConMenorAtaque(monstruosOponenteEnCampo);

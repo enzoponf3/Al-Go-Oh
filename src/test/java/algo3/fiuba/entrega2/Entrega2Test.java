@@ -330,7 +330,6 @@ public class Entrega2Test {
         Assert.assertEquals(jugador2, juego.ganadorPartida());
     }
 
-    @Ignore
     @Test
     public void colocarCincoPartesDeExodia_jugadorConPartesGanaPartido() {
         Monstruo parteExodia1 = new PiernaDerechaExodia(jugador1);

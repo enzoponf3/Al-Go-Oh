@@ -14,6 +14,4 @@ public abstract class EfectoCarta {
     public void activar(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2) {
         return;
     }
-
-    public void activar(Jugador jugador){return;}
 }

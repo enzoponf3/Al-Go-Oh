@@ -8,9 +8,8 @@ import algo3.fiuba.cartas.efectos.EfectoRefuerzos;
 public class Refuerzos extends Trampa {
 
     public Refuerzos(Jugador jugador) {
-        super("Refuerzos", new EfectoNulo());
+        super("Refuerzos", new EfectoRefuerzos());
         setJugador(jugador);
-        setEfecto(new EfectoRefuerzos());
     }
 
     @Override

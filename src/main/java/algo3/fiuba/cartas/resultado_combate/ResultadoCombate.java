@@ -4,7 +4,7 @@ import algo3.fiuba.cartas.Monstruo;
 
 public interface ResultadoCombate {
 
-    public void afectarDefensor(Monstruo defensor);
+    void afectarDefensor(Monstruo defensor);
 
-    public void afectarAtacante(Monstruo atacante);
+    void afectarAtacante(Monstruo atacante);
 }

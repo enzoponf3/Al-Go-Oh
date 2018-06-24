@@ -6,8 +6,6 @@ import algo3.fiuba.cartas.Carta;
 
 public class EfectoInsectoComeHombres extends EfectoCarta {
 
-    private Jugador oponente;
-
     public EfectoInsectoComeHombres() {
 
     }

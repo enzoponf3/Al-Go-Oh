@@ -24,7 +24,6 @@ public class EnMano extends FueraDeJuego {
         throw new InhabilitadoParaAtacarExcepcion("No puede atacar si está en la mano.");
     }
 
-    // exodia aca deberia activarse
     @Override
     public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto) {
         efecto.activar(carta);

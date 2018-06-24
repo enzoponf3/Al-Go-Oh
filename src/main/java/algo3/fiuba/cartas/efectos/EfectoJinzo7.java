@@ -5,17 +5,17 @@ import algo3.fiuba.cartas.Carta;
 
 public class EfectoJinzo7 extends EfectoCarta {
 
-    private Jugador jugador;
+    private Jugador oponente;
     private Integer danio;
 
-    public EfectoJinzo7(Jugador jugador, Integer danio) {
-        this.jugador = jugador;
+    public EfectoJinzo7(Jugador oponente, Integer danio) {
+        this.oponente = oponente;
         this.danio = danio;
     }
 
     @Override
     public void activar(Carta carta) {
-        jugador.getOponente().modificarPuntosDeVida(-danio);
+        oponente.modificarPuntosDeVida(-danio);
     }
 
 }
