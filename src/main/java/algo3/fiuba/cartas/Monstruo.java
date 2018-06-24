@@ -64,7 +64,7 @@ public class Monstruo extends Carta {
         jugador.modificarPuntosDeVida(-puntosDeDanio);
     }
 
-    public boolean estaEnTablero(Campo campo) {
+    public boolean estaEnCampo(Campo campo) {
         return campo.cartaEstaEnCampo(this);
     }
 
@@ -79,8 +79,7 @@ public class Monstruo extends Carta {
 
         this.realizarSacrificios(campo, sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();
-        estadoCarta = tipoEnJuego;
-        estadoEnTurno = new NoUsadaEnTurno();
+        super.colocarEnCampo(campo, tipoEnJuego, sacrificios);
         campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
 

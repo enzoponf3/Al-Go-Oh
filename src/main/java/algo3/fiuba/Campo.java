@@ -43,11 +43,12 @@ public class Campo {
 
     public void colocarCarta(Carta carta, EnJuego enJuego, Monstruo... sacrificios) {
         carta.colocarEnCampo(this, enJuego, sacrificios);
+        Turno.getInstancia().addObserver(carta);
     }
 
     public void colocarCarta(Monstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         if (zonaMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new RuntimeException("No se puede tener más de 5 monstruos en el tablero.");
+            throw new RuntimeException("No se puede tener más de 5 monstruos en el campo.");
 
 
         carta.setEstado(enJuego);
@@ -57,7 +58,7 @@ public class Campo {
 
     public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new RuntimeException("No se puede tener más de 5 no monstruos en el tablero.");
+            throw new RuntimeException("No se puede tener más de 5 no monstruos en el campo.");
 
         carta.setEstado(enJuego);
         zonaNoMonstruos.add(carta);
@@ -71,7 +72,7 @@ public class Campo {
     }
 
     public boolean cartaEstaEnCampo(Carta carta) {
-        return carta.estaEnTablero(this);
+        return carta.estaEnCampo(this);
     }
 
     public boolean cartaEstaEnCampo(Monstruo carta) {

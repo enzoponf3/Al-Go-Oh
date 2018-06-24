@@ -217,7 +217,7 @@ public class Entrega2Test {
     @Test
     public void colocoInsectoComeHombresBocaAbajo_monstruoOponenteLoAtaca_seActivaEfectoYSeDestruyeAtacante() {
         Monstruo insectoComeHombres = new InsectoComeHombres(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador2);
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, BocaAbajo.getInstancia());
         insectoComeHombres.pasarAModoDefensa();
@@ -225,17 +225,17 @@ public class Entrega2Test {
 
         monstruoAtacante.atacar(insectoComeHombres);
 
-        int puntosInicialesDeVida = 8000;
+        Integer puntosInicialesDeVida = 8000;
 
         // El monstruo atacante fue destruído.
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoAtacante));
         Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoAtacante));
-        Assert.assertEquals(puntosInicialesDeVida, (int)jugador2.getPuntosDeVida());
+        Assert.assertEquals(puntosInicialesDeVida, jugador2.getPuntosDeVida());
 
         // El insecto come-hombres sigue vivo y jugador no perdió vida.
         Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
         Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
-        Assert.assertEquals(puntosInicialesDeVida, (int)jugador1.getPuntosDeVida());
+        Assert.assertEquals(puntosInicialesDeVida, jugador1.getPuntosDeVida());
     }
 
     @Test

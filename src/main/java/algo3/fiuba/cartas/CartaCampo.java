@@ -16,19 +16,19 @@ public class CartaCampo extends Carta {
         if (sacrificios.length != 0)
             throw new RuntimeException(String.format("No se pueden hacer sacrificios para invocar esta carta."));
 
-        estadoCarta = tipoEnJuego; // siempre se coloca boca arriba.
+        super.colocarEnCampo(campo, tipoEnJuego, sacrificios);
         campo.colocarCarta(this, tipoEnJuego, sacrificios);
         this.activarEfecto();
     }
 
     @Override
-    public boolean estaEnTablero(Campo campo) {
+    public boolean estaEnCampo(Campo campo) {
         return campo.cartaEstaEnCampo(this);
     }
 
     /*
     @Override
-    public boolean estaEnTablero(TableroJugador tableroJugador) {
+    public boolean estaEnCampo(TableroJugador tableroJugador) {
         return tableroJugador.cartaEstaEnCampo(this);
     }
 */

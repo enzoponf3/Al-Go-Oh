@@ -15,7 +15,7 @@ public abstract class NoMonstruo extends Carta {
     public abstract boolean bloquearAtaque();
 
     @Override
-    public boolean estaEnTablero(Campo campo) {
+    public boolean estaEnCampo(Campo campo) {
         return campo.cartaEstaEnCampo(this);
     }
 
@@ -30,7 +30,7 @@ public abstract class NoMonstruo extends Carta {
         if (sacrificios.length != 0)
             throw new RuntimeException(String.format("No se pueden hacer sacrificios para invocar esta carta."));
 
-        estadoCarta = tipoEnJuego;
+        super.colocarEnCampo(campo, tipoEnJuego, sacrificios);
         campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
 
