@@ -47,9 +47,11 @@ public class ContenedorPrincipal extends BorderPane {
         CanvasBarraLateral consolaJ2 = new CanvasBarraLateral(200.0, 700.0);
         GraphicsContext grafico = consolaJ2.getGraphicsContext2D();
         consolaJ2.drawInCanvas(grafico, 0.0, 330.0);
-        //Label nombre2 = new Label(nombreJ2);
+        //Label nombre2 = new Label("hola");
+        //nombre2.setGraphic(consolaJ2);
 
         // PROYECTOR DE EFECTOS DE CARTA
+
         //String info = tablero.getInfoCarta();
         Label muestrarioInfoCarta = new Label("hola");//info);
         muestrarioInfoCarta.getStyleClass().add("muestrarioInfoCarta");
