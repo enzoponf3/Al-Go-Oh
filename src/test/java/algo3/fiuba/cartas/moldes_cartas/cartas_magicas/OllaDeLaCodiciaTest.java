@@ -33,7 +33,7 @@ public class OllaDeLaCodiciaTest {
 
         jugador1.tomarCartaDelMazo();
 
-        jugador1.colocarCartaEnCampo(ollaDeLaCodicia, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(ollaDeLaCodicia, new BocaArriba());
 
         //Lanza excepcion ya que olla de la codicia hace que robes 2 cartas, y solo hay 1 en el mazo
         ollaDeLaCodicia.activarEfecto();
@@ -54,7 +54,7 @@ public class OllaDeLaCodiciaTest {
         jugador2.agregarCartaAMazo(dragonBlancoDeOjosAzules);
 
         jugador1.tomarCartaDelMazo();
-        jugador1.colocarCartaEnCampo(ollaDeLaCodicia,BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(ollaDeLaCodicia,new BocaArriba());
         ollaDeLaCodicia.activarEfecto();
 
         Assert.assertTrue(juego.terminoPartida());

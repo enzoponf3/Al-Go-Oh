@@ -26,8 +26,8 @@ public class InsectoComeHombresTest {
     public void alColocarseEnCampoBocaArribaNoSeActivaElEfecto() {
         Carta monstruoRival = new SevenColoredFish(jugador2);
 
-        jugador1.colocarCartaEnCampo(insectoComeHombres, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruoRival, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruoRival, new BocaArriba());
 
         Assert.assertTrue(insectoComeHombres.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
@@ -40,8 +40,8 @@ public class InsectoComeHombresTest {
     public void seColocaEnElCampoBocaAbajo_alSerAtacadoActivaElEfecto() {
         Monstruo monstruoRival = new SevenColoredFish(jugador2);
 
-        jugador1.colocarCartaEnCampo(insectoComeHombres, BocaAbajo.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruoRival, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaAbajo());
+        jugador2.colocarCartaEnCampo(monstruoRival, new BocaArriba());
 
         monstruoRival.atacar(insectoComeHombres);
 
@@ -58,8 +58,8 @@ public class InsectoComeHombresTest {
     public void seColocaEnElCampoBocaArriba_alSerAtacadoNoActivaElEfecto() {
         Monstruo monstruoRival = new SevenColoredFish(jugador2);
 
-        jugador1.colocarCartaEnCampo(insectoComeHombres, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruoRival, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruoRival, new BocaArriba());
 
         monstruoRival.atacar(insectoComeHombres);
 

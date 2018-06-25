@@ -33,12 +33,12 @@ public class SogenTest {
 
         CartaCampo sogen = new Sogen(jugador2, jugador1);
 
-        jugador1.colocarCartaEnCampo(monstruo1, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruo2, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruo1, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruo2, new BocaArriba());
         monstruo2.pasarAModoDefensa();
 
         // Ni bien se coloca carta de campo esta se activa.
-        jugador1.colocarCartaEnCampo(sogen, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(sogen, new BocaArriba());
 
         monstruo1.atacar(monstruo2);
 

@@ -29,7 +29,7 @@ public class CampoTest {
     @Test
     public void seAgrega1MonstruoEnZonaCorrecta_laCantidadDeMonstruosEs1() {
         Carta carta = new Monstruo("m", 100, 100, 1, new EfectoNulo());
-        campo.colocarCarta(carta, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 1;
         Integer cantidadDeNoMonstruos = 0;
@@ -41,7 +41,7 @@ public class CampoTest {
     @Test
     public void seAgrega1CartaMagicaEnZonaCorrecta_laCantidadDeNoMonstruosEs1() {
         Carta carta = new Magica("n", new EfectoNulo());
-        campo.colocarCarta(carta, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
         Integer cantidadDeNoMonstruos = 1;
@@ -53,7 +53,7 @@ public class CampoTest {
     @Test
     public void seAgrega1CartaTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs1() {
         Carta trampa = new Trampa("n", new EfectoNulo());
-        campo.colocarCarta(trampa, BocaAbajo.getInstancia());
+        campo.colocarCarta(trampa, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
         Integer cantidadDeNoMonstruos = 1;
@@ -67,8 +67,8 @@ public class CampoTest {
         Carta carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
         Carta carta2 = new Monstruo("m2", 100, 100, 1, new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 2;
         Integer cantidadDeNoMonstruos = 0;
@@ -82,8 +82,8 @@ public class CampoTest {
         Carta carta1 = new Magica("nm1", new EfectoNulo());
         Carta carta2 = new Magica("nm2", new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
         Integer cantidadDeNoMonstruos = 2;
@@ -97,8 +97,8 @@ public class CampoTest {
         Carta carta1 = new Trampa("nm1", new EfectoNulo());
         Carta carta2 = new Trampa("nm2", new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
         Integer cantidadDeNoMonstruos = 2;
@@ -112,8 +112,8 @@ public class CampoTest {
         Carta carta1 = new Magica("nm1", new EfectoNulo());
         Carta carta2 = new Trampa("nm2", new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
         Integer cantidadDeNoMonstruos = 2;
@@ -128,9 +128,9 @@ public class CampoTest {
         Carta carta2 = new Trampa("nm2", new EfectoNulo());
         Carta carta3 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta3, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
+        campo.colocarCarta(carta3, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 1;
         Integer cantidadDeNoMonstruos = 2;
@@ -148,12 +148,12 @@ public class CampoTest {
         Carta carta5 = new Monstruo("m5", 100, 100, 1, new EfectoNulo());
         Carta carta6 = new Monstruo("m6", 100, 100, 1, new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta3, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta4, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta5, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta6, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
+        campo.colocarCarta(carta3, new BocaAbajo());
+        campo.colocarCarta(carta4, new BocaAbajo());
+        campo.colocarCarta(carta5, new BocaAbajo());
+        campo.colocarCarta(carta6, new BocaAbajo());
     }
 
     @Test(expected = RuntimeException.class)
@@ -165,12 +165,12 @@ public class CampoTest {
         Carta carta5 = new Magica("nm5", new EfectoNulo());
         Carta carta6 = new Magica("nm6", new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta3, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta4, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta5, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta6, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
+        campo.colocarCarta(carta3, new BocaAbajo());
+        campo.colocarCarta(carta4, new BocaAbajo());
+        campo.colocarCarta(carta5, new BocaAbajo());
+        campo.colocarCarta(carta6, new BocaAbajo());
     }
 
     @Test(expected = RuntimeException.class)
@@ -182,12 +182,12 @@ public class CampoTest {
         Carta carta5 = new Trampa("nm5", new EfectoNulo());
         Carta carta6 = new Trampa("nm6", new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta3, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta4, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta5, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta6, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
+        campo.colocarCarta(carta3, new BocaAbajo());
+        campo.colocarCarta(carta4, new BocaAbajo());
+        campo.colocarCarta(carta5, new BocaAbajo());
+        campo.colocarCarta(carta6, new BocaAbajo());
     }
 
     @Test
@@ -195,8 +195,8 @@ public class CampoTest {
         Carta carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
         Carta carta2 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 2;
         Integer cantidadDeNoMonstruos = 0;
@@ -210,8 +210,8 @@ public class CampoTest {
         Carta carta1 = new Magica("nm1", new EfectoNulo());
         Carta carta2 = new Magica("nm1", new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
         Integer cantidadDeNoMonstruos = 2;
@@ -225,8 +225,8 @@ public class CampoTest {
         Carta carta1 = new Trampa("nm1", new EfectoNulo());
         Carta carta2 = new Trampa("nm1", new EfectoNulo());
 
-        campo.colocarCarta(carta1, BocaAbajo.getInstancia());
-        campo.colocarCarta(carta2, BocaAbajo.getInstancia());
+        campo.colocarCarta(carta1, new BocaAbajo());
+        campo.colocarCarta(carta2, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
         Integer cantidadDeNoMonstruos = 2;

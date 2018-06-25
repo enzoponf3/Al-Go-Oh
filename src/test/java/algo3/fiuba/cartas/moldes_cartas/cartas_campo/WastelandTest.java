@@ -32,12 +32,12 @@ public class WastelandTest {
 
         CartaCampo wasteland = new Wasteland(jugador1, jugador2);
 
-        jugador1.colocarCartaEnCampo(monstruo1, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruo2, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruo1, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruo2, new BocaArriba());
         monstruo2.pasarAModoDefensa();
 
         // Ni bien se coloca carta de campo esta se activa.
-        jugador1.colocarCartaEnCampo(wasteland, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(wasteland, new BocaArriba());
 
 
         monstruo1.atacar(monstruo2);

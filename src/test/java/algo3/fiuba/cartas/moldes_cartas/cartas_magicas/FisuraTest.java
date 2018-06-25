@@ -34,9 +34,9 @@ public class FisuraTest {
         Monstruo monstruoDebil = new Jinzo7(jugador2);
         fisura = new Fisura(jugador1);
 
-        jugador2.colocarCartaEnCampo(monstruoDebil, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruoFuerte, BocaArriba.getInstancia());
-        jugador1.colocarCartaEnCampo(fisura, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnCampo(monstruoDebil, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruoFuerte, new BocaArriba());
+        jugador1.colocarCartaEnCampo(fisura, new BocaArriba());
 
         fisura.activarEfecto();
 

@@ -41,7 +41,7 @@ public class PartesDeExodiaTest {
         jugador1.agregarCartaAMazo(parteExodia5);
 
         jugador1.tomarCartaDelMazo();
-        jugador1.colocarCartaEnCampo(parteExodia5, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(parteExodia5, new BocaArriba());
 
         for (int i = 0; i<4; i++) {
             jugador1.tomarCartaDelMazo();
