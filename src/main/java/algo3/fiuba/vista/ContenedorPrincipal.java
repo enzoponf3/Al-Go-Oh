@@ -51,8 +51,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         // PROYECTOR DE EFECTOS DE CARTA
         //String info = tablero.getInfoCarta();
-        Label muestrarioInfoCarta = new Label();//info);
-        muestrarioInfoCarta.setText("Exodia");
+        Label muestrarioInfoCarta = new Label("hola");//info);
         muestrarioInfoCarta.getStyleClass().add("muestrarioInfoCarta");
 
         // CONTENEDORES LATERALES

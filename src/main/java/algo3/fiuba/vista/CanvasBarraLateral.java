@@ -1,12 +1,14 @@
 package algo3.fiuba.vista;
 
 
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 import java.awt.*;
+import java.io.DataOutput;
 
 public class CanvasBarraLateral extends Canvas {
 
