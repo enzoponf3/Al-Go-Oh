@@ -149,7 +149,7 @@ public class Entrega2Test {
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoFuerte));
         Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoDebil));
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoDebil));
-        }
+    }
 
     @Test
     public void invocoAJinzo7_atacaDirectoALosPuntosDeVidaDelOponente() {

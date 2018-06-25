@@ -49,7 +49,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         jugador.colocarCartaEnCampo(monstruoASacrificar6, BocaAbajo.getInstancia());
         jugador.colocarCartaEnCampo(dragonASacrificar3, BocaAbajo.getInstancia(), monstruoASacrificar5, monstruoASacrificar6);
 
-        Carta dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador);
+        dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador);
 
         jugador.colocarCartaEnCampo(dragonDefinitivo, BocaArriba.getInstancia(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
 
