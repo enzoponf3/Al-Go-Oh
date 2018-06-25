@@ -41,11 +41,11 @@ public class Entrega2Test {
 
         CartaCampo wasteland = new Wasteland(jugador1, jugador2);
 
-        jugador1.colocarCartaEnCampo(monstruo1, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruo2, BocaAbajo.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruo1, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruo2, new BocaAbajo());
 
         // Ni bien se coloca carta de campo esta se activa.
-        jugador1.colocarCartaEnCampo(wasteland, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(wasteland, new BocaArriba());
 
         // Se suma 300 a la defensa del oponente y el ataque permanece igual.
         int defensaFinalOponente = 300;
@@ -62,8 +62,8 @@ public class Entrega2Test {
         Monstruo monstruo3 = new Monstruo("Monstruo 3", 0, 0, 1, new EfectoNulo());
         Monstruo monstruo4 = new Monstruo("Monstruo 4", 0, 0, 1, new EfectoNulo());
 
-        jugador1.colocarCartaEnCampo(monstruo3, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruo4, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruo3, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruo4, new BocaArriba());
 
         // El efecto de las cartas de campo se mantienen activas, aún para cartas agregadas después de colocar estas.
         Assert.assertEquals(defensaFinalOponente, (int) monstruo4.getDefensa());
@@ -77,11 +77,11 @@ public class Entrega2Test {
         Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         CartaCampo sogen = new Sogen(jugador1, jugador2);
 
-        jugador1.colocarCartaEnCampo(monstruoPropio, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruoOponente, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruoPropio, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruoOponente, new BocaArriba());
 
         // Ni bien se coloca una carta de campo esta se debe de activarEfecto.
-        jugador1.colocarCartaEnCampo(sogen, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(sogen, new BocaArriba());
 
         // Se suma 200 al ataque de las cartas en el campo del oponente.
         int ataqueFinalOponente = 200;
@@ -94,8 +94,8 @@ public class Entrega2Test {
         Monstruo monstruo3 = new Monstruo("Monstruo 3", 0, 0, 1, new EfectoNulo());
         Monstruo monstruo4 = new Monstruo("Monstruo 4", 0, 0, 1, new EfectoNulo());
 
-        jugador1.colocarCartaEnCampo(monstruo3, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruo4, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruo3, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruo4, new BocaArriba());
 
         // El efecto de las cartas de campo se mantienen activas, aún para cartas agregadas después de colocar estas.
         Assert.assertEquals(ataqueFinalOponente, (int) monstruo4.getAtaque());
@@ -112,7 +112,7 @@ public class Entrega2Test {
 
         jugador1.agregarCartaAMazo(monstruo1);
         jugador1.agregarCartaAMazo(monstruo2);
-        jugador1.colocarCartaEnCampo(ollaDeLaCodicia, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(ollaDeLaCodicia, new BocaArriba());
 
         ollaDeLaCodicia.activarEfecto();
         // Se agregaron dos cartas a la mano del jugador, sacadas del mazo de este.
@@ -134,9 +134,9 @@ public class Entrega2Test {
         Monstruo monstruoDebil = new Jinzo7(jugador2);
         Magica fisura = new Fisura(jugador1);
 
-        jugador2.colocarCartaEnCampo(monstruoDebil, BocaArriba.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruoFuerte, BocaArriba.getInstancia());
-        jugador1.colocarCartaEnCampo(fisura, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnCampo(monstruoDebil, new BocaArriba());
+        jugador2.colocarCartaEnCampo(monstruoFuerte, new BocaArriba());
+        jugador1.colocarCartaEnCampo(fisura, new BocaArriba());
 
         fisura.activarEfecto();
 
@@ -149,13 +149,13 @@ public class Entrega2Test {
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoFuerte));
         Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoDebil));
         Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoDebil));
-        }
+    }
 
     @Test
     public void invocoAJinzo7_atacaDirectoALosPuntosDeVidaDelOponente() {
         Carta jinzo7 = new Jinzo7(jugador1);
 
-        jugador1.colocarCartaEnCampo(jinzo7, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(jinzo7, new BocaArriba());
 
         jinzo7.activarEfecto();
 
@@ -185,21 +185,21 @@ public class Entrega2Test {
         Monstruo monstruoASacrificar6 = new SevenColoredFish(jugador1);
 
         // Invoco los dragones, con sus respectivos sacrificios.
-        jugador1.colocarCartaEnCampo(monstruoASacrificar1, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnCampo(monstruoASacrificar2, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnCampo(dragonASacrificar1, BocaAbajo.getInstancia(), monstruoASacrificar1, monstruoASacrificar2);
+        jugador1.colocarCartaEnCampo(monstruoASacrificar1, new BocaAbajo());
+        jugador1.colocarCartaEnCampo(monstruoASacrificar2, new BocaAbajo());
+        jugador1.colocarCartaEnCampo(dragonASacrificar1, new BocaAbajo(), monstruoASacrificar1, monstruoASacrificar2);
 
-        jugador1.colocarCartaEnCampo(monstruoASacrificar3, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnCampo(monstruoASacrificar4, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnCampo(dragonASacrificar2, BocaAbajo.getInstancia(), monstruoASacrificar3, monstruoASacrificar4);
+        jugador1.colocarCartaEnCampo(monstruoASacrificar3, new BocaAbajo());
+        jugador1.colocarCartaEnCampo(monstruoASacrificar4, new BocaAbajo());
+        jugador1.colocarCartaEnCampo(dragonASacrificar2, new BocaAbajo(), monstruoASacrificar3, monstruoASacrificar4);
 
-        jugador1.colocarCartaEnCampo(monstruoASacrificar5, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnCampo(monstruoASacrificar6, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnCampo(dragonASacrificar3, BocaAbajo.getInstancia(), monstruoASacrificar5, monstruoASacrificar6);
+        jugador1.colocarCartaEnCampo(monstruoASacrificar5, new BocaAbajo());
+        jugador1.colocarCartaEnCampo(monstruoASacrificar6, new BocaAbajo());
+        jugador1.colocarCartaEnCampo(dragonASacrificar3, new BocaAbajo(), monstruoASacrificar5, monstruoASacrificar6);
 
         Carta dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador1);
 
-        jugador1.colocarCartaEnCampo(dragonDefinitivo, BocaArriba.getInstancia(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
+        jugador1.colocarCartaEnCampo(dragonDefinitivo, new BocaArriba(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
 
         // Para invocar al Dragón definitivo se tuvo que sacrificar a los tres dragones.
         Assert.assertFalse(jugador1.cartaEstaEnCampo(dragonASacrificar1));
@@ -219,9 +219,9 @@ public class Entrega2Test {
         Monstruo insectoComeHombres = new InsectoComeHombres(jugador1);
         Monstruo monstruoAtacante = new BebeDragon(jugador2);
 
-        jugador1.colocarCartaEnCampo(insectoComeHombres, BocaAbajo.getInstancia());
+        jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaAbajo());
         insectoComeHombres.pasarAModoDefensa();
-        jugador2.colocarCartaEnCampo(monstruoAtacante, BocaArriba.getInstancia());
+        jugador2.colocarCartaEnCampo(monstruoAtacante, new BocaArriba());
 
         monstruoAtacante.atacar(insectoComeHombres);
 
@@ -244,9 +244,9 @@ public class Entrega2Test {
         Monstruo monstruoAtacado = new Jinzo7(jugador1);
         Carta cilindroMagico = new CilindroMagico(jugador1);
 
-        jugador1.colocarCartaEnCampo(monstruoAtacado, BocaArriba.getInstancia());
-        jugador1.colocarCartaEnCampo(cilindroMagico, BocaAbajo.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruoAtacante, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruoAtacado, new BocaArriba());
+        jugador1.colocarCartaEnCampo(cilindroMagico, new BocaAbajo());
+        jugador2.colocarCartaEnCampo(monstruoAtacante, new BocaArriba());
 
         monstruoAtacante.atacar(monstruoAtacado);
 
@@ -277,9 +277,9 @@ public class Entrega2Test {
         Monstruo monstruoAtacante = new Jinzo7(jugador2);
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(monstruoAtacado, BocaAbajo.getInstancia());
-        jugador1.colocarCartaEnCampo(refuerzos, BocaAbajo.getInstancia());
-        jugador2.colocarCartaEnCampo(monstruoAtacante, BocaArriba.getInstancia());
+        jugador1.colocarCartaEnCampo(monstruoAtacado, new BocaAbajo());
+        jugador1.colocarCartaEnCampo(refuerzos, new BocaAbajo());
+        jugador2.colocarCartaEnCampo(monstruoAtacante, new BocaArriba());
 
         // Al atacar al monstruoAtacado se activa la trampa, que le suma 500ATK a este mismo.
         monstruoAtacante.atacar(monstruoAtacado);

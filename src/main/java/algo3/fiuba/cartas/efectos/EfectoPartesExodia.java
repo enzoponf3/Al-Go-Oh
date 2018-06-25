@@ -23,8 +23,8 @@ public class EfectoPartesExodia extends EfectoCarta {
         efectoExodia();
     }
 
-    public void desactivarEfecto() {
-        // Por lo menos hay una parte
+    @Override
+    public void desactivar() {
         contadorPartes--;
     }
 

@@ -73,7 +73,7 @@ public class Jugador {
     }
 
     public void agregarCartaAMazo(Carta carta) {
-        carta.setEstado(EnMazo.getInstancia());
+        carta.setEstado(new EnMazo());
         tableroJugador.agregarCartaAlMazo(carta);
     }
 
@@ -82,14 +82,14 @@ public class Jugador {
     }
 
     public void mandarCartaDelCampoAlCementerio(Carta carta) {
-        carta.setEstado(EnCementerio.getInstancia());
+        carta.setEstado(new EnCementerio());
         tableroJugador.removerCartaDelCampo(carta);
         tableroJugador.agregarCartaACementerio(carta);
     }
 
     public void mandarCartaACementerio(Carta carta) {
         tableroJugador.agregarCartaACementerio(carta);
-        carta.setEstado(EnCementerio.getInstancia());
+        carta.setEstado(new EnCementerio());
     }
 
     public boolean cartaEstaEnCementerio(Carta carta) {
@@ -97,7 +97,7 @@ public class Jugador {
     }
 
     public void agregarCartaAMano(Carta carta) {
-        carta.setEstado(EnMano.getInstancia());
+        carta.setEstado(new EnMano());
         carta.activarEfecto(carta, this);
         mano.add(carta);
     }

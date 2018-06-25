@@ -4,18 +4,6 @@ import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
 
 public class EnCementerio extends FueraDeJuego {
 
-    private static EnCementerio INSTANCIA;
-
-    private EnCementerio(){
-
-    }
-
-    public static EnCementerio getInstancia() {
-        if (INSTANCIA == null)
-            INSTANCIA = new EnCementerio();
-        return INSTANCIA;
-    }
-
     @Override
     public boolean estaEnJuego() {
         return false;

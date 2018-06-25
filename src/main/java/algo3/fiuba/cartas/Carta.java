@@ -95,7 +95,7 @@ public abstract class Carta implements Observer {
     }
 
     public void agregarAMano(List<Carta> mano) {
-        estadoCarta = EnMano.getInstancia();
+        estadoCarta = new EnMano();
         mano.add(this);
     }
 }
