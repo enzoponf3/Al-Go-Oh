@@ -19,8 +19,10 @@ public class CanvasBarraLateral extends Canvas {
 
     public void drawInCanvas(GraphicsContext gc, Double x, Double y) {
         gc.fillOval(x, y, 199.0, 86.0);
-        gc.setFill(Color.WHITE);
-        gc.fillText("ACA VAN LOS PUNTOS", x+20, y+50);
+       // gc.fillText("ACA VAN LOS PUNTOS", x+20, y+50);
+    }
+
+    public void drawInCanvas(GraphicsContext g) {
     }
 
 }

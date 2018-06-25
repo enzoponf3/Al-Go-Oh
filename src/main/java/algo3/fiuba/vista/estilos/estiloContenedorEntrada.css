@@ -1,6 +1,11 @@
 {
     -fx-padding: 10 10 10 10;
     -fx-alignment: center;
+
+}
+
+.fondo {
+    -fx-background-image: url("/algo3/fiuba/vista/resosources/img/fondo-inicial.jpg");
 }
 
 .button {
@@ -14,9 +19,9 @@
 }
 
 .label {
-
     -fx-font-size: 20px;
     -fx-font-family: "Verdana";
+    -fx-font-color: #000000;/* CAMBIA!!  VER PORQUEEEEE*/
     -fx-text-alignment: center;
 }
 
