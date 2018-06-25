@@ -8,22 +8,9 @@ import algo3.fiuba.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
 
 public class ModoDeDefensa extends ModoMonstruo {
 
-    private static ModoDeDefensa INSTANCIA;
-
-    private ModoDeDefensa() {
-    }
-
-    public static ModoDeDefensa getInstancia() {
-        if (INSTANCIA == null){
-            INSTANCIA = new ModoDeDefensa();
-        }
-
-        return INSTANCIA;
-    }
-
     @Override
     public ModoMonstruo cambiarModoMonstruo() {
-        return ModoDeAtaque.getInstancia();
+        return new ModoDeAtaque();
     }
 
     @Override

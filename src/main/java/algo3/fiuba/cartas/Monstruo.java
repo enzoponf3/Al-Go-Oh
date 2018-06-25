@@ -56,11 +56,11 @@ public class Monstruo extends Carta {
     }
 
     public void pasarAModoAtaque() {
-        modoMonstruo = ModoDeAtaque.getInstancia();
+        modoMonstruo = new ModoDeAtaque();
     }
 
     public void pasarAModoDefensa() {
-        modoMonstruo = ModoDeDefensa.getInstancia();
+        modoMonstruo = new ModoDeDefensa();
     }
 
     public void daniarJugador(Integer puntosDeDanio) {
@@ -82,7 +82,7 @@ public class Monstruo extends Carta {
             throw new SacrificiosIncorrectosExcepcion(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", nivel.sacrificiosRequeridos()));
 
         this.realizarSacrificios(sacrificios);
-        modoMonstruo = ModoDeAtaque.getInstancia(); // !!! sacarg
+        modoMonstruo = new ModoDeAtaque(); // !!! sacarg
         super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
         jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
     }

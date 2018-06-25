@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class EmpataContraModoAtaqueTest {
-/*
+
     private Campo campo;
     private Jugador jugador;
 
@@ -77,5 +77,5 @@ public class EmpataContraModoAtaqueTest {
         Integer puntosDeVidaEsperados = 8000;
         Assert.assertEquals(puntosDeVidaEsperados, jugador.getPuntosDeVida());
     }
-*/
+
 }

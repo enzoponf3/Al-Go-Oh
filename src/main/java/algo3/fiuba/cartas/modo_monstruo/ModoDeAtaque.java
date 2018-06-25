@@ -8,19 +8,9 @@ import algo3.fiuba.cartas.resultado_combate.PierdeContraModoDeAtaque;
 
 public class ModoDeAtaque extends ModoMonstruo {
 
-    private static ModoDeAtaque INSTANCIA;
-
-    public static ModoDeAtaque getInstancia() {
-        if (INSTANCIA == null){
-            INSTANCIA = new ModoDeAtaque();
-        }
-
-        return INSTANCIA;
-    }
-
     @Override
     public ModoMonstruo cambiarModoMonstruo() {
-        return ModoDeDefensa.getInstancia();
+        return new ModoDeDefensa();
     }
 
     @Override

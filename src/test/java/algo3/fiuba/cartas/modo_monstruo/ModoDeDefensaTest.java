@@ -6,18 +6,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ModoDeDefensaTest {
+
     private ModoDeDefensa modoDeDefensa;
 
     @Before
     public void setUp() {
-        modoDeDefensa = ModoDeDefensa.getInstancia();
+        modoDeDefensa = new ModoDeDefensa();
     }
 
     @Test
     public void cambiarModoMonstruo_devuelveModoDeAtaque() {
-        ModoMonstruo modoDeAtaque = ModoDeAtaque.getInstancia();
+        ModoMonstruo modoDeAtaque = new ModoDeAtaque();
 
-        Assert.assertEquals(modoDeAtaque, modoDeDefensa.cambiarModoMonstruo());
+        Assert.assertTrue(modoDeDefensa.cambiarModoMonstruo() instanceof ModoDeAtaque);
     }
 
     @Test

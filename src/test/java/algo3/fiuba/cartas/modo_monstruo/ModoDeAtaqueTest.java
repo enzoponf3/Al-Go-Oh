@@ -14,14 +14,14 @@ public class ModoDeAtaqueTest {
 
     @Before
     public void setUp() {
-        modoDeAtaque = ModoDeAtaque.getInstancia();
+        modoDeAtaque = new ModoDeAtaque();
     }
 
     @Test
     public void cambiarModoMonstruo_devuelveModoDeDefensa() {
-        ModoMonstruo modoDeDefensa = ModoDeDefensa.getInstancia();
+        ModoMonstruo modoDeDefensa = new ModoDeDefensa();
 
-        Assert.assertEquals(modoDeDefensa, modoDeAtaque.cambiarModoMonstruo());
+        Assert.assertTrue(modoDeAtaque.cambiarModoMonstruo() instanceof ModoDeDefensa);
     }
 
     @Test
