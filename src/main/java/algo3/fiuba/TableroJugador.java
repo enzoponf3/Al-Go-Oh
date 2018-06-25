@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.NoMonstruo;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modificadores.Modificador;
+import algo3.fiuba.excepciones.CartasInsuficientesExcepcion;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,7 +30,11 @@ public class TableroJugador {
     }
 
     public Carta tomarCartaDelMazo() {
-        return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
+        try {
+            return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
+        } catch (Exception e) {
+            throw new CartasInsuficientesExcepcion("Usted no posee mas cartas!");
+        }
     }
 
     public boolean cartaEstaEnCampo(Carta carta) {
