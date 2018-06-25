@@ -8,4 +8,5 @@ public interface TipoJugador {
 
     void colocarCartaEnCampo(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios);
 
+
 }

@@ -94,7 +94,7 @@ public class Monstruo extends Carta {
             throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", nivel.sacrificiosRequeridos()));
 
         this.realizarSacrificios(sacrificios);
-        modoMonstruo = ModoDeAtaque.getInstancia(); // !!! sacar
+        modoMonstruo = ModoDeAtaque.getInstancia(); // !!! sacarg
         super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
         jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
     }
