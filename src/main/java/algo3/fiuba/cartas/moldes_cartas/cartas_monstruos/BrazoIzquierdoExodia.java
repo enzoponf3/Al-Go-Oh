@@ -22,8 +22,8 @@ public class BrazoIzquierdoExodia extends Monstruo {
     }
 
     @Override
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        super.colocarEnCampo(campo, tipoEnJuego, sacrificios);
+    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
         efecto.desactivar();
     }
 }

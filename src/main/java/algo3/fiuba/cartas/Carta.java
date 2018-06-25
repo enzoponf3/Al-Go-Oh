@@ -35,7 +35,7 @@ public abstract class Carta implements Observer {
     }
 
     /*
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         this.estadoCarta = tipoEnJuego;
         this.estadoEnTurno = new NoUsadaEnTurno();
     }

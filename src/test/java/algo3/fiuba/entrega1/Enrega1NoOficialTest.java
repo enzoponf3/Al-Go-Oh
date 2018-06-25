@@ -245,7 +245,7 @@ public class Enrega1NoOficialTest {
     public void monstruoNoPuedeAtacarSiEstaEnElTableroEnModoDefensa() {
         Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
-        jugador1.colocarCartaEnCampo(monstruo, new BocaArriba());
+        jugador1.colocarCartaEnCampo((Carta) monstruo, new BocaArriba());
         monstruo.cambiarModo();
 
         monstruo.atacar(null);

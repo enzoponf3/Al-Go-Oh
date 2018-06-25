@@ -26,7 +26,7 @@ public class PierdeContraModoAtaqueTest {
     public void monstruoAtacanteMuere() {
         Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         monstruoAtacante.setJugador(jugador);
-        monstruoAtacante.colocarEnCampo(campo, new BocaArriba());
+        monstruoAtacante.colocarEnCampo(jugador, new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
 
         ResultadoCombate resultado = new PierdeContraModoDeAtaque(1000);
@@ -39,7 +39,7 @@ public class PierdeContraModoAtaqueTest {
     public void monstruoDefensorSigueVivo() {
         Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         monstruoDefensor.setJugador(jugador);
-        monstruoDefensor.colocarEnCampo(campo, new BocaArriba());
+        monstruoDefensor.colocarEnCampo(jugador, new BocaArriba());
         monstruoDefensor.pasarAModoAtaque();
 
         ResultadoCombate resultado = new PierdeContraModoDeAtaque(1000);
@@ -52,7 +52,7 @@ public class PierdeContraModoAtaqueTest {
     public void jugadorAtacantePierdePuntosDeVida() {
         Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         monstruoAtacante.setJugador(jugador);
-        monstruoAtacante.colocarEnCampo(campo, new BocaArriba());
+        monstruoAtacante.colocarEnCampo(jugador, new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
 
         ResultadoCombate resultado = new PierdeContraModoDeAtaque(1000);
@@ -67,7 +67,7 @@ public class PierdeContraModoAtaqueTest {
     public void jugadorDefensorNoPierdePuntosDeVida() {
         Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         monstruoDefensor.setJugador(jugador);
-        monstruoDefensor.colocarEnCampo(campo, new BocaArriba());
+        monstruoDefensor.colocarEnCampo(jugador, new BocaArriba());
         monstruoDefensor.pasarAModoAtaque();
 
         ResultadoCombate resultado = new PierdeContraModoDeAtaque(1000);

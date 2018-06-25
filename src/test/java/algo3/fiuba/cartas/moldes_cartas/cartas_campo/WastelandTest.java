@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_campo;
 
 import algo3.fiuba.Juego;
+import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Monstruo;
@@ -32,12 +33,12 @@ public class WastelandTest {
 
         CartaCampo wasteland = new Wasteland(jugador1, jugador2);
 
-        jugador1.colocarCartaEnCampo(monstruo1, new BocaArriba());
-        jugador2.colocarCartaEnCampo(monstruo2, new BocaArriba());
+        jugador1.colocarCartaEnCampo((Carta) monstruo1, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruo2, new BocaArriba());
         monstruo2.pasarAModoDefensa();
 
         // Ni bien se coloca carta de campo esta se activa.
-        jugador1.colocarCartaEnCampo(wasteland, new BocaArriba());
+        jugador1.colocarCartaEnCampo((Carta) wasteland, new BocaArriba());
 
 
         monstruo1.atacar(monstruo2);

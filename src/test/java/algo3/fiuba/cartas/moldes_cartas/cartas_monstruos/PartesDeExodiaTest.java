@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_monstruos;
 
 import algo3.fiuba.Juego;
+import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
@@ -41,7 +42,7 @@ public class PartesDeExodiaTest {
         jugador1.agregarCartaAMazo(parteExodia5);
 
         jugador1.tomarCartaDelMazo();
-        jugador1.colocarCartaEnCampo(parteExodia5, new BocaArriba());
+        jugador1.colocarCartaEnCampo((Carta) parteExodia5, new BocaArriba());
 
         for (int i = 0; i<4; i++) {
             jugador1.tomarCartaDelMazo();

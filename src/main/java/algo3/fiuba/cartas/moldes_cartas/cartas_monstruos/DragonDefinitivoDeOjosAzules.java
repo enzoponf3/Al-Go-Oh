@@ -16,14 +16,15 @@ public class DragonDefinitivoDeOjosAzules extends Monstruo {
     }
 
     @Override
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         if (!sacrificiosSuficientes(sacrificios))
             throw new SacrificiosInsuficientesExcepcion("Se necesitan estrictamente 3 Dragones Blancos de Ojos Azules para invocarlo.");
 
-        realizarSacrificios(campo, sacrificios);
+        realizarSacrificios(sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia();
         estadoCarta = tipoEnJuego;
-        campo.colocarCarta(this, tipoEnJuego, sacrificios);
+// !!!        super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
+        jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
     }
 
     private boolean sacrificiosSuficientes(Monstruo... sacrificios) {

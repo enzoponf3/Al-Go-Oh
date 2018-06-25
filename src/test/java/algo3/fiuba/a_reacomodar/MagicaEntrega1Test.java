@@ -38,7 +38,7 @@ public class MagicaEntrega1Test {
         monstruoEnemigo.pasarAModoJuego(new BocaArriba());
 
         jugador1.colocarCartaEnCampo(agujeroNegro, new BocaArriba());
-        jugador2.colocarCartaEnCampo(monstruoEnemigo, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoEnemigo, new BocaArriba());
         agujeroNegro.activarEfecto(tablero);
         Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
     }

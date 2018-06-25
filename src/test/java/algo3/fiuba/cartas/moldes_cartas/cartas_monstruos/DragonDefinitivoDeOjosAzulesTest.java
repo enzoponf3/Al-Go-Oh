@@ -37,21 +37,21 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Monstruo monstruoASacrificar6 = new SevenColoredFish(jugador);
 
         // Invoco los dragones, con sus respectivos sacrificios.
-        jugador.colocarCartaEnCampo(monstruoASacrificar1, new BocaAbajo());
-        jugador.colocarCartaEnCampo(monstruoASacrificar2, new BocaAbajo());
-        jugador.colocarCartaEnCampo(dragonASacrificar1, new BocaAbajo(), monstruoASacrificar1, monstruoASacrificar2);
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar2, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) dragonASacrificar1, new BocaAbajo(), monstruoASacrificar1, monstruoASacrificar2);
 
-        jugador.colocarCartaEnCampo(monstruoASacrificar3, new BocaAbajo());
-        jugador.colocarCartaEnCampo(monstruoASacrificar4, new BocaAbajo());
-        jugador.colocarCartaEnCampo(dragonASacrificar2, new BocaAbajo(), monstruoASacrificar3, monstruoASacrificar4);
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar3, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar4, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) dragonASacrificar2, new BocaAbajo(), monstruoASacrificar3, monstruoASacrificar4);
 
-        jugador.colocarCartaEnCampo(monstruoASacrificar5, new BocaAbajo());
-        jugador.colocarCartaEnCampo(monstruoASacrificar6, new BocaAbajo());
-        jugador.colocarCartaEnCampo(dragonASacrificar3, new BocaAbajo(), monstruoASacrificar5, monstruoASacrificar6);
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar5, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar6, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) dragonASacrificar3, new BocaAbajo(), monstruoASacrificar5, monstruoASacrificar6);
 
         dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador);
 
-        jugador.colocarCartaEnCampo(dragonDefinitivo, new BocaArriba(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
+        jugador.colocarCartaEnCampo((Carta) dragonDefinitivo, new BocaArriba(), dragonASacrificar1, dragonASacrificar2, dragonASacrificar3);
 
         // Para invocar al Dragón definitivo se tuvo que sacrificar a los tres dragones.
         Assert.assertFalse(jugador.cartaEstaEnCampo(dragonASacrificar1));
@@ -69,7 +69,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
 
     @Test(expected = SacrificiosInsuficientesExcepcion.class)
     public void sinSacrificios_noSePuedeInvocar() {
-        jugador.colocarCartaEnCampo(dragonDefinitivo, new BocaArriba());
+        jugador.colocarCartaEnCampo((Carta) dragonDefinitivo, new BocaArriba());
 
         // No se debería de haber colocado al dragón definitivo.
         Assert.assertFalse(jugador.cartaEstaEnCampo(dragonDefinitivo));
@@ -80,7 +80,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
     public void unSacrificioCualquiera_noSePuedeInvocar() {
         Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador);
 
-        jugador.colocarCartaEnCampo(dragonDefinitivo, new BocaArriba(), monstruoASacrificar1);
+        jugador.colocarCartaEnCampo((Carta) dragonDefinitivo, new BocaArriba(), monstruoASacrificar1);
 
         // No se debería de haber colocado al dragón definitivo.
         Assert.assertFalse(jugador.cartaEstaEnCampo(dragonDefinitivo));
@@ -93,11 +93,11 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Monstruo monstruoASacrificar2 = new SevenColoredFish(jugador);
         Monstruo monstruoASacrificar3 = new SevenColoredFish(jugador);
 
-        jugador.colocarCartaEnCampo(monstruoASacrificar1, new BocaArriba());
-        jugador.colocarCartaEnCampo(monstruoASacrificar2, new BocaArriba());
-        jugador.colocarCartaEnCampo(monstruoASacrificar3, new BocaArriba());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaArriba());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar2, new BocaArriba());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar3, new BocaArriba());
 
-        jugador.colocarCartaEnCampo(dragonDefinitivo, new BocaArriba(), monstruoASacrificar1, monstruoASacrificar2, monstruoASacrificar3);
+        jugador.colocarCartaEnCampo((Carta) dragonDefinitivo, new BocaArriba(), monstruoASacrificar1, monstruoASacrificar2, monstruoASacrificar3);
 
         // No se debería de haber colocado al dragón definitivo.
         Assert.assertFalse(jugador.cartaEstaEnCampo(dragonDefinitivo));
@@ -116,17 +116,17 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Monstruo monstruoASacrificar4 = new SevenColoredFish(jugador);
 
         // Invoco los dragones, con sus respectivos sacrificios.
-        jugador.colocarCartaEnCampo(monstruoASacrificar1, new BocaAbajo());
-        jugador.colocarCartaEnCampo(monstruoASacrificar2, new BocaAbajo());
-        jugador.colocarCartaEnCampo(dragonASacrificar1, new BocaAbajo(), monstruoASacrificar1, monstruoASacrificar2);
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar2, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) dragonASacrificar1, new BocaAbajo(), monstruoASacrificar1, monstruoASacrificar2);
 
-        jugador.colocarCartaEnCampo(monstruoASacrificar3, new BocaAbajo());
-        jugador.colocarCartaEnCampo(monstruoASacrificar4, new BocaAbajo());
-        jugador.colocarCartaEnCampo(dragonASacrificar2, new BocaAbajo(), monstruoASacrificar3, monstruoASacrificar4);
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar3, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar4, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) dragonASacrificar2, new BocaAbajo(), monstruoASacrificar3, monstruoASacrificar4);
 
         Carta dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador);
 
-        jugador.colocarCartaEnCampo(dragonDefinitivo, new BocaArriba(), dragonASacrificar1, dragonASacrificar2);
+        jugador.colocarCartaEnCampo((Carta) dragonDefinitivo, new BocaArriba(), dragonASacrificar1, dragonASacrificar2);
 
         // Para invocar al Dragón definitivo se tuvo que sacrificar a los tres dragones.
         Assert.assertTrue(jugador.cartaEstaEnCampo(dragonASacrificar1));
@@ -148,8 +148,8 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Monstruo monstruoASacrificar2 = new SevenColoredFish(jugador);
 
         // Invoco los dragones, con sus respectivos sacrificios.
-        jugador.colocarCartaEnCampo(monstruoASacrificar1, new BocaAbajo());
-        jugador.colocarCartaEnCampo(monstruoASacrificar2, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaAbajo());
+        jugador.colocarCartaEnCampo((Carta) monstruoASacrificar2, new BocaAbajo());
         jugador.colocarCartaEnCampo(dragonASacrificar1, new BocaAbajo(), monstruoASacrificar1, monstruoASacrificar2);
 
         Carta dragonDefinitivo = new DragonDefinitivoDeOjosAzules(jugador);

@@ -33,9 +33,9 @@ public class CilindroMagicoTest {
         Monstruo monstruoAtacado = new Jinzo7(jugador1);
         Carta cilindroMagico = new CilindroMagico(jugador1);
 
-        jugador1.colocarCartaEnCampo(monstruoAtacado, new BocaArriba());
+        jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaArriba());
         jugador1.colocarCartaEnCampo(cilindroMagico, new BocaAbajo());
-        jugador2.colocarCartaEnCampo(monstruoAtacante, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
 
         //El jugador queda en 1800 puntos de vida
         jugador1.modificarPuntosDeVida(6200);

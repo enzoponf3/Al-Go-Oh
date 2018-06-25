@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_magicas;
 
 import algo3.fiuba.Juego;
+import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
@@ -33,8 +34,8 @@ public class FisuraTest {
         Monstruo monstruoDebil = new Jinzo7(jugador2);
         fisura = new Fisura(jugador1);
 
-        jugador2.colocarCartaEnCampo(monstruoDebil, new BocaArriba());
-        jugador2.colocarCartaEnCampo(monstruoFuerte, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoDebil, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoFuerte, new BocaArriba());
         jugador1.colocarCartaEnCampo(fisura, new BocaArriba());
 
         fisura.activarEfecto();

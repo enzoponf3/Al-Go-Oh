@@ -12,6 +12,7 @@ import algo3.fiuba.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modo_monstruo.ModoMonstruo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombateNulo;
+import algo3.fiuba.jugador.Jugador;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,6 +33,7 @@ public class Monstruo extends Carta {
         this.nivel = NivelFactoryFactory.obtenerEstrellas(estrellas);
         this.estadoEnTurno = new NoUsadaEnTurno(); // está solo para que pasen los tests
         this.modificadores = new HashSet<>();
+        this.modoMonstruo = new ModoDeAtaque();
     }
 
     public void atacar(Monstruo otraCarta) {
@@ -73,7 +75,9 @@ public class Monstruo extends Carta {
         campo.removerCarta(this);
     }
 
-    public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+    /*
+    @Override
+    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         if (!nivel.sacrificiosSuficientes(sacrificios))
             throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", nivel.sacrificiosRequeridos()));
 
@@ -82,12 +86,25 @@ public class Monstruo extends Carta {
         super.colocarEnCampo(campo, tipoEnJuego, sacrificios);
         campo.colocarCarta(this, tipoEnJuego, sacrificios);
     }
+    */
+
+    @Override
+    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        if (!nivel.sacrificiosSuficientes(sacrificios))
+            throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", nivel.sacrificiosRequeridos()));
+
+        this.realizarSacrificios(sacrificios);
+        modoMonstruo = ModoDeAtaque.getInstancia(); // !!! sacar
+        super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
+        jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
+    }
+
 
     public void cambiarModo() {
         modoMonstruo = modoMonstruo.cambiarModoMonstruo();
     }
 
-    protected void realizarSacrificios(Campo campo, Monstruo... sacrificios) {
+    protected void realizarSacrificios(Monstruo... sacrificios) {
         for (Monstruo sacrificio : sacrificios) {
             sacrificio.mandarDelCampoAlCementerio();
         }

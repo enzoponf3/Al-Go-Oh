@@ -27,7 +27,7 @@ public class InsectoComeHombresTest {
         Carta monstruoRival = new SevenColoredFish(jugador2);
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaArriba());
-        jugador2.colocarCartaEnCampo(monstruoRival, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
 
         Assert.assertTrue(insectoComeHombres.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
@@ -41,7 +41,7 @@ public class InsectoComeHombresTest {
         Monstruo monstruoRival = new SevenColoredFish(jugador2);
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaAbajo());
-        jugador2.colocarCartaEnCampo(monstruoRival, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
 
         monstruoRival.atacar(insectoComeHombres);
 
@@ -58,8 +58,8 @@ public class InsectoComeHombresTest {
     public void seColocaEnElCampoBocaArriba_alSerAtacadoNoActivaElEfecto() {
         Monstruo monstruoRival = new SevenColoredFish(jugador2);
 
-        jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaArriba());
-        jugador2.colocarCartaEnCampo(monstruoRival, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
+        jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaArriba());
 
         monstruoRival.atacar(insectoComeHombres);
 

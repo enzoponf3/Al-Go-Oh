@@ -39,4 +39,6 @@ public class BocaAbajo extends EnJuego {
     public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto){
         activarEfecto(carta, efecto);
     }
+
+    
 }
