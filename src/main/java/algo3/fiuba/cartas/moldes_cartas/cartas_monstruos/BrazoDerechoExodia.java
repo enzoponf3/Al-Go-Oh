@@ -1,7 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_monstruos;
 
 import algo3.fiuba.Campo;
-import algo3.fiuba.Jugador;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoPartesExodia;

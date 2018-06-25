@@ -1,13 +1,13 @@
 package algo3.fiuba.entrega1;
 
 import algo3.fiuba.Juego;
-import algo3.fiuba.Jugador;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
-import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
+import algo3.fiuba.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -216,7 +216,7 @@ public class Enrega1NoOficialTest {
 
     // VALIDAR QUE MONSTRUO NO PUEDA ATACAR CUANDO NO DEBE PODER
 
-    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarDesdeLaMano() {
         Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
@@ -224,7 +224,7 @@ public class Enrega1NoOficialTest {
         monstruo.atacar(null);
     }
 
-    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarDesdeElCementerio() {
         Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
@@ -232,7 +232,7 @@ public class Enrega1NoOficialTest {
         monstruo.atacar(null);
     }
 
-    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarSiEstaEnElMazo() {
         Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
@@ -241,7 +241,7 @@ public class Enrega1NoOficialTest {
         monstruo.atacar(null);
     }
 
-    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarSiEstaEnElTableroEnModoDefensa() {
         Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 

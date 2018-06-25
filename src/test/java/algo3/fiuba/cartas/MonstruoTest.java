@@ -1,10 +1,10 @@
 package algo3.fiuba.cartas;
 
 import algo3.fiuba.Juego;
-import algo3.fiuba.Jugador;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
-import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
+import algo3.fiuba.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +26,7 @@ public class MonstruoTest {
 
     }
 
-    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarEnModoDefensa() {
         Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000, 1, new EfectoNulo());
         Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500, 1, new EfectoNulo());

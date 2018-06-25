@@ -1,7 +1,10 @@
-package algo3.fiuba;
+package algo3.fiuba.jugador;
 
 
+import algo3.fiuba.TableroJugador;
+import algo3.fiuba.Turno;
 import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
@@ -56,9 +59,28 @@ public class Jugador {
     }
 
     public void colocarCartaEnCampo(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        carta.setJugador(this);
-        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
+        //tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
+        carta.colocarEnCampo(this, tipoEnJuego, sacrificios);
+        carta.setJugador(this); // !!! sacar
+        Turno.getInstancia().addObserver(carta);
+
     }
+
+    public void colocarCartaEnCampo(Monstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
+        carta.setJugador(this);
+    }
+
+    public void colocarCartaEnCampo(NoMonstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
+        carta.setJugador(this);
+    }
+
+    public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
+        carta.setJugador(this);
+    }
+
 
     public boolean cartaEstaEnCampo(Carta carta) {
         return tableroJugador.cartaEstaEnCampo(carta);

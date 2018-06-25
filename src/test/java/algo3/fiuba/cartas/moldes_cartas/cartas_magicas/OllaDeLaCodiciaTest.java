@@ -1,7 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_magicas;
 
 import algo3.fiuba.Juego;
-import algo3.fiuba.Jugador;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;

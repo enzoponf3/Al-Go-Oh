@@ -1,7 +1,7 @@
 package algo3.fiuba.entrega2;
 
 import algo3.fiuba.Juego;
-import algo3.fiuba.Jugador;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.*;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
@@ -15,7 +15,6 @@ import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.CilindroMagico;
 import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.Refuerzos;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class Entrega2Test {

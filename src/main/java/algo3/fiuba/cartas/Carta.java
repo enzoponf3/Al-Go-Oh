@@ -5,8 +5,7 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estado_en_turno.EstadoEnTurno;
 import algo3.fiuba.cartas.estado_en_turno.NoUsadaEnTurno;
 import algo3.fiuba.cartas.estados_cartas.*;
-import algo3.fiuba.cartas.modificadores.Modificador;
-import algo3.fiuba.cartas.modificadores.ModificadorRefuerzos;
+import algo3.fiuba.jugador.Jugador;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,14 +34,22 @@ public abstract class Carta implements Observer {
         estadoEnTurno = estadoEnTurno.pasarTurno();
     }
 
+    /*
     public void colocarEnCampo(Campo campo, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         this.estadoCarta = tipoEnJuego;
         this.estadoEnTurno = new NoUsadaEnTurno();
     }
+*/
+    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        this.estadoCarta = tipoEnJuego;
+        this.estadoEnTurno = new NoUsadaEnTurno();
+    }
 
+/*
     public void pasarAModoJuego(EnJuego tipoEnJuego) {
         estadoCarta = tipoEnJuego;
     }
+*/
 
     public boolean estaEnJuego() {
         return estadoCarta.estaEnJuego();

@@ -1,6 +1,6 @@
 package algo3.fiuba.cartas.efectos;
 
-import algo3.fiuba.Jugador;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 

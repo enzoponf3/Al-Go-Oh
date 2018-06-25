@@ -1,7 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_campo;
 
 import algo3.fiuba.Juego;
-import algo3.fiuba.Jugador;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;

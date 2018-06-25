@@ -2,7 +2,7 @@ package algo3.fiuba.a_reacomodar;
 
 public class MagicaEntrega1Test {
 /*
-    @Test(expected = InhabilitadaParaActivarseExcepcion.class)
+    @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class)
     public void cartaBocaAbajoNoActivaEfecto() {
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
         Magica carta = new Magica("agujero negro", efectoCarta);

@@ -1,7 +1,8 @@
 package algo3.fiuba.entrega1;
 
 import algo3.fiuba.Juego;
-import algo3.fiuba.Jugador;
+import algo3.fiuba.excepciones.CartaInhabilitadaParaActivarseExcepcion;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
@@ -10,8 +11,7 @@ import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
-import algo3.fiuba.excepciones.InhabilitadaParaActivarseExcepcion;
-import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
+import algo3.fiuba.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
 import org.junit.*;
 
 
@@ -48,7 +48,7 @@ public class Entrega1OficialTest {
     }
 
 
-    @Test(expected = InhabilitadoParaAtacarExcepcion.class)
+    @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void colocarUnaCartaDeMonstruoEnModoDeDefensaAlQuererAtacarLanzaExcepcion() {
         Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1, new EfectoNulo());
         Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1, new EfectoNulo());
@@ -67,7 +67,7 @@ public class Entrega1OficialTest {
     }
 
 
-    @Test(expected = InhabilitadaParaActivarseExcepcion.class)
+    @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class)
     public void colocarCartaMagicaEnCampoBocaAbajo_NoActivaNingunEfecto() {
         /*
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();

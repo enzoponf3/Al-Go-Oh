@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
 import algo3.fiuba.cartas.modificadores.Modificador;
+import algo3.fiuba.jugador.Jugador;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -41,10 +42,12 @@ public class Campo {
         return (zonaNoMonstruos.size());
     }
 
+    /*
     public void colocarCarta(Carta carta, EnJuego enJuego, Monstruo... sacrificios) {
         carta.colocarEnCampo(this, enJuego, sacrificios);
         Turno.getInstancia().addObserver(carta);
     }
+*/
 
     public void colocarCarta(Monstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         if (zonaMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)

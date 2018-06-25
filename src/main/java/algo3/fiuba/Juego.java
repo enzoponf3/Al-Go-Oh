@@ -1,8 +1,6 @@
 package algo3.fiuba;
 
-import algo3.fiuba.cartas.Carta;
-import algo3.fiuba.cartas.CartaCampo;
-import algo3.fiuba.cartas.efectos.*;
+import algo3.fiuba.jugador.Jugador;
 
 public class Juego {
 

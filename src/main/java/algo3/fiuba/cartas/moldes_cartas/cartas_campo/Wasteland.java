@@ -1,8 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_campo;
 
-import algo3.fiuba.Jugador;
+import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.CartaCampo;
-import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoWasteland;
 
 public class Wasteland extends CartaCampo {

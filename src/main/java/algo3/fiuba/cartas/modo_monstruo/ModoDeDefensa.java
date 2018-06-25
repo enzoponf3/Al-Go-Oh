@@ -4,7 +4,7 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.resultado_combate.GanaContraModoDeDefensa;
 import algo3.fiuba.cartas.resultado_combate.PierdeContraModoDeDefensa;
-import algo3.fiuba.excepciones.InhabilitadoParaAtacarExcepcion;
+import algo3.fiuba.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
 
 public class ModoDeDefensa extends ModoMonstruo {
 
@@ -28,7 +28,7 @@ public class ModoDeDefensa extends ModoMonstruo {
 
     @Override
     public ResultadoCombate atacar(Monstruo monstruoAtacante, Monstruo otraCarta, Integer puntosAtaque) {
-        throw new InhabilitadoParaAtacarExcepcion("No puede atacar estando en Modo de Defensa.");
+        throw new MonstruoInhabilitadoParaAtacarExcepcion("No puede atacar estando en Modo de Defensa.");
     }
 
     @Override

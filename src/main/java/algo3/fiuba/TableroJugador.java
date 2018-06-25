@@ -8,6 +8,7 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modificadores.Modificador;
 import algo3.fiuba.excepciones.CartasInsuficientesExcepcion;
+import algo3.fiuba.jugador.Jugador;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,9 +26,18 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public void colocarCartaEnCampo(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+    public void colocarCartaEnCampo(Monstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
     }
+
+    public void colocarCartaEnCampo(NoMonstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
+    }
+
+    public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
+    }
+
 
     public Carta tomarCartaDelMazo() {
         try {
