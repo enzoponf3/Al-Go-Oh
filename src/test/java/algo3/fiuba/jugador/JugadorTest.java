@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
 import algo3.fiuba.excepciones.JugadorInhabilitadoParaColocarCartasExcepcion;
 import org.junit.Assert;
 import org.junit.Before;
@@ -95,21 +96,21 @@ public class JugadorTest {
     }
 
     @Test
-    public void empiezaElJuego_elJugador1PuedeRealizarInvocaciones() {
+    public void empiezaElJuego_elJugador1PuedeInvocar() {
         Carta carta = new BebeDragon(jugador1);
 
         jugador1.colocarCartaEnCampo(carta, new BocaArriba());
     }
 
     @Test(expected = JugadorInhabilitadoParaColocarCartasExcepcion.class)
-    public void empiezaElJuego_elJugador2NoPuedeRealizarInvocaciones() {
+    public void empiezaElJuego_elJugador2NoPuedeInvocar() {
         Carta carta = new BebeDragon(jugador2);
 
         jugador2.colocarCartaEnCampo(carta, new BocaArriba());
     }
 
     @Test(expected = JugadorInhabilitadoParaColocarCartasExcepcion.class)
-    public void empiezaElJuegoYPasaUnTurno_elJugador1NoPuedeRealizarInvocaciones() {
+    public void empiezaElJuegoYPasaUnTurno_elJugador1NoPuedeInvocar() {
         turno.pasarTurno();
         Carta carta = new BebeDragon(jugador1);
 
@@ -117,12 +118,43 @@ public class JugadorTest {
     }
 
     @Test
-    public void empiezaElJuegoYPasaUnTurno_elJugador2PuedeRealizarInvocaciones() {
+    public void empiezaElJuegoYPasaUnTurno_elJugador2PuedeInvocar() {
         turno.pasarTurno();
         Carta carta = new BebeDragon(jugador2);
 
         jugador2.colocarCartaEnCampo(carta, new BocaArriba());
     }
+
+    @Test(expected = JugadorInhabilitadoParaColocarCartasExcepcion.class)
+    public void esElTurnoDelJugador1_realizaUnaInvocacion_yaNoPuedeInvocarMas() {
+        Carta carta1 = new BebeDragon(jugador1);
+        Carta carta2 = new Jinzo7(jugador1);
+
+        jugador1.colocarCartaEnCampo(carta1, new BocaArriba());
+        jugador1.colocarCartaEnCampo(carta2, new BocaArriba());
+    }
+
+    @Test(expected = JugadorInhabilitadoParaColocarCartasExcepcion.class)
+    public void esElTurnoDelJugador1_realizaUnaInvocacion_elJugador2NoPuedeInvocarHastaQuePaseElTurnoExplicitamente() {
+        Carta carta1 = new BebeDragon(jugador1);
+        Carta carta2 = new Jinzo7(jugador1);
+
+        jugador1.colocarCartaEnCampo(carta1, new BocaArriba());
+        jugador2.colocarCartaEnCampo(carta2, new BocaArriba());
+    }
+
+    @Test(expected = JugadorInhabilitadoParaColocarCartasExcepcion.class)
+    public void esElTurnoDelJugador2_realizaUnaInvocacion_yaNoPuedeInvocarMas() {
+        Carta carta1 = new BebeDragon(jugador2);
+        Carta carta2 = new Jinzo7(jugador2);
+
+        turno.pasarTurno();
+        jugador2.colocarCartaEnCampo(carta1, new BocaArriba());
+        jugador2.colocarCartaEnCampo(carta2, new BocaArriba());
+    }
+
+
+
 
 
 
