@@ -1,9 +1,13 @@
-package algo3.fiuba;
+package algo3.fiuba.jugador;
 
+import algo3.fiuba.Juego;
+import algo3.fiuba.Turno;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.jugador.Jugador;
+import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
+import algo3.fiuba.excepciones.JugadorInhabilitadoParaColocarCartasExcepcion;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +15,21 @@ import org.junit.Test;
 public class JugadorTest {
 
     private Jugador jugador;
+    private Jugador jugador1;
+    private Jugador jugador2;
+    private Juego juego;
+    private Turno turno;
 
     @Before
     public void setUp() {
         jugador = new Jugador();
+        jugador1 = new Jugador();
+        jugador2 = new Jugador();
+
+        juego = Juego.getInstancia();
+        juego.inicializar(jugador1, jugador2);
+
+        turno = Turno.getInstancia();
     }
 
 
@@ -78,6 +93,39 @@ public class JugadorTest {
         jugador.tomarCartaDelMazo();
         Assert.assertEquals(jugador.cantidadCartasEnMano(), cantidadInicialCartas);
     }
+
+    @Test
+    public void empiezaElJuego_elJugador1PuedeRealizarInvocaciones() {
+        Carta carta = new BebeDragon(jugador1);
+
+        jugador1.colocarCartaEnCampo(carta, new BocaArriba());
+    }
+
+    @Test(expected = JugadorInhabilitadoParaColocarCartasExcepcion.class)
+    public void empiezaElJuego_elJugador2NoPuedeRealizarInvocaciones() {
+        Carta carta = new BebeDragon(jugador2);
+
+        jugador2.colocarCartaEnCampo(carta, new BocaArriba());
+    }
+
+    @Test(expected = JugadorInhabilitadoParaColocarCartasExcepcion.class)
+    public void empiezaElJuegoYPasaUnTurno_elJugador1NoPuedeRealizarInvocaciones() {
+        turno.pasarTurno();
+        Carta carta = new BebeDragon(jugador1);
+
+        jugador1.colocarCartaEnCampo(carta, new BocaArriba());
+    }
+
+    @Test
+    public void empiezaElJuegoYPasaUnTurno_elJugador2PuedeRealizarInvocaciones() {
+        turno.pasarTurno();
+        Carta carta = new BebeDragon(jugador2);
+
+        jugador2.colocarCartaEnCampo(carta, new BocaArriba());
+    }
+
+
+
 
  /*   @Test
     public void jugadorConsigueAExodia() {

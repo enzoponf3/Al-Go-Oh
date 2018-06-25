@@ -6,7 +6,7 @@ import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
-import algo3.fiuba.excepciones.SacrificiosInsuficientesExcepcion;
+import algo3.fiuba.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.jugador.PreInvocacion;
 import org.junit.Assert;
 import org.junit.Before;
@@ -92,7 +92,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
     }
 
 
-    @Test(expected = SacrificiosInsuficientesExcepcion.class)
+    @Test(expected = SacrificiosIncorrectosExcepcion.class)
     public void sinSacrificios_noSePuedeInvocar() {
         jugador.colocarCartaEnCampo((Carta) dragonDefinitivo, new BocaArriba());
 
@@ -101,7 +101,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Assert.assertFalse(dragonDefinitivo.estaEnJuego());
     }
 
-    @Test(expected = SacrificiosInsuficientesExcepcion.class)
+    @Test(expected = SacrificiosIncorrectosExcepcion.class)
     public void unSacrificioCualquiera_noSePuedeInvocar() {
         Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador);
 
@@ -112,7 +112,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Assert.assertFalse(dragonDefinitivo.estaEnJuego());
     }
 
-    @Test(expected = SacrificiosInsuficientesExcepcion.class)
+    @Test(expected = SacrificiosIncorrectosExcepcion.class)
     public void tresSacrificiosCualquiera_noSePuedeInvocar() {
         Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador);
         Monstruo monstruoASacrificar2 = new SevenColoredFish(jugador);
@@ -135,7 +135,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Assert.assertFalse(dragonDefinitivo.estaEnJuego());
     }
 
-    @Test(expected = SacrificiosInsuficientesExcepcion.class)
+    @Test(expected = SacrificiosIncorrectosExcepcion.class)
     public void sacrificandoUnDragonesDeOjosAzulesNoSePuedeInvocar() {
         Monstruo dragonASacrificar1 = new DragonBlancoDeOjosAzules(jugador);
         Monstruo dragonASacrificar2 = new DragonBlancoDeOjosAzules(jugador);
@@ -182,7 +182,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Assert.assertFalse(dragonDefinitivo.estaEnJuego());
     }
 
-    @Test(expected = SacrificiosInsuficientesExcepcion.class)
+    @Test(expected = SacrificiosIncorrectosExcepcion.class)
     public void sacrificandoDosDragonesDeOjosAzulesSePuedeInvocar() {
         Monstruo dragonASacrificar1 = new DragonBlancoDeOjosAzules(jugador);
 

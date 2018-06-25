@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.Trampa;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -139,7 +140,7 @@ public class CampoTest {
         Assert.assertEquals(cantidadDeNoMonstruos, campo.cantidadNoMonstruos());
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = CampoNoPermiteColocarCartaExcepcion.class)
     public void seAgrega6MonstruosEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
         Monstruo carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
         Monstruo carta2 = new Monstruo("m2", 100, 100, 1, new EfectoNulo());
@@ -156,7 +157,7 @@ public class CampoTest {
         campo.colocarCarta(carta6, new BocaAbajo());
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = CampoNoPermiteColocarCartaExcepcion.class)
     public void seAgrega6CartasMagicasEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
         Magica carta1 = new Magica("nm1", new EfectoNulo());
         Magica carta2 = new Magica("nm2", new EfectoNulo());
@@ -173,7 +174,7 @@ public class CampoTest {
         campo.colocarCarta(carta6, new BocaAbajo());
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = CampoNoPermiteColocarCartaExcepcion.class)
     public void seAgrega6CartasTrampaEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
         Trampa carta1 = new Trampa("nm1", new EfectoNulo());
         Trampa carta2 = new Trampa("nm2", new EfectoNulo());

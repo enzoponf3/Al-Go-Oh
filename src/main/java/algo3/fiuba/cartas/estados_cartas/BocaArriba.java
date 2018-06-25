@@ -1,5 +1,6 @@
 package algo3.fiuba.cartas.estados_cartas;
 
+import algo3.fiuba.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
@@ -32,11 +33,11 @@ public class BocaArriba extends EnJuego {
 
     @Override
     public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
-        throw new RuntimeException("No se puede Activar una carta Trampa en modo defensa");
+        throw new CartaInhabilitadaParaActivarseExcepcion("No se puede Activar una carta Trampa en que esté boca arriba");
     }
 
     @Override
     public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto) {
-        throw new RuntimeException("Ya no puedes activar a exodia!");
+        throw new CartaInhabilitadaParaActivarseExcepcion("Ya no puedes activar a exodia!");
     }
 }

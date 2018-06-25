@@ -7,6 +7,7 @@ import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.NoMonstruo;
 import algo3.fiuba.cartas.modificadores.Modificador;
+import algo3.fiuba.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.jugador.Jugador;
 
 import java.util.HashSet;
@@ -44,26 +45,26 @@ public class Campo {
 
     public void colocarCarta(Monstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         if (zonaMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new RuntimeException("No se puede tener más de 5 monstruos en el campo.");
+            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 monstruos en el campo.");
 
 
-        carta.setEstado(enJuego);
+        carta.setEstado(enJuego); // !!! sacar
         zonaMonstruos.add(carta);
         this.agregarModificadoresAMonstruos();
     }
 
     public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new RuntimeException("No se puede tener más de 5 no monstruos en el campo.");
+            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
 
-        carta.setEstado(enJuego);
+        carta.setEstado(enJuego); // !!! sacar
         zonaNoMonstruos.add(carta);
     }
 
     public void colocarCarta(CartaCampo carta, EnJuego enJuego, Monstruo... sacrificios) {
         
-        // Debería de verificar si ya había otra carta de campo.
-        carta.setEstado(enJuego);
+        // !!!Debería de verificar si ya había otra carta de campo.
+        carta.setEstado(enJuego); // !!! sacar
         cartaCampo = carta;
     }
 

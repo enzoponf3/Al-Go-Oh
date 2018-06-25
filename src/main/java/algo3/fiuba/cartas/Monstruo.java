@@ -12,6 +12,7 @@ import algo3.fiuba.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modo_monstruo.ModoMonstruo;
 import algo3.fiuba.cartas.resultado_combate.ResultadoCombateNulo;
+import algo3.fiuba.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.jugador.Jugador;
 
 import java.util.HashSet;
@@ -75,23 +76,10 @@ public class Monstruo extends Carta {
         campo.removerCarta(this);
     }
 
-    /*
     @Override
     public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         if (!nivel.sacrificiosSuficientes(sacrificios))
-            throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", nivel.sacrificiosRequeridos()));
-
-        this.realizarSacrificios(campo, sacrificios);
-        modoMonstruo = ModoDeAtaque.getInstancia();
-        super.colocarEnCampo(campo, tipoEnJuego, sacrificios);
-        campo.colocarCarta(this, tipoEnJuego, sacrificios);
-    }
-    */
-
-    @Override
-    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        if (!nivel.sacrificiosSuficientes(sacrificios))
-            throw new RuntimeException(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", nivel.sacrificiosRequeridos()));
+            throw new SacrificiosIncorrectosExcepcion(String.format("Se necesitan estrictamente %d sacrificios para invocarlo.", nivel.sacrificiosRequeridos()));
 
         this.realizarSacrificios(sacrificios);
         modoMonstruo = ModoDeAtaque.getInstancia(); // !!! sacarg

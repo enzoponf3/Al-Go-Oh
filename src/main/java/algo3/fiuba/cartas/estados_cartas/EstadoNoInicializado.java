@@ -1,5 +1,6 @@
 package algo3.fiuba.cartas.estados_cartas;
 
+import algo3.fiuba.excepciones.CartaNoInicializadaEnDueloExcepcion;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
@@ -16,36 +17,36 @@ public class EstadoNoInicializado implements EstadoCarta {
 
     @Override
     public boolean estaEnJuego() {
-        throw new RuntimeException("La carta nunca se ha inicializado en el duelo.");
+        throw new CartaNoInicializadaEnDueloExcepcion("La carta nunca se ha inicializado en el duelo.");
     }
 
     @Override
     public void activarEfecto(Carta carta, EfectoCarta efecto) {
-        throw new RuntimeException("La carta nunca se ha inicializado en el duelo.");
+        throw new CartaNoInicializadaEnDueloExcepcion("La carta nunca se ha inicializado en el duelo.");
     }
 
     @Override
     public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
-        activarEfecto(trampa, efecto);
+        throw new CartaNoInicializadaEnDueloExcepcion("No se pueden atacar Monstruos que están fuera de juego.");
     }
 
     @Override
     public void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto) {
-        activarEfecto(carta, efecto);
+        throw new CartaNoInicializadaEnDueloExcepcion("No se pueden atacar Monstruos que están fuera de juego.");
     }
 
     @Override
     public void recibirAtaque(Monstruo carta) {
-        throw new RuntimeException("No se pueden atacar Monstruos que están fuera de juego.");
+        throw new CartaNoInicializadaEnDueloExcepcion("No se pueden atacar Monstruos que están fuera de juego.");
     }
 
     @Override
     public void recibirAtaque(NoMonstruo carta) {
-        throw new RuntimeException("No se pueden atacar cartas No Monstruos.");
+        throw new CartaNoInicializadaEnDueloExcepcion("No se pueden atacar Monstruos que están fuera de juego.");
     }
 
     @Override
     public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto){
-        throw new RuntimeException("La carta nunca se ha inicializado en el duelo.");
+        throw new CartaNoInicializadaEnDueloExcepcion("No se pueden atacar Monstruos que están fuera de juego.");
     }
 }

@@ -3,6 +3,7 @@ package algo3.fiuba.cartas;
 import algo3.fiuba.Campo;
 import algo3.fiuba.cartas.efectos.EfectoCarta;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
+import algo3.fiuba.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.jugador.Jugador;
 
 public abstract class NoMonstruo extends Carta {
@@ -25,27 +26,14 @@ public abstract class NoMonstruo extends Carta {
         campo.removerCarta(this);
     }
 
-/*
     @Override
     public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         if (sacrificios.length != 0)
-            throw new RuntimeException(String.format("No se pueden hacer sacrificios para invocar esta carta."));
-
-        super.colocarEnCampo(campo, tipoEnJuego, sacrificios);
-        campo.colocarCarta(this, tipoEnJuego, sacrificios);
-    }
-*/
-
-    @Override
-    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        if (sacrificios.length != 0)
-            throw new RuntimeException(String.format("No se pueden hacer sacrificios para invocar esta carta."));
+            throw new SacrificiosIncorrectosExcepcion("No se pueden hacer sacrificios para invocar esta carta.");
 
         super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
         jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
     }
-
-
 
     @Override
     public void activarEfecto() {
