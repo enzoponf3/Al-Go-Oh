@@ -15,12 +15,15 @@ import algo3.fiuba.cartas.modificadores.Modificador;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Jugador {
+public class Jugador implements Observer {
 
     private Integer puntosDeVida;
     private TableroJugador tableroJugador;
     private List<Carta> mano;
+    private EstadoJugador estadoJugador;
     private Jugador oponente;
 
     public Jugador() {
@@ -59,7 +62,6 @@ public class Jugador {
     }
 
     public void colocarCartaEnCampo(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        //tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
         carta.colocarEnCampo(this, tipoEnJuego, sacrificios);
         carta.setJugador(this); // !!! sacar
         Turno.getInstancia().addObserver(carta);
@@ -67,18 +69,15 @@ public class Jugador {
     }
 
     public void colocarCartaEnCampo(Monstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
-        carta.setJugador(this);
+        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego, sacrificios);
     }
 
     public void colocarCartaEnCampo(NoMonstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
-        carta.setJugador(this);
+        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego, sacrificios);
     }
 
     public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
-        carta.setJugador(this);
+        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego, sacrificios);
     }
 
 
@@ -140,6 +139,10 @@ public class Jugador {
         return mano;
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        estadoJugador = estadoJugador.cambioDeTurno();
+    }
 
     @Override
     public String toString() {
@@ -185,4 +188,7 @@ public class Jugador {
     }
 
 
+    public void setEstadoJugador(EstadoJugador estadoJugador) {
+        this.estadoJugador = estadoJugador;
+    }
 }

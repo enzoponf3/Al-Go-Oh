@@ -1,5 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_monstruos;
 
+import algo3.fiuba.Juego;
+import algo3.fiuba.Turno;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Monstruo;
@@ -14,11 +16,18 @@ public class InsectoComeHombresTest {
     private InsectoComeHombres insectoComeHombres;
     private Jugador jugador1;
     private Jugador jugador2;
+    private Juego juego;
+    private Turno turno;
 
     @Before
     public void setUp() {
+        juego = Juego.getInstancia();
+        turno = Turno.getInstancia();
+
         jugador1 = new Jugador();
         jugador2 = new Jugador();
+        juego.inicializar(jugador1, jugador2);
+
         insectoComeHombres = new InsectoComeHombres(jugador1);
     }
 
@@ -27,6 +36,7 @@ public class InsectoComeHombresTest {
         Carta monstruoRival = new SevenColoredFish(jugador2);
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaArriba());
+        turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
 
         Assert.assertTrue(insectoComeHombres.estaEnJuego());
@@ -41,6 +51,7 @@ public class InsectoComeHombresTest {
         Monstruo monstruoRival = new SevenColoredFish(jugador2);
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaAbajo());
+        turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
 
         monstruoRival.atacar(insectoComeHombres);
@@ -58,8 +69,9 @@ public class InsectoComeHombresTest {
     public void seColocaEnElCampoBocaArriba_alSerAtacadoNoActivaElEfecto() {
         Monstruo monstruoRival = new SevenColoredFish(jugador2);
 
-        jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
         jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaArriba());
+        turno.pasarTurno();
+        jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
 
         monstruoRival.atacar(insectoComeHombres);
 

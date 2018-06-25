@@ -26,6 +26,7 @@ public class Entrega3NoOficial {
 
         juego = Juego.getInstancia();
         juego.inicializar(jugador1, jugador2);
+
         turno = Turno.getInstancia();
     }
 
@@ -35,7 +36,9 @@ public class Entrega3NoOficial {
         Monstruo monstruoDefensor = new Jinzo7(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
+        turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoDefensor, new BocaArriba());
+        turno.pasarTurno();
 
         monstruoAtacante.atacar(monstruoDefensor);
     }
@@ -46,8 +49,10 @@ public class Entrega3NoOficial {
         Monstruo monstruoDefensor = new SevenColoredFish(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
+        turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoDefensor, new BocaArriba());
         monstruoDefensor.cambiarModo();
+        turno.pasarTurno();
 
         // El Monstruo atacante no mata al defensor porque no alcanza con los puntos de ataque
         monstruoAtacante.atacar(monstruoDefensor);
@@ -62,8 +67,10 @@ public class Entrega3NoOficial {
         Monstruo monstruo2 = new SevenColoredFish(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruo1, new BocaArriba());
+        turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruo2, new BocaArriba());
         monstruo2.cambiarModo();
+        turno.pasarTurno();
 
         turno.pasarTurno();
 
@@ -76,8 +83,10 @@ public class Entrega3NoOficial {
         Monstruo monstruo2 = new SevenColoredFish(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruo1, new BocaArriba());
+        turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruo2, new BocaArriba());
         monstruo2.cambiarModo();
+        turno.pasarTurno();
 
         monstruo1.atacar(monstruo2);
 

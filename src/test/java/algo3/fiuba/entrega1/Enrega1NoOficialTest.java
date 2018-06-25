@@ -1,6 +1,7 @@
 package algo3.fiuba.entrega1;
 
 import algo3.fiuba.Juego;
+import algo3.fiuba.Turno;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
 import algo3.fiuba.cartas.Magica;
@@ -17,15 +18,16 @@ public class Enrega1NoOficialTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private Juego juego;
+    private Turno turno;
 
     @Before
     public void setUp() {
+        juego = Juego.getInstancia();
+        turno = Turno.getInstancia();
+
         jugador1 = new Jugador();
         jugador2 = new Jugador();
-
-        juego = Juego.getInstancia();
         juego.inicializar(jugador1, jugador2);
-
     }
 
     // VALIDAR QUE CARTA ESTÁ EN UN ÚNICO LUGAR
@@ -129,6 +131,7 @@ public class Enrega1NoOficialTest {
     public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
         Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
 
+        turno.pasarTurno();
         jugador2.colocarCartaEnCampo(carta, new BocaArriba());
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
@@ -167,6 +170,7 @@ public class Enrega1NoOficialTest {
     public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
         Carta carta = new Magica("no monstruo test", new EfectoNulo());
 
+        turno.pasarTurno();
         jugador2.colocarCartaEnCampo(carta, new BocaArriba());
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));

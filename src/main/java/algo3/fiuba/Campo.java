@@ -42,13 +42,6 @@ public class Campo {
         return (zonaNoMonstruos.size());
     }
 
-    /*
-    public void colocarCarta(Carta carta, EnJuego enJuego, Monstruo... sacrificios) {
-        carta.colocarEnCampo(this, enJuego, sacrificios);
-        Turno.getInstancia().addObserver(carta);
-    }
-*/
-
     public void colocarCarta(Monstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
         if (zonaMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
             throw new RuntimeException("No se puede tener más de 5 monstruos en el campo.");

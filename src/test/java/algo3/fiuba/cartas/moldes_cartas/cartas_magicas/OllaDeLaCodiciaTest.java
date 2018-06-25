@@ -1,6 +1,7 @@
 package algo3.fiuba.cartas.moldes_cartas.cartas_magicas;
 
 import algo3.fiuba.Juego;
+import algo3.fiuba.Turno;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
@@ -16,11 +17,18 @@ public class OllaDeLaCodiciaTest {
     private Jugador jugador1;
     private Jugador jugador2;
     private OllaDeLaCodicia ollaDeLaCodicia;
+    private Juego juego;
+    private Turno turno;
 
     @Before
     public void setUp(){
+        juego = Juego.getInstancia();
+        turno = Turno.getInstancia();
+
         jugador1 = new Jugador();
         jugador2 = new Jugador();
+
+        juego.inicializar(jugador1, jugador2);
         ollaDeLaCodicia = new OllaDeLaCodicia(jugador1);
     }
 

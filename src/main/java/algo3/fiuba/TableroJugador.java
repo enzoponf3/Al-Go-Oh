@@ -38,7 +38,6 @@ public class TableroJugador {
         this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
     }
 
-
     public Carta tomarCartaDelMazo() {
         try {
             return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
