@@ -16,7 +16,7 @@ public class ContenedorPrincipal extends BorderPane {
 
     public ContenedorPrincipal(Stage stage) {
 
-        this.getStylesheets().add("/algo3/fiuba/vista/estilos/estiloContenedorPrincipal.css");
+        this.getStylesheets().add("/algo3/fiuba/vista/resources/estilos/estiloContenedorPrincipal.css");
         this.setBarraLateral();
         this.setTablero();
     }

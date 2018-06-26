@@ -1,10 +1,7 @@
 package algo3.fiuba.vista;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -12,10 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.control.ScrollPane;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class Tablero extends GridPane {
 
@@ -28,7 +21,7 @@ public class Tablero extends GridPane {
         this.setPadding(new Insets(5));
         this.setVgap(5.5);
         this.setHgap(5.5);
-        this.getStylesheets().add("/algo3/fiuba/vista/estilos/estiloContenedorPrincipal.css");
+        this.getStylesheets().add("/algo3/fiuba/vista/resources/estilos/estiloContenedorPrincipal.css");
 
         this.setMano();
         this.setMazo();
@@ -42,7 +35,7 @@ public class Tablero extends GridPane {
            //ArrayList<Carta> mano = new ArrayList
         GridPane mano = new GridPane();
         for (int i = 2; i <= 7; i++) {
-            ImageView carta = new ImageView(new Image("/algo3/fiuba/vista/resosources/img/carta-vista-trasera.png",
+            ImageView carta = new ImageView(new Image("/algo3/fiuba/vista/resources/img/carta-vista-trasera.png",
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
             carta.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>() {
                 @Override
@@ -66,7 +59,7 @@ public class Tablero extends GridPane {
 
     public void setMazo() {
 
-        ImageView mazo = new ImageView(new Image("/algo3/fiuba/vista/resosources/img/carta-vista-trasera.png",
+        ImageView mazo = new ImageView(new Image("/algo3/fiuba/vista/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         mazo.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
@@ -96,7 +89,7 @@ public class Tablero extends GridPane {
                }
            }*/
            this.getChildren().remove(6);
-           ImageView carta = new ImageView(new Image("/algo3/fiuba/vista/resosources/img/carta-vista-trasera.png", 101, 128, false, false));
+           ImageView carta = new ImageView(new Image("/algo3/fiuba/vista/resources/img/carta-vista-trasera.png", 101, 128, false, false));
            carta.setRotate(90); // EJEJEJ QUEDA RE CHOOTOO!! JAJAJAJA VER TAMAÑO
            this.add(carta, 2, 2);
 

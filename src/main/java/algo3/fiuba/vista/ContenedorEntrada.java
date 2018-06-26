@@ -19,7 +19,7 @@ public class ContenedorEntrada extends VBox {
 
         this.stage = stage;
 
-        this.getStylesheets().add("/algo3/fiuba/vista/estilos/estiloContenedorEntrada.css");
+        this.getStylesheets().add("/algo3/fiuba/vista/resources/estilos/estiloContenedorEntrada.css");
         this.getStyleClass().add("fondo");
 
         Label nombres = new Label("Ingresen sus nombres \nDuelistas!");

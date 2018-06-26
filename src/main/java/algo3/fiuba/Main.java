@@ -1,5 +1,7 @@
-package algo3.fiuba.vista;
+package algo3.fiuba;
 
+import algo3.fiuba.vista.ContenedorEntrada;
+import algo3.fiuba.vista.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
