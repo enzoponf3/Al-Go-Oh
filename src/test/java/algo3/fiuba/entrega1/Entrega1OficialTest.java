@@ -1,19 +1,19 @@
 package algo3.fiuba.entrega1;
 
-import algo3.fiuba.Juego;
-import algo3.fiuba.Turno;
-import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
-import algo3.fiuba.excepciones.CartaInhabilitadaParaActivarseExcepcion;
-import algo3.fiuba.jugador.Jugador;
-import algo3.fiuba.cartas.Carta;
-import algo3.fiuba.cartas.Magica;
-import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.Trampa;
-import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
-import algo3.fiuba.cartas.estados_cartas.BocaArriba;
-import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
-import algo3.fiuba.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
+import algo3.fiuba.modelo.Juego;
+import algo3.fiuba.modelo.Turno;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
+import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
+import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.Magica;
+import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.Trampa;
+import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
+import algo3.fiuba.modelo.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
 import org.junit.*;
 
 
