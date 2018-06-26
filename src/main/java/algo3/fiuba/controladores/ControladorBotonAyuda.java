@@ -1,4 +1,4 @@
-package algo3.fiuba.vista.eventos;
+package algo3.fiuba.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class EventoAyuda implements EventHandler<ActionEvent> {
+public class ControladorBotonAyuda implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent action) {

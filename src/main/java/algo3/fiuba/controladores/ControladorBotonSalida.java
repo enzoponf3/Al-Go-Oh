@@ -1,4 +1,4 @@
-package algo3.fiuba.vista.eventos;
+package algo3.fiuba.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,7 +8,7 @@ import javafx.stage.StageStyle;
 
 import java.util.Optional;
 
-public class EventoSalir implements EventHandler<ActionEvent> {
+public class ControladorBotonSalida implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {

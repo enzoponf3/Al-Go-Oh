@@ -1,17 +1,18 @@
-package algo3.fiuba.vista.eventos;
+package algo3.fiuba.controladores;
 
+import algo3.fiuba.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class EventoPasarAJuego implements EventHandler<ActionEvent> {
+public class ControladorEntrar implements EventHandler<ActionEvent> {
 
     private Stage stage;
     private Scene pantallaJuego;
     private String n1, n2;
 
-    public EventoPasarAJuego(Stage stage, Scene proximaPantalla, String n1, String n2) {
+    public ControladorEntrar(Stage stage, Scene proximaPantalla, String n1, String n2) {
 
         this.stage = stage;
         this.pantallaJuego = proximaPantalla;
@@ -25,5 +26,6 @@ public class EventoPasarAJuego implements EventHandler<ActionEvent> {
         stage.setResizable(true);
         stage.centerOnScreen();
         stage.setTitle("Al-Go-Oh!");
+       // ContenedorPrincipal.setPlayers(); ver
     }
 }

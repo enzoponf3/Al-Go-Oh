@@ -1,6 +1,6 @@
 package algo3.fiuba.vista;
 
-import algo3.fiuba.vista.eventos.EventoPasarAJuego;
+import algo3.fiuba.controladores.ControladorEntrar;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,7 +19,7 @@ public class ContenedorEntrada extends VBox {
 
         this.stage = stage;
 
-        this.getStylesheets().add("/algo3/fiuba/vista/resources/estilos/estiloContenedorEntrada.css");
+        this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorEntrada.css");
         this.getStyleClass().add("fondo");
 
         Label nombres = new Label("Ingresen sus nombres \nDuelistas!");
@@ -39,14 +39,13 @@ public class ContenedorEntrada extends VBox {
         String getNombreJ1 = nombre.getText();
         String getNombreJ2 = nombre2.getText();
 
-        Button botonJugar = new Button();
-        botonJugar.setText("Duelo!");
-        botonJugar.setOnAction(new EventoPasarAJuego(stage, pantallaJuego, getNombreJ1, getNombreJ2));
+        Boton botonJugar = new Boton("Duelo!", new ControladorEntrar(stage, pantallaJuego, getNombreJ1, getNombreJ2));
 
         this.getChildren().addAll(botonJugar);
         stage.setTitle("Inicio");
         stage.centerOnScreen();
         stage.setResizable(false);
     }
+
 
 }
