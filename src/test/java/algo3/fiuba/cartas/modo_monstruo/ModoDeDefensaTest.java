@@ -1,6 +1,6 @@
 package algo3.fiuba.cartas.modo_monstruo;
 
-import algo3.fiuba.cartas.resultado_combate.*;
+import algo3.fiuba.resultado_combate.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class ModoDeDefensaTest {
 
     @Test
     public void empataron_devuelveObjetoDeInstanciaCorrecta() {
-        Assert.assertTrue(modoDeDefensa.empataron() instanceof PierdeContraModoDeDefensa);
+        Assert.assertTrue(modoDeDefensa.empataron() instanceof EmpataContraModoDeDefensa);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class ModoDeDefensaTest {
 
         Integer diferenciaPuntos = Math.abs(puntosDeDefensaDefensor - puntosDeAtaqueAtacante);
 
-        Assert.assertEquals(new PierdeContraModoDeDefensa(diferenciaPuntos), modoDeDefensa.recibirAtaque(puntosDeAtaqueAtacante, 0, puntosDeDefensaDefensor));
+        Assert.assertEquals(new EmpataContraModoDeDefensa(), modoDeDefensa.recibirAtaque(puntosDeAtaqueAtacante, 0, puntosDeDefensaDefensor));
 
     }
 

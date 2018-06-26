@@ -1,8 +1,8 @@
-package algo3.fiuba.cartas.resultado_combate;
+package algo3.fiuba.resultado_combate;
 
 import algo3.fiuba.cartas.Monstruo;
 
-public class GanaContraModoDeDefensa implements ResultadoCombate {
+public class EmpataContraModoDeAtaque implements ResultadoCombate {
 
     @Override
     public void afectarDefensor(Monstruo defensor) {
@@ -11,15 +11,14 @@ public class GanaContraModoDeDefensa implements ResultadoCombate {
 
     @Override
     public void afectarAtacante(Monstruo atacante) {
-        // no afecta al atacante
+        atacante.mandarDelCampoAlCementerio();
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GanaContraModoDeDefensa that = (GanaContraModoDeDefensa) o;
+        EmpataContraModoDeAtaque that = (EmpataContraModoDeAtaque) o;
         return true;
     }
-
 }

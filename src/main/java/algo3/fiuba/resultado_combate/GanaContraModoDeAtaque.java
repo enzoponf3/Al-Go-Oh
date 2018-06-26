@@ -1,4 +1,4 @@
-package algo3.fiuba.cartas.resultado_combate;
+package algo3.fiuba.resultado_combate;
 
 import algo3.fiuba.cartas.Monstruo;
 

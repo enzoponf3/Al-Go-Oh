@@ -1,7 +1,7 @@
 package algo3.fiuba.cartas.modo_monstruo;
 
 import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
+import algo3.fiuba.resultado_combate.ResultadoCombate;
 
 public abstract class ModoMonstruo {
 

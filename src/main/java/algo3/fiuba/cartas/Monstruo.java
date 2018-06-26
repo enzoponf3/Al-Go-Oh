@@ -6,12 +6,12 @@ import algo3.fiuba.cartas.estado_en_turno.NoUsadaEnTurno;
 import algo3.fiuba.cartas.nivel.Nivel;
 import algo3.fiuba.cartas.nivel.NivelFactoryFactory;
 import algo3.fiuba.cartas.modificadores.Modificador;
-import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
+import algo3.fiuba.resultado_combate.ResultadoCombate;
 import algo3.fiuba.cartas.modo_monstruo.ModoDeAtaque;
 import algo3.fiuba.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.cartas.modo_monstruo.ModoMonstruo;
-import algo3.fiuba.cartas.resultado_combate.ResultadoCombateNulo;
+import algo3.fiuba.resultado_combate.ResultadoCombateNulo;
 import algo3.fiuba.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.jugador.Jugador;
 

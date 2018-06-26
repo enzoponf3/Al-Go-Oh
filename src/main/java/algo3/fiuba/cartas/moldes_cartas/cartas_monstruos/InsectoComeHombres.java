@@ -4,8 +4,8 @@ import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoInsectoComeHombres;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.cartas.resultado_combate.ResultadoCombate;
-import algo3.fiuba.cartas.resultado_combate.ResultadoCombateNulo;
+import algo3.fiuba.resultado_combate.ResultadoCombate;
+import algo3.fiuba.resultado_combate.ResultadoCombateNulo;
 
 public class InsectoComeHombres extends Monstruo {
 

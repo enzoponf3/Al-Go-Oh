@@ -1,14 +1,14 @@
-package algo3.fiuba.cartas.resultado_combate;
+package algo3.fiuba.resultado_combate;
 
 import algo3.fiuba.cartas.Monstruo;
 
 import java.util.Objects;
 
-public class PierdeContraModoDeDefensa implements ResultadoCombate {
+public class PierdeContraModoDeAtaque implements ResultadoCombate {
 
     private Integer diferenciaPuntos;
 
-    public PierdeContraModoDeDefensa(Integer diferenciaPuntos) {
+    public PierdeContraModoDeAtaque(Integer diferenciaPuntos) {
         this.diferenciaPuntos = diferenciaPuntos;
     }
 
@@ -19,6 +19,7 @@ public class PierdeContraModoDeDefensa implements ResultadoCombate {
 
     @Override
     public void afectarAtacante(Monstruo atacante) {
+        atacante.mandarDelCampoAlCementerio();
         atacante.daniarJugador(diferenciaPuntos);
     }
 
@@ -26,7 +27,7 @@ public class PierdeContraModoDeDefensa implements ResultadoCombate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PierdeContraModoDeDefensa that = (PierdeContraModoDeDefensa) o;
+        PierdeContraModoDeAtaque that = (PierdeContraModoDeAtaque) o;
         return Objects.equals(diferenciaPuntos, that.diferenciaPuntos);
     }
 
