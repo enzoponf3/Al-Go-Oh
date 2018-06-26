@@ -1,8 +1,8 @@
-package algo3.fiuba.cartas.moldes_cartas.cartas_monstruos;
+package algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos;
 
-import algo3.fiuba.cartas.Monstruo;
-import algo3.fiuba.cartas.efectos.EfectoNulo;
-import algo3.fiuba.jugador.Jugador;
+import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
+import algo3.fiuba.modelo.jugador.Jugador;
 
 public class ElDragonAladoDeRa extends Monstruo {
 
