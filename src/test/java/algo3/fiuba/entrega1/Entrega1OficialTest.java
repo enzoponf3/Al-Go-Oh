@@ -2,6 +2,7 @@ package algo3.fiuba.entrega1;
 
 import algo3.fiuba.Juego;
 import algo3.fiuba.Turno;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
 import algo3.fiuba.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.cartas.Carta;
@@ -36,10 +37,8 @@ public class Entrega1OficialTest {
 
     @Test
     public void colocarUnaCartaDeMonstruoEnModoDeAtaquePuedeAtacarOtroMonstruo() {
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1, new EfectoNulo());
-        monstruoAtacante.setJugador(jugador1);
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1, new EfectoNulo());
-        monstruoDefensor.setJugador(jugador2);
+        Monstruo monstruoAtacante = new BebeDragon(jugador1);
+        Monstruo monstruoDefensor = new BebeDragon(jugador2);
 
         // Los monstruos se colocan por default en modo ataque.
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -55,8 +54,8 @@ public class Entrega1OficialTest {
 
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void colocarUnaCartaDeMonstruoEnModoDeDefensaAlQuererAtacarLanzaExcepcion() {
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 1", 1000, 2000, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 2", 1000, 2000, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador1);
+        Monstruo monstruoDefensor = new BebeDragon(jugador2);
 
         // Los monstruos se colocan por default en modo ataque, por eso luego se cambia el modo a modo de defensa.
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -100,8 +99,7 @@ public class Entrega1OficialTest {
 
     @Test
     public void mandarCartaAlCementerio() {
-        Carta carta = new Monstruo("monstruo test", 1000, 2000, 1, new EfectoNulo());
-        carta.setJugador(jugador1);
+        Monstruo carta = new BebeDragon(jugador1);
 
         jugador1.colocarCartaEnCampo(carta, new BocaArriba());
         jugador1.mandarCartaDelCampoAlCementerio(carta);

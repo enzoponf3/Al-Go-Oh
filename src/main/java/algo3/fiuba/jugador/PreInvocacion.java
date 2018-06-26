@@ -9,22 +9,22 @@ import algo3.fiuba.cartas.estados_cartas.EnJuego;
 public class PreInvocacion implements EstadoJugador {
 
     @Override
-    public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, Monstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
+    public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, Monstruo carta, EnJuego tipoEnJuego) {
+        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego);
         carta.setJugador(jugador);
         return new PostInvocacion();
     }
 
     @Override
-    public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, NoMonstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
+    public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, NoMonstruo carta, EnJuego tipoEnJuego) {
+        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego);
         carta.setJugador(jugador);
         return new PreInvocacion();
     }
 
     @Override
-    public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, CartaCampo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego, sacrificios);
+    public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, CartaCampo carta, EnJuego tipoEnJuego) {
+        tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego);
         carta.setJugador(jugador);
         return new PreInvocacion();
     }

@@ -5,8 +5,9 @@ import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.efectos.EfectoWasteland;
 
 public class Wasteland extends CartaCampo {
-    public Wasteland(Jugador jugador, Jugador oponente) {
-        super("Wasteland", new EfectoWasteland(jugador, oponente));
+
+    public Wasteland(Jugador jugador) {
+        super("Wasteland", new EfectoWasteland(jugador, jugador.getOponente()));
         setJugador(jugador);
     }
 }

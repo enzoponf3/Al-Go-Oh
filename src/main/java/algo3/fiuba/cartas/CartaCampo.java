@@ -30,6 +30,6 @@ public class CartaCampo extends Carta {
 
     @Override
     public void removerDelCampo(Campo campo) {
-
+        campo.removerCarta(this);
     }
 }

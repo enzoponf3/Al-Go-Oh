@@ -5,8 +5,9 @@ import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.efectos.EfectoSogen;
 
 public class Sogen extends CartaCampo {
-    public Sogen(Jugador jugador, Jugador oponente) {
-        super("Sogen", new EfectoSogen(jugador, oponente));
+
+    public Sogen(Jugador jugador) {
+        super("Sogen", new EfectoSogen(jugador, jugador.getOponente()));
         setJugador(jugador);
     }
 }

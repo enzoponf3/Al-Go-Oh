@@ -1,13 +1,21 @@
 package algo3.fiuba;
 
-import algo3.fiuba.cartas.Carta;
+import algo3.fiuba.cartas.CartaCampo;
 import algo3.fiuba.cartas.Magica;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.Trampa;
-import algo3.fiuba.cartas.efectos.EfectoCarta;
-import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.cartas_campo.Sogen;
+import algo3.fiuba.cartas.moldes_cartas.cartas_campo.Wasteland;
+import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
+import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.Fisura;
+import algo3.fiuba.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.*;
+import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.CilindroMagico;
+import algo3.fiuba.cartas.moldes_cartas.cartas_trampas.Refuerzos;
 import algo3.fiuba.excepciones.CampoNoPermiteColocarCartaExcepcion;
+import algo3.fiuba.jugador.Jugador;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,11 +23,13 @@ import org.junit.Test;
 public class CampoTest {
 
     private Campo campo;
+    private Jugador jugador;
 
 
     @Before
     public void setUp() {
         campo = new Campo();
+        jugador = new Jugador();
     }
 
     @Test
@@ -29,7 +39,7 @@ public class CampoTest {
 
     @Test
     public void seAgrega1MonstruoEnZonaCorrecta_laCantidadDeMonstruosEs1() {
-        Monstruo carta = new Monstruo("m", 100, 100, 1, new EfectoNulo());
+        Monstruo carta = new BebeDragon(jugador);
         campo.colocarCarta(carta, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 1;
@@ -41,7 +51,7 @@ public class CampoTest {
 
     @Test
     public void seAgrega1CartaMagicaEnZonaCorrecta_laCantidadDeNoMonstruosEs1() {
-        Magica carta = new Magica("n", new EfectoNulo());
+        Magica carta = new AgujeroNegro(jugador);
         campo.colocarCarta(carta, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
@@ -53,7 +63,7 @@ public class CampoTest {
 
     @Test
     public void seAgrega1CartaTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs1() {
-        Trampa trampa = new Trampa("n", new EfectoNulo());
+        Trampa trampa = new Refuerzos(jugador);
         campo.colocarCarta(trampa, new BocaAbajo());
 
         Integer cantidadDeMonstruos = 0;
@@ -65,8 +75,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2MonstruosEnZonaCorrecta_laCantidadDeMonstruosEs2() {
-        Monstruo carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
-        Monstruo carta2 = new Monstruo("m2", 100, 100, 1, new EfectoNulo());
+        Monstruo carta1 = new BebeDragon(jugador);
+        Monstruo carta2 = new Kuriboh(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -80,8 +90,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2CartasMagicasEnZonaCorrecta_laCantidadDeNoMonstruosEs2() {
-        Magica carta1 = new Magica("nm1", new EfectoNulo());
-        Magica carta2 = new Magica("nm2", new EfectoNulo());
+        Magica carta1 = new AgujeroNegro(jugador);
+        Magica carta2 = new Fisura(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -95,8 +105,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2CartasTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs2() {
-        Trampa carta1 = new Trampa("nm1", new EfectoNulo());
-        Trampa carta2 = new Trampa("nm2", new EfectoNulo());
+        Trampa carta1 = new CilindroMagico(jugador);
+        Trampa carta2 = new Refuerzos(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -110,8 +120,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega1CartaMagicaY1CartaTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs2() {
-        Magica carta1 = new Magica("nm1", new EfectoNulo());
-        Trampa carta2 = new Trampa("nm2", new EfectoNulo());
+        Magica carta1 = new AgujeroNegro(jugador);
+        Trampa carta2 = new Refuerzos(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -125,9 +135,9 @@ public class CampoTest {
 
     @Test
     public void seAgrega1Monstruo1CartaMagicaY1CartaTrampaEnZonaCorrecta_laCantidadDeNoMonstruosEs2() {
-        Magica carta1 = new Magica("nm1", new EfectoNulo());
-        Trampa carta2 = new Trampa("nm2", new EfectoNulo());
-        Monstruo carta3 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
+        Magica carta1 = new AgujeroNegro(jugador);
+        Trampa carta2 = new Refuerzos(jugador);
+        Monstruo carta3 = new GuerreroCelta(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -142,12 +152,12 @@ public class CampoTest {
 
     @Test(expected = CampoNoPermiteColocarCartaExcepcion.class)
     public void seAgrega6MonstruosEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
-        Monstruo carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
-        Monstruo carta2 = new Monstruo("m2", 100, 100, 1, new EfectoNulo());
-        Monstruo carta3 = new Monstruo("m3", 100, 100, 1, new EfectoNulo());
-        Monstruo carta4 = new Monstruo("m4", 100, 100, 1, new EfectoNulo());
-        Monstruo carta5 = new Monstruo("m5", 100, 100, 1, new EfectoNulo());
-        Monstruo carta6 = new Monstruo("m6", 100, 100, 1, new EfectoNulo());
+        Monstruo carta1 = new GuerreroCelta(jugador);
+        Monstruo carta2 = new Kuriboh(jugador);
+        Monstruo carta3 = new GuerreroCastor(jugador);
+        Monstruo carta4 = new BebeDragon(jugador);
+        Monstruo carta5 = new PetitAngel(jugador);
+        Monstruo carta6 = new IncursorDelHacha(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -159,12 +169,12 @@ public class CampoTest {
 
     @Test(expected = CampoNoPermiteColocarCartaExcepcion.class)
     public void seAgrega6CartasMagicasEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
-        Magica carta1 = new Magica("nm1", new EfectoNulo());
-        Magica carta2 = new Magica("nm2", new EfectoNulo());
-        Magica carta3 = new Magica("nm3", new EfectoNulo());
-        Magica carta4 = new Magica("nm4", new EfectoNulo());
-        Magica carta5 = new Magica("nm5", new EfectoNulo());
-        Magica carta6 = new Magica("nm6", new EfectoNulo());
+        Magica carta1 = new AgujeroNegro(jugador);
+        Magica carta2 = new Fisura(jugador);
+        Magica carta3 = new OllaDeLaCodicia(jugador);
+        Magica carta4 = new AgujeroNegro(jugador);
+        Magica carta5 = new Fisura(jugador);
+        Magica carta6 = new OllaDeLaCodicia(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -176,12 +186,12 @@ public class CampoTest {
 
     @Test(expected = CampoNoPermiteColocarCartaExcepcion.class)
     public void seAgrega6CartasTrampaEnZonaCorrecta_lanzaExcepcionPorqueElTopeEs5() {
-        Trampa carta1 = new Trampa("nm1", new EfectoNulo());
-        Trampa carta2 = new Trampa("nm2", new EfectoNulo());
-        Trampa carta3 = new Trampa("nm3", new EfectoNulo());
-        Trampa carta4 = new Trampa("nm4", new EfectoNulo());
-        Trampa carta5 = new Trampa("nm5", new EfectoNulo());
-        Trampa carta6 = new Trampa("nm6", new EfectoNulo());
+        Trampa carta1 = new Refuerzos(jugador);
+        Trampa carta2 = new CilindroMagico(jugador);
+        Trampa carta3 = new Refuerzos(jugador);
+        Trampa carta4 = new CilindroMagico(jugador);
+        Trampa carta5 = new Refuerzos(jugador);
+        Trampa carta6 = new CilindroMagico(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -192,9 +202,9 @@ public class CampoTest {
     }
 
     @Test
-    public void seAgrega2MonstruosConElMimoNombre_laCantidadDeMonstruosEs2() {
-        Monstruo carta1 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
-        Monstruo carta2 = new Monstruo("m1", 100, 100, 1, new EfectoNulo());
+    public void seAgrega2MonstruosConElMismoNombre_laCantidadDeMonstruosEs2() {
+        Monstruo carta1 = new GuerreroCelta(jugador);
+        Monstruo carta2 = new GuerreroCelta(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -208,8 +218,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2CartasMagicasConElMismoNombre_laCantidadDeNoMonstruosEs2() {
-        Magica carta1 = new Magica("nm1", new EfectoNulo());
-        Magica carta2 = new Magica("nm1", new EfectoNulo());
+        Magica carta1 = new AgujeroNegro(jugador);
+        Magica carta2 = new AgujeroNegro(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -223,8 +233,8 @@ public class CampoTest {
 
     @Test
     public void seAgrega2CartasTrampaConElMismoNombre_laCantidadDeNoMonstruosEs2() {
-        Trampa carta1 = new Trampa("nm1", new EfectoNulo());
-        Trampa carta2 = new Trampa("nm1", new EfectoNulo());
+        Trampa carta1 = new Refuerzos(jugador);
+        Trampa carta2 = new Refuerzos(jugador);
 
         campo.colocarCarta(carta1, new BocaAbajo());
         campo.colocarCarta(carta2, new BocaAbajo());
@@ -236,9 +246,83 @@ public class CampoTest {
         Assert.assertEquals(cantidadDeNoMonstruos, campo.cantidadNoMonstruos());
     }
 
+    @Test
+    public void seAgrega1Monstruo_elMonstruoEstaEnElCampo() {
+        Monstruo carta = new BebeDragon(jugador);
+        campo.colocarCarta(carta, new BocaAbajo());
 
+        Assert.assertTrue(campo.cartaEstaEnCampo(carta));
+    }
 
+    @Test
+    public void seAgrega1CartaMagica_laCartaMagicaEstaEnElCampo() {
+        Magica carta = new AgujeroNegro(jugador);
+        campo.colocarCarta(carta, new BocaAbajo());
 
+        Assert.assertTrue(campo.cartaEstaEnCampo(carta));
+    }
 
+    @Test
+    public void seAgrega1CartaTrampa_laCartaTrampaEstaEnElCampo() {
+        Trampa carta = new Refuerzos(jugador);
+        campo.colocarCarta(carta, new BocaAbajo());
 
+        Assert.assertTrue(campo.cartaEstaEnCampo(carta));
+    }
+
+    @Test
+    public void seAgrega1CartaCampo_laCartaCampoEstaEnElCampo() {
+        CartaCampo carta = new Wasteland(jugador);
+        campo.colocarCarta(carta, new BocaArriba());
+
+        Assert.assertTrue(campo.cartaEstaEnCampo(carta));
+    }
+
+    @Test
+    public void seAgrega1MonstruoYLuegoSeRemueve_elMonstruoNoEstaEnElCampo() {
+        Monstruo carta = new BebeDragon(jugador);
+        campo.colocarCarta(carta, new BocaAbajo());
+        campo.removerCarta(carta);
+
+        Assert.assertFalse(campo.cartaEstaEnCampo(carta));
+    }
+
+    @Test
+    public void seAgrega1CartaMagicaYLuegoSeRemueve_laCartaMagicaNoEstaEnElCampo() {
+        Magica carta = new AgujeroNegro(jugador);
+        campo.colocarCarta(carta, new BocaAbajo());
+        campo.removerCarta(carta);
+
+        Assert.assertFalse(campo.cartaEstaEnCampo(carta));
+    }
+
+    @Test
+    public void seAgrega1CartaTrampaYLuegoSeRemueve_laCartaTrampaNoEstaEnElCampo() {
+        Trampa carta = new Refuerzos(jugador);
+        campo.colocarCarta(carta, new BocaAbajo());
+        campo.removerCarta(carta);
+
+        Assert.assertFalse(campo.cartaEstaEnCampo(carta));
+    }
+
+    @Test
+    public void seAgrega1CartaCampoYLuegoSeRemueve_laCartaCampoNoEstaEnElCampo() {
+        CartaCampo carta = new Wasteland(jugador);
+        campo.colocarCarta(carta, new BocaArriba());
+        campo.removerCarta(carta);
+
+        Assert.assertFalse(campo.cartaEstaEnCampo(carta));
+    }
+
+    @Test
+    public void seAgrega1CartaCampoYLuegoSeAgregaOtra_quedaLaSegunda() {
+        CartaCampo carta1 = new Wasteland(jugador);
+        CartaCampo carta2 = new Sogen(jugador);
+
+        campo.colocarCarta(carta1, new BocaArriba());
+        campo.colocarCarta(carta2, new BocaArriba());
+
+        Assert.assertFalse(campo.cartaEstaEnCampo(carta1));
+        Assert.assertTrue(campo.cartaEstaEnCampo(carta2));
+    }
 }

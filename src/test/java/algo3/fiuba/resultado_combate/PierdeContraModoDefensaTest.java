@@ -1,6 +1,7 @@
 package algo3.fiuba.resultado_combate;
 
 import algo3.fiuba.Campo;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.Monstruo;
@@ -26,7 +27,7 @@ public class PierdeContraModoDefensaTest {
 
     @Test
     public void monstruoAtacanteSigueVivo() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(jugador, new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -39,7 +40,7 @@ public class PierdeContraModoDefensaTest {
 
     @Test
     public void monstruoDefensorSigueVivo() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoDefensor = new BebeDragon(jugador);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(jugador, new BocaArriba());
         monstruoDefensor.pasarAModoDefensa();
@@ -52,7 +53,7 @@ public class PierdeContraModoDefensaTest {
 
     @Test
     public void jugadorAtacantePierdePuntosDeVida() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(jugador, new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -67,7 +68,7 @@ public class PierdeContraModoDefensaTest {
 
     @Test
     public void jugadorDefensorNoPierdePuntosDeVida() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoDefensor = new BebeDragon(jugador);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(jugador, new BocaArriba());
         monstruoDefensor.pasarAModoDefensa();

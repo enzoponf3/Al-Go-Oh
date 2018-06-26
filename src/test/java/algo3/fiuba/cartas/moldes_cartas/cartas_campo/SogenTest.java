@@ -37,7 +37,7 @@ public class SogenTest {
         Monstruo monstruo1 = new Monstruo("Monstruo 1",500,0,1, new EfectoNulo());
         Monstruo monstruo2 = new Monstruo("Monstruo 2",0,200,1, new EfectoNulo());
 
-        CartaCampo sogen = new Sogen(jugador2, jugador1);
+        CartaCampo sogen = new Sogen(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruo1, new BocaArriba());
         turno.pasarTurno();

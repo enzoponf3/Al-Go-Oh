@@ -43,7 +43,7 @@ public class Campo {
         return (zonaNoMonstruos.size());
     }
 
-    public void colocarCarta(Monstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
+    public void colocarCarta(Monstruo carta, EnJuego enJuego) {
         if (zonaMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
             throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 monstruos en el campo.");
 
@@ -53,7 +53,7 @@ public class Campo {
         this.agregarModificadoresAMonstruos();
     }
 
-    public void colocarCarta(NoMonstruo carta, EnJuego enJuego, Monstruo... sacrificios) {
+    public void colocarCarta(NoMonstruo carta, EnJuego enJuego) {
         if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
             throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
 
@@ -61,7 +61,7 @@ public class Campo {
         zonaNoMonstruos.add(carta);
     }
 
-    public void colocarCarta(CartaCampo carta, EnJuego enJuego, Monstruo... sacrificios) {
+    public void colocarCarta(CartaCampo carta, EnJuego enJuego) {
         
         // !!!Debería de verificar si ya había otra carta de campo.
         carta.setEstado(enJuego); // !!! sacar
@@ -82,12 +82,7 @@ public class Campo {
 
     // Eh..... ?
     public boolean cartaEstaEnCampo(CartaCampo cartaCampo) {
-        return this.cartaCampo == cartaCampo;
-    }
-
-
-    public void activarEfectoSobreElementos(EfectoCarta efecto) {
-        // sin funcionalidad por el momento.
+        return this.cartaCampo.equals(cartaCampo);
     }
 
     public void removerCarta(Monstruo carta) {
@@ -96,6 +91,11 @@ public class Campo {
 
     public void removerCarta(NoMonstruo carta) {
         zonaNoMonstruos.remove(carta);
+    }
+
+    public void removerCarta(CartaCampo carta) {
+        if (cartaCampo.equals(carta))
+            cartaCampo = null;
     }
 
     @Override
@@ -113,22 +113,6 @@ public class Campo {
 
     public List<NoMonstruo> getNoMonstruos() {
         return zonaNoMonstruos;
-    }
-
-    public void destruirCartaMenorAtaque(Jugador jugador) {
-        if (zonaMonstruos.isEmpty())
-            return;
-        Monstruo monstruo = zonaMonstruos.stream().reduce(zonaMonstruos.get(0), (x, acc) -> {
-            if (x.getAtaque() < acc.getAtaque())
-                return x;
-            return acc;
-        });
-
-        jugador.mandarCartaDelCampoAlCementerio(monstruo);
-    }
-
-    public CartaCampo getCartaCampo() {
-        return cartaCampo;
     }
 
     public void agregarModificador(Modificador modificador) {

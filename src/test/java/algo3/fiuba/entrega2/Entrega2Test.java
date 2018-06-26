@@ -42,7 +42,7 @@ public class Entrega2Test {
         Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, new EfectoNulo());
         Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, new EfectoNulo());
 
-        CartaCampo wasteland = new Wasteland(jugador1, jugador2);
+        CartaCampo wasteland = new Wasteland(jugador1);
 
         jugador1.colocarCartaEnCampo((Carta) monstruo1, new BocaArriba());
         turno.pasarTurno();
@@ -81,7 +81,7 @@ public class Entrega2Test {
     public void colocoMounstruoDeCadaLadoDeCampo_activoCartaCampoSogen_aumenta500DEFPropio_aumenta200ATKOponente() {
         Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, new EfectoNulo());
-        CartaCampo sogen = new Sogen(jugador1, jugador2);
+        CartaCampo sogen = new Sogen(jugador1);
 
         jugador1.colocarCartaEnCampo((Carta) monstruoPropio, new BocaArriba());
         turno.pasarTurno();

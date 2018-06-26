@@ -69,15 +69,15 @@ public class Jugador implements Observer {
     }
 
     public void colocarCartaEnCampo(Monstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego, sacrificios);
+        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego);
     }
 
     public void colocarCartaEnCampo(NoMonstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego, sacrificios);
+        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego);
     }
 
     public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego, sacrificios);
+        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego);
     }
 
 

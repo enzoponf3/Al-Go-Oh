@@ -5,6 +5,7 @@ import algo3.fiuba.TableroJugador;
 import algo3.fiuba.cartas.Monstruo;
 import algo3.fiuba.cartas.efectos.EfectoNulo;
 import algo3.fiuba.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
 import algo3.fiuba.jugador.Jugador;
 import algo3.fiuba.jugador.PreInvocacion;
 import org.junit.Assert;
@@ -26,7 +27,7 @@ public class EmpataContraModoDeDefensaTest {
 
     @Test
     public void monstruoAtacanteNoMuere() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(jugador, new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -39,7 +40,7 @@ public class EmpataContraModoDeDefensaTest {
 
     @Test
     public void monstruoDefensorNoMuere() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoDefensor = new BebeDragon(jugador);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(jugador, new BocaArriba());
         monstruoDefensor.pasarAModoAtaque();
@@ -52,7 +53,7 @@ public class EmpataContraModoDeDefensaTest {
 
     @Test
     public void jugadorAtacanteNoPierdePuntosDeVida() {
-        Monstruo monstruoAtacante = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador);
         monstruoAtacante.setJugador(jugador);
         monstruoAtacante.colocarEnCampo(jugador, new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -67,7 +68,7 @@ public class EmpataContraModoDeDefensaTest {
 
     @Test
     public void jugadorDefensorNoPierdePuntosDeVida() {
-        Monstruo monstruoDefensor = new Monstruo("m", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoDefensor = new BebeDragon(jugador);
         monstruoDefensor.setJugador(jugador);
         monstruoDefensor.colocarEnCampo(jugador, new BocaArriba());
         monstruoDefensor.pasarAModoAtaque();

@@ -26,16 +26,16 @@ public class TableroJugador {
         this.mazo = new Stack<>();
     }
 
-    public void colocarCartaEnCampo(Monstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
+    public void colocarCartaEnCampo(Monstruo carta, EnJuego tipoEnJuego) {
+        this.campo.colocarCarta(carta, tipoEnJuego);
     }
 
-    public void colocarCartaEnCampo(NoMonstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
+    public void colocarCartaEnCampo(NoMonstruo carta, EnJuego tipoEnJuego) {
+        this.campo.colocarCarta(carta, tipoEnJuego);
     }
 
-    public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        this.campo.colocarCarta(carta, tipoEnJuego, sacrificios);
+    public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego) {
+        this.campo.colocarCarta(carta, tipoEnJuego);
     }
 
     public Carta tomarCartaDelMazo() {
@@ -56,14 +56,6 @@ public class TableroJugador {
 
     public boolean cartaEstaEnCementerio(Carta carta) {
         return cementerio.contains(carta);
-    }
-
-    public Integer monstruosEnJuego() {
-        return campo.cantidadMonstruos();
-    }
-
-    public void activarEfectoSobreElementos(EfectoCarta efecto) {
-        campo.activarEfectoSobreElementos(efecto);
     }
 
     public void removerCartaDelCampo(Carta carta) {
@@ -95,16 +87,7 @@ public class TableroJugador {
         return campo.getNoMonstruos();
     }
 
-    public CartaCampo getCartaCampo() {
-        return campo.getCartaCampo();
-    }
-
-    public void destruirCartaMenorAtaque(Jugador jugador) {
-        campo.destruirCartaMenorAtaque(jugador);
-    }
-
     public void agregarModificador(Modificador modificador) {
         campo.agregarModificador(modificador);
     }
-
 }
