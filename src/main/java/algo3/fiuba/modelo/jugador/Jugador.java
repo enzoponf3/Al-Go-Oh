@@ -13,10 +13,7 @@ import algo3.fiuba.modelo.cartas.estados_cartas.EnMano;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnMazo;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class Jugador implements Observer {
 
@@ -190,5 +187,9 @@ public class Jugador implements Observer {
 
     public void setEstadoJugador(EstadoJugador estadoJugador) {
         this.estadoJugador = estadoJugador;
+    }
+
+    public void setMazo(Stack<Carta> mazo) {
+        tableroJugador.setMazo(mazo);
     }
 }

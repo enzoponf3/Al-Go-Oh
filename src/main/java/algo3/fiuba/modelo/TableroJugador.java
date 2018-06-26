@@ -90,4 +90,8 @@ public class TableroJugador {
     public void agregarModificador(Modificador modificador) {
         campo.agregarModificador(modificador);
     }
+
+    public void setMazo(Stack<Carta> mazo) {
+        this.mazo = mazo;
+    }
 }
