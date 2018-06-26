@@ -1,18 +1,22 @@
 package algo3.fiuba.cartas.nivel;
 
+import algo3.fiuba.excepciones.EstrellasInvalidasExcepcion;
+
 public class NivelFactoryFactory {
 
     private NivelFactoryFactory() {
-        // No tiene constructor
+        // No tiene constructor.
     }
 
     public static Nivel obtenerEstrellas(Integer cantidadDeEstrellas) {
         if (cantidadDeEstrellas < 1)
-            throw new RuntimeException("No puede tener estrellas negativas o nulas"); // !!!
+            throw new EstrellasInvalidasExcepcion("No puede tener estrellas negativas o nulas."); // !!!
         if (cantidadDeEstrellas < 5)
             return UnaACuatroEstrellas.getInstancia();
         if (cantidadDeEstrellas < 7)
-            return CincoOSeisEstrellas.getInstancia();
+            return CincoASeisEstrellas.getInstancia();
+        if (cantidadDeEstrellas > 10)
+            throw new EstrellasInvalidasExcepcion("No puede tener más de 10 estrellas."); // !!!
 
         return MasDe7Estrellas.getInstancia();
     }

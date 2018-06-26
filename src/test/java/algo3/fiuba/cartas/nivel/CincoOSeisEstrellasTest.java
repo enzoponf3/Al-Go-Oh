@@ -7,14 +7,14 @@ import org.junit.Test;
 
 public class CincoOSeisEstrellasTest {
 
-    private CincoOSeisEstrellas cincoOSeisEstrellas;
+    private CincoASeisEstrellas cincoOSeisEstrellas;
 
     private Monstruo monstruo1;
     private Monstruo monstruo2;
 
     @Before
     public void setUp() {
-        cincoOSeisEstrellas = CincoOSeisEstrellas.getInstancia();
+        cincoOSeisEstrellas = CincoASeisEstrellas.getInstancia();
     }
 
     @Test

@@ -22,8 +22,6 @@ public class MonstruoTest {
 
         juego = Juego.getInstancia();
         juego.inicializar(jugador1, jugador2);
-
-
     }
 
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)

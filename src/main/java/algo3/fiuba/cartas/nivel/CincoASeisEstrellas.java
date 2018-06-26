@@ -2,18 +2,18 @@ package algo3.fiuba.cartas.nivel;
 
 import algo3.fiuba.cartas.Monstruo;
 
-public class CincoOSeisEstrellas implements Nivel {
+public class CincoASeisEstrellas implements Nivel {
 
     private Integer CANTIDAD_DE_SACRIFICIOS;
-    private static CincoOSeisEstrellas INSTANCIA;
+    private static CincoASeisEstrellas INSTANCIA;
 
-    private CincoOSeisEstrellas() {
+    private CincoASeisEstrellas() {
         CANTIDAD_DE_SACRIFICIOS = 1;
     }
 
-    public static CincoOSeisEstrellas getInstancia() {
+    public static CincoASeisEstrellas getInstancia() {
         if (INSTANCIA == null)
-            INSTANCIA = new CincoOSeisEstrellas();
+            INSTANCIA = new CincoASeisEstrellas();
         return INSTANCIA;
     }
 
