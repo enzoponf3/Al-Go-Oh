@@ -2,21 +2,18 @@ package algo3.fiuba.vista;
 
 
 import algo3.fiuba.controladores.ControladorCarta;
-import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 import java.awt.*;
 
 
 public class VistaCarta extends Label {
 
-    private double ANCHO_MAXIMO_CARTA = 50.0;
-    private double ALTURA_MAXIMA_CARTA = 50.0;
+    private double ANCHO_MAXIMO_CARTA = 95.0;
+    private double ALTURA_MAXIMA_CARTA = 110.0;
 
     public VistaCarta() {
 

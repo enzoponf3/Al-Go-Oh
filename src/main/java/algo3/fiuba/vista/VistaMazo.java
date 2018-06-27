@@ -22,7 +22,8 @@ public class VistaMazo extends Label {
     }
 
     public void actualizarCantidad(Integer tam) {
-        //this.setText(/* npi coomo se pasa el integer a str*/);
+
+        this.setText("" + tam);
     }
 
     public void habilitarMazo() {

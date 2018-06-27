@@ -54,8 +54,12 @@ public class Tablero extends GridPane {
 
     public void setCementerio(Integer colIndex, Integer rowIndex) {
 
-        ImageView cementerio = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
+        ImageView fondoCementerio = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+        Label cementerio = new Label("CEMENTERIO" +
+                "", fondoCementerio);
+        cementerio.setTextFill(Color.WHITE);
+        cementerio.setContentDisplay(ContentDisplay.CENTER);
         cementerio.setOnMouseClicked(new ControladorCementerio());
         this.add(cementerio, colIndex, rowIndex);
     }
