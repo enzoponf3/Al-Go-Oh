@@ -3,6 +3,7 @@ package algo3.fiuba.vista;
 import algo3.fiuba.controladores.ControladorCementerio;
 import algo3.fiuba.controladores.ControladorMazo;
 import javafx.geometry.Insets;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -12,8 +13,8 @@ import javafx.scene.paint.Color;
 
 public class Tablero extends GridPane {
 
-    private double ANCHO_MAXIMO_CARTA = 100.0;
-    private double ALTURA_MAXIMA_CARTA = 130.0;
+    private double ANCHO_MAXIMO_CARTA = 90.0;
+    private double ALTURA_MAXIMA_CARTA = 105.0;
 
     public Tablero() {
 
@@ -32,14 +33,16 @@ public class Tablero extends GridPane {
 
     public void setMano() {
 
-        HBox mano = new HBox();
-        for (int i = 0; i <= 4; i++) {
+        GridPane mano = new GridPane();
+       // HBox mano = new HBox();
+        for (int i = 0; i <= 10; i++) {
             VistaCarta carta = new VistaCarta();
-            mano.getChildren().add(carta);
+            mano.add(carta, i,0);
         }
-
+        VistaCarta c = new VistaCarta();
+        mano.add(c, mano.getColumnCount() +1 ,0);
         ScrollPane barraMano = new ScrollPane();
-        barraMano.setMaxWidth(600);
+        barraMano.setMaxWidth(535);
         barraMano.setContent(mano);
         barraMano.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
@@ -49,9 +52,11 @@ public class Tablero extends GridPane {
     public void setMazo() {
 
         Label nroCartas = new Label("10");
+        nroCartas.setContentDisplay(ContentDisplay.CENTER);
         nroCartas.setTextFill(Color.WHITE); // AGREGAR AL CSS
         ImageView mazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+
         nroCartas.setGraphic(mazo);
         mazo.setOnMouseClicked(new ControladorMazo());
 
@@ -64,15 +69,20 @@ public class Tablero extends GridPane {
         HBox zonaCartasMagicas = new HBox();
         HBox zonaCartasMonstruo = new HBox();
 
+
         for (int i = 0; i < 5; i++) {
 
-            zonaCartasMagicas.getChildren().add(new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
-            zonaCartasMagicas.setSpacing(10);
+            ImageView imagen =new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
+                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+            zonaCartasMagicas.getChildren().add(imagen);
+            zonaCartasMagicas.setSpacing(20);
 
-            zonaCartasMonstruo.getChildren().add(new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
-            zonaCartasMonstruo.setSpacing(10);
+            ImageView imagen2 =new ImageView(new Image("algo3/fiuba/resources/img/Dragon Negro de Ojos Rojos.gif",
+                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+            zonaCartasMonstruo.getChildren().add(imagen2);
+            zonaCartasMonstruo.setSpacing(20);
+            zonaCartasMonstruo.getChildren().get(i).setRotate(90);
+            zonaCartasMonstruo.setHgrow(imagen2, Priority.ALWAYS);
         }
 
         this.add(zonaCartasMagicas, 1, 1);

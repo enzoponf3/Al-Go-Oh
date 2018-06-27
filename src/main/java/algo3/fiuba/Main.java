@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage stagePrincipal) throws Exception{
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stagePrincipal);
-        Scene sceneJuego = new Scene(contenedorPrincipal, 1150, 800);
+        Scene sceneJuego = new Scene(contenedorPrincipal, 1000, 700);
 
         ContenedorEntrada contenedorEntrada = new ContenedorEntrada(stagePrincipal, sceneJuego);
         Scene sceneBienvenida = new Scene(contenedorEntrada, 300, 340);

@@ -9,12 +9,14 @@ import javafx.geometry.Pos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 public class ContenedorPrincipal extends BorderPane {
 
-    Tablero tablero;
+    Tablero tableroJ1;
+    Tablero tableroJ2;
     BarraLateral barraLateral;
     Juego juego = Juego.getInstancia();
 
@@ -35,11 +37,14 @@ public class ContenedorPrincipal extends BorderPane {
 
     private void setTablero() {
 
-        tablero = new Tablero();
-        Tablero t = new Tablero();
-        t.setRotate(180);
-        t.setAlignment(Pos.TOP_RIGHT);
-        VBox tableroCompleto = new VBox(tablero, t);
+        tableroJ1 = new Tablero();
+
+        //tableroJ2 = new Tablero();
+        //tableroJ2.setRotate(180);
+        //Translate j = new Translate();
+        //tableroJ2.setAlignment(Pos.TOP_RIGHT);
+
+        VBox tableroCompleto = new VBox(tableroJ1);
         tableroCompleto.getStyleClass().add("tablero");
         this.setCenter(tableroCompleto);
     }
