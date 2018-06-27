@@ -24,4 +24,10 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
         }
     }
 
+    public void agregarCartaAMano() {
+
+        ControladorMano controlMano = new ControladorMano();
+        controlMano.agregarCartaAMano();
+    }
+
 }
