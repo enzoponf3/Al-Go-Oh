@@ -52,4 +52,12 @@ public class Juego {
         jugador1.setMazo(mazoUtils.getMuestra2cartas(jugador1));
         jugador2.setMazo(mazoUtils.getMuestra2cartas(jugador2));
     }
+
+    public Jugador getJugador1() {
+        return jugador1;
+    }
+
+    public Jugador getJugador2() {
+        return jugador2;
+    }
 }

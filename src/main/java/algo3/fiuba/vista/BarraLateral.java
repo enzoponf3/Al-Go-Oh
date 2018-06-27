@@ -4,24 +4,20 @@ import algo3.fiuba.controladores.BotonCambiarDeFase;
 import algo3.fiuba.controladores.BotonAyuda;
 import algo3.fiuba.controladores.BotonSalida;
 import algo3.fiuba.controladores.BotonTerminarTurno;
+import algo3.fiuba.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class BarraLateral extends StackPane {
 
-    VistaVida vistaVidaJugador1;
-    VistaVida vistaVidaJugador2;
+    private Juego juego;
+    private VistaVida vistaVidaJugador1;
+    private VistaVida vistaVidaJugador2;
 
-    public BarraLateral() {
+    public BarraLateral(Juego juego) {
 
         // BOTONERA
         Boton botonAyuda = new Boton("Ayuda", new BotonAyuda());
@@ -31,9 +27,9 @@ public class BarraLateral extends StackPane {
 
         // Consolas de puntos
 
-        vistaVidaJugador1 = new VistaVida();
+        vistaVidaJugador1 = new VistaVida(juego.getJugador1());
 
-        vistaVidaJugador2 = new VistaVida();
+        vistaVidaJugador2 = new VistaVida(juego.getJugador2());
 
         // CONTENEDORES LATERALES
         HBox boxBtnsAyudaSalir = new HBox(botonAyuda, botonSalir);

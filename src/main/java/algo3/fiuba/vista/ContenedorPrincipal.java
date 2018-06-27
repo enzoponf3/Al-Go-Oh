@@ -25,13 +25,13 @@ public class ContenedorPrincipal extends BorderPane {
     public ContenedorPrincipal(Stage stage, Juego juego) {
 
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
-        this.setBarraLateral();
+        this.setBarraLateral(juego);
         this.setTablero();
     }
 
-    private void setBarraLateral() {
+    private void setBarraLateral(Juego juego) {
 
-        barraLateral = new BarraLateral();
+        barraLateral = new BarraLateral(juego);
         barraLateral.getStyleClass().add("barraLateral");
         this.setLeft(barraLateral);
     }
