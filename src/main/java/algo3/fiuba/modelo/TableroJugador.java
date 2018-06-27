@@ -92,4 +92,8 @@ public class TableroJugador {
     public void setMazo(Stack<Carta> mazo) {
         this.mazo = mazo;
     }
+
+    public CartaCampo getCartaCampo() {
+        return campo.getCartaCampo();
+    }
 }

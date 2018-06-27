@@ -136,6 +136,10 @@ public class Jugador implements Observer {
         return mano;
     }
 
+    public void removerCartaDelCampo(Carta carta) {
+        tableroJugador.removerCartaDelCampo(carta);
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         estadoJugador = estadoJugador.cambioDeTurno();
@@ -178,6 +182,14 @@ public class Jugador implements Observer {
 
     public List<Monstruo> getMonstuosEnCampo() {
         return tableroJugador.getMonstruos();
+    }
+
+    public List<NoMonstruo> getNoMonstuosEnCampo() {
+        return tableroJugador.getNoMonstruos();
+    }
+
+    public CartaCampo getCartaCampoActiva() {
+        return tableroJugador.getCartaCampo();
     }
 
     public void agregarModificador(Modificador modificador) {

@@ -127,4 +127,8 @@ public class Campo {
             }
         }
     }
+
+    public CartaCampo getCartaCampo() {
+        return cartaCampo;
+    }
 }
