@@ -252,17 +252,17 @@ public class WastelandTest {
         jugador2.colocarCartaEnCampo((Carta) monstruoOponente2, new BocaArriba());
         turno.pasarTurno();
 
-        Integer defensaInicialDelMonstruoPropio1 = monstruoPropio1.getDefensa();
-        Integer defensaInicialDelMonstruoPropio2 = monstruoPropio2.getDefensa();
-        Integer ataqueInicialDelMonstruoOponente1 = monstruoOponente1.getAtaque();
-        Integer ataqueInicialDelMonstruoOponente2 = monstruoOponente2.getAtaque();
+        Integer ataqueInicialDelMonstruoPropio1 = monstruoPropio1.getAtaque();
+        Integer ataqueInicialDelMonstruoPropio2 = monstruoPropio2.getAtaque();
+        Integer defensaInicialDelMonstruoOponente1 = monstruoOponente1.getDefensa();
+        Integer defensaInicialDelMonstruoOponente2 = monstruoOponente2.getDefensa();
 
         jugador1.colocarCartaEnCampo((Carta) wasteland, new BocaArriba());
         jugador1.removerCartaDelCampo(wasteland);
 
-        Assert.assertEquals(defensaInicialDelMonstruoPropio1, monstruoPropio1.getDefensa());
-        Assert.assertEquals(defensaInicialDelMonstruoPropio2, monstruoPropio2.getDefensa());
-        Assert.assertEquals(ataqueInicialDelMonstruoOponente1, monstruoOponente1.getAtaque());
-        Assert.assertEquals(ataqueInicialDelMonstruoOponente2, monstruoOponente2.getAtaque());
+        Assert.assertEquals(ataqueInicialDelMonstruoPropio1, monstruoPropio1.getAtaque());
+        Assert.assertEquals(ataqueInicialDelMonstruoPropio2, monstruoPropio2.getAtaque());
+        Assert.assertEquals(defensaInicialDelMonstruoOponente1, monstruoOponente1.getDefensa());
+        Assert.assertEquals(defensaInicialDelMonstruoOponente2, monstruoOponente2.getDefensa());
     }
 }
