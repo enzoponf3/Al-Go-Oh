@@ -15,8 +15,8 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
 
         ControladorTurnos ct = ControladorTurnos.getInstancia();
         Jugador actual = ct.getJugador();
-        if (actual.getEstadoJugador() instanceof PreInvocacion ) {
-            //habilitar mazo
+        if (actual.getEstadoJugador() instanceof PreInvocacion ) {//
+
 
         } else {
             Alert errorMazo = new Alert(Alert.AlertType.INFORMATION);
@@ -24,7 +24,7 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
         }
     }
 
-    public void agregarCartaAMano() {
+    public void tomarCartaDelMazo() {
 
         ControladorMano controlMano = new ControladorMano();
         controlMano.agregarCartaAMano();

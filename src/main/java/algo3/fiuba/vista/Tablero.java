@@ -21,7 +21,7 @@ public class Tablero extends GridPane {
     public void setMano(Integer colIndex, Integer rowIndex) {
 
         VistaMano mano = new VistaMano();
-        this.add(mano, colIndex,rowIndex);
+        this.add(mano, colIndex, rowIndex);
     }
 
     public void setMazo(Integer colIndex, Integer rowIndex) {
