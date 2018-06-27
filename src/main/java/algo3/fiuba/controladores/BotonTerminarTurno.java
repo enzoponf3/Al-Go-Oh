@@ -5,17 +5,17 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-public class BotonCambiarDeFase implements EventHandler<ActionEvent> {
+public class BotonTerminarTurno implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
 
         ControladorTurnos ct = ControladorTurnos.getInstancia();
         Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmacion.setHeaderText("Quieres Cambiar de fase?");
+        confirmacion.setHeaderText("Quieres terminar el turno?");
         confirmacion.show();
         if (confirmacion.getResult() == ButtonType.OK) {
-            ct.cambiarDeFase();
+            ct.terminarTurno();
         }
     }
 }

@@ -1,7 +1,8 @@
 package algo3.fiuba.vista;
 
-import algo3.fiuba.controladores.ControladorBotonAyuda;
-import algo3.fiuba.controladores.ControladorBotonSalida;
+import algo3.fiuba.controladores.BotonAyuda;
+import algo3.fiuba.controladores.BotonSalida;
+import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.geometry.Insets;
@@ -19,6 +20,7 @@ public class ContenedorPrincipal extends BorderPane {
     Tablero tableroJ2;
     BarraLateral barraLateral;
     Juego juego = Juego.getInstancia();
+    ControladorTurnos ct = ControladorTurnos.getInstancia();
 
     public ContenedorPrincipal(Stage stage) {
 
@@ -37,14 +39,10 @@ public class ContenedorPrincipal extends BorderPane {
 
     private void setTablero() {
 
-        tableroJ1 = new Tablero();
+        tableroJ1 = new TableroLado1(ct.getJugador());
+        tableroJ2 = new TableroLado2(ct.getJugador());
 
-        //tableroJ2 = new Tablero();
-        //tableroJ2.setRotate(180);
-        //Translate j = new Translate();
-        //tableroJ2.setAlignment(Pos.TOP_RIGHT);
-
-        VBox tableroCompleto = new VBox(tableroJ1);
+        VBox tableroCompleto = new VBox(tableroJ1, tableroJ2);
         tableroCompleto.getStyleClass().add("tablero");
         this.setCenter(tableroCompleto);
     }

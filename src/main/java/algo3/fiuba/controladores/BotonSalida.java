@@ -8,7 +8,7 @@ import javafx.stage.StageStyle;
 
 import java.util.Optional;
 
-public class ControladorBotonSalida implements EventHandler<ActionEvent> {
+public class BotonSalida implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {

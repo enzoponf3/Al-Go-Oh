@@ -12,7 +12,7 @@ import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
-import com.sun.xml.internal.ws.policy.AssertionSet;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;

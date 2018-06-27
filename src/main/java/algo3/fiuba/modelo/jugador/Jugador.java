@@ -201,6 +201,11 @@ public class Jugador implements Observer {
         this.estadoJugador = estadoJugador;
     }
 
+
+    public EstadoJugador getEstadoJugador() {
+        return this.estadoJugador;
+    }
+
     public void setMazo(Stack<Carta> mazo) {
         tableroJugador.setMazo(mazo);
     }

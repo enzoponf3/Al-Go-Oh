@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class ControladorBotonAyuda implements EventHandler<ActionEvent> {
+public class BotonAyuda implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent action) {

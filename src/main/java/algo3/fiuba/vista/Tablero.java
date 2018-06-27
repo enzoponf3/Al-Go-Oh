@@ -2,6 +2,7 @@ package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.ControladorCementerio;
 import algo3.fiuba.controladores.ControladorMazo;
+import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.geometry.Insets;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -15,23 +16,10 @@ public class Tablero extends GridPane {
 
     private double ANCHO_MAXIMO_CARTA = 90.0;
     private double ALTURA_MAXIMA_CARTA = 105.0;
+    public Tablero tablero;
+    Jugador jugador;
 
-    public Tablero() {
-
-        this.setGridLinesVisible(true); // si las quieren ver habiliten esta linea
-        this.setPadding(new Insets(5));
-        this.setVgap(5.5);
-        this.setHgap(5.5);
-        this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
-
-        this.setMano();
-        this.setMazo();
-        this.setCampo();
-        this.setCementerio();
-        this.setCartaCampo();
-    }
-
-    public void setMano() {
+    public void setMano(Integer colIndex, Integer rowIndex) {
 
         GridPane mano = new GridPane();
        // HBox mano = new HBox();
@@ -46,10 +34,10 @@ public class Tablero extends GridPane {
         barraMano.setContent(mano);
         barraMano.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        this.add(barraMano, 1,0);
+        this.add(barraMano, colIndex,rowIndex);
     }
 
-    public void setMazo() {
+    public void setMazo(Integer colIndex, Integer rowIndex) {
 
         Label nroCartas = new Label("10");
         nroCartas.setContentDisplay(ContentDisplay.CENTER);
@@ -58,17 +46,16 @@ public class Tablero extends GridPane {
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
 
         nroCartas.setGraphic(mazo);
+        mazo.setDisable(true);
         mazo.setOnMouseClicked(new ControladorMazo());
 
-        this.add(nroCartas, 0, 0);
+        this.add(nroCartas, colIndex, colIndex);
     }
 
-    public void setCampo() {
-           //BATALLANDO
+    public void setCampo( Integer colIndex, Integer rowIndex, Integer colIndex2, Integer rowIndex2) {
 
         HBox zonaCartasMagicas = new HBox();
         HBox zonaCartasMonstruo = new HBox();
-
 
         for (int i = 0; i < 5; i++) {
 
@@ -85,23 +72,23 @@ public class Tablero extends GridPane {
             zonaCartasMonstruo.setHgrow(imagen2, Priority.ALWAYS);
         }
 
-        this.add(zonaCartasMagicas, 1, 1);
-        this.add(zonaCartasMonstruo, 1, 2);
+        this.add(zonaCartasMagicas, colIndex, rowIndex);
+        this.add(zonaCartasMonstruo, colIndex2, rowIndex2);
     }
 
-    public void setCementerio() {
+    public void setCementerio(Integer colIndex, Integer rowIndex) {
 
         ImageView cementerio = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         cementerio.setOnMouseClicked(new ControladorCementerio());
-        this.add(cementerio, 0, 2);
+        this.add(cementerio, colIndex, rowIndex);
     }
 
-    public void setCartaCampo() {
+    public void setCartaCampo(Integer colIndex, Integer rowIndex) {
 
         ImageView campo = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        this.add(campo, 2, 2);
+        this.add(campo, colIndex, rowIndex);
     }
 
 }
