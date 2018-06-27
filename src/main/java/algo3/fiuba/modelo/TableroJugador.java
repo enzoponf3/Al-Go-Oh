@@ -4,11 +4,9 @@ import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.CartaCampo;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.NoMonstruo;
-import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
 import algo3.fiuba.modelo.excepciones.CartasInsuficientesExcepcion;
-import algo3.fiuba.modelo.jugador.Jugador;
 
 import java.util.LinkedList;
 import java.util.List;

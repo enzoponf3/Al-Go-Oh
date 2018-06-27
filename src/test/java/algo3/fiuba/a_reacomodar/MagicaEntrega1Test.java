@@ -1,46 +1,35 @@
 package algo3.fiuba.a_reacomodar;
 
+import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.Magica;
+import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.efectos.EfectoAgujeroNegro;
+import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
+import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
+import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.modelo.jugador.PreInvocacion;
+import algo3.fiuba.vista.Tablero;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 public class MagicaEntrega1Test {
-/*
+
+    private Jugador jugador;
+
+    @Before
+    public void setUp() {
+        jugador = new Jugador();
+        jugador.setEstadoJugador(new PreInvocacion());
+    }
+
     @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class)
     public void cartaBocaAbajoNoActivaEfecto() {
-        EfectoCarta efectoCarta = new EfectoAgujeroNegro();
-        Magica carta = new Magica("agujero negro", efectoCarta);
-        carta.pasarAModoJuego(new BocaAbajo());
-        Tablero tablero = new Tablero();
-        carta.activarEfecto(tablero);
+        Magica carta = new AgujeroNegro(jugador);
+        jugador.colocarCartaEnCampo((Carta) carta, new BocaAbajo());
+        carta.activarEfecto();
     }
-
-    @Test
-    public void cartaAgujeroNegroBocaArribaActivaEfectosSinMonstruosEnJuego() {
-        EfectoCarta efectoCarta = new EfectoAgujeroNegro();
-        Magica carta = new Magica("agujero negro", efectoCarta);
-        Tablero tablero = Tablero.getInstancia();
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        tablero.inicializar(jugador1, jugador2);
-        jugador1.colocarCartaEnCampo(carta, new BocaArriba());
-        carta.activarEfecto(tablero);
-        Assert.assertEquals(Integer.valueOf(0), tablero.monstruosEnJuego());
-    }
-
-    @Test
-    public void cartaAgujeroNegroBocaArribaActivaEfectosConMonstruoEnOponenteBocaArriba() {
-        EfectoCarta efectoCarta = new EfectoAgujeroNegro();
-        Magica agujeroNegro = new Magica("agujero negro", efectoCarta);
-
-        Monstruo monstruoEnemigo = new Monstruo("monstruoOponente", 100, 100, 1, EfectoNulo);
-        Tablero tablero = Tablero.getInstancia();
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        tablero.inicializar(jugador1, jugador2);
-        agujeroNegro.pasarAModoJuego(new BocaArriba());
-        monstruoEnemigo.pasarAModoJuego(new BocaArriba());
-
-        jugador1.colocarCartaEnCampo(agujeroNegro, new BocaArriba());
-        jugador2.colocarCartaEnCampo((Carta) monstruoEnemigo, new BocaArriba());
-        agujeroNegro.activarEfecto(tablero);
-        Assert.assertEquals(0, (int)tablero.monstruosEnJuego());
-    }
-    */
 }
