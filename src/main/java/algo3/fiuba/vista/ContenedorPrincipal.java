@@ -16,18 +16,17 @@ import javafx.scene.control.Label;
 
 public class ContenedorPrincipal extends BorderPane {
 
-    Tablero tableroJ1;
-    Tablero tableroJ2;
-    BarraLateral barraLateral;
-    Juego juego = Juego.getInstancia();
-    ControladorTurnos ct = ControladorTurnos.getInstancia();
+    private Tablero tableroJ1;
+    private Tablero tableroJ2;
+    private BarraLateral barraLateral;
+    private Juego juego;
+    private ControladorTurnos ct = ControladorTurnos.getInstancia();
 
-    public ContenedorPrincipal(Stage stage) {
+    public ContenedorPrincipal(Stage stage, Juego juego) {
 
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
         this.setBarraLateral();
         this.setTablero();
-        this.setPlayers();
     }
 
     private void setBarraLateral() {
@@ -46,12 +45,4 @@ public class ContenedorPrincipal extends BorderPane {
         tableroCompleto.getStyleClass().add("tablero");
         this.setCenter(tableroCompleto);
     }
-
-    public void setPlayers(){
-
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        juego.inicializar(jugador1, jugador2);
-    }
-
 }

@@ -18,8 +18,8 @@ import javafx.scene.shape.Rectangle;
 
 public class BarraLateral extends StackPane {
 
-    ImageView imagen = new ImageView(new Image("/algo3/fiuba/resources/img/Life_point_counter.jpg",
-            200, 150, false, false));
+    VistaVida vistaVidaJugador1;
+    VistaVida vistaVidaJugador2;
 
     public BarraLateral() {
 
@@ -31,17 +31,9 @@ public class BarraLateral extends StackPane {
 
         // Consolas de puntos
 
-        // CONSOLA J1
-             // Rectangle fondoConsola = new Rectangle(200, 150);
-        Label consolaJ1 = new Label("imagen mugrosa", imagen);
-        consolaJ1.setTextFill(Color.WHITE);
-        consolaJ1.setContentDisplay(ContentDisplay.CENTER);
+        vistaVidaJugador1 = new VistaVida();
 
-        // CONSOLAJ2
-        Rectangle fondoConsola = new Rectangle(200, 150);
-        Label consolaJ2 = new Label("SEEETOOOOO", fondoConsola);
-        consolaJ1.setTextFill(Color.WHITE);
-        consolaJ2.setContentDisplay(ContentDisplay.CENTER);
+        vistaVidaJugador2 = new VistaVida();
 
         // CONTENEDORES LATERALES
         HBox boxBtnsAyudaSalir = new HBox(botonAyuda, botonSalir);
@@ -52,7 +44,7 @@ public class BarraLateral extends StackPane {
         boxBtnsFaseTurno.setAlignment(Pos.CENTER);
         boxBtnsFaseTurno.setSpacing(10);
 
-        VBox vbox = new VBox(consolaJ1, boxBtnsFaseTurno, consolaJ2);
+        VBox vbox = new VBox(vistaVidaJugador1, boxBtnsFaseTurno, vistaVidaJugador2);
         vbox.setPadding(new Insets(15));
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);

@@ -3,6 +3,7 @@ package algo3.fiuba.modelo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.modelo.jugador.TurnoDelOponente;
+import algo3.fiuba.utils.MazoUtils;
 
 public class Juego {
 
@@ -44,5 +45,11 @@ public class Juego {
     public Jugador ganadorPartida() {
         if (terminoPartida()) return jugador1.estaEnJuego() ? jugador1 : jugador2;
         return null;
+    }
+
+    public void inicializarMazos() {
+        MazoUtils mazoUtils = new MazoUtils();
+        jugador1.setMazo(mazoUtils.getMuestra2cartas(jugador1));
+        jugador2.setMazo(mazoUtils.getMuestra2cartas(jugador2));
     }
 }

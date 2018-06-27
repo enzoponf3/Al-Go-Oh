@@ -96,4 +96,13 @@ public class MazoUtils {
 
         return mazo;
     }
+
+    public Stack<Carta> getMuestra2cartas(Jugador jugador) {
+        Stack<Carta> mazo = new Stack();
+
+        mazo.add(new BebeDragon(jugador));
+        mazo.add(new AgujeroNegro(jugador));
+
+        return mazo;
+    }
 }
