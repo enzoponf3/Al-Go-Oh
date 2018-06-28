@@ -1,12 +1,12 @@
 package algo3.fiuba.modelo;
 
-import algo3.fiuba.modelo.Campo;
 import algo3.fiuba.modelo.cartas.CartaCampo;
 import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.Trampa;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.CartaCampoNula;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.Sogen;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.Wasteland;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
@@ -309,11 +309,11 @@ public class CampoTest {
 
     @Test
     public void seAgrega1CartaCampoYLuegoSeRemueve_laCartaCampoNoEstaEnElCampo() {
-        CartaCampo carta = new Wasteland(jugador);
-        campo.colocarCarta(carta, new BocaArriba());
-        campo.removerCarta(carta);
+        CartaCampo cartaCampo = new Wasteland(jugador);
+        campo.colocarCarta(cartaCampo, new BocaArriba());
+        campo.removerCarta(cartaCampo);
 
-        Assert.assertFalse(campo.cartaEstaEnCampo(carta));
+        Assert.assertFalse(campo.cartaEstaEnCampo(cartaCampo));
     }
 
     @Test
@@ -327,4 +327,19 @@ public class CampoTest {
         Assert.assertFalse(campo.cartaEstaEnCampo(carta1));
         Assert.assertTrue(campo.cartaEstaEnCampo(carta2));
     }
+
+    @Test
+    public void siSePideLaCartaCampoDeUnCampoRecienInicializadoDevuelveUnaCartaCampoNula() {
+        Assert.assertTrue(campo.getCartaCampo() instanceof CartaCampoNula);
+    }
+
+    @Test
+    public void siSePideLaCartaCampoDeUnCampoAlQueSeQuitoSuCartaDeCampoDevuelveUnaCartaCampoNula() {
+        CartaCampo cartaCampo = new Wasteland(jugador);
+        campo.colocarCarta(cartaCampo, new BocaArriba());
+        campo.removerCarta(cartaCampo);
+
+        Assert.assertTrue(campo.getCartaCampo() instanceof CartaCampoNula);
+    }
+
 }
