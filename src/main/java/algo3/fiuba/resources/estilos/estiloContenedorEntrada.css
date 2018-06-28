@@ -4,10 +4,6 @@
 
 }
 
-.fondo {
-    -fx-background-image: url("/algo3/fiuba/resources/img/fondo-inicial.jpg");
-}
-
 .button {
 
     -fx-font-size: 15px;
