@@ -1,44 +1,35 @@
 package algo3.fiuba.vista;
 
-import algo3.fiuba.controladores.ControladorBotonAyuda;
-import algo3.fiuba.controladores.ControladorBotonSalida;
+import algo3.fiuba.controladores.BotonCambiarDeFase;
+import algo3.fiuba.controladores.BotonAyuda;
+import algo3.fiuba.controladores.BotonSalida;
+import algo3.fiuba.controladores.BotonTerminarTurno;
+import algo3.fiuba.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class BarraLateral extends StackPane {
 
-    public BarraLateral() {
+    private Juego juego;
+    private VistaVida vistaVidaJugador1;
+    private VistaVida vistaVidaJugador2;
+
+    public BarraLateral(Juego juego) {
 
         // BOTONERA
-        Boton botonAyuda = new Boton("Ayuda", new ControladorBotonAyuda());
-        Boton botonSalir = new Boton("Salir", new ControladorBotonSalida());
-        Boton botonFase = new Boton("Cambiar de fase", null); // añadir funcion
-        Boton botonFinTurno = new Boton("Terminar turno", null);  //añadir funcion
+        Boton botonAyuda = new Boton("Ayuda", new BotonAyuda());
+        Boton botonSalir = new Boton("Salir", new BotonSalida());
+        Boton botonFase = new Boton("Cambiar de fase", new BotonCambiarDeFase()); // añadir funcion
+        Boton botonFinTurno = new Boton("Terminar turno", new BotonTerminarTurno());  //añadir funcion
 
-        //Consolas de puntos
-        CanvasBarraLateral consolaJ1 = new CanvasBarraLateral(199.0, 100.0);
-        GraphicsContext graficas = consolaJ1.getGraphicsContext2D();
-        consolaJ1.drawInCanvas(graficas, 0.0, 0.0);
-        // Label nombre = new Label(nombreJ1);
+        // Consolas de puntos
 
-        // CONTADOR DE PUNTOS DE VIDA J2
-        CanvasBarraLateral consolaJ2 = new CanvasBarraLateral(200.0, 700.0);
-        GraphicsContext grafico = consolaJ2.getGraphicsContext2D();
-        consolaJ2.drawInCanvas(grafico, 0.0, 330.0);
-        //Label nombre2 = new Label("hola");
-        //nombre2.setGraphic(consolaJ2);
+        vistaVidaJugador1 = new VistaVida(juego.getJugador1());
 
-        // PROYECTOR DE EFECTOS DE CARTA
-
-        //String info = tablero.getInfoCarta();
-        Label muestrarioInfoCarta = new Label("hola");//info);
-        muestrarioInfoCarta.getStyleClass().add("muestrarioInfoCarta");
+        vistaVidaJugador2 = new VistaVida(juego.getJugador2());
 
         // CONTENEDORES LATERALES
         HBox boxBtnsAyudaSalir = new HBox(botonAyuda, botonSalir);
@@ -49,9 +40,10 @@ public class BarraLateral extends StackPane {
         boxBtnsFaseTurno.setAlignment(Pos.CENTER);
         boxBtnsFaseTurno.setSpacing(10);
 
-        VBox vbox = new VBox(consolaJ1, boxBtnsFaseTurno, muestrarioInfoCarta, consolaJ2);
+        VBox vbox = new VBox(vistaVidaJugador1, boxBtnsFaseTurno, vistaVidaJugador2);
         vbox.setPadding(new Insets(15));
         vbox.setSpacing(10);
+        vbox.setAlignment(Pos.CENTER);
 
         vbox.getStyleClass().add("vbox");
         this.getChildren().add(vbox);

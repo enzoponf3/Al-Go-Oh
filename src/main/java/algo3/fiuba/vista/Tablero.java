@@ -2,7 +2,9 @@ package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.ControladorCementerio;
 import algo3.fiuba.controladores.ControladorMazo;
+import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.geometry.Insets;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -12,86 +14,62 @@ import javafx.scene.paint.Color;
 
 public class Tablero extends GridPane {
 
-    private double ANCHO_MAXIMO_CARTA = 100.0;
-    private double ALTURA_MAXIMA_CARTA = 130.0;
+    private double ANCHO_MAXIMO_CARTA = 90.0;
+    private double ALTURA_MAXIMA_CARTA = 105.0;
+    Jugador jugador;
 
-    public Tablero() {
+    public void setMano(Integer colIndex, Integer rowIndex) {
 
-        this.setGridLinesVisible(true); // si las quieren ver habiliten esta linea
-        this.setPadding(new Insets(5));
-        this.setVgap(5.5);
-        this.setHgap(5.5);
-        this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
-
-        this.setMano();
-        this.setMazo();
-        this.setCampo();
-        this.setCementerio();
-        this.setCartaCampo();
+        VistaMano mano = new VistaMano();
+        this.add(mano, colIndex, rowIndex);
     }
 
-    public void setMano() {
+    public void setMazo(Integer colIndex, Integer rowIndex) {
 
-        HBox mano = new HBox();
-        for (int i = 0; i <= 4; i++) {
-            VistaCarta carta = new VistaCarta();
-            mano.getChildren().add(carta);
-        }
-
-        ScrollPane barraMano = new ScrollPane();
-        barraMano.setMaxWidth(600);
-        barraMano.setContent(mano);
-        barraMano.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
-        this.add(barraMano, 1,0);
-    }
-
-    public void setMazo() {
-
-        Label nroCartas = new Label("10");
-        nroCartas.setTextFill(Color.WHITE); // AGREGAR AL CSS
-        ImageView mazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
+        ImageView fondoMazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        nroCartas.setGraphic(mazo);
-        mazo.setOnMouseClicked(new ControladorMazo());
-
-        this.add(nroCartas, 0, 0);
+        VistaMazo mazo = new VistaMazo(fondoMazo);
+        this.add(mazo, colIndex, colIndex);
     }
 
-    public void setCampo() {
-           //BATALLANDO
+    public void setCampo(Integer colIndex, Integer rowIndex, Integer colIndex2, Integer rowIndex2) {
 
-        HBox zonaCartasMagicas = new HBox();
-        HBox zonaCartasMonstruo = new HBox();
+        VistaZonaCartas zonaNoMonstruos = new VistaZonaCartas();
+        VistaZonaCartas zonaMonstruo = new VistaZonaCartas();
 
         for (int i = 0; i < 5; i++) {
 
-            zonaCartasMagicas.getChildren().add(new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
-            zonaCartasMagicas.setSpacing(10);
+            ImageView imagen =new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
+                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+            zonaNoMonstruos.agregarCarta(imagen);
 
-            zonaCartasMonstruo.getChildren().add(new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
-            zonaCartasMonstruo.setSpacing(10);
+            ImageView imagen2 =new ImageView(new Image("algo3/fiuba/resources/img/cartavacia.jpg",
+                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+            zonaMonstruo.agregarCarta(imagen2);
         }
 
-        this.add(zonaCartasMagicas, 1, 1);
-        this.add(zonaCartasMonstruo, 1, 2);
+        this.add(zonaNoMonstruos, colIndex, rowIndex);
+        this.add(zonaMonstruo, colIndex2, rowIndex2);
     }
 
-    public void setCementerio() {
+    public void setCementerio(Integer colIndex, Integer rowIndex) {
 
-        ImageView cementerio = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
+        ImageView fondoCementerio = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+        Label cementerio = new Label("CEMENTERIO" +
+                "", fondoCementerio);
+        cementerio.setTextFill(Color.WHITE);
+        cementerio.setContentDisplay(ContentDisplay.CENTER);
         cementerio.setOnMouseClicked(new ControladorCementerio());
-        this.add(cementerio, 0, 2);
+        this.add(cementerio, colIndex, rowIndex);
     }
 
-    public void setCartaCampo() {
+    public void setCartaCampo(Integer colIndex, Integer rowIndex) {
 
-        ImageView campo = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
+        ImageView cartaCampoFondo = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        this.add(campo, 2, 2);
+        VistaCartaCampo cartaCampo = new VistaCartaCampo(cartaCampoFondo);
+        this.add(cartaCampo, colIndex, rowIndex);
     }
 
 }
