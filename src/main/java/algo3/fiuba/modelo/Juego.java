@@ -46,7 +46,7 @@ public class Juego {
         if (terminoPartida()) return jugador1.estaEnJuego() ? jugador1 : jugador2;
         return null;
     }
-
+    
     public void inicializarMazos() {
         MazoUtils mazoUtils = new MazoUtils();
         jugador1.setMazo(mazoUtils.getMuestra2cartas(jugador1));
