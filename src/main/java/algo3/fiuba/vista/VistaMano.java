@@ -2,6 +2,7 @@ package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.ControladorMano;
 import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
 import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -31,7 +32,7 @@ public class VistaMano extends ScrollPane {
         List<Carta> mano = jugador.getMano();
         int i = 0;
         for(Carta carta: mano) {
-            VistaCarta vistaCarta = new VistaCarta();
+            VistaCarta vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/" + carta.getNombre() + ".gif");
             vistaMano.add(vistaCarta, i, 0);
             i++;
         }

@@ -12,7 +12,6 @@ public class Juego {
     private Jugador jugador1;
     private Jugador jugador2;
     private Turno turno;
-    private MazoUtils mazosArmados;
 
     private Juego() {
         turno = Turno.getInstancia();

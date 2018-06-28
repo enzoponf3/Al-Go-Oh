@@ -8,7 +8,7 @@ public class BebeDragon extends Monstruo {
 
     public BebeDragon(Jugador jugador) {
 
-        super("Bebé Dragón", 1200, 700, 3, new EfectoNulo());
+        super("Bebe Dragon", 1200, 700, 3, new EfectoNulo());
         setJugador(jugador);
     }
 }
