@@ -25,7 +25,7 @@ public class ContenedorPrincipal extends BorderPane {
     public ContenedorPrincipal(Stage stage, Juego juego) {
 
         this.juego = juego;
-        this.ct = new ControladorTurnos();
+        this.ct = ControladorTurnos.getInstancia();
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
         this.setBarraLateral(juego);
         this.setTablero();

@@ -1,12 +1,12 @@
 package algo3.fiuba.vista;
 
+import algo3.fiuba.controladores.ControladorCartaCampo;
 import algo3.fiuba.controladores.ControladorCementerio;
 import algo3.fiuba.controladores.ControladorMazo;
+import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.jugador.Jugador;
-import javafx.geometry.Insets;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -24,9 +24,10 @@ public abstract class Tablero extends GridPane {
     protected VistaCartaCampo zonaCartaDeCampo;
 
     public void setMano(Integer colIndex, Integer rowIndex) {
-
-        zonaMano = new VistaMano(jugador);
-        zonaMano.dibujar();
+        VistaZonaCartas vistaZonaMonstruos = new VistaZonaMonstruos(jugador);
+        VistaZonaCartas vistaZonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
+        this.zonaMano = new VistaMano(jugador, vistaZonaMonstruos, vistaZonaNoMonstruos);
+        this.zonaMano.dibujar();
         this.add(zonaMano, colIndex, rowIndex);
     }
 
@@ -34,15 +35,16 @@ public abstract class Tablero extends GridPane {
 
         ImageView fondoMazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        zonaMazo = new VistaMazo(fondoMazo);
-        zonaMazo.setOnMouseClicked(new ControladorMazo(zonaMazo, jugador, zonaMano));
+        this.zonaMazo = new VistaMazo(fondoMazo, jugador);
+        this.zonaMazo.setOnMouseClicked(new ControladorMazo(zonaMazo, jugador, zonaMano));
+        this.zonaMazo.dibujar();
         this.add(zonaMazo, colIndex, colIndex);
     }
 
     public void setCampo(Integer colIndex, Integer rowIndex, Integer colIndex2, Integer rowIndex2) {
 
-        zonaNoMonstruos = new VistaZonaCartas();
-        zonaMonstruos = new VistaZonaCartas();
+        this.zonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
+        this.zonaMonstruos = new VistaZonaMonstruos(jugador);
 
         for (int i = 0; i < 5; i++) {
 
@@ -54,6 +56,8 @@ public abstract class Tablero extends GridPane {
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
             zonaMonstruos.agregarCarta(imagen2);
         }
+        //this.zonaMonstruos.dibujar();
+        //this.zonaNoMonstruos.dibujar();
 
         this.add(zonaNoMonstruos, colIndex, rowIndex);
         this.add(zonaMonstruos, colIndex2, rowIndex2);
@@ -71,9 +75,11 @@ public abstract class Tablero extends GridPane {
     }
 
     public void setCartaCampo(Integer colIndex, Integer rowIndex) {
-
-        zonaCartaDeCampo = new VistaCartaCampo(jugador);
-        zonaCartaDeCampo.dibujar();
+        ImageView cartaCampoFondo = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
+                ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+        this.zonaCartaDeCampo = new VistaCartaCampo(jugador, zonaMano, zonaMonstruos, zonaNoMonstruos);
+        this.zonaCartaDeCampo.setOnMouseClicked(new ControladorCartaCampo(zonaCartaDeCampo, jugador, zonaMano));
+        this.zonaCartaDeCampo.dibujar();
         this.add(zonaCartaDeCampo, colIndex, rowIndex);
     }
 
