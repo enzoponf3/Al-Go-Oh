@@ -11,16 +11,16 @@ import javafx.scene.image.ImageView;
 
 public class VistaCarta extends Label {
 
-    private VistaZonaCartas vistaZonaNoMonstruos;
-    private VistaZonaCartas vistaZonaMonstruos;
+    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
+    private VistaZonaMonstruos vistaZonaMonstruos;
     private VistaMano vistaMano;
     private Carta carta;
     private Jugador jugador;
     private ImageView imagenCarta;
-    private double ANCHO_MAXIMO_CARTA = 95.0;
-    private double ALTURA_MAXIMA_CARTA = 110.0;
+    protected double ANCHO_MAXIMO_CARTA = 95.0;
+    protected double ALTURA_MAXIMA_CARTA = 110.0;
 
-    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaCartas vistaZonaMonstruos, VistaZonaCartas vistaZonaNoMonstruos) {
+    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos) {
 
         this.imagenCarta = new ImageView(new Image(imageUrl,
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));

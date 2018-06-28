@@ -19,13 +19,13 @@ public abstract class Tablero extends GridPane {
     protected Jugador jugador;
     protected VistaMazo zonaMazo;
     protected VistaMano zonaMano;
-    protected VistaZonaCartas zonaNoMonstruos;
-    protected VistaZonaCartas zonaMonstruos;
+    protected VistaZonaNoMonstruos zonaNoMonstruos;
+    protected VistaZonaMonstruos zonaMonstruos;
     protected VistaCartaCampo zonaCartaDeCampo;
 
     public void setMano(Integer colIndex, Integer rowIndex) {
-        VistaZonaCartas vistaZonaMonstruos = new VistaZonaMonstruos(jugador);
-        VistaZonaCartas vistaZonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
+        VistaZonaMonstruos vistaZonaMonstruos = new VistaZonaMonstruos(jugador);
+        VistaZonaNoMonstruos vistaZonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
         this.zonaMano = new VistaMano(jugador, vistaZonaMonstruos, vistaZonaNoMonstruos);
         this.zonaMano.dibujar();
         this.add(zonaMano, colIndex, rowIndex);
@@ -46,18 +46,8 @@ public abstract class Tablero extends GridPane {
         this.zonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
         this.zonaMonstruos = new VistaZonaMonstruos(jugador);
 
-        for (int i = 0; i < 5; i++) {
-
-            ImageView imagen =new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-            zonaNoMonstruos.agregarCarta(imagen);
-
-            ImageView imagen2 =new ImageView(new Image("algo3/fiuba/resources/img/cartavacia.jpg",
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-            zonaMonstruos.agregarCarta(imagen2);
-        }
-        //this.zonaMonstruos.dibujar();
-        //this.zonaNoMonstruos.dibujar();
+        this.zonaMonstruos.dibujar();
+        this.zonaNoMonstruos.dibujar();
 
         this.add(zonaNoMonstruos, colIndex, rowIndex);
         this.add(zonaMonstruos, colIndex2, rowIndex2);
@@ -82,5 +72,4 @@ public abstract class Tablero extends GridPane {
         this.zonaCartaDeCampo.dibujar();
         this.add(zonaCartaDeCampo, colIndex, rowIndex);
     }
-
 }

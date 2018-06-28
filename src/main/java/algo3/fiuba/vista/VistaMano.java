@@ -15,13 +15,13 @@ import java.util.List;
 public class VistaMano extends ScrollPane {
 
     private ControladorTurnos controladorTurnos;
-    private VistaZonaCartas vistaZonaNoMonstruos;
-    private VistaZonaCartas vistaZonaMonstruos;
+    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
+    private VistaZonaMonstruos vistaZonaMonstruos;
     private Jugador jugador;
     ControladorMano controladorMano;
     List<VistaCarta> vistaCartas;
 
-    public VistaMano(Jugador jugador, VistaZonaCartas vistaZonaMonstruos, VistaZonaCartas vistaZonaNoMonstruos) {
+    public VistaMano(Jugador jugador, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos) {
         this.controladorMano = new ControladorMano(this, jugador);
         this.jugador = jugador;
         this.vistaCartas = new LinkedList<>();
@@ -32,7 +32,7 @@ public class VistaMano extends ScrollPane {
 
     public void dibujar() {
 
-        this.setMaxWidth(535);
+        this.setMaxWidth(555);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
         this.getStyleClass().add("mano");

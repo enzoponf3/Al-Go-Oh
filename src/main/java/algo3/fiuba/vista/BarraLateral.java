@@ -22,8 +22,8 @@ public class BarraLateral extends StackPane {
         // BOTONERA
         Boton botonAyuda = new Boton("Ayuda", new BotonAyuda());
         Boton botonSalir = new Boton("Salir", new BotonSalida());
-        Boton botonFase = new Boton("Cambiar de fase", new BotonCambiarDeFase()); // añadir funcion
-        Boton botonFinTurno = new Boton("Terminar turno", new BotonTerminarTurno());  //añadir funcion
+        Boton botonFase = new Boton("Cambiar de fase", new BotonCambiarDeFase());
+        Boton botonFinTurno = new Boton("Terminar turno", new BotonTerminarTurno());
 
         // Consolas de puntos
         vistaVidaJugador1 = new VistaVida(juego.getJugador1());
