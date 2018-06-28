@@ -49,14 +49,6 @@ public class Trampa extends NoMonstruo {
     }
 
     @Override
-    public void activarEfecto(Carta carta, Jugador jugador) {
-        estadoCarta.activarEfecto(this, jugador, efecto);
-        this.girarCarta();
-    }
-
-
-
-    @Override
     public void update(Observable o, Object arg) {
         super.update(o, arg);
         if (estaActiva)

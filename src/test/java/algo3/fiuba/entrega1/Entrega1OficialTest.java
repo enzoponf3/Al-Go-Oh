@@ -3,6 +3,8 @@ package algo3.fiuba.entrega1;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.MagoOscuro;
 import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.Carta;
@@ -265,8 +267,8 @@ public class Entrega1OficialTest {
 
     @Test
     public void seColocaUnMonstruoEnElCampo_seQuiereColocarUnMonstruoDe5o6Estrellas_seSacrificaAlPrimerMonstruoParaColocarAlSegundo() {
-        Monstruo cartaMonstruoASacrificar = new Monstruo("aSacrificar", 1000, 1000, 1, new EfectoNulo());
-        Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 6, new EfectoNulo());
+        Monstruo cartaMonstruoASacrificar = new Kuriboh(jugador1);
+        Monstruo cartaMonstruoAInvocar = new Monstruo("Delfi", 2120, 0, 5, new EfectoNulo());
 
         // Coloco el monstruo a sacrificar en el campo y verifico que esté
         jugador1.colocarCartaEnCampo((Carta) cartaMonstruoASacrificar, new BocaArriba());
@@ -289,9 +291,9 @@ public class Entrega1OficialTest {
 
     @Test
     public void seColocan2MonstruosEnElCampo_seQuiereColocarUnMonstruoDe7OMasEstrellas_seSacrificanLosDosMonstruosParaInvocarlo() {
-        Monstruo monstruoASacrificar1 = new Monstruo("aSacrificar 1", 1000, 1000, 1, new EfectoNulo());
-        Monstruo monstruoASacrificar2 = new Monstruo("aSacrificar 2", 1000, 1000, 1, new EfectoNulo());
-        Monstruo cartaMonstruoAInvocar = new Monstruo("Sacrificador", 2300, 2000, 7, new EfectoNulo());
+        Monstruo monstruoASacrificar1 = new Kuriboh(jugador1);
+        Monstruo monstruoASacrificar2 = new BebeDragon(jugador1);
+        Monstruo monstruoAInvocar = new MagoOscuro(jugador1);
 
         // Coloco los monstruos a sacrificar en el campo y verifico que estén.
         jugador1.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaArriba());
@@ -305,10 +307,10 @@ public class Entrega1OficialTest {
         Assert.assertTrue(monstruoASacrificar2.estaEnJuego());
 
         // Coloco la carta a invocar y verificio que esté y, la destrucción de los anteriores.
-        jugador1.colocarCartaEnCampo((Carta) cartaMonstruoAInvocar, new BocaArriba(), monstruoASacrificar1, monstruoASacrificar2);
+        jugador1.colocarCartaEnCampo((Carta) monstruoAInvocar, new BocaArriba(), monstruoASacrificar1, monstruoASacrificar2);
 
-        Assert.assertTrue(cartaMonstruoAInvocar.estaEnJuego());
-        Assert.assertTrue(jugador1.cartaEstaEnCampo(cartaMonstruoAInvocar));
+        Assert.assertTrue(monstruoAInvocar.estaEnJuego());
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(monstruoAInvocar));
         Assert.assertFalse(monstruoASacrificar1.estaEnJuego());
         Assert.assertFalse(jugador1.cartaEstaEnCampo(monstruoASacrificar1));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(monstruoASacrificar1));
