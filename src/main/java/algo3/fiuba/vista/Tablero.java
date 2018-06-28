@@ -12,30 +12,34 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-public class Tablero extends GridPane {
+public abstract class Tablero extends GridPane {
 
     private double ANCHO_MAXIMO_CARTA = 90.0;
     private double ALTURA_MAXIMA_CARTA = 105.0;
-    Jugador jugador;
+    protected Jugador jugador;
+    protected VistaMazo zonaMazo;
+    protected VistaMano zonaMano;
+    protected VistaZonaCartas zonaNoMonstruos;
+    protected VistaZonaCartas zonaMonstruos;
+    protected VistaCartaCampo zonaCartaDeCampo;
 
     public void setMano(Integer colIndex, Integer rowIndex) {
-
-        VistaMano mano = new VistaMano();
-        this.add(mano, colIndex, rowIndex);
+        zonaMano = new VistaMano();
+        this.add(zonaMano, colIndex, rowIndex);
     }
 
     public void setMazo(Integer colIndex, Integer rowIndex) {
 
         ImageView fondoMazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        VistaMazo mazo = new VistaMazo(fondoMazo);
-        this.add(mazo, colIndex, colIndex);
+        zonaMazo= new VistaMazo(fondoMazo);
+        this.add(zonaMazo, colIndex, colIndex);
     }
 
     public void setCampo(Integer colIndex, Integer rowIndex, Integer colIndex2, Integer rowIndex2) {
 
-        VistaZonaCartas zonaNoMonstruos = new VistaZonaCartas();
-        VistaZonaCartas zonaMonstruo = new VistaZonaCartas();
+        zonaNoMonstruos = new VistaZonaCartas();
+        zonaMonstruos = new VistaZonaCartas();
 
         for (int i = 0; i < 5; i++) {
 
@@ -45,11 +49,11 @@ public class Tablero extends GridPane {
 
             ImageView imagen2 =new ImageView(new Image("algo3/fiuba/resources/img/cartavacia.jpg",
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-            zonaMonstruo.agregarCarta(imagen2);
+            zonaMonstruos.agregarCarta(imagen2);
         }
 
         this.add(zonaNoMonstruos, colIndex, rowIndex);
-        this.add(zonaMonstruo, colIndex2, rowIndex2);
+        this.add(zonaMonstruos, colIndex2, rowIndex2);
     }
 
     public void setCementerio(Integer colIndex, Integer rowIndex) {
@@ -68,8 +72,8 @@ public class Tablero extends GridPane {
 
         ImageView cartaCampoFondo = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        VistaCartaCampo cartaCampo = new VistaCartaCampo(cartaCampoFondo);
-        this.add(cartaCampo, colIndex, rowIndex);
+        zonaCartaDeCampo = new VistaCartaCampo(cartaCampoFondo);
+        this.add(zonaCartaDeCampo, colIndex, rowIndex);
     }
 
 }
