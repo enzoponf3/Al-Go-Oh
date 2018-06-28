@@ -18,7 +18,7 @@ import algo3.fiuba.modelo.jugador.Jugador;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Monstruo extends Carta {
+public abstract class Monstruo extends Carta {
 
     private Integer ataqueBase;
     private Integer defensaBase;

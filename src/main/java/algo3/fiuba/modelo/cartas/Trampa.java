@@ -7,7 +7,7 @@ import algo3.fiuba.modelo.jugador.Jugador;
 
 import java.util.Observable;
 
-public class Trampa extends NoMonstruo {
+public abstract class Trampa extends NoMonstruo {
 
     private boolean estaActiva;
 

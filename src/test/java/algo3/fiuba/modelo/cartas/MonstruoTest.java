@@ -3,6 +3,7 @@ package algo3.fiuba.modelo.cartas;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
@@ -35,8 +36,8 @@ public class MonstruoTest {
 
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarEnModoDefensa() {
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador1);
+        Monstruo monstruoDefensor = new Kuriboh(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoDefensa();
@@ -51,8 +52,8 @@ public class MonstruoTest {
 
     @Test
     public void monstruoEnModoAtaquePuedeAtacarAMonstruoEnJuego() {
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", 1000, 1000, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 1500, 1500, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador1);
+        Monstruo monstruoDefensor = new Kuriboh(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -68,12 +69,8 @@ public class MonstruoTest {
 
     @Test
     public void atacarAMonstruoEnModoDefensa_DefensorTieneMenosPuntosDeDefensa_MuereElDefensor() {
-        Integer puntosAtacante = 2000;
-        Integer puntosDefensor = 1500;
-
-
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador1);
+        Monstruo monstruoDefensor = new Kuriboh(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -91,11 +88,8 @@ public class MonstruoTest {
 
     @Test
     public void atacarAMonstruoEnModoDefensa_DefensorTieneMasPuntosDeDefensa_NoMuereNadie() {
-        Integer puntosAtacante = 1000;
-        Integer puntosDefensor = 1500;
-
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new Kuriboh(jugador1);
+        Monstruo monstruoDefensor = new BebeDragon(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -113,11 +107,8 @@ public class MonstruoTest {
 
     @Test
     public void atacarAMonstruoEnModoAtaque_DefensorTieneMenosPuntosDeAtaque_MuereElDefensor() {
-        Integer puntosAtacante = 2000;
-        Integer puntosDefensor = 1500;
-
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador1);
+        Monstruo monstruoDefensor = new Kuriboh(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -134,11 +125,8 @@ public class MonstruoTest {
 
     @Test
     public void atacarAMonstruoEnModoAtaque_DefensorTieneMasPuntosDeAtaque_MuereElAtacante() {
-        Integer puntosAtacante = 1000;
-        Integer puntosDefensor = 1500;
-
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new Kuriboh(jugador1);
+        Monstruo monstruoDefensor = new BebeDragon(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -156,14 +144,11 @@ public class MonstruoTest {
 
     @Test
     public void atacarMonstruoEnModoAtaque_GanaAtacante_DiferenciaDePuntosDaniaLosPuntosDeVidaDelDefensor() {
-        Integer puntosAtacante = 8000;
         Jugador jugadorAtacante = jugador1;
-        Integer puntosDefensor = 100;
         Jugador jugadorDefensor = jugador2;
 
-
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador1);
+        Monstruo monstruoDefensor = new Kuriboh(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -178,7 +163,7 @@ public class MonstruoTest {
 
         // El jugador defensor pierde 100 puntos de vida, porque se crea con 8000 hp y se le resta 7900
         Integer puntosDeVidaJugadorAtacanteEsperados = 8000;
-        Integer puntosDeVidaJugadorDefensorEsperados = 100;
+        Integer puntosDeVidaJugadorDefensorEsperados = 8000 - (monstruoAtacante.getAtaque() - monstruoDefensor.getAtaque());
 
         Assert.assertTrue(monstruoAtacante.estaEnJuego());
         Assert.assertTrue(jugadorAtacante.estaVivo());
@@ -191,13 +176,11 @@ public class MonstruoTest {
 
     @Test
     public void atacarMonstruoEnModoDefensa_GanaAtacante_DiferenciaDePuntosNoDaniaLosPuntosDeVidaDelDefensor() {
-        Integer puntosAtacante = 8000;
         Jugador jugadorAtacante = jugador1;
-        Integer puntosDefensor = 100;
         Jugador jugadorDefensor = jugador2;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new BebeDragon(jugador1);
+        Monstruo monstruoDefensor = new Kuriboh(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -224,13 +207,11 @@ public class MonstruoTest {
 
     @Test
     public void atacarMonstruoEnModoAtaque_PierdeAtacante_DiferenciaDePuntosDaniaLosPuntosDeVidaDelAtacante() {
-        Integer puntosAtacante = 1000;
         Jugador jugadorAtacante = jugador1;
-        Integer puntosDefensor = 2000;
         Jugador jugadorDefensor = jugador2;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", puntosDefensor, 0, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new Kuriboh(jugador1);
+        Monstruo monstruoDefensor = new BebeDragon(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -243,7 +224,7 @@ public class MonstruoTest {
 
         monstruoAtacante.atacar(monstruoDefensor);
 
-        Integer puntosDeVidaJugadorAtacanteEsperados = 7000;
+        Integer puntosDeVidaJugadorAtacanteEsperados = 8000 - (monstruoDefensor.getAtaque() - monstruoAtacante.getAtaque());
         Integer puntosDeVidaJugadorDefensorEsperados = 8000;
 
         Assert.assertFalse(monstruoAtacante.estaEnJuego());
@@ -257,13 +238,11 @@ public class MonstruoTest {
 
     @Test
     public void atacarMonstruoEnModoDefensa_PierdeAtacante_DiferenciaDePuntosNoDaniaLosPuntosDeVidaDelAtacante() {
-        Integer puntosAtacante = 1000;
         Jugador jugadorAtacante = jugador1;
-        Integer puntosDefensor = 2000;
         Jugador jugadorDefensor = jugador2;
 
-        Monstruo monstruoAtacante = new Monstruo("monstruoAtacante", puntosAtacante, 0, 1, new EfectoNulo());
-        Monstruo monstruoDefensor = new Monstruo("monstruoDefensor", 0, puntosDefensor, 1, new EfectoNulo());
+        Monstruo monstruoAtacante = new Kuriboh(jugador1);
+        Monstruo monstruoDefensor = new BebeDragon(jugador2);
 
         monstruoAtacante.setEstado(new BocaArriba());
         monstruoAtacante.pasarAModoAtaque();
@@ -276,7 +255,7 @@ public class MonstruoTest {
 
         monstruoAtacante.atacar(monstruoDefensor);
 
-        Integer puntosDeVidaJugadorAtacanteEsperados = 7000;
+        Integer puntosDeVidaJugadorAtacanteEsperados = 8000 - (monstruoDefensor.getDefensa() - monstruoAtacante.getAtaque());
         Integer puntosDeVidaJugadorDefensorEsperados = 8000;
 
         Assert.assertTrue(monstruoAtacante.estaEnJuego());

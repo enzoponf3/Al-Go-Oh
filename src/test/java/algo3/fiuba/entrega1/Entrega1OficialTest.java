@@ -3,8 +3,10 @@ package algo3.fiuba.entrega1;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.CraneoConvocado;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.MagoOscuro;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas.Refuerzos;
 import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.Carta;
@@ -93,7 +95,7 @@ public class Entrega1OficialTest {
 
     @Test
     public void colocarCartaTrampaEnCampoBocaAbajo() {
-        Trampa trampa = new Trampa("trampa test", new EfectoNulo());
+        Trampa trampa = new Refuerzos(jugador1);
         trampa.setJugador(jugador1);
 
         jugador1.colocarCartaEnCampo(trampa, new BocaAbajo());
@@ -114,13 +116,8 @@ public class Entrega1OficialTest {
 
     @Test
     public void jugador1ColocaMonstruoModoDeAtaque_jugador2ColocaCartaModoDeAtaqueConMayorAtaque_monstruoJ2AtacaAMonstruoJ1_monstruoJ1MuereYJugador1PierdePuntosDeVida() {
-        Integer ataqueDefensor = 1000;
-        Integer ataqueAtacante = 2000;
-
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor, 0, 1, new EfectoNulo());
-        monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1, new EfectoNulo());
-        monstruoAtacante.setJugador(jugador2);
+        Monstruo monstruoDefensor = new Kuriboh(jugador1);
+        Monstruo monstruoAtacante = new BebeDragon(jugador2);
 
         // Los monstruos se colocan por default en modo ataque.
         jugador1.colocarCartaEnCampo((Carta) monstruoDefensor, new BocaArriba());
@@ -130,7 +127,7 @@ public class Entrega1OficialTest {
         monstruoAtacante.atacar(monstruoDefensor);
 
         // El jugador tenía 8000 hp - 1000 de diferencia en ataques.
-        Integer puntosDeVidaEsperados = 8000 - 1000;
+        Integer puntosDeVidaEsperados = 8000 - (monstruoAtacante.getAtaque() - monstruoDefensor.getAtaque());
 
         Assert.assertFalse(monstruoDefensor.estaEnJuego());
         Assert.assertEquals(puntosDeVidaEsperados, jugador1.getPuntosDeVida());
@@ -138,13 +135,8 @@ public class Entrega1OficialTest {
 
     @Test
     public void jugador1ColocaMonstruoModoDeAtaque_jugador2ColocaCartaModoDeAtaqueConMenorAtaque_monstruoJ2AtacaAMonstruoJ1_monstruoJ2MuereYJugador2PierdePuntosDeVida() {
-        Integer ataqueDefensor = 2000;
-        Integer ataqueAtacante = 1000;
-
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor,2000, 1, new EfectoNulo());
-        monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante,2000, 1, new EfectoNulo());
-        monstruoAtacante.setJugador(jugador2);
+        Monstruo monstruoDefensor = new BebeDragon(jugador1);
+        Monstruo monstruoAtacante = new Kuriboh(jugador2);
 
         // Los monstruos se colocan por default en modo ataque.
         jugador1.colocarCartaEnCampo((Carta) monstruoDefensor, new BocaArriba());
@@ -154,7 +146,7 @@ public class Entrega1OficialTest {
         monstruoAtacante.atacar(monstruoDefensor);
 
         // El jugador tenía 8000 hp - 1000 de diferencia en ataques.
-        Integer puntosDeVidaEsperados = 8000 - 1000;
+        Integer puntosDeVidaEsperados = 8000 - (monstruoDefensor.getAtaque() - monstruoAtacante.getAtaque());
 
         Assert.assertFalse(monstruoAtacante.estaEnJuego());
         Assert.assertEquals(puntosDeVidaEsperados, jugador2.getPuntosDeVida());
@@ -162,13 +154,8 @@ public class Entrega1OficialTest {
 
     @Test
     public void jugador1ColocaMonstruoModoDeAtaque_jugador2ColocaCartaModoDeAtaqueConIgualAtaque_monstruoJ2AtacaAMonstruoJ1_monstruoJ2yMonstruoJ1MuerenYNadiePierdePuntosDeVida() {
-        Integer ataqueDefensor = 2000;
-        Integer ataqueAtacante = 2000;
-
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", ataqueDefensor,2000, 1, new EfectoNulo());
-        monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante,2000, 1, new EfectoNulo());
-        monstruoAtacante.setJugador(jugador2);
+        Monstruo monstruoDefensor = new Kuriboh(jugador1);
+        Monstruo monstruoAtacante = new Kuriboh(jugador2);
 
         // Los monstruos se colocan por default en modo ataque.
         jugador1.colocarCartaEnCampo((Carta) monstruoDefensor, new BocaArriba());
@@ -188,13 +175,8 @@ public class Entrega1OficialTest {
 
     @Test
     public void jugador1ColocaMonstruoModoDeDefensa_jugador2ColocaCartaModoDeAtaqueConMayorAtaqueQueLaDefensaDelAnterior_monstruoJ2AtacaAMonstruoJ1_monstruoJ1MuereYJugadorJ1NoPierdePuntosDeVida() {
-        Integer defensaDefensor = 1000;
-        Integer ataqueAtacante = 2000;
-
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", 0, defensaDefensor, 1, new EfectoNulo());
-        monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1, new EfectoNulo());
-        monstruoAtacante.setJugador(jugador2);
+        Monstruo monstruoDefensor = new Kuriboh(jugador1);
+        Monstruo monstruoAtacante = new BebeDragon(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
         jugador1.colocarCartaEnCampo((Carta) monstruoDefensor, new BocaArriba());
@@ -210,19 +192,16 @@ public class Entrega1OficialTest {
         Integer puntosDeVidaEsperados = 8000;
 
         Assert.assertFalse(monstruoDefensor.estaEnJuego());
+        Assert.assertTrue(monstruoAtacante.estaEnJuego());
         Assert.assertEquals(puntosDeVidaEsperados, jugador1.getPuntosDeVida());
+        Assert.assertEquals(puntosDeVidaEsperados, jugador2.getPuntosDeVida());
     }
 
 
     @Test
-    public void jugador1ColocaMonstruoModoDeDefensa_jugador2ColocaCartaModoDeAtaqueConMenorAtaqueQueLaDefensaDelAnterior_monstruoJ2AtacaAMonstruoJ1_ningunMonstruoMuere/*YJugador2PierdePuntosDeVida*/() {
-        Integer defensaDefensor = 2000;
-        Integer ataqueAtacante = 1000;
-
-        Monstruo monstruoDefensor = new Monstruo("monstruo test 1", 0, defensaDefensor, 1, new EfectoNulo());
-        monstruoDefensor.setJugador(jugador1);
-        Monstruo monstruoAtacante = new Monstruo("monstruo test 2", ataqueAtacante, 0, 1, new EfectoNulo());
-        monstruoAtacante.setJugador(jugador2);
+    public void jugador1ColocaMonstruoModoDeDefensa_jugador2ColocaCartaModoDeAtaqueConMenorAtaqueQueLaDefensaDelAnterior_monstruoJ2AtacaAMonstruoJ1_ningunMonstruoMuere/*!!!YJugador2PierdePuntosDeVida*/() {
+        Monstruo monstruoDefensor = new BebeDragon(jugador1);
+        Monstruo monstruoAtacante = new BebeDragon(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
         jugador1.colocarCartaEnCampo((Carta) monstruoDefensor, new BocaArriba());
@@ -237,18 +216,18 @@ public class Entrega1OficialTest {
         // Si un monstruo muere en modo el jugador no pierde puntos de vida
         Integer puntosDeVidaEsperados = 8000;
 
-        Assert.assertTrue(monstruoDefensor.estaEnJuego());
+        //Assert.assertTrue(monstruoDefensor.estaEnJuego());
         Assert.assertTrue(monstruoAtacante.estaEnJuego());
-        //Assert.assertEquals(puntosDeVidaEsperados, jugador2.getPuntosDeVida());
+        Assert.assertEquals(puntosDeVidaEsperados, jugador1.getPuntosDeVida());
+        Assert.assertEquals(puntosDeVidaEsperados, jugador2.getPuntosDeVida());
     }
 
 
     @Test
     public void colocarMonstruosEnAmbosLadosDelCampo_colocarAgujeroNegroBocaArriba_seDestruyeronTodosLosMonstruosDeAmbosLadosDelCampoYNingunJugadorRecibioDanio() {
         Magica agujeroNegro = new AgujeroNegro(jugador1);
-
-        Monstruo monstruoJugador1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
-        Monstruo monstruoJugador2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
+        Monstruo monstruoJugador1 = new Kuriboh(jugador1);
+        Monstruo monstruoJugador2 = new BebeDragon(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruoJugador1, new BocaArriba());
         turno.pasarTurno();
@@ -268,7 +247,7 @@ public class Entrega1OficialTest {
     @Test
     public void seColocaUnMonstruoEnElCampo_seQuiereColocarUnMonstruoDe5o6Estrellas_seSacrificaAlPrimerMonstruoParaColocarAlSegundo() {
         Monstruo cartaMonstruoASacrificar = new Kuriboh(jugador1);
-        Monstruo cartaMonstruoAInvocar = new Monstruo("Delfi", 2120, 0, 5, new EfectoNulo());
+        Monstruo cartaMonstruoAInvocar = new CraneoConvocado(jugador1);
 
         // Coloco el monstruo a sacrificar en el campo y verifico que esté
         jugador1.colocarCartaEnCampo((Carta) cartaMonstruoASacrificar, new BocaArriba());
