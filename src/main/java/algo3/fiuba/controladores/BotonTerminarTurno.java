@@ -11,11 +11,11 @@ public class BotonTerminarTurno implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         ControladorTurnos ct = ControladorTurnos.getInstancia();
-        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        /*Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacion.setHeaderText("Quieres terminar el turno?");
         confirmacion.show();
-        if (confirmacion.getResult() == ButtonType.OK) {
+        if (confirmacion.getResult() == ButtonType.OK) {*/
             ct.terminarTurno();
-        }
+        //}
     }
 }

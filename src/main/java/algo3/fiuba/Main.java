@@ -18,6 +18,9 @@ public class Main extends Application {
         Juego juego = crearModelo();
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stagePrincipal, juego);
+        contenedorPrincipal.dibujar();
+        ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
+        controladorTurnos.setContenedorPrincipal(contenedorPrincipal);
         Scene sceneJuego = new Scene(contenedorPrincipal, 1000, 700);
 
         ContenedorEntrada contenedorEntrada = new ContenedorEntrada(stagePrincipal, sceneJuego);
