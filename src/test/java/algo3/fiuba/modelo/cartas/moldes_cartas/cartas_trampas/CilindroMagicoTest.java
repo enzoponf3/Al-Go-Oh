@@ -4,6 +4,7 @@ import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
+import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
@@ -35,9 +36,8 @@ public class CilindroMagicoTest {
         turno = Turno.getInstancia();
     }
 
-    @Ignore
     @Test
-    public void noSePuedeColocarBocaArriba() {
+    public void sePuedeColocarBocaArriba() {
         cilindroMagico = new CilindroMagico(jugador1);
 
         jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaArriba());
@@ -67,8 +67,7 @@ public class CilindroMagicoTest {
         Assert.assertEquals(ataqueIncialMonstruo, monstruo.getAtaque());
     }
 
-    @Ignore
-    @Test
+    @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class)
     public void seColocaBocaAbajo_noSePuedeActivarElEfectoManualmente() {
         cilindroMagico = new CilindroMagico(jugador1);
 
@@ -83,7 +82,7 @@ public class CilindroMagicoTest {
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(cilindroMagico, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -97,13 +96,33 @@ public class CilindroMagicoTest {
     }
 
     @Test
+    public void colocoTrampaCilindroMagico_seActivaAlAtacarAUnMonstruoDeSuCampo_quedaBocaArriba() {
+        cilindroMagico = new CilindroMagico(jugador1);
+        Monstruo monstruoAtacado = new Kuriboh(jugador1); // ATK 300
+        Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
+
+        // Los monstruos por default se colocan en modo ataque
+        jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
+        turno.pasarTurno();
+        jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
+
+        Assert.assertTrue(cilindroMagico.getEstadoCarta() instanceof BocaAbajo);
+
+        monstruoAtacante.atacar(monstruoAtacado);
+
+        Assert.assertTrue(cilindroMagico.getEstadoCarta() instanceof BocaArriba);
+    }
+
+
+    @Test
     public void colocoTrampaCilindroMagico_seActivaAlAtacarAUnMonstruoDeSuCampo_enElSiguienteTurnoSeDescarta() {
         cilindroMagico = new CilindroMagico(jugador1);
         Monstruo monstruoAtacado = new Kuriboh(jugador1); // ATK 300
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(cilindroMagico, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -124,7 +143,7 @@ public class CilindroMagicoTest {
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(cilindroMagico, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -145,7 +164,7 @@ public class CilindroMagicoTest {
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(cilindroMagico, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -157,48 +176,6 @@ public class CilindroMagicoTest {
         Assert.assertTrue(monstruoAtacante.estaEnJuego());
         Assert.assertTrue(jugador2.cartaEstaEnCampo(monstruoAtacante));
         Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoAtacante));
-    }
-
-
-
-    @Test
-    public void colocoTrampaCilindroMagico_seActivaAlAtacarAUnMonstruoDeSuCampo_elMonstruoAtacadoGana500PuntosDeAtaquePorEseTurno() {
-        cilindroMagico = new CilindroMagico(jugador1);
-        Monstruo monstruoAtacado = new Kuriboh(jugador1); // ATK 300
-        Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
-
-        Integer ataqueInicialAtacado = monstruoAtacado.getAtaque();
-
-        // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(cilindroMagico, new BocaAbajo());
-        jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
-        turno.pasarTurno();
-        jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
-
-        monstruoAtacante.atacar(monstruoAtacado);
-
-        Integer ataqueFinalAtacado = ataqueInicialAtacado + 500;
-        Assert.assertEquals(ataqueFinalAtacado, monstruoAtacado.getAtaque());
-    }
-
-    @Test
-    public void colocoTrampaCilindroMagico_seActivaAlAtacarAUnMonstruoDeSuCampo_enElSiguienteTurnoElMonstruoAtacadoVuelveASuAtaqueInicial() {
-        cilindroMagico = new CilindroMagico(jugador1);
-        Monstruo monstruoAtacado = new Kuriboh(jugador1); // ATK 300
-        Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
-
-        Integer ataqueInicialAtacado = monstruoAtacado.getAtaque();
-
-        // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(cilindroMagico, new BocaAbajo());
-        jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
-        turno.pasarTurno();
-        jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
-
-        monstruoAtacante.atacar(monstruoAtacado);
-
-        Integer ataqueFinalAtacado = ataqueInicialAtacado;
-        Assert.assertEquals(ataqueFinalAtacado, monstruoAtacado.getAtaque());
     }
 
     @Test
@@ -247,7 +224,12 @@ public class CilindroMagicoTest {
         Integer vidaFinalAtacado = 8000;
         Assert.assertEquals(vidaFinalAtacado, jugador1.getPuntosDeVida());
 
-        // Después de ser activada una carta Trampa va al cementerio.
+        // Después de ser activada la carta Trampa se mantiene en el campo hasta el fin del turno.
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(cilindroMagico));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(cilindroMagico));
+
+        turno.pasarTurno();
+        // Cuando termina el turno la carta Trampa va al cementerio.
         Assert.assertFalse(jugador1.cartaEstaEnCampo(cilindroMagico));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(cilindroMagico));
     }

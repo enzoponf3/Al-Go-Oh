@@ -24,4 +24,6 @@ public interface EstadoCarta {
     void recibirAtaque(Monstruo carta);
 
     void recibirAtaque(NoMonstruo carta);
+
+    EstadoCarta girar();
 }

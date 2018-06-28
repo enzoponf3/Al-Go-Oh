@@ -21,7 +21,6 @@ import org.junit.Test;
 public class AgujeroNegroTest {
 
     private AgujeroNegro agujeroNegro;
-    private Jugador jugador;
     private Jugador jugador1;
     private Jugador jugador2;
     private Juego juego;
@@ -29,8 +28,6 @@ public class AgujeroNegroTest {
 
     @Before
     public void setUp() {
-        jugador = new Jugador();
-        jugador.setEstadoJugador(new PreInvocacion());
         jugador1 = new Jugador();
         jugador2 = new Jugador();
 
@@ -38,13 +35,6 @@ public class AgujeroNegroTest {
         juego.inicializar(jugador1, jugador2);
 
         turno = Turno.getInstancia();
-    }
-
-    @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class)
-    public void cartaBocaAbajoNoActivaEfecto() {
-        Magica agujeroNegro = new AgujeroNegro(jugador);
-        jugador.colocarCartaEnCampo((Carta) agujeroNegro, new BocaAbajo());
-        agujeroNegro.activarEfecto();
     }
 
     @Test // !!!
@@ -66,19 +56,19 @@ public class AgujeroNegroTest {
 
     @Test
     public void cartaAgujeroNegroSeColocaBocaAbajo_activaEfectosSinMonstruosEnJuegoYLuegoSeDescarta() {
-        agujeroNegro = new AgujeroNegro(jugador);
+        agujeroNegro = new AgujeroNegro(jugador1);
 
-        jugador.colocarCartaEnCampo((Carta) agujeroNegro, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) agujeroNegro, new BocaAbajo());
 
         Assert.assertTrue(agujeroNegro.estaEnJuego());
-        Assert.assertTrue(jugador.cartaEstaEnCampo(agujeroNegro));
-        Assert.assertFalse(jugador.cartaEstaEnCementerio(agujeroNegro));
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(agujeroNegro));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(agujeroNegro));
 
         agujeroNegro.activarEfecto();
 
         Assert.assertFalse(agujeroNegro.estaEnJuego());
-        Assert.assertFalse(jugador.cartaEstaEnCampo(agujeroNegro));
-        Assert.assertTrue(jugador.cartaEstaEnCementerio(agujeroNegro));
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(agujeroNegro));
+        Assert.assertTrue(jugador1.cartaEstaEnCementerio(agujeroNegro));
     }
 
     @Test
@@ -178,7 +168,7 @@ public class AgujeroNegroTest {
         turno.pasarTurno();
         jugador1.colocarCartaEnCampo((Carta) trampaPropia, new BocaAbajo());
         turno.pasarTurno();
-        jugador1.colocarCartaEnCampo((Carta) trampaOponente, new BocaAbajo());
+        jugador2.colocarCartaEnCampo((Carta) trampaOponente, new BocaAbajo());
         turno.pasarTurno();
         jugador1.colocarCartaEnCampo((Carta) agujeroNegro, new BocaAbajo());
 

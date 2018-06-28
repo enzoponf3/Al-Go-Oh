@@ -160,7 +160,7 @@ public class Jugador implements Observer {
         for (NoMonstruo noMonstruo : noMonstruos) {
             if ((continuarAtaque = noMonstruo.activarTrampa())) {
                 noMonstruo.activarEfecto(monstruoAtacante, monstruoAtacado);
-                return noMonstruo.bloquearAtaque();
+                return noMonstruo.negarAtaque();
             }
         }
         return !continuarAtaque;

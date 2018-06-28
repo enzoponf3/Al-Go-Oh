@@ -20,7 +20,6 @@ import org.junit.Test;
 public class FisuraTest {
 
     private Fisura fisura;
-    private Jugador jugador;
     private Jugador jugador1;
     private Jugador jugador2;
     private Juego juego;
@@ -28,8 +27,6 @@ public class FisuraTest {
 
     @Before
     public void setUp() {
-        jugador = new Jugador();
-        jugador.setEstadoJugador(new PreInvocacion());
         jugador1 = new Jugador();
         jugador2 = new Jugador();
 
@@ -39,14 +36,8 @@ public class FisuraTest {
         turno = Turno.getInstancia();
     }
 
-    @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class)
-    public void cartaBocaAbajoNoActivaEfecto() {
-        fisura = new Fisura(jugador);
-        jugador.colocarCartaEnCampo((Carta) fisura, new BocaAbajo());
-        fisura.activarEfecto();
-    }
 
-    @Test // !!! sacar el activar
+    @Test
     public void alActivarseMataAlMonstruoMasDebilDelOponente_fisuraVaAlCementerio() {
         fisura = new Fisura(jugador1);
         Monstruo monstruoFuerte = new SevenColoredFish(jugador2);
@@ -99,8 +90,8 @@ public class FisuraTest {
         fisura = new Fisura(jugador1);
 
         jugador1.colocarCartaEnCampo(fisura, new BocaAbajo());
-
         fisura.activarEfecto();
+
         Assert.assertFalse(fisura.estaEnJuego());
         Assert.assertFalse(jugador1.cartaEstaEnCampo(fisura));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(fisura));
@@ -118,8 +109,8 @@ public class FisuraTest {
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoFuerte, new BocaArriba());
         turno.pasarTurno();
-        jugador1.colocarCartaEnCampo(fisura, new BocaAbajo());
 
+        jugador1.colocarCartaEnCampo(fisura, new BocaAbajo());
         fisura.activarEfecto();
 
         Assert.assertFalse(monstruoDebil.estaEnJuego());
@@ -144,6 +135,7 @@ public class FisuraTest {
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoFuerte, new BocaArriba());
         turno.pasarTurno();
+
         jugador1.colocarCartaEnCampo(fisura, new BocaArriba());
 
         Assert.assertFalse(monstruoDebil.estaEnJuego());

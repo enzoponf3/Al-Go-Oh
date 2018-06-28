@@ -9,8 +9,8 @@ import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
+import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.modelo.jugador.PreInvocacion;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -36,9 +36,8 @@ public class RefuerzosTest {
         turno = Turno.getInstancia();
     }
 
-    @Ignore
     @Test
-    public void noSePuedeColocarBocaArriba() {
+    public void sePuedeColocarBocaArriba() { // !!!
         refuerzos = new Refuerzos(jugador1);
 
         jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaArriba());
@@ -68,8 +67,7 @@ public class RefuerzosTest {
         Assert.assertEquals(ataqueIncialMonstruo, monstruo.getAtaque());
     }
 
-    @Ignore
-    @Test
+    @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class)
     public void seColocaBocaAbajo_noSePuedeActivarElEfectoManualmente() {
         refuerzos = new Refuerzos(jugador1);
 
@@ -84,7 +82,7 @@ public class RefuerzosTest {
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(refuerzos, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -98,13 +96,33 @@ public class RefuerzosTest {
     }
 
     @Test
+    public void colocoTrampaRefuerzos_seActivaAlAtacarAUnMonstruoDeSuCampo_quedaBocaArriba() {
+        refuerzos = new Refuerzos(jugador1);
+        Monstruo monstruoAtacado = new Kuriboh(jugador1); // ATK 300
+        Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
+
+        // Los monstruos por default se colocan en modo ataque
+        jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
+        turno.pasarTurno();
+        jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
+
+        Assert.assertTrue(refuerzos.getEstadoCarta() instanceof BocaAbajo);
+
+        monstruoAtacante.atacar(monstruoAtacado);
+
+        Assert.assertTrue(refuerzos.getEstadoCarta() instanceof BocaArriba);
+    }
+
+
+    @Test
     public void colocoTrampaRefuerzos_seActivaAlAtacarAUnMonstruoDeSuCampo_enElSiguienteTurnoSeDescarta() {
         refuerzos = new Refuerzos(jugador1);
         Monstruo monstruoAtacado = new Kuriboh(jugador1); // ATK 300
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(refuerzos, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -127,7 +145,7 @@ public class RefuerzosTest {
         Integer ataqueInicialAtacado = monstruoAtacado.getAtaque();
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(refuerzos, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -147,12 +165,13 @@ public class RefuerzosTest {
         Integer ataqueInicialAtacado = monstruoAtacado.getAtaque();
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(refuerzos, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
 
         monstruoAtacante.atacar(monstruoAtacado);
+        turno.pasarTurno();
 
         Integer ataqueFinalAtacado = ataqueInicialAtacado;
         Assert.assertEquals(ataqueFinalAtacado, monstruoAtacado.getAtaque());
@@ -165,7 +184,7 @@ public class RefuerzosTest {
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(refuerzos, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());

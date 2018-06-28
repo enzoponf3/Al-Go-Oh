@@ -74,7 +74,7 @@ public class Entrega1OficialTest {
     }
 
 
-    @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class)
+    @Test
     public void colocarCartaMagicaEnCampoBocaAbajo_NoActivaNingunEfecto() {
         /*
         EfectoCarta efectoCarta = new EfectoAgujeroNegro();
@@ -84,8 +84,9 @@ public class Entrega1OficialTest {
 
         //cartaMagica.pasarAModoJuego(new BocaAbajo());
         jugador1.colocarCartaEnCampo(cartaMagica, new BocaAbajo());
-        cartaMagica.activarEfecto();
-        // Como está boca abajo no puede activarEfecto el efecto y lanza error.
+
+        // No se activó el efecto y sigue en campo.
+        jugador1.cartaEstaEnCampo(cartaMagica);
     }
 
     @Test

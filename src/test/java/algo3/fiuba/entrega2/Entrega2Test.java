@@ -299,7 +299,14 @@ public class Entrega2Test {
         Integer vidaFinalAtacado = 8000;
         Assert.assertEquals(vidaFinalAtacado, jugador1.getPuntosDeVida());
 
-        // Después de ser activada una carta Trampa va al cementerio.
+        // La carta Trampa se queda activa por este turno.
+        Assert.assertTrue(cilindroMagico.estaEnJuego());
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(cilindroMagico));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(cilindroMagico));
+
+        // La carta Trampa después del turno de ser activada va al cementerio.
+        turno.pasarTurno();
+        Assert.assertFalse(cilindroMagico.estaEnJuego());
         Assert.assertFalse(jugador1.cartaEstaEnCampo(cilindroMagico));
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(cilindroMagico));
     }
@@ -312,7 +319,7 @@ public class Entrega2Test {
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
-        jugador1.colocarCartaEnCampo(refuerzos, new BocaAbajo());
+        jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaAbajo());
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacado, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -337,10 +344,16 @@ public class Entrega2Test {
         Integer vidaFinalAtacado = 8000;
         Assert.assertEquals(vidaFinalAtacado, jugador1.getPuntosDeVida());
 
-        // La carta Trampa después de activada va al cementerio.
+        // La carta Trampa se queda activa por este turno.
+        Assert.assertTrue(refuerzos.estaEnJuego());
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(refuerzos));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(refuerzos));
+
+        // La carta Trampa después del turno de ser activada va al cementerio.
+        turno.pasarTurno();
         Assert.assertFalse(refuerzos.estaEnJuego());
-        Assert.assertTrue(jugador1.cartaEstaEnCementerio(refuerzos));
         Assert.assertFalse(jugador1.cartaEstaEnCampo(refuerzos));
+        Assert.assertTrue(jugador1.cartaEstaEnCementerio(refuerzos));
     }
 
     @Test

@@ -1,15 +1,12 @@
 package algo3.fiuba.modelo.cartas.estados_cartas;
 
+import algo3.fiuba.modelo.Campo;
+import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.Monstruo;
-import algo3.fiuba.modelo.cartas.NoMonstruo;
-import algo3.fiuba.modelo.cartas.Trampa;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
 
 public class BocaArriba extends EnJuego {
-
 
     @Override
     public void activarEfecto(Carta carta, EfectoCarta efecto) {
@@ -20,6 +17,12 @@ public class BocaArriba extends EnJuego {
     public void activarEfecto(Carta carta, Monstruo otraCarta1, Monstruo otraCarta2, EfectoCarta efecto) {
         efecto.activar(carta, otraCarta1, otraCarta2);
     }
+
+    @Override
+    public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto) {
+        throw new CartaInhabilitadaParaActivarseExcepcion("Ya no puedes activar a exodia!");
+    }
+
 
     @Override
     public void recibirAtaque(Monstruo carta) {
@@ -35,9 +38,15 @@ public class BocaArriba extends EnJuego {
     public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
         throw new CartaInhabilitadaParaActivarseExcepcion("No se puede Activar una carta Trampa en que esté boca arriba");
     }
+/*
+    @Override
+    public void colocarCartaEnCampo(Monstruo carta, Campo campo) {
+        campo.colocarCarta(carta, this);
+    }
 
     @Override
-    public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto) {
-        throw new CartaInhabilitadaParaActivarseExcepcion("Ya no puedes activar a exodia!");
+    public void colocarCartaEnCampo(Magica carta, Campo campo) {
+
     }
+    */
 }

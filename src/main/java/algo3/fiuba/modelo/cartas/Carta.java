@@ -36,22 +36,10 @@ public abstract class Carta implements Observer {
         estadoEnTurno = estadoEnTurno.pasarTurno();
     }
 
-    /*
     public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         this.estadoCarta = tipoEnJuego;
         this.estadoEnTurno = new NoUsadaEnTurno();
     }
-*/
-    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        this.estadoCarta = tipoEnJuego;
-        this.estadoEnTurno = new NoUsadaEnTurno();
-    }
-
-/*
-    public void pasarAModoJuego(EnJuego tipoEnJuego) {
-        estadoCarta = tipoEnJuego;
-    }
-*/
 
     public boolean estaEnJuego() {
         return estadoCarta.estaEnJuego();
@@ -70,20 +58,27 @@ public abstract class Carta implements Observer {
     }
 
     public void activarEfecto() {
+        this.girar();
         estadoCarta.activarEfecto(this,  efecto);
     }
 
     public void activarEfecto(Monstruo atacante, Monstruo atacado) {
+        this.girar();
         estadoCarta.activarEfecto(this,  atacante, atacado, efecto);
     }
 
     public void activarEfecto(Carta carta, Jugador jugador) {
+        this.girar();
         estadoCarta.activarEfecto(this, jugador, efecto);
     }
 
     public abstract boolean estaEnCampo(Campo campo);
 
     public abstract void removerDelCampo(Campo campo);
+
+    public void girar() {
+        estadoCarta = estadoCarta.girar();
+    }
 
     protected void setEfecto(EfectoCarta efecto) {
         this.efecto = efecto;
@@ -106,5 +101,13 @@ public abstract class Carta implements Observer {
     public void agregarAMano(List<Carta> mano) {
         estadoCarta = new EnMano();
         mano.add(this);
+    }
+
+    public EstadoCarta getEstadoCarta() {
+        return estadoCarta;
+    }
+
+    public EstadoEnTurno getEstadoEnTurno() {
+        return estadoEnTurno;
     }
 }

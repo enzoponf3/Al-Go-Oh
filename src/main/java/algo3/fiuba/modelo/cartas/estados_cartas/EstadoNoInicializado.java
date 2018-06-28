@@ -49,4 +49,9 @@ public class EstadoNoInicializado implements EstadoCarta {
     public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto){
         throw new CartaNoInicializadaEnDueloExcepcion("No se pueden atacar Monstruos que están fuera de juego.");
     }
+
+    @Override
+    public EstadoCarta girar() {
+        return this;
+    }
 }

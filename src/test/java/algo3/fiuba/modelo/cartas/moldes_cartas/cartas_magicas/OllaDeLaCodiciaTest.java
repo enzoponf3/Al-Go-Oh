@@ -20,7 +20,6 @@ import org.junit.Test;
 public class OllaDeLaCodiciaTest {
 
     private OllaDeLaCodicia ollaDeLaCodicia;
-    private Jugador jugador;
     private Jugador jugador1;
     private Jugador jugador2;
     private Juego juego;
@@ -28,8 +27,6 @@ public class OllaDeLaCodiciaTest {
 
     @Before
     public void setUp() {
-        jugador = new Jugador();
-        jugador.setEstadoJugador(new PreInvocacion());
         jugador1 = new Jugador();
         jugador2 = new Jugador();
 
@@ -37,14 +34,6 @@ public class OllaDeLaCodiciaTest {
         juego.inicializar(jugador1, jugador2);
 
         turno = Turno.getInstancia();
-    }
-
-    @Test(expected = CartaInhabilitadaParaActivarseExcepcion.class) // !!! sacar porque sí se activa el efecto
-    public void cartaBocaAbajoNoActivaEfecto() {
-        ollaDeLaCodicia = new OllaDeLaCodicia(jugador);
-        Magica agujeroNegro = new AgujeroNegro(jugador);
-        jugador.colocarCartaEnCampo((Carta) agujeroNegro, new BocaAbajo());
-        agujeroNegro.activarEfecto();
     }
 
     @Test
@@ -70,7 +59,7 @@ public class OllaDeLaCodiciaTest {
 
     @Test(expected = CartasInsuficientesExcepcion.class) // !!! sacar activar efecto
     public void alActivarOllaJugadorCon1CartaEnMazoLanzaExcepcion() {
-        ollaDeLaCodicia = new OllaDeLaCodicia(jugador);
+        ollaDeLaCodicia = new OllaDeLaCodicia(jugador1);
         Magica agujeroNegro = new AgujeroNegro(jugador1);
 
         jugador1.agregarCartaAMazo(agujeroNegro);
@@ -87,9 +76,16 @@ public class OllaDeLaCodiciaTest {
     @Test
     public void ollaDeLaCodiciaSeColocaBocaAbajo_seActivaElEfectoYVaAlCementerio() {
         ollaDeLaCodicia = new OllaDeLaCodicia(jugador1);
+        Magica carta1 = new AgujeroNegro(jugador1);
+        Monstruo carta2 = new DragonBlancoDeOjosAzules(jugador2);
+        Monstruo carta3 = new BebeDragon(jugador2);
+
+        jugador1.agregarCartaAMazo(carta1);
+        jugador1.agregarCartaAMazo(carta2);
+        jugador1.agregarCartaAMazo(carta3);
+
 
         jugador1.colocarCartaEnCampo(ollaDeLaCodicia, new BocaAbajo());
-
         ollaDeLaCodicia.activarEfecto();
 
         Assert.assertFalse(ollaDeLaCodicia.estaEnJuego());

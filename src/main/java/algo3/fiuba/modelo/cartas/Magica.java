@@ -15,7 +15,7 @@ public class Magica extends NoMonstruo {
     }
 
     @Override
-    public boolean bloquearAtaque() {
+    public boolean negarAtaque() {
         return false;
     }
 }

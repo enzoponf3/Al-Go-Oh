@@ -3,6 +3,7 @@ package algo3.fiuba.modelo.cartas;
 import algo3.fiuba.modelo.Campo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
 import algo3.fiuba.modelo.cartas.estado_en_turno.NoUsadaEnTurno;
+import algo3.fiuba.modelo.cartas.modificadores.ModificadorRefuerzos;
 import algo3.fiuba.modelo.cartas.nivel.Nivel;
 import algo3.fiuba.modelo.cartas.nivel.NivelFactoryFactory;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
@@ -51,6 +52,7 @@ public class Monstruo extends Carta {
             resultadoCombate.afectarDefensor(this);
             return resultadoCombate;
         }
+        super.girar();
         return new ResultadoCombateNulo();
 
     }
@@ -99,6 +101,7 @@ public class Monstruo extends Carta {
     }
 
     public Integer getAtaque() {
+        System.out.println(modificadores);
         Integer ataqueModificado = ataqueBase;
         for (Modificador modificador : modificadores) {
             ataqueModificado = modificador.modificarAtaque(ataqueModificado);
@@ -120,4 +123,7 @@ public class Monstruo extends Carta {
         modificadores.add(modificador);
     }
 
+    public void removerModificador(Modificador modificador) {
+        modificadores.remove(modificador);
+    }
 }

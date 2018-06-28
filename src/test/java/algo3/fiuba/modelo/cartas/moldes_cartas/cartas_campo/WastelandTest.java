@@ -242,6 +242,12 @@ public class WastelandTest {
         Monstruo monstruoOponente1 = new GuerreroCelta(jugador2);
         Monstruo monstruoOponente2 = new SevenColoredFish(jugador2);
 
+        Monstruo monstruoPropio3 = new Kuriboh(jugador1);
+        jugador1.colocarCartaEnCampo((Carta) monstruoPropio3, new BocaArriba());
+        turno.pasarTurno();
+        turno.pasarTurno();
+        monstruoPropio3.getAtaque();
+
 
         jugador1.colocarCartaEnCampo((Carta) monstruoPropio1, new BocaArriba());
         turno.pasarTurno();

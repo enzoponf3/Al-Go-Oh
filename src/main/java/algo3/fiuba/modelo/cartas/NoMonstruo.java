@@ -14,7 +14,7 @@ public abstract class NoMonstruo extends Carta {
 
     public abstract boolean activarTrampa();
 
-    public abstract boolean bloquearAtaque();
+    public abstract boolean negarAtaque();
 
     @Override
     public boolean estaEnCampo(Campo campo) {
@@ -37,12 +37,14 @@ public abstract class NoMonstruo extends Carta {
 
     @Override
     public void activarEfecto() {
+        super.girar();
         estadoCarta.activarEfecto(this,  efecto);
         jugador.mandarCartaDelCampoAlCementerio(this);
     }
 
     @Override
     public void activarEfecto(Monstruo otraCarta1, Monstruo otraCarta2) {
+        super.girar();
         estadoCarta.activarEfecto(this, otraCarta1, otraCarta2, efecto);
         jugador.mandarCartaDelCampoAlCementerio(this);
     }

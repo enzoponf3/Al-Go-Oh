@@ -4,6 +4,8 @@ import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.CartaCampo;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.cartas.NoMonstruo;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
@@ -61,6 +63,24 @@ public class Campo {
         zonaNoMonstruos.add(carta);
     }
 
+/*
+    public void colocarCarta(NoMonstruo carta, BocaArriba enJuego) {
+        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
+            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
+
+        carta.setEstado(enJuego); // !!! sacar
+        zonaNoMonstruos.add(carta);
+    }
+
+    public void colocarCarta(NoMonstruo carta, BocaAbajo enJuego) {
+        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
+            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
+
+        carta.setEstado(enJuego); // !!! sacar
+        zonaNoMonstruos.add(carta);
+    }
+*/
+
     public void colocarCarta(CartaCampo carta, EnJuego enJuego) {
         
         // !!!Debería de verificar si ya había otra carta de campo.
@@ -94,8 +114,12 @@ public class Campo {
     }
 
     public void removerCarta(CartaCampo carta) {
-        if (cartaCampo.equals(carta))
+        if (cartaCampo.equals(carta)) {
             cartaCampo = null;
+            for (Monstruo monstruo : zonaMonstruos) {
+                //monstruo.removerModificador();
+            }
+        }
     }
 
     @Override

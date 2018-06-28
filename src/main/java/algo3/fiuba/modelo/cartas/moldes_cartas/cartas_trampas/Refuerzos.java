@@ -1,4 +1,4 @@
-package algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas;
+package algo3.fiuba.modelo.cartas.moldes_cartas .cartas_trampas;
 
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.Trampa;
@@ -12,7 +12,7 @@ public class Refuerzos extends Trampa {
     }
 
     @Override
-    public boolean bloquearAtaque() {
+    public boolean negarAtaque() {
         return false;
     }
 }
