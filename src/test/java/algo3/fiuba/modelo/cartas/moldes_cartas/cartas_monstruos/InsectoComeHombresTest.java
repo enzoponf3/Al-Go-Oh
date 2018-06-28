@@ -47,6 +47,69 @@ public class InsectoComeHombresTest {
     }
 
     @Test
+    public void seColocaEnElCampoBocaArriba_alSerAtacadoNoActivaElEfecto() {
+        Monstruo monstruoOponente = new SevenColoredFish(jugador2);
+
+        jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaArriba());
+        turno.pasarTurno();
+        jugador2.colocarCartaEnCampo((Carta) monstruoOponente, new BocaArriba());
+
+        monstruoOponente.atacar(insectoComeHombres);
+
+        Assert.assertFalse(insectoComeHombres.estaEnJuego());
+        Assert.assertFalse(jugador1.cartaEstaEnCampo(insectoComeHombres));
+        Assert.assertTrue(jugador1.cartaEstaEnCementerio(insectoComeHombres));
+
+        Assert.assertTrue(monstruoOponente.estaEnJuego());
+        Assert.assertTrue(jugador2.cartaEstaEnCampo(monstruoOponente));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoOponente));
+    }
+
+    @Test
+    public void seColocaEnElCampoBocaAbajo_alGirarLaCaraBocaArribaEnElMismoTurnoNoSeActivaElEfecto() {
+        Monstruo monstruoRival = new SevenColoredFish(jugador2);
+
+        turno.pasarTurno();
+        jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
+        turno.pasarTurno();
+        jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaAbajo());
+
+        insectoComeHombres.girar();
+
+        Assert.assertTrue(insectoComeHombres.estaEnJuego());
+        Assert.assertTrue(insectoComeHombres.getEstadoCarta() instanceof BocaArriba);
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
+
+        // Se activó el efecto y murió la otra carta
+        Assert.assertTrue(monstruoRival.estaEnJuego());
+        Assert.assertTrue(jugador2.cartaEstaEnCampo(monstruoRival));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoRival));
+    }
+
+    @Test
+    public void seColocaEnElCampoBocaAbajo_alQuererActivarElEfectoEnElPrimerTurnoQueEsConvocadaNoloLograYSeDaVueltaLaCarta() {
+        Monstruo monstruoRival = new SevenColoredFish(jugador2);
+
+        turno.pasarTurno();
+        jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
+        turno.pasarTurno();
+        jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaAbajo());
+
+        insectoComeHombres.activarEfecto();
+
+        Assert.assertTrue(insectoComeHombres.estaEnJuego());
+        Assert.assertTrue(insectoComeHombres.getEstadoCarta() instanceof BocaArriba);
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
+
+        // Se activó el efecto y murió la otra carta
+        Assert.assertTrue(monstruoRival.estaEnJuego());
+        Assert.assertTrue(jugador2.cartaEstaEnCampo(monstruoRival));
+        Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoRival));
+    }
+
+
+    @Test
     public void seColocaEnElCampoBocaAbajo_alSerAtacadoActivaElEfecto() {
         Monstruo monstruoRival = new SevenColoredFish(jugador2);
 
@@ -58,6 +121,7 @@ public class InsectoComeHombresTest {
 
         Assert.assertTrue(insectoComeHombres.estaEnJuego());
         Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
 
         // Se activó el efecto y murió la otra carta
         Assert.assertFalse(monstruoRival.estaEnJuego());
@@ -66,23 +130,50 @@ public class InsectoComeHombresTest {
     }
 
     @Test
-    public void seColocaEnElCampoBocaArriba_alSerAtacadoNoActivaElEfecto() {
+    public void seColocaEnElCampoBocaAbajo_alGirarLaCaraBocaArribaEnOtroTurnoSeActivaElEfecto() {
         Monstruo monstruoRival = new SevenColoredFish(jugador2);
 
-        jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaArriba());
+        jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaAbajo());
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
+        turno.pasarTurno();
 
-        monstruoRival.atacar(insectoComeHombres);
+        insectoComeHombres.girar();
 
         Assert.assertTrue(insectoComeHombres.estaEnJuego());
+        Assert.assertTrue(insectoComeHombres.getEstadoCarta() instanceof BocaArriba);
         Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
 
         // Se activó el efecto y murió la otra carta
-        Assert.assertTrue(monstruoRival.estaEnJuego());
-        Assert.assertTrue(jugador2.cartaEstaEnCampo(monstruoRival));
-        Assert.assertFalse(jugador2.cartaEstaEnCementerio(monstruoRival));
+        Assert.assertFalse(monstruoRival.estaEnJuego());
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoRival));
+        Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoRival));
     }
+
+    @Test
+    public void seColocaEnElCampoBocaAbajo_sePuedeActivarElEfectoYAutomaticamentePasaAEstarBocaArriba() {
+        Monstruo monstruoRival = new SevenColoredFish(jugador2);
+
+        jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaAbajo());
+        turno.pasarTurno();
+        jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
+        turno.pasarTurno();
+
+        insectoComeHombres.activarEfecto();
+
+        Assert.assertTrue(insectoComeHombres.estaEnJuego());
+        Assert.assertTrue(insectoComeHombres.getEstadoCarta() instanceof BocaArriba);
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(insectoComeHombres));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(insectoComeHombres));
+
+        // Se activó el efecto y murió la otra carta
+        Assert.assertFalse(monstruoRival.estaEnJuego());
+        Assert.assertFalse(jugador2.cartaEstaEnCampo(monstruoRival));
+        Assert.assertTrue(jugador2.cartaEstaEnCementerio(monstruoRival));
+    }
+
+
 
 
 

@@ -252,8 +252,9 @@ public class Entrega1OficialTest {
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoJugador2, new BocaArriba());
         turno.pasarTurno();
-        jugador1.colocarCartaEnCampo(agujeroNegro, new BocaArriba());
 
+
+        jugador1.colocarCartaEnCampo(agujeroNegro, new BocaAbajo());
         agujeroNegro.activarEfecto();
 
         Assert.assertFalse(jugador1.cartaEstaEnCampo(monstruoJugador1));

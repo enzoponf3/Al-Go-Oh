@@ -24,7 +24,7 @@ public class Monstruo extends Carta {
     private Integer ataqueBase;
     private Integer defensaBase;
     protected ModoMonstruo modoMonstruo;
-    private Nivel nivel;
+    protected Nivel nivel;
     private Set<Modificador> modificadores;
 
     public Monstruo(String nombre, Integer ataque, Integer defensa, Integer estrellas, EfectoCarta efecto) {
@@ -46,15 +46,14 @@ public class Monstruo extends Carta {
     }
 
     public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
+        super.girar();
         if (!jugador.recibirAtaque(monstruoAtacante, this)) {
             estadoCarta.recibirAtaque(this);
             ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, this.getAtaque(), this.getDefensa());
             resultadoCombate.afectarDefensor(this);
             return resultadoCombate;
         }
-        super.girar();
         return new ResultadoCombateNulo();
-
     }
 
     public void pasarAModoAtaque() {

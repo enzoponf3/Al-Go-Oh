@@ -2,6 +2,8 @@ package algo3.fiuba.entrega1;
 
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Magica;
@@ -149,9 +151,9 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador1SeEncuentraSoloAlli() {
-        Carta carta = new Magica("no monstruo test", new EfectoNulo());
+        Carta carta = new AgujeroNegro(jugador1);
 
-        jugador1.colocarCartaEnCampo(carta, new BocaArriba());
+        jugador1.colocarCartaEnCampo(carta, new BocaAbajo());
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));
@@ -168,10 +170,10 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnNoMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
-        Carta carta = new Magica("no monstruo test", new EfectoNulo());
+        Carta carta = new AgujeroNegro(jugador2);
 
         turno.pasarTurno();
-        jugador2.colocarCartaEnCampo(carta, new BocaArriba());
+        jugador2.colocarCartaEnCampo(carta, new BocaAbajo());
 
         Assert.assertFalse(jugador1.cartaEstaEnMano(carta));
         Assert.assertFalse(jugador2.cartaEstaEnMano(carta));

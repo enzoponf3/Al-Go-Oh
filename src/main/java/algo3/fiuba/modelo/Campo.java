@@ -1,21 +1,15 @@
 package algo3.fiuba.modelo;
 
-import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.CartaCampo;
-import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.modelo.cartas.NoMonstruo;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
 import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Campo {
 
@@ -55,31 +49,32 @@ public class Campo {
         this.agregarModificadoresAMonstruos();
     }
 
-    public void colocarCarta(NoMonstruo carta, EnJuego enJuego) {
+    public void colocarCarta(Magica carta, BocaArriba bocaArriba) {
+        /*
+        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
+            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
+
+        zonaNoMonstruos.add(carta);
+        */
+        carta.setEstado(bocaArriba); // !!! sacar
+        carta.activarEfecto();
+    }
+
+    public void colocarCarta(Magica carta, BocaAbajo bocaAbajo) {
+        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
+            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
+
+        carta.setEstado(bocaAbajo); // !!! sacar
+        zonaNoMonstruos.add(carta);
+    }
+
+    public void colocarCarta(Trampa carta, EnJuego enJuego) {
         if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
             throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
 
         carta.setEstado(enJuego); // !!! sacar
         zonaNoMonstruos.add(carta);
     }
-
-/*
-    public void colocarCarta(NoMonstruo carta, BocaArriba enJuego) {
-        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
-
-        carta.setEstado(enJuego); // !!! sacar
-        zonaNoMonstruos.add(carta);
-    }
-
-    public void colocarCarta(NoMonstruo carta, BocaAbajo enJuego) {
-        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
-
-        carta.setEstado(enJuego); // !!! sacar
-        zonaNoMonstruos.add(carta);
-    }
-*/
 
     public void colocarCarta(CartaCampo carta, EnJuego enJuego) {
         

@@ -123,7 +123,7 @@ public class Entrega2Test {
 
         jugador1.agregarCartaAMazo(monstruo1);
         jugador1.agregarCartaAMazo(monstruo2);
-        jugador1.colocarCartaEnCampo(ollaDeLaCodicia, new BocaArriba());
+        jugador1.colocarCartaEnCampo(ollaDeLaCodicia, new BocaAbajo());
 
         ollaDeLaCodicia.activarEfecto();
         // Se agregaron dos cartas a la mano del jugador, sacadas del mazo de este.
@@ -151,7 +151,7 @@ public class Entrega2Test {
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoFuerte, new BocaArriba());
         turno.pasarTurno();
-        jugador1.colocarCartaEnCampo((Carta) fisura, new BocaArriba());
+        jugador1.colocarCartaEnCampo((Carta) fisura, new BocaAbajo());
 
         fisura.activarEfecto();
 

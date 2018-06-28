@@ -1,9 +1,6 @@
 package algo3.fiuba.modelo;
 
-import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.CartaCampo;
-import algo3.fiuba.modelo.cartas.Monstruo;
-import algo3.fiuba.modelo.cartas.NoMonstruo;
+import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
 import algo3.fiuba.modelo.excepciones.CartasInsuficientesExcepcion;
@@ -28,9 +25,15 @@ public class TableroJugador {
         this.campo.colocarCarta(carta, tipoEnJuego);
     }
 
-    public void colocarCartaEnCampo(NoMonstruo carta, EnJuego tipoEnJuego) {
+    public void colocarCartaEnCampo(Magica carta, EnJuego tipoEnJuego) {
+        //this.campo.colocarCarta(carta, tipoEnJuego);
+        tipoEnJuego.colocarCartaEnCampo(carta, campo);
+    }
+
+    public void colocarCartaEnCampo(Trampa carta, EnJuego tipoEnJuego) {
         this.campo.colocarCarta(carta, tipoEnJuego);
     }
+
 
     public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego) {
         this.campo.colocarCarta(carta, tipoEnJuego);

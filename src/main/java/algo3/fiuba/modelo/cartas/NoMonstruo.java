@@ -27,15 +27,6 @@ public abstract class NoMonstruo extends Carta {
     }
 
     @Override
-    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
-        if (sacrificios.length != 0)
-            throw new SacrificiosIncorrectosExcepcion("No se pueden hacer sacrificios para invocar esta carta.");
-
-        super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
-        jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
-    }
-
-    @Override
     public void activarEfecto() {
         super.girar();
         estadoCarta.activarEfecto(this,  efecto);

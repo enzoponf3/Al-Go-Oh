@@ -3,12 +3,9 @@ package algo3.fiuba.modelo.jugador;
 
 import algo3.fiuba.modelo.TableroJugador;
 import algo3.fiuba.modelo.Turno;
-import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.CartaCampo;
-import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnCementerio;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.modelo.cartas.NoMonstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnMano;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnMazo;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
@@ -69,7 +66,11 @@ public class Jugador implements Observer {
         estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego);
     }
 
-    public void colocarCartaEnCampo(NoMonstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+    public void colocarCartaEnCampo(Magica carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego);
+    }
+
+    public void colocarCartaEnCampo(Trampa carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         estadoJugador = estadoJugador.colocarCartaEnCampo(this, tableroJugador, carta, tipoEnJuego);
     }
 

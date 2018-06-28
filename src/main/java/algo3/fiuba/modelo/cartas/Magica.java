@@ -1,6 +1,9 @@
 package algo3.fiuba.modelo.cartas;
 
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
+import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
+import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
+import algo3.fiuba.modelo.jugador.Jugador;
 
 public class Magica extends NoMonstruo {
 
@@ -17,5 +20,14 @@ public class Magica extends NoMonstruo {
     @Override
     public boolean negarAtaque() {
         return false;
+    }
+
+    @Override
+    public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
+        if (sacrificios.length != 0)
+            throw new SacrificiosIncorrectosExcepcion("No se pueden hacer sacrificios para invocar esta carta.");
+
+        super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
+        jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
     }
 }

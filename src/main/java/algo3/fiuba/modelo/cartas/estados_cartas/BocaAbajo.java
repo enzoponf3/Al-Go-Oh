@@ -1,11 +1,9 @@
 package algo3.fiuba.modelo.cartas.estados_cartas;
 
+import algo3.fiuba.modelo.Campo;
+import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.Monstruo;
-import algo3.fiuba.modelo.cartas.NoMonstruo;
-import algo3.fiuba.modelo.cartas.Trampa;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
 
 public class BocaAbajo extends EnJuego {
@@ -38,5 +36,10 @@ public class BocaAbajo extends EnJuego {
     @Override
     public void activarEfecto(Carta carta, Jugador jugador, EfectoCarta efecto){
         activarEfecto(carta, efecto);
+    }
+
+    @Override
+    public void colocarCartaEnCampo(Magica carta, Campo campo) {
+        campo.colocarCarta(carta, this);
     }
 }
