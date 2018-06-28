@@ -306,10 +306,10 @@ public class Entrega2Test {
 
 
     @Test
-    public void colocoTrampaRefuerzos_seAtacaConMonstruoDe400ATKMas_monstruoAtacadoAumenta500ATKAlActivarTrampa() {
+    public void colocoTrampaRefuerzos_seAtacaConMonstruoDe200ATKMas_monstruoAtacadoAumenta500ATKAlActivarTrampa() {
+        Trampa refuerzos = new Refuerzos(jugador1);
         Monstruo monstruoAtacado = new Kuriboh(jugador1); // ATK 300
-        Trampa refuerzos = new Refuerzos(jugador1); // ATK 500
-        Monstruo monstruoAtacante = new Jinzo7(jugador2);
+        Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
         jugador1.colocarCartaEnCampo(refuerzos, new BocaAbajo());
