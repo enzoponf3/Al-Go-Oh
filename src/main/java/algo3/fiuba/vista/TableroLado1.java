@@ -13,13 +13,11 @@ public class TableroLado1 extends Tablero {
         this.setHgap(5.5);
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
 
-        this.jugador = jugador;
+        super.jugador = jugador;
         super.setMano(1, 0);
         super.setMazo(0, 0);
         super.setCampo(1, 1, 1, 2);
         super.setCementerio(0, 2);
         super.setCartaCampo(2, 2);
     }
-
-
 }
