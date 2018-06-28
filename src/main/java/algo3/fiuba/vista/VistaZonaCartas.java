@@ -26,7 +26,7 @@ public abstract class VistaZonaCartas extends HBox {
 
     public void reemplazarCarta(ImageView carta) {
         this.getChildren().remove(indice);
-        this.getChildren().add(0, carta);
+        this.getChildren().add(indice, carta);
         indice++;
     }
 

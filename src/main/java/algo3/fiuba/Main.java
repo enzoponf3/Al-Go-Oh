@@ -39,6 +39,7 @@ public class Main extends Application {
         Jugador jugador2 = new Jugador();
         juego.inicializar(jugador1,jugador2);
         juego.inicializarMazos();
+        juego.inicializarManos();
         ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
         controladorTurnos.setJugadores(jugador1, jugador2);
         return juego;

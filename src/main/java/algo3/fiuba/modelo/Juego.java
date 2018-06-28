@@ -49,8 +49,8 @@ public class Juego {
     
     public void inicializarMazos() {
         MazoUtils mazoUtils = new MazoUtils();
-        jugador1.setMazo(mazoUtils.getMuestra4Cartas1(jugador1));
-        jugador2.setMazo(mazoUtils.getMuestra4cartas2(jugador2));
+        jugador1.setMazo(mazoUtils.getMuestra8Cartas1(jugador1));
+        jugador2.setMazo(mazoUtils.getMuestra8Cartas2(jugador2));
     }
 
     public Jugador getJugador1() {
@@ -59,5 +59,12 @@ public class Juego {
 
     public Jugador getJugador2() {
         return jugador2;
+    }
+
+    public void inicializarManos() {
+        for(int i = 0; i < 5; i++) {
+            jugador1.tomarCartaDelMazo();
+            jugador2.tomarCartaDelMazo();
+        }
     }
 }

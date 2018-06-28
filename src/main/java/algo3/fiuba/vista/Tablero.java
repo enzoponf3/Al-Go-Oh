@@ -3,6 +3,7 @@ package algo3.fiuba.vista;
 import algo3.fiuba.controladores.ControladorCartaCampo;
 import algo3.fiuba.controladores.ControladorCementerio;
 import algo3.fiuba.controladores.ControladorMazo;
+import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -34,8 +35,9 @@ public abstract class Tablero extends GridPane {
 
         ImageView fondoMazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        this.zonaMazo = new VistaMazo(fondoMazo);
+        this.zonaMazo = new VistaMazo(fondoMazo, jugador);
         this.zonaMazo.setOnMouseClicked(new ControladorMazo(zonaMazo, jugador, zonaMano));
+        this.zonaMazo.dibujar();
         this.add(zonaMazo, colIndex, colIndex);
     }
 
@@ -77,6 +79,7 @@ public abstract class Tablero extends GridPane {
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.zonaCartaDeCampo = new VistaCartaCampo(jugador, zonaMano, zonaMonstruos, zonaNoMonstruos);
         this.zonaCartaDeCampo.setOnMouseClicked(new ControladorCartaCampo(zonaCartaDeCampo, jugador, zonaMano));
+        this.zonaCartaDeCampo.dibujar();
         this.add(zonaCartaDeCampo, colIndex, rowIndex);
     }
 

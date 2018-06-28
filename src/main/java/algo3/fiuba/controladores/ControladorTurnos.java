@@ -44,7 +44,6 @@ public class ControladorTurnos {
     }
 
     public void cambiarDeFase() {
-
         if (jugadorActual.getEstadoJugador() instanceof PreInvocacion) {
             jugadorActual.setEstadoJugador(new PostInvocacion());
         } else if (jugadorActual.getEstadoJugador() instanceof PostInvocacion) {
