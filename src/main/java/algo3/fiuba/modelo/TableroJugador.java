@@ -30,12 +30,15 @@ public class TableroJugador {
     }
 
     public void colocarCartaEnCampo(Trampa carta, EnJuego tipoEnJuego) {
-        this.campo.colocarCarta(carta, tipoEnJuego);
+        //this.campo.colocarCarta(carta, tipoEnJuego);
+        tipoEnJuego.colocarCartaEnCampo(carta, campo);
     }
 
 
     public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego) {
-        this.campo.colocarCarta(carta, tipoEnJuego);
+        //this.campo.colocarCarta(carta, tipoEnJuego);
+        tipoEnJuego.colocarCartaEnCampo(carta, campo);
+
     }
 
     public Carta tomarCartaDelMazo() {

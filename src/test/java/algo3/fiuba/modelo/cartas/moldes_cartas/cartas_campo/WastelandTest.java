@@ -39,14 +39,6 @@ public class WastelandTest {
         turno = Turno.getInstancia();
     }
 
-    @Ignore
-    @Test
-    public void xxx() {
-        wasteland = new Wasteland(jugador);
-
-        jugador.colocarCartaEnCampo((Carta) wasteland, new BocaAbajo());
-    }
-
     @Test
     public void alActivarElEfectoElMonstruoDeSuLadoDelCampoGana200PuntosDeAtaque() {
         wasteland = new Wasteland(jugador1);

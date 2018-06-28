@@ -22,7 +22,6 @@ public class DragonDefinitivoDeOjosAzules extends Monstruo {
         realizarSacrificios(sacrificios);
         modoMonstruo = new ModoDeAtaque();
         estadoCarta = tipoEnJuego;
-// !!!        super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
         jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
     }
 
@@ -32,7 +31,7 @@ public class DragonDefinitivoDeOjosAzules extends Monstruo {
 
         boolean sacrificioValido = true;
         for (Monstruo sacrificio : sacrificios) {
-            sacrificioValido &= sacrificio.equals(new DragonBlancoDeOjosAzules(jugador));
+            sacrificioValido &= sacrificio instanceof DragonBlancoDeOjosAzules;
         }
 
         return sacrificioValido;

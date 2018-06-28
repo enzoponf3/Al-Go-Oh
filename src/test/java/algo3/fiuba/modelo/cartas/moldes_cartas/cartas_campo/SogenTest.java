@@ -40,14 +40,6 @@ public class SogenTest {
         turno = Turno.getInstancia();
     }
 
-    @Ignore
-    @Test
-    public void xxx() {
-        sogen = new Sogen(jugador);
-
-        jugador.colocarCartaEnCampo((Carta) sogen, new BocaAbajo());
-    }
-
     @Test
     public void alActivarElEfectoElMonstruoDeSuLadoDelCampoGana500PuntosDeDefensa() {
         sogen = new Sogen(jugador1);

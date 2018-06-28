@@ -50,12 +50,6 @@ public class Campo {
     }
 
     public void colocarCarta(Magica carta, BocaArriba bocaArriba) {
-        /*
-        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
-
-        zonaNoMonstruos.add(carta);
-        */
         carta.setEstado(bocaArriba); // !!! sacar
         carta.activarEfecto();
     }
@@ -68,19 +62,27 @@ public class Campo {
         zonaNoMonstruos.add(carta);
     }
 
-    public void colocarCarta(Trampa carta, EnJuego enJuego) {
+    public void colocarCarta(Trampa carta, BocaArriba bocaArriba) {
+        this.colocarCarta(carta, new BocaAbajo());
+    }
+
+    public void colocarCarta(Trampa carta, BocaAbajo bocaAbajo) {
         if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
             throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
 
-        carta.setEstado(enJuego); // !!! sacar
+        carta.setEstado(bocaAbajo); // !!! sacar
         zonaNoMonstruos.add(carta);
     }
 
-    public void colocarCarta(CartaCampo carta, EnJuego enJuego) {
+    public void colocarCarta(CartaCampo carta, BocaArriba bocaArriba) {
         if (cartaCampo != null)
             cartaCampo.mandarDelCampoAlCementerio();
-        carta.setEstado(enJuego); // !!! sacar
+        carta.setEstado(bocaArriba); // !!! sacar
         cartaCampo = carta;
+    }
+
+    public void colocarCarta(CartaCampo carta, BocaAbajo bocaAbajo) {
+        this.colocarCarta(carta, new BocaArriba());
     }
 
     public boolean cartaEstaEnCampo(Carta carta) {

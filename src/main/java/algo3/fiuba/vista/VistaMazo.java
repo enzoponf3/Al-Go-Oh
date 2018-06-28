@@ -12,8 +12,8 @@ public class VistaMazo extends Label {
 
     private ControladorTurnos controladorTurnos;
     private Jugador jugador;
-    private double ANCHO_MAXIMO_CARTA = 90.0;
-    private double ALTURA_MAXIMA_CARTA = 105.0;
+    private double ANCHO_MAXIMO_CARTA = 95.0;
+    private double ALTURA_MAXIMA_CARTA = 110.0;
     private int cantidad;
     private ImageView fondoMazo;
 
@@ -41,7 +41,13 @@ public class VistaMazo extends Label {
 
     public void update() {
         cantidad--;
+
         this.dibujar();
+        this.setText(String.valueOf(cantidad));
+        this.setDisable(true);
+        this.setTextFill(Color.WHITE);
+        this.setGraphic(fondoMazo);
+        this.setContentDisplay(ContentDisplay.CENTER);
     }
 
     public void habilitarMazo() {
@@ -50,6 +56,7 @@ public class VistaMazo extends Label {
 
     public void deshabilitarMazo() {
         this.setDisable(true);
+
     }
 
 }

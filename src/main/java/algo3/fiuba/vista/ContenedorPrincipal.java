@@ -37,7 +37,9 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void update() {
-        this.dibujar();
+        this.dibujarBarraLateral();
+        this.tableroJ1.update();
+        this.tableroJ2.update();
     }
 
     private void dibujarBarraLateral() {

@@ -3,23 +3,21 @@ package algo3.fiuba.controladores;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.vista.VistaCarta;
-import algo3.fiuba.vista.VistaMano;
-import algo3.fiuba.vista.VistaZonaCartas;
+import algo3.fiuba.vista.*;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 public class ControladorCarta implements EventHandler<MouseEvent> {
 
-    private VistaZonaCartas vistaZonaMonstruos;
-    private VistaZonaCartas vistaZonaNoMonstruos;
+    private VistaZonaMonstruos vistaZonaMonstruos;
+    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
     private VistaMano vistaMano;
     private VistaCarta vistaCarta;
     private Jugador jugador;
     private Carta carta;
 
 
-    public ControladorCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaCartas vistaZonaNoMonstruos, VistaZonaCartas vistaZonaMonstruos) {
+    public ControladorCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaZonaMonstruos vistaZonaMonstruos) {
         this.vistaCarta = vistaCarta;
         this.jugador = jugador;
         this.carta = carta;
