@@ -100,7 +100,6 @@ public class Monstruo extends Carta {
     }
 
     public Integer getAtaque() {
-        System.out.println(modificadores);
         Integer ataqueModificado = ataqueBase;
         for (Modificador modificador : modificadores) {
             ataqueModificado = modificador.modificarAtaque(ataqueModificado);

@@ -173,7 +173,8 @@ public class AgujeroNegroTest {
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) trampaOponente, new BocaAbajo());
         turno.pasarTurno();
-        jugador1.colocarCartaEnCampo((Carta) agujeroNegro, new BocaAbajo());
+
+        jugador1.colocarCartaEnCampo((Carta) agujeroNegro, new BocaArriba());
 
         Assert.assertFalse(monstruoPropio.estaEnJuego());
         Assert.assertFalse(jugador1.cartaEstaEnCampo(monstruoPropio));

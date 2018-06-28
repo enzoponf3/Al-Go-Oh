@@ -31,6 +31,7 @@ public class CampoTest {
     public void setUp() {
         campo = new Campo();
         jugador = new Jugador();
+        jugador.setOponente(new Jugador());
     }
 
     @Test
