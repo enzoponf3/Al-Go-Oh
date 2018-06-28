@@ -15,7 +15,7 @@ public class TableroLado2 extends Tablero {
 
         super.jugador = jugador;
         super.setMano(1, 2);
-        super.setMazo(2, 2);
+        super.setMazo(2, 2, zonaMano);
         super.setCampo(1, 1, 1, 0);
         super.setCementerio(2, 0);
         super.setCartaCampo(0, 0);

@@ -13,6 +13,15 @@ import java.util.Stack;
 
 public class MazoUtils {
 
+    public Stack<Carta> getMazoDosCartas1(Jugador jugador) {
+        Stack<Carta> mazo = new Stack<>();
+
+        mazo.add(new AgujeroNegro(jugador));
+        mazo.add(new BebeDragon(jugador));
+
+        return mazo;
+    }
+
     public Stack<Carta> getMuestra1(Jugador jugador) {
         Stack<Carta> mazo = new Stack();
 

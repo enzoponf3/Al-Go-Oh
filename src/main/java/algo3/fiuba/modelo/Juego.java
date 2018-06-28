@@ -12,6 +12,7 @@ public class Juego {
     private Jugador jugador1;
     private Jugador jugador2;
     private Turno turno;
+    private MazoUtils mazosArmados;
 
     private Juego() {
         turno = Turno.getInstancia();
@@ -46,7 +47,7 @@ public class Juego {
         if (terminoPartida()) return jugador1.estaEnJuego() ? jugador1 : jugador2;
         return null;
     }
-
+    
     public void inicializarMazos() {
         MazoUtils mazoUtils = new MazoUtils();
         jugador1.setMazo(mazoUtils.getMuestra2cartas(jugador1));

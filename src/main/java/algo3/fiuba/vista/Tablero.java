@@ -24,15 +24,16 @@ public abstract class Tablero extends GridPane {
     protected VistaCartaCampo zonaCartaDeCampo;
 
     public void setMano(Integer colIndex, Integer rowIndex) {
-        zonaMano = new VistaMano();
+        zonaMano = new VistaMano(jugador);
+        zonaMano.dibujar();
         this.add(zonaMano, colIndex, rowIndex);
     }
 
-    public void setMazo(Integer colIndex, Integer rowIndex) {
-
+    public void setMazo(Integer colIndex, Integer rowIndex, VistaMano zonaMano) {
         ImageView fondoMazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        zonaMazo= new VistaMazo(fondoMazo);
+        zonaMazo = new VistaMazo(fondoMazo);
+        zonaMazo.setOnMouseClicked(new ControladorMazo(zonaMazo, jugador, zonaMano));
         this.add(zonaMazo, colIndex, colIndex);
     }
 

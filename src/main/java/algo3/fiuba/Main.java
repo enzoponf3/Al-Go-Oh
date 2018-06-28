@@ -1,5 +1,6 @@
 package algo3.fiuba;
 
+import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.ContenedorEntrada;
@@ -38,6 +39,8 @@ public class Main extends Application {
         Jugador jugador2 = new Jugador();
         juego.inicializar(jugador1,jugador2);
         juego.inicializarMazos();
+        ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
+        controladorTurnos.setJugadores(jugador1, jugador2);
         return juego;
     }
 

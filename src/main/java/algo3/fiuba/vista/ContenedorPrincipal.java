@@ -20,10 +20,12 @@ public class ContenedorPrincipal extends BorderPane {
     private Tablero tableroJ2;
     private BarraLateral barraLateral;
     private Juego juego;
-    private ControladorTurnos ct = ControladorTurnos.getInstancia();
+    private ControladorTurnos ct;
 
     public ContenedorPrincipal(Stage stage, Juego juego) {
 
+        this.juego = juego;
+        this.ct = new ControladorTurnos();
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
         this.setBarraLateral(juego);
         this.setTablero();
@@ -37,8 +39,8 @@ public class ContenedorPrincipal extends BorderPane {
 
     private void setTablero() {
 
-        tableroJ1 = new TableroLado1(ct.getJugador());
-        tableroJ2 = new TableroLado2(ct.getJugador());
+        tableroJ1 = new TableroLado1(juego.getJugador1());
+        tableroJ2 = new TableroLado2(juego.getJugador2());
 
         VBox tableroCompleto = new VBox(tableroJ1, tableroJ2);
         tableroCompleto.getStyleClass().add("tablero");

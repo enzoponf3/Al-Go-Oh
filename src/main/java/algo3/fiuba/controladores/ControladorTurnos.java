@@ -17,21 +17,24 @@ public class ControladorTurnos {
         return INSTANCIA;
     }
 
-    public ControladorTurnos(/*Jugador J1, Jugador J2*/) {
+    public ControladorTurnos() {
 
-//        this.jugador1 = J1;
-  //      this.jugador2 = J2;
+    }
+
+    public void setJugadores(Jugador J1, Jugador J2) {
+        this.jugador1 = J1;
+        this.jugador2 = J2;
+        this.jugadorActual = J1;
     }
 
     public Jugador getJugador() {
-
        return jugadorActual;
     }
 
     public void duelo() {
 
         if (!ganadorDuelo()) {
-            ControladorMazo mazo = new ControladorMazo();
+            //ControladorMazo mazo = new ControladorMazo();
             preInvocacion();
             postInvocacion();
         } else {
@@ -62,12 +65,11 @@ public class ControladorTurnos {
     }
 
     public void terminarTurno() {
-
         jugadorActual.getEstadoJugador().cambioDeTurno();
+        jugadorActual = (jugadorActual == jugador1) ? jugador2 : jugador1;
     }
 
     public boolean ganadorDuelo() {
-
        return jugadorActual.getOponente().getPuntosDeVida() == 0;
     }
 }
