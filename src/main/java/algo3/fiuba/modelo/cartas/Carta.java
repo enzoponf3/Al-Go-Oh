@@ -83,20 +83,6 @@ public abstract class Carta implements Observer {
         this.efecto = efecto;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Carta carta = (Carta) o;
-        return Objects.equals(nombre, carta.nombre);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(nombre);
-    }
-
     public void agregarAMano(List<Carta> mano) {
         estadoCarta = new EnMano();
         mano.add(this);
