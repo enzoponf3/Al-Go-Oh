@@ -210,4 +210,8 @@ public class Jugador implements Observer {
     public void setMazo(Stack<Carta> mazo) {
         tableroJugador.setMazo(mazo);
     }
+
+    public void sacarCartaDeMano(Carta carta) {
+        mano.remove(carta);
+    }
 }

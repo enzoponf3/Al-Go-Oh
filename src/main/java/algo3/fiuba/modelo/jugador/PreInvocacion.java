@@ -10,6 +10,7 @@ public class PreInvocacion implements EstadoJugador {
     public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, Monstruo carta, EnJuego tipoEnJuego) {
         tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego);
         carta.setJugador(jugador);
+        jugador.sacarCartaDeMano(carta);
         return new PostInvocacion();
     }
 
@@ -17,6 +18,7 @@ public class PreInvocacion implements EstadoJugador {
     public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, Magica carta, EnJuego tipoEnJuego) {
         tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego);
         carta.setJugador(jugador);
+        jugador.sacarCartaDeMano(carta);
         return new PreInvocacion();
     }
 
@@ -24,6 +26,7 @@ public class PreInvocacion implements EstadoJugador {
     public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, Trampa carta, EnJuego tipoEnJuego) {
         tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego);
         carta.setJugador(jugador);
+        jugador.sacarCartaDeMano(carta);
         return new PreInvocacion();
     }
 
@@ -31,6 +34,7 @@ public class PreInvocacion implements EstadoJugador {
     public EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, CartaCampo carta, EnJuego tipoEnJuego) {
         tableroJugador.colocarCartaEnCampo(carta, tipoEnJuego);
         carta.setJugador(jugador);
+        jugador.sacarCartaDeMano(carta);
         return new PreInvocacion();
     }
 

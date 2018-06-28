@@ -11,7 +11,6 @@ public class VistaCartaCampo extends Label {
 
 
     public VistaCartaCampo(ImageView fondo) {
-
         this.setGraphic(fondo);
     }
 
