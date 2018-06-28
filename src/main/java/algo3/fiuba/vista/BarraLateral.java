@@ -26,9 +26,7 @@ public class BarraLateral extends StackPane {
         Boton botonFinTurno = new Boton("Terminar turno", new BotonTerminarTurno());  //añadir funcion
 
         // Consolas de puntos
-
         vistaVidaJugador1 = new VistaVida(juego.getJugador1());
-
         vistaVidaJugador2 = new VistaVida(juego.getJugador2());
 
         // CONTENEDORES LATERALES

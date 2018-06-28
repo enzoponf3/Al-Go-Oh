@@ -95,7 +95,6 @@ public class Campo {
         return zonaNoMonstruos.contains(carta);
     }
 
-    // Eh..... ?
     public boolean cartaEstaEnCampo(CartaCampo cartaCampo) {
         return this.cartaCampo == cartaCampo;
     }
@@ -144,7 +143,6 @@ public class Campo {
         this.removerModificadorAMonstruo(modificador);
     }
 
-
     private void agregarModificadoresAMonstruos() {
         for(Monstruo monstruo: zonaMonstruos) {
             for(Modificador modificador: modificadoresActivos) {
@@ -158,7 +156,6 @@ public class Campo {
             monstruo.removerModificador(modificador);
         }
     }
-
 
     public CartaCampo getCartaCampo() {
         return cartaCampo;

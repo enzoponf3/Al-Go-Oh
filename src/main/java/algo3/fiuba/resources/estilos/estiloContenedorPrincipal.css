@@ -6,6 +6,10 @@
     -fx-background-image: url("/algo3/fiuba/resources/img/fondo-arena.jpg");
 }
 
+.mano {
+    -fx-background-image: url("/algo3/fiuba/resources/img/fondo-arena.jpg");
+}
+
 .muestrarioInfoCarta {
     -fx-font-size: 24px;
     -fx-font-color: WHITE;

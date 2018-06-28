@@ -9,6 +9,7 @@ public class ControladorMano {
     private Jugador jugador;
 
     public ControladorMano(VistaMano vista, Jugador jugador) {
+
         this.jugador = jugador;
         this.vista = vista;
     }
