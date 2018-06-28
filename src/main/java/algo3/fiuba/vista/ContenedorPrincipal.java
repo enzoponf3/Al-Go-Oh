@@ -23,26 +23,31 @@ public class ContenedorPrincipal extends BorderPane {
     private ControladorTurnos ct;
 
     public ContenedorPrincipal(Stage stage, Juego juego) {
-
         this.juego = juego;
         this.ct = ControladorTurnos.getInstancia();
+        this.barraLateral = new BarraLateral(juego);
+        this.tableroJ1 = new TableroLado1(juego.getJugador1());
+        this.tableroJ2 = new TableroLado2(juego.getJugador2());
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
-        this.setBarraLateral(juego);
-        this.setTablero();
     }
 
-    private void setBarraLateral(Juego juego) {
+    public void dibujar() {
+        this.dibujarBarraLateral();
+        this.dibujarTablero();
+    }
 
-        barraLateral = new BarraLateral(juego);
+    public void update() {
+        this.dibujar();
+    }
+
+    private void dibujarBarraLateral() {
         barraLateral.getStyleClass().add("barraLateral");
         this.setLeft(barraLateral);
     }
 
-    private void setTablero() {
-
-        tableroJ1 = new TableroLado1(juego.getJugador1());
-        tableroJ2 = new TableroLado2(juego.getJugador2());
-
+    private void dibujarTablero() {
+        tableroJ1.dibujar();
+        tableroJ2.dibujar();
         VBox tableroCompleto = new VBox(tableroJ1, tableroJ2);
         tableroCompleto.getStyleClass().add("tablero");
         this.setCenter(tableroCompleto);

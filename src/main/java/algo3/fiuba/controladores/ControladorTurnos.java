@@ -10,6 +10,7 @@ public class ControladorTurnos {
     private static ControladorTurnos INSTANCIA;
     private Jugador jugador1, jugador2;
     private Jugador jugadorActual;
+    private ContenedorPrincipal contenedorPrincipal;
 
     public static ControladorTurnos getInstancia() {
         if (INSTANCIA == null)
@@ -25,6 +26,10 @@ public class ControladorTurnos {
         this.jugador1 = J1;
         this.jugador2 = J2;
         this.jugadorActual = J1;
+    }
+
+    public void setContenedorPrincipal(ContenedorPrincipal contenedorPrincipal) {
+        this.contenedorPrincipal = contenedorPrincipal;
     }
 
     public Jugador getJugador() {
@@ -62,8 +67,10 @@ public class ControladorTurnos {
     }
 
     public void terminarTurno() {
-        jugadorActual.getEstadoJugador().cambioDeTurno();
+        jugador1.getEstadoJugador().cambioDeTurno();
+        jugador2.getEstadoJugador().cambioDeTurno();
         jugadorActual = (jugadorActual == jugador1) ? jugador2 : jugador1;
+        contenedorPrincipal.update();
     }
 
     public boolean ganadorDuelo() {

@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 
 public abstract class Tablero extends GridPane {
 
+    private Label cementerio;
     private double ANCHO_MAXIMO_CARTA = 90.0;
     private double ALTURA_MAXIMA_CARTA = 105.0;
     protected Jugador jugador;
@@ -23,28 +24,46 @@ public abstract class Tablero extends GridPane {
     protected VistaZonaCartas zonaMonstruos;
     protected VistaCartaCampo zonaCartaDeCampo;
 
-    public void setMano(Integer colIndex, Integer rowIndex) {
+    public Tablero(Jugador jugador) {
         VistaZonaCartas vistaZonaMonstruos = new VistaZonaMonstruos(jugador);
         VistaZonaCartas vistaZonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
         this.zonaMano = new VistaMano(jugador, vistaZonaMonstruos, vistaZonaNoMonstruos);
-        this.zonaMano.dibujar();
-        this.add(zonaMano, colIndex, rowIndex);
-    }
-
-    public void setMazo(Integer colIndex, Integer rowIndex, VistaMano zonaMano) {
 
         ImageView fondoMazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.zonaMazo = new VistaMazo(fondoMazo, jugador);
         this.zonaMazo.setOnMouseClicked(new ControladorMazo(zonaMazo, jugador, zonaMano));
+
+        this.zonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
+        this.zonaMonstruos = new VistaZonaMonstruos(jugador);
+
+        ImageView fondoCementerio = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
+                ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+        this.cementerio = new Label("CEMENTERIO", fondoCementerio);
+
+        ImageView cartaCampoFondo = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
+                ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+        this.zonaCartaDeCampo = new VistaCartaCampo(jugador, zonaMano, zonaMonstruos, zonaNoMonstruos);
+        this.zonaCartaDeCampo.setOnMouseClicked(new ControladorCartaCampo(zonaCartaDeCampo, jugador, zonaMano));
+    }
+
+    public abstract void dibujar();
+
+    public void update() {
+        this.dibujar();
+    }
+
+    public void setMano(Integer colIndex, Integer rowIndex) {
+        this.zonaMano.dibujar();
+        this.add(zonaMano, colIndex, rowIndex);
+    }
+
+    public void setMazo(Integer colIndex, Integer rowIndex, VistaMano zonaMano) {
         this.zonaMazo.dibujar();
         this.add(zonaMazo, colIndex, colIndex);
     }
 
     public void setCampo(Integer colIndex, Integer rowIndex, Integer colIndex2, Integer rowIndex2) {
-
-        this.zonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
-        this.zonaMonstruos = new VistaZonaMonstruos(jugador);
 
         for (int i = 0; i < 5; i++) {
 
@@ -65,9 +84,6 @@ public abstract class Tablero extends GridPane {
 
     public void setCementerio(Integer colIndex, Integer rowIndex) {
 
-        ImageView fondoCementerio = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
-                ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        Label cementerio = new Label("CEMENTERIO", fondoCementerio);
         cementerio.setTextFill(Color.WHITE);
         cementerio.setContentDisplay(ContentDisplay.CENTER);
         cementerio.setOnMouseClicked(new ControladorCementerio());
@@ -75,10 +91,7 @@ public abstract class Tablero extends GridPane {
     }
 
     public void setCartaCampo(Integer colIndex, Integer rowIndex) {
-        ImageView cartaCampoFondo = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
-                ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        this.zonaCartaDeCampo = new VistaCartaCampo(jugador, zonaMano, zonaMonstruos, zonaNoMonstruos);
-        this.zonaCartaDeCampo.setOnMouseClicked(new ControladorCartaCampo(zonaCartaDeCampo, jugador, zonaMano));
+
         this.zonaCartaDeCampo.dibujar();
         this.add(zonaCartaDeCampo, colIndex, rowIndex);
     }
