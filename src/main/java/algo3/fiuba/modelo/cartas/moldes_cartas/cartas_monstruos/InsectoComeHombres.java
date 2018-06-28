@@ -1,6 +1,5 @@
 package algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos;
 
-import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeAtaque;
 import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
@@ -26,8 +25,8 @@ public class InsectoComeHombres extends Monstruo {
 
     @Override
     public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
-        if (estadoCarta instanceof BocaAbajo) {
-            girar();
+        if (estadoCarta.estaBocaAbajo()) {
+            girarCarta();
             return new ResultadoCombateNulo();
         } else {
             return super.recibirAtaque(monstruoAtacante, puntosAtaqueRival);
@@ -35,11 +34,11 @@ public class InsectoComeHombres extends Monstruo {
     }
 
     @Override
-    public void girar() {
+    public void girarCarta() {
         if (!primerTurno) {
             activarEfecto();
         }
-        estadoCarta = estadoCarta.girar();
+        estadoCarta = estadoCarta.girarCarta();
     }
 
     @Override
@@ -47,7 +46,7 @@ public class InsectoComeHombres extends Monstruo {
         if (!primerTurno) {
             efecto.activar(this);
         }
-        estadoCarta = estadoCarta.girar();
+        estadoCarta = estadoCarta.girarCarta();
     }
 
     @Override

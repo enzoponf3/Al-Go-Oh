@@ -51,7 +51,12 @@ public class EstadoNoInicializado implements EstadoCarta {
     }
 
     @Override
-    public EstadoCarta girar() {
+    public EstadoCarta girarCarta() {
         return this;
+    }
+
+    @Override
+    public boolean estaBocaAbajo() {
+        throw new CartaNoInicializadaEnDueloExcepcion("La carta nunca se ha inicializado en el duelo.");
     }
 }

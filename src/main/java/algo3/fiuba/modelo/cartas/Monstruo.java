@@ -3,7 +3,6 @@ package algo3.fiuba.modelo.cartas;
 import algo3.fiuba.modelo.Campo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
 import algo3.fiuba.modelo.cartas.estado_en_turno.NoUsadaEnTurno;
-import algo3.fiuba.modelo.cartas.modificadores.ModificadorRefuerzos;
 import algo3.fiuba.modelo.cartas.nivel.Nivel;
 import algo3.fiuba.modelo.cartas.nivel.NivelFactoryFactory;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
@@ -46,7 +45,7 @@ public class Monstruo extends Carta {
     }
 
     public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
-        super.girar();
+        super.girarCarta();
         if (!jugador.recibirAtaque(monstruoAtacante, this)) {
             estadoCarta.recibirAtaque(this);
             ResultadoCombate resultadoCombate = modoMonstruo.recibirAtaque(puntosAtaqueRival, this.getAtaque(), this.getDefensa());

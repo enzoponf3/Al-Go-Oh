@@ -74,7 +74,7 @@ public class InsectoComeHombresTest {
         turno.pasarTurno();
         jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaAbajo());
 
-        insectoComeHombres.girar();
+        insectoComeHombres.girarCarta();
 
         Assert.assertTrue(insectoComeHombres.estaEnJuego());
         Assert.assertTrue(insectoComeHombres.getEstadoCarta() instanceof BocaArriba);
@@ -138,7 +138,7 @@ public class InsectoComeHombresTest {
         jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
         turno.pasarTurno();
 
-        insectoComeHombres.girar();
+        insectoComeHombres.girarCarta();
 
         Assert.assertTrue(insectoComeHombres.estaEnJuego());
         Assert.assertTrue(insectoComeHombres.getEstadoCarta() instanceof BocaArriba);

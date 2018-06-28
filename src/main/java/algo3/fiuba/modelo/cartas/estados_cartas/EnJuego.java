@@ -19,7 +19,7 @@ public abstract class EnJuego implements EstadoCarta {
     }
 
     @Override
-    public EnJuego girar() {
+    public EnJuego girarCarta() {
         return new BocaArriba();
     }
 
@@ -29,13 +29,9 @@ public abstract class EnJuego implements EstadoCarta {
 
     public abstract void colocarCartaEnCampo(Magica carta, Campo campo);
 
-    public void colocarCartaEnCampo(Trampa carta, Campo campo) {
-        campo.colocarCarta(carta, this);
-    }
+    public abstract void colocarCartaEnCampo(Trampa carta, Campo campo);
 
-    public void colocarCartaEnCampo(CartaCampo carta, Campo campo) {
-        campo.colocarCarta(carta, this);
-    }
+    public abstract void colocarCartaEnCampo(CartaCampo carta, Campo campo);
 
 
 }

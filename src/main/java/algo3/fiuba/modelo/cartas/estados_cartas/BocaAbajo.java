@@ -42,4 +42,19 @@ public class BocaAbajo extends EnJuego {
     public void colocarCartaEnCampo(Magica carta, Campo campo) {
         campo.colocarCarta(carta, this);
     }
+
+    @Override
+    public void colocarCartaEnCampo(Trampa carta, Campo campo) {
+        campo.colocarCarta(carta, this);
+    }
+
+    @Override
+    public void colocarCartaEnCampo(CartaCampo carta, Campo campo) {
+        campo.colocarCarta(carta, this);
+    }
+
+    @Override
+    public boolean estaBocaAbajo() {
+        return true;
+    }
 }
