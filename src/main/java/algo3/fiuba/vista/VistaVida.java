@@ -20,10 +20,15 @@ public class VistaVida extends Label {
 
     public VistaVida(Jugador jugador) {
         this.jugador = jugador;
-        this.setText("LP:");
+
+        this.setText("LP: " + jugador.getPuntosDeVida());
         this.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
         this.setGraphic(rectanguloVida);
         this.setTextFill(Color.WHITE);
         this.setContentDisplay(ContentDisplay.CENTER);
+    }
+
+    public void update() {
+        this.setText("LP: " + jugador.getPuntosDeVida());
     }
 }

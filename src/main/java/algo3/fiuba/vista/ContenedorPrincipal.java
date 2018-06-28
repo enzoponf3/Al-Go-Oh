@@ -30,7 +30,6 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     private void setBarraLateral(Juego juego) {
-
         barraLateral = new BarraLateral(juego);
         barraLateral.getStyleClass().add("barraLateral");
         this.setLeft(barraLateral);
