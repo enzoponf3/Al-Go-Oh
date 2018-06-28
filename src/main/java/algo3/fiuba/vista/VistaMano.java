@@ -6,12 +6,7 @@ import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
 import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-
-import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,8 +27,11 @@ public class VistaMano extends ScrollPane {
     }
 
     public void dibujar() {
+
         this.setMaxWidth(535);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
+        this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
+        this.getStyleClass().add("mano");
 
         GridPane vistaMano = new GridPane();
         vistaMano.setGridLinesVisible(true);
@@ -52,6 +50,4 @@ public class VistaMano extends ScrollPane {
     public void update() {
         this.dibujar();
     }
-
-    public void agregarImagenAMano() {}
 }

@@ -40,8 +40,8 @@ public class ContenedorEntrada extends VBox {
         String getNombreJ2 = nombre2.getText();
 
         Boton botonJugar = new Boton("Duelo!", new ControladorEntrar(stage, pantallaJuego, getNombreJ1, getNombreJ2));
-
         this.getChildren().addAll(botonJugar);
+
         stage.setTitle("Inicio");
         stage.centerOnScreen();
         stage.setResizable(false);

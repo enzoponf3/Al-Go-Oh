@@ -3,10 +3,14 @@ package algo3.fiuba.modelo.cartas;
 import algo3.fiuba.modelo.Campo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
+import algo3.fiuba.modelo.cartas.modificadores.Modificador;
 import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 
 public class CartaCampo extends Carta {
+
+    protected Modificador modificadorCampoPropio;
+    protected Modificador modificadorCampoOponente;
 
     public CartaCampo(String nombre, EfectoCarta efecto) {
         super(nombre, efecto);
@@ -31,5 +35,15 @@ public class CartaCampo extends Carta {
     @Override
     public void removerDelCampo(Campo campo) {
         campo.removerCarta(this);
+        jugador.removerModificador(modificadorCampoPropio);
+        jugador.getOponente().removerModificador(modificadorCampoOponente);
+    }
+
+    public void setModificadorCampoPropio(Modificador modificadorCampoPropio) {
+        this.modificadorCampoPropio = modificadorCampoPropio;
+    }
+
+    public void setModificadorCampoOponente(Modificador modificadorCampoOponente) {
+        this.modificadorCampoOponente = modificadorCampoOponente;
     }
 }

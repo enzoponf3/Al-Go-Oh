@@ -34,7 +34,6 @@ public class ControladorTurnos {
     public void duelo() {
 
         if (!ganadorDuelo()) {
-            //ControladorMazo mazo = new ControladorMazo();
             preInvocacion();
             postInvocacion();
         } else {
@@ -46,7 +45,6 @@ public class ControladorTurnos {
 
     public void cambiarDeFase() {
 
-        // como que re feo no?
         if (jugadorActual.getEstadoJugador() instanceof PreInvocacion) {
             jugadorActual.setEstadoJugador(new PostInvocacion());
         } else if (jugadorActual.getEstadoJugador() instanceof PostInvocacion) {

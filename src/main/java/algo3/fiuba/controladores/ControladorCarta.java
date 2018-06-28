@@ -37,17 +37,18 @@ public class ControladorCarta implements EventHandler<MouseEvent> {
         vistaZonaNoMonstruos.update();
     }
 
-    public void jugarEnModoDefensa(/*Carta carta*/) {
+    public void jugarEnModoDefensa(VistaCarta vistaCarta) {
         //carta.setRotate(90);
     }
 
-    public void activar(/*Carta*/) {
+    public void activar() {
 
     }
 
     public void mandarAlCementerio() {
 
     }
+
 
 
 }

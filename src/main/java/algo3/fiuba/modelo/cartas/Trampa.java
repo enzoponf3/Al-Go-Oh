@@ -28,12 +28,6 @@ public class Trampa extends NoMonstruo {
         return true;
     }
 
-    @Override
-    public void activarEfecto(Monstruo atacante, Monstruo atacado) {
-        estadoCarta.activarEfecto(this,  atacante, atacado, efecto);
-        estaActiva = true;
-        super.girar();
-    }
 
     @Override
     public void colocarEnCampo(Jugador jugador, EnJuego tipoEnJuego, Monstruo... sacrificios) {
@@ -43,6 +37,26 @@ public class Trampa extends NoMonstruo {
         super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
         jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
     }
+
+    @Override
+    public void activarEfecto() {
+        estadoCarta.activarEfecto(this,  efecto);
+        this.girar();
+    }
+
+    @Override
+    public void activarEfecto(Monstruo atacante, Monstruo atacado) {
+        estadoCarta.activarEfecto(this,  atacante, atacado, efecto);
+        estaActiva = true;
+        super.girar();
+    }
+
+    @Override
+    public void activarEfecto(Carta carta, Jugador jugador) {
+        estadoCarta.activarEfecto(this, jugador, efecto);
+        this.girar();
+    }
+
 
 
     @Override

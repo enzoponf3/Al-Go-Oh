@@ -27,7 +27,9 @@ public class TableroJugadorTest {
     public void setUp() {
         tableroJugador = new TableroJugador();
         jugador = new Jugador();
+        jugador.setOponente(new Jugador());
     }
+
 
 
     @Test
@@ -100,14 +102,14 @@ public class TableroJugadorTest {
 
     @Test
     public void seAgrega1CartaCampoYLuegoSeAgregaOtra_quedaLaSegundaYLaPrimeraQuedaEnElCementerio() {
-        CartaCampo carta1 = new Wasteland(jugador);
-        CartaCampo carta2 = new Sogen(jugador);
+        CartaCampo cartaCampo1 = new Wasteland(jugador);
+        CartaCampo cartaCampo2 = new Sogen(jugador);
 
-        tableroJugador.colocarCartaEnCampo(carta1, new BocaArriba());
-        tableroJugador.colocarCartaEnCampo(carta2, new BocaArriba());
+        tableroJugador.colocarCartaEnCampo(cartaCampo1, new BocaArriba());
+        tableroJugador.colocarCartaEnCampo(cartaCampo2, new BocaArriba());
 
-        Assert.assertFalse(tableroJugador.cartaEstaEnCampo(carta1));
-        Assert.assertTrue(tableroJugador.cartaEstaEnCementerio(carta1));
-        Assert.assertTrue(tableroJugador.cartaEstaEnCampo(carta2));
+        Assert.assertFalse(tableroJugador.cartaEstaEnCampo(cartaCampo1));
+        Assert.assertTrue(tableroJugador.cartaEstaEnCampo(cartaCampo2));
+
     }
 }

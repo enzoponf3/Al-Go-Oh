@@ -77,8 +77,8 @@ public class Campo {
     }
 
     public void colocarCarta(CartaCampo carta, EnJuego enJuego) {
-        
-        // !!!Debería de verificar si ya había otra carta de campo.
+        if (cartaCampo != null)
+            cartaCampo.mandarDelCampoAlCementerio();
         carta.setEstado(enJuego); // !!! sacar
         cartaCampo = carta;
     }
@@ -95,7 +95,6 @@ public class Campo {
         return zonaNoMonstruos.contains(carta);
     }
 
-    // Eh..... ?
     public boolean cartaEstaEnCampo(CartaCampo cartaCampo) {
         return this.cartaCampo == cartaCampo;
     }
@@ -109,7 +108,7 @@ public class Campo {
     }
 
     public void removerCarta(CartaCampo carta) {
-        if (cartaCampo.equals(carta)) {
+        if (cartaCampo != null && cartaCampo.equals(carta)) {
             cartaCampo = null;
             for (Monstruo monstruo : zonaMonstruos) {
                 //monstruo.removerModificador();
@@ -139,11 +138,22 @@ public class Campo {
         this.agregarModificadoresAMonstruos();
     }
 
+    public void removerModificador(Modificador modificador) {
+        modificadoresActivos.remove(modificador);
+        this.removerModificadorAMonstruo(modificador);
+    }
+
     private void agregarModificadoresAMonstruos() {
         for(Monstruo monstruo: zonaMonstruos) {
             for(Modificador modificador: modificadoresActivos) {
                 monstruo.agregarModificador(modificador);
             }
+        }
+    }
+
+    private void removerModificadorAMonstruo(Modificador modificador) {
+        for(Monstruo monstruo: zonaMonstruos) {
+            monstruo.removerModificador(modificador);
         }
     }
 

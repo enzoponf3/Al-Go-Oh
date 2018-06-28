@@ -19,6 +19,7 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
     private VistaMazo vistaMazo;
 
     public ControladorMazo(VistaMazo vistaMazo, Jugador jugador, VistaMano vistaMano) {
+
         this.jugador = jugador;
         this.vistaMazo = vistaMazo;
         this.vistaMano = vistaMano;

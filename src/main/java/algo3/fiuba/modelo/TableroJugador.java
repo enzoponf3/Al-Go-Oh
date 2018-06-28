@@ -11,9 +11,9 @@ import java.util.Stack;
 
 public class TableroJugador {
 
-    public Stack<Carta> mazo;
+    private Stack<Carta> mazo;
     private Campo campo;
-    public List<Carta> cementerio;
+    private List<Carta> cementerio;
 
     public TableroJugador() {
         this.campo = new Campo();
@@ -26,7 +26,6 @@ public class TableroJugador {
     }
 
     public void colocarCartaEnCampo(Magica carta, EnJuego tipoEnJuego) {
-        //this.campo.colocarCarta(carta, tipoEnJuego);
         tipoEnJuego.colocarCartaEnCampo(carta, campo);
     }
 
@@ -92,6 +91,10 @@ public class TableroJugador {
         campo.agregarModificador(modificador);
     }
 
+    public void removerModificador(Modificador modificador) {
+        campo.removerModificador(modificador);
+    }
+
     public void setMazo(Stack<Carta> mazo) {
         this.mazo = mazo;
     }
@@ -99,4 +102,5 @@ public class TableroJugador {
     public CartaCampo getCartaCampo() {
         return campo.getCartaCampo();
     }
+
 }
