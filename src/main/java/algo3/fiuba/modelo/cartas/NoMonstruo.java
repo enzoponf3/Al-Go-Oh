@@ -2,9 +2,6 @@ package algo3.fiuba.modelo.cartas;
 
 import algo3.fiuba.modelo.Campo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
-import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
-import algo3.fiuba.modelo.jugador.Jugador;
 
 public abstract class NoMonstruo extends Carta {
 
@@ -28,14 +25,14 @@ public abstract class NoMonstruo extends Carta {
 
     @Override
     public void activarEfecto() {
-        super.girar();
+        super.girarCarta();
         estadoCarta.activarEfecto(this,  efecto);
         jugador.mandarCartaDelCampoAlCementerio(this);
     }
 
     @Override
     public void activarEfecto(Monstruo otraCarta1, Monstruo otraCarta2) {
-        super.girar();
+        super.girarCarta();
         estadoCarta.activarEfecto(this, otraCarta1, otraCarta2, efecto);
         jugador.mandarCartaDelCampoAlCementerio(this);
     }

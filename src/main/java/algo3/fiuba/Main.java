@@ -18,6 +18,9 @@ public class Main extends Application {
         Juego juego = crearModelo();
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stagePrincipal, juego);
+        contenedorPrincipal.dibujar();
+        ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
+        controladorTurnos.setContenedorPrincipal(contenedorPrincipal);
         Scene sceneJuego = new Scene(contenedorPrincipal, 1000, 700);
 
         ContenedorEntrada contenedorEntrada = new ContenedorEntrada(stagePrincipal, sceneJuego);
@@ -39,6 +42,7 @@ public class Main extends Application {
         Jugador jugador2 = new Jugador();
         juego.inicializar(jugador1,jugador2);
         juego.inicializarMazos();
+        juego.inicializarManos();
         ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
         controladorTurnos.setJugadores(jugador1, jugador2);
         return juego;

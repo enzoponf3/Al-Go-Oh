@@ -2,6 +2,7 @@ package algo3.fiuba.modelo.cartas;
 
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.Sogen;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.Wasteland;
@@ -30,6 +31,31 @@ public class CartaCampoTest {
 
         turno = Turno.getInstancia();
     }
+
+    @Test
+    public void seColocaLaCartaCampoBocaArriba_estaEnJuego() {
+        CartaCampo cartaCampo = new Wasteland(jugador1);
+
+        jugador1.colocarCartaEnCampo((Carta) cartaCampo, new BocaArriba());
+
+        Assert.assertTrue(cartaCampo.estaEnJuego());
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(cartaCampo));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(cartaCampo));
+        Assert.assertTrue(cartaCampo.getEstadoCarta() instanceof BocaArriba);
+    }
+
+    @Test
+    public void seColocaLaCartaCampoBocaAbajo_automaticamentePasaAEstarBocaArriba() {
+        CartaCampo cartaCampo = new Wasteland(jugador1);
+
+        jugador1.colocarCartaEnCampo((Carta) cartaCampo, new BocaAbajo());
+
+        Assert.assertTrue(cartaCampo.estaEnJuego());
+        Assert.assertTrue(jugador1.cartaEstaEnCampo(cartaCampo));
+        Assert.assertFalse(jugador1.cartaEstaEnCementerio(cartaCampo));
+        Assert.assertTrue(cartaCampo.getEstadoCarta() instanceof BocaArriba);
+    }
+
 
     @Test
     public void alColocarUnaCartaCampoYLuegoColocarOtra_laCartaCampoActivaEsLaSegunda() {

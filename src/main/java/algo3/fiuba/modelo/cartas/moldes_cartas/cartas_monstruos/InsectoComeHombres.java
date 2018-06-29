@@ -25,17 +25,20 @@ public class InsectoComeHombres extends Monstruo {
 
     @Override
     public ResultadoCombate recibirAtaque(Monstruo monstruoAtacante, Integer puntosAtaqueRival) {
-        girar();
-        //efecto.activar(monstruoAtacante);
-        return new ResultadoCombateNulo();
+        if (estadoCarta.estaBocaAbajo()) {
+            girarCarta();
+            return new ResultadoCombateNulo();
+        } else {
+            return super.recibirAtaque(monstruoAtacante, puntosAtaqueRival);
+        }
     }
 
     @Override
-    public void girar() {
+    public void girarCarta() {
         if (!primerTurno) {
             activarEfecto();
         }
-        estadoCarta = estadoCarta.girar();
+        estadoCarta = estadoCarta.girarCarta();
     }
 
     @Override
@@ -43,7 +46,7 @@ public class InsectoComeHombres extends Monstruo {
         if (!primerTurno) {
             efecto.activar(this);
         }
-        estadoCarta = estadoCarta.girar();
+        estadoCarta = estadoCarta.girarCarta();
     }
 
     @Override

@@ -1,16 +1,13 @@
 package algo3.fiuba.modelo.cartas;
 
-import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
-import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 
 import java.util.Observable;
-import java.util.Observer;
 
-public class Trampa extends NoMonstruo {
+public abstract class Trampa extends NoMonstruo {
 
     private boolean estaActiva;
 
@@ -41,23 +38,15 @@ public class Trampa extends NoMonstruo {
     @Override
     public void activarEfecto() {
         estadoCarta.activarEfecto(this,  efecto);
-        this.girar();
+        this.girarCarta();
     }
 
     @Override
     public void activarEfecto(Monstruo atacante, Monstruo atacado) {
         estadoCarta.activarEfecto(this,  atacante, atacado, efecto);
         estaActiva = true;
-        super.girar();
+        super.girarCarta();
     }
-
-    @Override
-    public void activarEfecto(Carta carta, Jugador jugador) {
-        estadoCarta.activarEfecto(this, jugador, efecto);
-        this.girar();
-    }
-
-
 
     @Override
     public void update(Observable o, Object arg) {

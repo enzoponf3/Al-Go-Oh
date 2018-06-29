@@ -10,18 +10,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
-public class VistaCarta extends StackPane {
+public class VistaCarta extends Label {
 
-    private VistaZonaCartas vistaZonaNoMonstruos;
-    private VistaZonaCartas vistaZonaMonstruos;
+    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
+    private VistaZonaMonstruos vistaZonaMonstruos;
     private VistaMano vistaMano;
     private Carta carta;
     private Jugador jugador;
     private ImageView imagenCarta;
-    private double ANCHO_MAXIMO_CARTA = 95.0;
-    private double ALTURA_MAXIMA_CARTA = 110.0;
+    protected double ANCHO_MAXIMO_CARTA = 95.0;
+    protected double ALTURA_MAXIMA_CARTA = 110.0;
 
-    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaCartas vistaZonaMonstruos, VistaZonaCartas vistaZonaNoMonstruos) {
+    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos) {
 
         this.imagenCarta = new ImageView(new Image(imageUrl,
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
@@ -34,9 +34,10 @@ public class VistaCarta extends StackPane {
     }
 
     public void dibujar() {
-        this.getChildren().add(imagenCarta);
-        //this.setGraphic(imagenCarta);
-        //this.setContentDisplay(ContentDisplay.CENTER);
+        //this.getChildren().removeAll();
+        //this.getChildren().add(imagenCarta);
+        this.setGraphic(imagenCarta);
+        this.setContentDisplay(ContentDisplay.CENTER);
         this.setOnMouseClicked(new ControladorCarta(this, jugador, carta, vistaMano, vistaZonaNoMonstruos, vistaZonaMonstruos));
     }
 
@@ -46,5 +47,13 @@ public class VistaCarta extends StackPane {
 
     public void update() {
         this.dibujar();
+    }
+
+    public double getAlturaCarta() {
+        return ALTURA_MAXIMA_CARTA;
+    }
+
+    public double getAnchoCarta() {
+        return ANCHO_MAXIMO_CARTA;
     }
 }

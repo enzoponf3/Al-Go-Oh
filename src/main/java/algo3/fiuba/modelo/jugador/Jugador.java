@@ -57,9 +57,7 @@ public class Jugador implements Observer {
 
     public void colocarCartaEnCampo(Carta carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {
         carta.colocarEnCampo(this, tipoEnJuego, sacrificios);
-        carta.setJugador(this); // !!! sacar
         Turno.getInstancia().addObserver(carta);
-
     }
 
     public void colocarCartaEnCampo(Monstruo carta, EnJuego tipoEnJuego, Monstruo... sacrificios) {

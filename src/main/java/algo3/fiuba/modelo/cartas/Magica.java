@@ -5,7 +5,7 @@ import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 
-public class Magica extends NoMonstruo {
+public abstract class Magica extends NoMonstruo {
 
 
     public Magica(String nombre, EfectoCarta efecto) {

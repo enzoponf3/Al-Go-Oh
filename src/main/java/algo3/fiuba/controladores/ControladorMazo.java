@@ -36,6 +36,7 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
             vistaMano.update();
         } else {
             Alert errorMazo = new Alert(Alert.AlertType.INFORMATION);
+            errorMazo.setHeaderText("Ya no puedes levantar del mazo");
             errorMazo.show();
         }
     }

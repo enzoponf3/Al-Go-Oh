@@ -25,5 +25,7 @@ public interface EstadoCarta {
 
     void recibirAtaque(NoMonstruo carta);
 
-    EstadoCarta girar();
+    EstadoCarta girarCarta();
+
+    boolean estaBocaAbajo();
 }

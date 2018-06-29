@@ -1,6 +1,5 @@
 package algo3.fiuba.modelo.cartas;
 
-import algo3.fiuba.*;
 import algo3.fiuba.modelo.Campo;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
@@ -58,17 +57,17 @@ public abstract class Carta implements Observer {
     }
 
     public void activarEfecto() {
-        this.girar();
+        this.girarCarta();
         estadoCarta.activarEfecto(this,  efecto);
     }
 
     public void activarEfecto(Monstruo atacante, Monstruo atacado) {
-        this.girar();
+        this.girarCarta();
         estadoCarta.activarEfecto(this,  atacante, atacado, efecto);
     }
 
     public void activarEfecto(Carta carta, Jugador jugador) {
-        this.girar();
+        this.girarCarta();
         estadoCarta.activarEfecto(this, jugador, efecto);
     }
 
@@ -76,26 +75,12 @@ public abstract class Carta implements Observer {
 
     public abstract void removerDelCampo(Campo campo);
 
-    public void girar() {
-        estadoCarta = estadoCarta.girar();
+    public void girarCarta() {
+        estadoCarta = estadoCarta.girarCarta();
     }
 
     protected void setEfecto(EfectoCarta efecto) {
         this.efecto = efecto;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Carta carta = (Carta) o;
-        return Objects.equals(nombre, carta.nombre);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(nombre);
     }
 
     public void agregarAMano(List<Carta> mano) {

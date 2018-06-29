@@ -4,6 +4,7 @@ import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Magica;
@@ -35,7 +36,7 @@ public class Enrega1NoOficialTest {
     // VALIDAR QUE CARTA ESTÁ EN UN ÚNICO LUGAR
     @Test
     public void verificoQueSiAgregoUnaCartaALaManoDelJugador1SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador1);
 
         jugador1.agregarCartaAMano(carta);
 
@@ -54,7 +55,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiAgregoUnaCartaALaManoDelJugador2SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador2);
 
         jugador2.agregarCartaAMano(carta);
 
@@ -73,7 +74,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnaCartaEnElCementerioDelJugador1SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador1);
 
         jugador1.mandarCartaACementerio(carta);
 
@@ -92,7 +93,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnaCartaEnElCementerioDelJugador2SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador2);
 
         jugador2.mandarCartaACementerio(carta);
 
@@ -112,7 +113,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador1SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador1);
 
         jugador1.colocarCartaEnCampo(carta, new BocaArriba());
 
@@ -131,7 +132,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void verificoQueSiColocarUnMonstruoEnElTableroDelJugador2SeEncuentraSoloAlli() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador2);
 
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo(carta, new BocaArriba());
@@ -193,7 +194,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void siLaCartaEstaEnElCementerioEntoncesNoEstaEnJuego() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador1);
 
         jugador1.mandarCartaACementerio(carta);
 
@@ -202,7 +203,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void siLaCartaEstaEnLaManoEntoncesNoEstaEnJuego() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador1);
 
         jugador1.agregarCartaAMano(carta);
 
@@ -211,7 +212,7 @@ public class Enrega1NoOficialTest {
 
     @Test
     public void siLaCartaEstaEnElMazoEntoncesNoEstaEnJuego() {
-        Carta carta = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Carta carta = new Kuriboh(jugador1);
 
         jugador1.agregarCartaAMazo(carta);
 
@@ -224,7 +225,7 @@ public class Enrega1NoOficialTest {
 
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarDesdeLaMano() {
-        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruo = new Kuriboh(jugador1);
 
         jugador1.agregarCartaAMano(monstruo);
         monstruo.atacar(null);
@@ -232,7 +233,7 @@ public class Enrega1NoOficialTest {
 
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarDesdeElCementerio() {
-        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruo = new Kuriboh(jugador1);
 
         jugador1.mandarCartaACementerio(monstruo);
         monstruo.atacar(null);
@@ -240,7 +241,7 @@ public class Enrega1NoOficialTest {
 
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarSiEstaEnElMazo() {
-        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruo = new Kuriboh(jugador1);
 
         jugador1.agregarCartaAMazo(monstruo);
 
@@ -249,14 +250,12 @@ public class Enrega1NoOficialTest {
 
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void monstruoNoPuedeAtacarSiEstaEnElTableroEnModoDefensa() {
-        Monstruo monstruo = new Monstruo("monstruo test", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruo = new Kuriboh(jugador1);
 
         jugador1.colocarCartaEnCampo((Carta) monstruo, new BocaArriba());
         monstruo.cambiarModo();
 
         monstruo.atacar(null);
     }
-
-
 
 }

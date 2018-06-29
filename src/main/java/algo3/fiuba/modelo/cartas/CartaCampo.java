@@ -7,7 +7,7 @@ import algo3.fiuba.modelo.cartas.modificadores.Modificador;
 import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 
-public class CartaCampo extends Carta {
+public abstract class CartaCampo extends Carta {
 
     protected Modificador modificadorCampoPropio;
     protected Modificador modificadorCampoOponente;

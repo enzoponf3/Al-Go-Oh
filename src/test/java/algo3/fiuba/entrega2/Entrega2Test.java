@@ -39,96 +39,118 @@ public class Entrega2Test {
 
     @Test
     public void colocoMonstruoACadaLadoDeCampo_activoCartaCampoWasteland_aumenta200ATKPropio_aumenta300DEFOponente() {
-        Monstruo monstruo1 = new Monstruo("Monstruo 1",0,0,1, new EfectoNulo());
-        Monstruo monstruo2 = new Monstruo("Monstruo 2",0,0,1, new EfectoNulo());
-
         CartaCampo wasteland = new Wasteland(jugador1);
+        Monstruo monstruoPropio1 = new BebeDragon(jugador1);
+        Monstruo monstruoOponente1 = new Kuriboh(jugador2);
 
-        jugador1.colocarCartaEnCampo((Carta) monstruo1, new BocaArriba());
+        Integer ataqueInicialMonstruoPropio1 = monstruoPropio1.getAtaque();
+        Integer defensaInicialMonstruoPropio1 = monstruoPropio1.getDefensa();
+        Integer ataqueInicialMonstruoOponente1 = monstruoOponente1.getAtaque();
+        Integer defensaInicialMonstruoOponente1 = monstruoOponente1.getDefensa();
+
+        jugador1.colocarCartaEnCampo((Carta) monstruoPropio1, new BocaArriba());
         turno.pasarTurno();
-        jugador2.colocarCartaEnCampo((Carta) monstruo2, new BocaAbajo());
+        jugador2.colocarCartaEnCampo((Carta) monstruoOponente1, new BocaAbajo());
         turno.pasarTurno();
 
         // Ni bien se coloca carta de campo esta se activa.
         jugador1.colocarCartaEnCampo((Carta) wasteland, new BocaArriba());
 
         // Se suma 300 a la defensa del oponente y el ataque permanece igual.
-        Integer defensaFinalOponente = 300;
-        Assert.assertEquals(defensaFinalOponente, monstruo2.getDefensa());
-        Integer ataqueFinalOponente = 0;
-        Assert.assertEquals(ataqueFinalOponente, monstruo2.getAtaque());
+        Integer ataqueFinalOponente = ataqueInicialMonstruoOponente1 + 0;
+        Assert.assertEquals(ataqueFinalOponente, monstruoOponente1.getAtaque());
+        Integer defensaFinalMonstruoOponente1 = defensaInicialMonstruoOponente1 + 300;
+        Assert.assertEquals(defensaFinalMonstruoOponente1, monstruoOponente1.getDefensa());
 
         // Se suma 200 al ataque propio y la defensa permanece igual.
-        Integer ataqueFinalPropio = 200;
-        Assert.assertEquals(ataqueFinalPropio, monstruo1.getAtaque());
-        Integer defensaFinalPropio = 0;
-        Assert.assertEquals(defensaFinalPropio, monstruo1.getDefensa());
+        Integer ataqueFinalMonstruoPropio1 = ataqueInicialMonstruoPropio1 + 200;
+        Assert.assertEquals(ataqueFinalMonstruoPropio1, monstruoPropio1.getAtaque());
+        Integer defensaFinalMonstruoPropio1 = defensaInicialMonstruoPropio1 + 0;
+        Assert.assertEquals(defensaFinalMonstruoPropio1, monstruoPropio1.getDefensa());
 
-        Monstruo monstruo3 = new Monstruo("Monstruo 3", 0, 0, 1, new EfectoNulo());
-        Monstruo monstruo4 = new Monstruo("Monstruo 4", 0, 0, 1, new EfectoNulo());
+        Monstruo monstruoPropio2 = new GuerreroCelta(jugador1);
+        Monstruo monstruoOponente2 = new SevenColoredFish(jugador2);
 
-        jugador1.colocarCartaEnCampo((Carta) monstruo3, new BocaArriba());
+        Integer ataqueInicialMonstruoPropio2 = monstruoPropio2.getAtaque();
+        Integer defensaInicialMonstruoOponente2 = monstruoOponente2.getDefensa();
+
+        jugador1.colocarCartaEnCampo((Carta) monstruoPropio2, new BocaArriba());
         turno.pasarTurno();
-        jugador2.colocarCartaEnCampo((Carta) monstruo4, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoOponente2, new BocaArriba());
 
         // El efecto de las cartas de campo se mantienen activas, aún para cartas agregadas después de colocar estas.
-        Assert.assertEquals(defensaFinalOponente, monstruo4.getDefensa());
-        Assert.assertEquals(ataqueFinalPropio, monstruo3.getAtaque());
+        // Se suma 300 a la defensa del oponente y el ataque permanece igual.
+        Integer ataqueFinalMonstruoPropio2 = ataqueInicialMonstruoPropio2 + 200;
+        Assert.assertEquals(ataqueFinalMonstruoPropio2, monstruoPropio2.getAtaque());
+        Integer defensaFinalMonstruoOponente2 = defensaInicialMonstruoOponente2 + 300;
+        Assert.assertEquals(defensaFinalMonstruoOponente2, monstruoOponente2.getDefensa());
     }
 
 
     @Test
     public void colocoMounstruoDeCadaLadoDeCampo_activoCartaCampoSogen_aumenta500DEFPropio_aumenta200ATKOponente() {
-        Monstruo monstruoPropio = new Monstruo("m", 0, 0, 1, new EfectoNulo());
-        Monstruo monstruoOponente = new Monstruo("m", 0, 0, 1, new EfectoNulo());
         CartaCampo sogen = new Sogen(jugador1);
+        Monstruo monstruoPropio1 = new BebeDragon(jugador1);
+        Monstruo monstruoOponente1 = new Kuriboh(jugador2);
 
-        jugador1.colocarCartaEnCampo((Carta) monstruoPropio, new BocaArriba());
+        Integer ataqueInicialMonstruoPropio1 = monstruoPropio1.getAtaque();
+        Integer defensaInicialMonstruoPropio1 = monstruoPropio1.getDefensa();
+        Integer ataqueInicialMonstruoOponente1 = monstruoOponente1.getAtaque();
+        Integer defensaInicialMonstruoOponente1 = monstruoOponente1.getDefensa();
+
+        jugador1.colocarCartaEnCampo((Carta) monstruoPropio1, new BocaArriba());
         turno.pasarTurno();
-        jugador2.colocarCartaEnCampo((Carta) monstruoOponente, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoOponente1, new BocaAbajo());
         turno.pasarTurno();
 
-        // Ni bien se coloca una carta de campo esta se debe de activarEfecto.
+        // Ni bien se coloca carta de campo esta se activa.
         jugador1.colocarCartaEnCampo((Carta) sogen, new BocaArriba());
+
+        // Se suma 500 a la defensa propia y el ataque permanece igual.
+        Integer ataqueFinalMonstruoPropio1 = ataqueInicialMonstruoPropio1;
+        Assert.assertEquals(ataqueFinalMonstruoPropio1, monstruoPropio1.getAtaque());
+        Integer defensaFinalMonstruoPropio1 = defensaInicialMonstruoPropio1 + 500;
+        Assert.assertEquals(defensaFinalMonstruoPropio1, monstruoPropio1.getDefensa());
+
+        // Se suma 200 al ataque del oponente y la defensa permanece igual.
+        Integer ataqueFinalOponente = ataqueInicialMonstruoOponente1 + 200;
+        Assert.assertEquals(ataqueFinalOponente, monstruoOponente1.getAtaque());
+        Integer defensaFinalMonstruoOponente1 = defensaInicialMonstruoOponente1;
+        Assert.assertEquals(defensaFinalMonstruoOponente1, monstruoOponente1.getDefensa());
+
+        Monstruo monstruoPropio2 = new GuerreroCelta(jugador1);
+        Monstruo monstruoOponente2 = new SevenColoredFish(jugador2);
+
+        Integer defensaInicialMonstruoPropio2 = monstruoPropio2.getDefensa();
+        Integer ataqueInicialMonstruoOponente2 = monstruoOponente2.getAtaque();
+
+        jugador1.colocarCartaEnCampo((Carta) monstruoPropio2, new BocaArriba());
         turno.pasarTurno();
-        turno.pasarTurno();
-
-        // Se suma 200 al ataque de las cartas en el campo del oponente.
-        Integer ataqueFinalOponente = 200;
-        Assert.assertEquals(ataqueFinalOponente, monstruoOponente.getAtaque());
-
-        // Se suma 500 a la defenza de las cartas en el campo propio.
-        Integer defensaFinalPropio = 500;
-        Assert.assertEquals(defensaFinalPropio, monstruoPropio.getDefensa());
-
-        Monstruo monstruo3 = new Monstruo("Monstruo 3", 0, 0, 1, new EfectoNulo());
-        Monstruo monstruo4 = new Monstruo("Monstruo 4", 0, 0, 1, new EfectoNulo());
-
-        jugador1.colocarCartaEnCampo((Carta) monstruo3, new BocaArriba());
-        turno.pasarTurno();
-        jugador2.colocarCartaEnCampo((Carta) monstruo4, new BocaArriba());
+        jugador2.colocarCartaEnCampo((Carta) monstruoOponente2, new BocaArriba());
 
         // El efecto de las cartas de campo se mantienen activas, aún para cartas agregadas después de colocar estas.
-        Assert.assertEquals(ataqueFinalOponente, monstruo4.getAtaque());
-        Assert.assertEquals(defensaFinalPropio, monstruo3.getDefensa());
-
+        // Se suma 300 a la defensa del oponente y el ataque permanece igual.
+        Integer defensaFinalMonstruoPropio2 = defensaInicialMonstruoPropio2 + 500;
+        Assert.assertEquals(defensaFinalMonstruoPropio2, monstruoPropio2.getDefensa());
+        Integer ataqueFinalMonstruoOponente2 = ataqueInicialMonstruoOponente2 + 200;
+        Assert.assertEquals(ataqueFinalMonstruoOponente2, monstruoOponente2.getAtaque());
     }
 
 
     @Test
     public void activoCartaOllaDelaCodicia_TomoDosCartasDelMazo() {
-        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
-        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
+        Carta carta1 = new BebeDragon(jugador1);
+        Carta carta2 = new Kuriboh(jugador1);
         Magica ollaDeLaCodicia = new OllaDeLaCodicia(jugador1);
 
-        jugador1.agregarCartaAMazo(monstruo1);
-        jugador1.agregarCartaAMazo(monstruo2);
+        jugador1.agregarCartaAMazo(carta1);
+        jugador1.agregarCartaAMazo(carta2);
         jugador1.colocarCartaEnCampo(ollaDeLaCodicia, new BocaAbajo());
 
         ollaDeLaCodicia.activarEfecto();
         // Se agregaron dos cartas a la mano del jugador, sacadas del mazo de este.
-        Assert.assertTrue(jugador1.cartaEstaEnMano(monstruo1));
-        Assert.assertTrue(jugador1.cartaEstaEnMano(monstruo2));
+        Assert.assertTrue(jugador1.cartaEstaEnMano(carta1));
+        Assert.assertTrue(jugador1.cartaEstaEnMano(carta2));
 
         Integer cartasEnMano = 2;
         Assert.assertEquals(cartasEnMano, jugador1.cantidadCartasEnMano());
@@ -358,8 +380,8 @@ public class Entrega2Test {
 
     @Test
     public void extraerTodasLasCartasDeMazo_jugadorSinCartasPerdio() {
-        Monstruo monstruo1 = new Monstruo("Rodri", 100, 100, 1, new EfectoNulo());
-        Monstruo monstruo2 = new Monstruo("Delfi", 2120, 0, 2, new EfectoNulo());
+        Monstruo monstruo1 = new BebeDragon(jugador1);
+        Monstruo monstruo2 = new Kuriboh(jugador1);
 
         jugador1.agregarCartaAMazo(monstruo1);
         jugador2.agregarCartaAMazo(monstruo2);
