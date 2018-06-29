@@ -28,7 +28,7 @@ public abstract class Tablero extends GridPane {
     public Tablero(Jugador jugador) {
         zonaMonstruos = new VistaZonaMonstruos(jugador);
         zonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
-        this.zonaMano = new VistaMano(jugador, zonaMonstruos, zonaNoMonstruos);
+        this.zonaMano = new VistaMano(jugador, zonaMonstruos, zonaNoMonstruos, zonaCartaDeCampo);
 
         ImageView fondoMazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));

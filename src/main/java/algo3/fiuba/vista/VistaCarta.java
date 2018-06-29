@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 
 public class VistaCarta extends Label {
 
+    private VistaCartaCampo vistaCartaCampo;
     private VistaZonaNoMonstruos vistaZonaNoMonstruos;
     private VistaZonaMonstruos vistaZonaMonstruos;
     private VistaMano vistaMano;
@@ -21,7 +22,7 @@ public class VistaCarta extends Label {
     protected double ANCHO_MAXIMO_CARTA = 95.0;
     protected double ALTURA_MAXIMA_CARTA = 110.0;
 
-    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos) {
+    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
 
         this.imagenCarta = new ImageView(new Image(imageUrl,
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
@@ -30,15 +31,14 @@ public class VistaCarta extends Label {
         this.vistaMano = vistaMano;
         this.vistaZonaMonstruos = vistaZonaMonstruos;
         this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
+        this.vistaCartaCampo = vistaCartaCampo;
         this.dibujar();
     }
 
     public void dibujar() {
-        //this.getChildren().removeAll();
-        //this.getChildren().add(imagenCarta);
         this.setGraphic(imagenCarta);
         this.setContentDisplay(ContentDisplay.CENTER);
-        this.setOnMouseClicked(new ControladorCarta(this, jugador, carta, vistaMano, vistaZonaNoMonstruos, vistaZonaMonstruos));
+        this.setOnMouseClicked(new ControladorCarta(this, jugador, carta, vistaMano, vistaZonaNoMonstruos, vistaZonaMonstruos, vistaCartaCampo));
     }
 
     public void deshabilitarCarta() {

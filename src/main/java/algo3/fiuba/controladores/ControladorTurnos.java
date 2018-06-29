@@ -70,10 +70,14 @@ public class ControladorTurnos {
         jugador1.getEstadoJugador().cambioDeTurno();
         jugador2.getEstadoJugador().cambioDeTurno();
         jugadorActual = (jugadorActual == jugador1) ? jugador2 : jugador1;
-        contenedorPrincipal.update();
+        actualizarTablero();
     }
 
     public boolean ganadorDuelo() {
        return jugadorActual.getOponente().getPuntosDeVida() == 0;
+    }
+
+    public void actualizarTablero() {
+        contenedorPrincipal.update();
     }
 }

@@ -21,7 +21,6 @@ public class VistaZonaNoMonstruos extends HBox {
 
         this.setSpacing(20);
         this.jugador = jugador;
-        indice = 0;
         for (int i = 0; i <= 4; i++) {
             ImageView imagen2 = new ImageView(new Image("algo3/fiuba/resources/img/magica-atr.jpg",
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
@@ -31,10 +30,12 @@ public class VistaZonaNoMonstruos extends HBox {
 
     public void dibujar() {
         List<NoMonstruo> zonaNoMonstruos = jugador.getNoMonstuosEnCampo();
+        indice = 0;
         for(NoMonstruo noMonstruo: zonaNoMonstruos) {
-            String imageUrl = "/algo3/fiuba/resources/img/" + noMonstruo.getNombre() + ".gif";
+            String imageUrl = "/algo3/fiuba/resources/img/" + noMonstruo.getNombre() + ".jpg";
             this.reemplazarCarta(new ImageView(new Image(imageUrl,
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
+            indice++;
         }
     }
 
@@ -44,10 +45,8 @@ public class VistaZonaNoMonstruos extends HBox {
     }
 
     public void reemplazarCarta(ImageView carta) {
-
         getChildren().remove(indice);
-        this.getChildren().add(0, carta);
-        indice++;
+        this.getChildren().add(indice, carta);
     }
 
     public void update() {

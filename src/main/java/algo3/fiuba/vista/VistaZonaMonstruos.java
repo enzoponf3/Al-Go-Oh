@@ -1,7 +1,6 @@
 package algo3.fiuba.vista;
 
 import algo3.fiuba.modelo.cartas.Monstruo;
-import algo3.fiuba.modelo.cartas.NoMonstruo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,7 +20,6 @@ public class VistaZonaMonstruos extends HBox {
 
         this.setSpacing(20);
         this.jugador = jugador;
-        indice = 0;
         for (int i = 0; i <= 4; i++) {
             ImageView imagen2 = new ImageView(new Image("algo3/fiuba/resources/img/monstruo-atr.jpg",
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
@@ -30,12 +28,14 @@ public class VistaZonaMonstruos extends HBox {
     }
 
     public void dibujar() {
-        List<NoMonstruo> zonaNoMonstruos = jugador.getNoMonstuosEnCampo();
+        List<Monstruo> zonaMonstruos = jugador.getMonstuosEnCampo();
         //this.reemplazarCarta(null);
-        for(NoMonstruo noMonstruo: zonaNoMonstruos) {
-            String imageUrl = "/algo3/fiuba/resources/img/" + noMonstruo.getNombre() + ".gif";
+        indice = 0;
+        for(Monstruo monstruo: zonaMonstruos) {
+            String imageUrl = "/algo3/fiuba/resources/img/" + monstruo.getNombre() + ".jpg";
             this.reemplazarCarta(new ImageView(new Image(imageUrl,
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
+            indice++;
         }
     }
 
@@ -46,9 +46,8 @@ public class VistaZonaMonstruos extends HBox {
 
     public void reemplazarCarta(ImageView carta) {
 
-        getChildren().remove(2);
-        this.getChildren().add(indice, carta);
-        indice++;
+        getChildren().remove(indice);
+        getChildren().add(indice, carta);
     }
 
     public void update() {

@@ -5,6 +5,8 @@ import algo3.fiuba.controladores.ControladorBocaArriba;
 import algo3.fiuba.controladores.ControladorBocaAbajo;
 import algo3.fiuba.controladores.ControladorInformacionCarta;
 
+import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.event.Event;
 import javafx.geometry.Bounds;
 import javafx.scene.control.ContextMenu;
@@ -18,6 +20,12 @@ import javafx.scene.input.MouseEvent;
 public class VistaInformacionCarta {
 
     private VistaCarta vistaCarta;
+    private Jugador jugador;
+    private Carta carta;
+    private VistaMano vistaMano;
+    private VistaZonaMonstruos vistaZonaMonstruos;
+    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
+    private VistaCartaCampo vistaCartaCampo;
     private Menu menuCambiarPosicion;
     private MenuItem menuBocaAbajo;
     private MenuItem menuBocaArriba;
@@ -25,18 +33,24 @@ public class VistaInformacionCarta {
     private ContextMenu menuOpciones;
     private MenuBar menuBar;
 
-    public VistaInformacionCarta(VistaCarta vistaCarta){
+    public VistaInformacionCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo){
         this.vistaCarta = vistaCarta;
+        this.jugador = jugador;
+        this.carta = carta;
+        this.vistaMano = vistaMano;
+        this.vistaZonaMonstruos = vistaZonaMonstruos;
+        this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
+        this.vistaCartaCampo = vistaCartaCampo;
 
         menuOpciones = new ContextMenu();
 
         menuCambiarPosicion = new Menu("Colocar boca");
 
         menuBocaAbajo = new MenuItem("Abajo");
-        menuBocaAbajo.setOnAction(new ControladorBocaAbajo());
+        menuBocaAbajo.setOnAction(new ControladorBocaAbajo(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
 
         menuBocaArriba = new MenuItem("Arriba");
-        menuBocaArriba.setOnAction(new ControladorBocaArriba());
+        menuBocaArriba.setOnAction(new ControladorBocaArriba(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
 
         menuActivarEfecto = new MenuItem("Activar efecto");
         menuActivarEfecto.setOnAction(new ControladorActivarEfecto());
