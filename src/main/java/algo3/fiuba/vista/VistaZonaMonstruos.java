@@ -15,6 +15,7 @@ public class VistaZonaMonstruos extends HBox {
     protected Jugador jugador;
     protected double ANCHO_MAXIMO_CARTA = 95.0;
     protected double ALTURA_MAXIMA_CARTA = 110.0;
+    //private List <VistaCarta> vistasMonstruos;
 
     public VistaZonaMonstruos(Jugador jugador) {
 

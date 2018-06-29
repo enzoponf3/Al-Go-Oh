@@ -7,6 +7,8 @@ import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class ControladorBocaAbajo implements EventHandler<ActionEvent> {
 
@@ -28,11 +30,13 @@ public class ControladorBocaAbajo implements EventHandler<ActionEvent> {
         this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
         this.vistaCartaCampo = vistaCartaCampo;
         controladorTurnos = ControladorTurnos.getInstancia();
+
     }
 
     @Override
     public void handle(ActionEvent event) {
         jugador.colocarCartaEnCampo(carta, new BocaAbajo());
+        vistaCarta.cambiarVision();
         controladorTurnos.actualizarTablero();
     }
 }
