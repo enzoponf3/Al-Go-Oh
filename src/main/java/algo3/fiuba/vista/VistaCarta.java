@@ -8,8 +8,9 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
-public class VistaCarta extends Label {
+public class VistaCarta extends StackPane {
 
     private VistaZonaCartas vistaZonaNoMonstruos;
     private VistaZonaCartas vistaZonaMonstruos;
@@ -33,8 +34,9 @@ public class VistaCarta extends Label {
     }
 
     public void dibujar() {
-        this.setGraphic(imagenCarta);
-        this.setContentDisplay(ContentDisplay.CENTER);
+        this.getChildren().add(imagenCarta);
+        //this.setGraphic(imagenCarta);
+        //this.setContentDisplay(ContentDisplay.CENTER);
         this.setOnMouseClicked(new ControladorCarta(this, jugador, carta, vistaMano, vistaZonaNoMonstruos, vistaZonaMonstruos));
     }
 

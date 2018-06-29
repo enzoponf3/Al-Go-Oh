@@ -1,0 +1,19 @@
+package algo3.fiuba.controladores;
+
+import algo3.fiuba.vista.VistaInformacionCarta;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
+public class ControladorModoAtaque implements EventHandler<ActionEvent> {
+
+    private VistaInformacionCarta vistaInformacionCarta;
+
+    public ControladorModoAtaque(VistaInformacionCarta vistaInformacionCarta) {
+        this.vistaInformacionCarta = vistaInformacionCarta;
+    }
+
+    @Override
+    public void handle(ActionEvent event) {
+        vistaInformacionCarta.update();
+    }
+}
