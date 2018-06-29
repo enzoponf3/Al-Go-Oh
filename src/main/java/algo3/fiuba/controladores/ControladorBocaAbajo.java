@@ -36,7 +36,9 @@ public class ControladorBocaAbajo implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         jugador.colocarCartaEnCampo(carta, new BocaAbajo());
+        System.out.print(vistaCarta.getEstadoVision());
         vistaCarta.cambiarVision();
+        vistaZonaMonstruos.agregarMonstruo(vistaCarta);
         controladorTurnos.actualizarTablero();
     }
 }
