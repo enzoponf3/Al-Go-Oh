@@ -1,9 +1,12 @@
-package algo3.fiuba.controladores;
+package algo3.fiuba.controladores.botones;
 
+import algo3.fiuba.controladores.ControladorTurnos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class BotonTerminarTurno implements EventHandler<ActionEvent> {
 
@@ -11,11 +14,6 @@ public class BotonTerminarTurno implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         ControladorTurnos ct = ControladorTurnos.getInstancia();
-        /*Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmacion.setHeaderText("Quieres terminar el turno?");
-        confirmacion.show();
-        if (confirmacion.getResult() == ButtonType.OK) {*/
-            ct.terminarTurno();
-        //}
+        ct.terminarTurno();
     }
 }

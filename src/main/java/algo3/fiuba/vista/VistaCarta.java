@@ -1,20 +1,22 @@
 package algo3.fiuba.vista;
 
-
-import algo3.fiuba.controladores.ControladorCarta;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
+import algo3.fiuba.vista.vista_tablero.VistaMano;
+import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
+import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-
 
 public class VistaCarta extends StackPane {
 
@@ -33,6 +35,7 @@ public class VistaCarta extends StackPane {
     protected double ALTURA_MAXIMA_CARTA = 110.0;
     private boolean estadoVision;
 
+    // este deberia borrarse???
     public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
         this.imageUrl = imageUrl;
         this.imagenCarta = new ImageView(new Image(imageUrl,
@@ -88,10 +91,8 @@ public class VistaCarta extends StackPane {
                 //this.setGraphic(imagenCartaBocaAbajo);
             }
         } catch (Exception e) {
-            //TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS
+            //TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS, calmate broh!
         }
-
-
         //this.setContentDisplay(ContentDisplay.CENTER);
         this.setOnMouseClicked(new ControladorCarta(this, jugador, carta, vistaMano, vistaZonaNoMonstruos, vistaZonaMonstruos, vistaCartaCampo));
     }
@@ -122,10 +123,6 @@ public class VistaCarta extends StackPane {
 
     public VistaCarta clonar() {
        VistaCarta vistaCartaClon = new VistaCarta(imageUrl,jugador,carta,vistaMano,vistaZonaMonstruos,vistaZonaNoMonstruos,vistaCartaCampo,estadoVision);
-       System.out.print(vistaCartaClon.getEstadoVision());
        return vistaCartaClon;
     }
-
-
-
 }

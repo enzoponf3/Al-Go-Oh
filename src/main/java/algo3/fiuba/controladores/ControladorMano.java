@@ -1,12 +1,12 @@
 package algo3.fiuba.controladores;
 
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.vista.VistaMano;
+import algo3.fiuba.vista.vista_tablero.VistaMano;
 import javafx.event.EventHandler;
 
 import java.awt.event.MouseEvent;
 
-public class ControladorMano{
+public class ControladorMano {
 
     private VistaMano vista;
     private Jugador jugador;

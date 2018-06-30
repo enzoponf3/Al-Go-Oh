@@ -1,10 +1,10 @@
-package algo3.fiuba.controladores;
+package algo3.fiuba.controladores.controladores_de_carta;
 
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
-import algo3.fiuba.vista.VistaCartaCampo;
-import algo3.fiuba.vista.VistaMano;
+import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
+import algo3.fiuba.vista.vista_tablero.VistaMano;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +22,6 @@ public class ControladorCartaCampo implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        // No hace nada... Por ver
+        // No hace nada... Por ver, rta: no va a hacer nada, no se puede retirar...
     }
 }

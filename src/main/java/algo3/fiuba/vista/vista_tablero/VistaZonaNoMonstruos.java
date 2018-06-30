@@ -1,6 +1,5 @@
-package algo3.fiuba.vista;
+package algo3.fiuba.vista.vista_tablero;
 
-import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.NoMonstruo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.scene.image.Image;
@@ -48,6 +47,7 @@ public class VistaZonaNoMonstruos extends HBox {
         getChildren().remove(indice);
         this.getChildren().add(indice, carta);
     }
+
 
     public void update() {
         this.dibujar();

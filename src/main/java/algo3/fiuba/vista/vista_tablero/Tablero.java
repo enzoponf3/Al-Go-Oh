@@ -1,10 +1,11 @@
-package algo3.fiuba.vista;
+package algo3.fiuba.vista.vista_tablero;
 
-import algo3.fiuba.controladores.ControladorCartaCampo;
-import algo3.fiuba.controladores.ControladorCementerio;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorCartaCampo;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorCementerio;
 import algo3.fiuba.controladores.ControladorMazo;
-import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.vista.*;
+import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;

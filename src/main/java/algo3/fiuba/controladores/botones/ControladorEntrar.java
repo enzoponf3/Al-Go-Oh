@@ -1,16 +1,19 @@
-package algo3.fiuba.controladores;
+package algo3.fiuba.controladores.botones;
 
-import algo3.fiuba.vista.ContenedorPrincipal;
+import algo3.fiuba.controladores.ControladorTurnos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+
 
 public class ControladorEntrar implements EventHandler<ActionEvent> {
 
     private Stage stage;
     private Scene pantallaJuego;
     private String n1, n2;
+
 
     public ControladorEntrar(Stage stage, Scene proximaPantalla, String n1, String n2) {
 
@@ -26,6 +29,6 @@ public class ControladorEntrar implements EventHandler<ActionEvent> {
         stage.setResizable(true);
         stage.centerOnScreen();
         stage.setTitle("Al-Go-Oh!");
-       // ContenedorPrincipal.setPlayers(); ver
     }
+
 }

@@ -1,12 +1,11 @@
-package algo3.fiuba.vista;
+package algo3.fiuba.vista.vista_tablero;
 
-import algo3.fiuba.controladores.ControladorCarta;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
 import algo3.fiuba.controladores.ControladorMano;
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.modelo.jugador.TurnoDelOponente;
+import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import java.util.LinkedList;
@@ -30,17 +29,19 @@ public class VistaMano extends ScrollPane {
         this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
         this.controladorTurnos = ControladorTurnos.getInstancia();
         this.vistaCartaCampo = vistaCartaCampo;
+
     }
 
     public void dibujar() {
 
         this.setMaxWidth(555);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
-        this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
-        this.getStyleClass().add("mano");
+        this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloVistaMano.css");
 
-        GridPane vistaMano = new GridPane();
-        vistaMano.setGridLinesVisible(true);
+
+        GridPane vistaMano = new GridPane();;
+
+
         List<Carta> mano = jugador.getMano();
         int i = 0;
         for(Carta carta: mano) {

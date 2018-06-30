@@ -1,18 +1,18 @@
 package algo3.fiuba.vista;
 
-import algo3.fiuba.controladores.BotonAyuda;
-import algo3.fiuba.controladores.BotonSalida;
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.Juego;
-import algo3.fiuba.modelo.jugador.Jugador;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
+import algo3.fiuba.vista.vista_tablero.Tablero;
+import algo3.fiuba.vista.vista_tablero.TableroLado1;
+import algo3.fiuba.vista.vista_tablero.TableroLado2;
 import javafx.scene.layout.*;
-import javafx.scene.transform.Translate;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
+import javafx.util.Duration;
+
+import java.io.File;
+import java.net.URI;
 
 public class ContenedorPrincipal extends BorderPane {
 
@@ -32,12 +32,13 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujar() {
+        this.setMusica();
         this.dibujarBarraLateral();
         this.dibujarTablero();
     }
 
     public void update() {
-        this.dibujarBarraLateral();
+        this.barraLateral.update();
         this.tableroJ1.update();
         this.tableroJ2.update();
     }
@@ -53,5 +54,23 @@ public class ContenedorPrincipal extends BorderPane {
         VBox tableroCompleto = new VBox(tableroJ1, tableroJ2);
         tableroCompleto.getStyleClass().add("tablero");
         this.setCenter(tableroCompleto);
+    }
+
+    private void setMusica() {
+
+        File file = new File("/home/locadesquiciada/Documentos/ALGORITMOS III/TP2/Al-Go-Oh/src/main/java/algo3/fiuba/resources/media/musicopening.mp3");
+        URI uri = file.toURI();
+        String retVal = uri.toString();
+
+        Media musica = new Media(retVal);
+        MediaPlayer rprMusica = new MediaPlayer(musica);
+        rprMusica.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                rprMusica.seek(Duration.ZERO);
+            }
+        });
+        rprMusica.play();
+        rprMusica.setVolume(10);
+        rprMusica.setAutoPlay(true);
     }
 }

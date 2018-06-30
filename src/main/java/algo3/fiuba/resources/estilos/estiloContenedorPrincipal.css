@@ -6,7 +6,10 @@
     -fx-background-image: url("/algo3/fiuba/resources/img/fondo-arena.jpg");
 }
 
-.mano {
+/* FUAKDLFHJJSDLH PORQEEE*/
+.mano2 {
+
+    -fx-background-color: transparent;
     -fx-background-image: url("/algo3/fiuba/resources/img/fondo-arena.jpg");
 }
 
@@ -17,6 +20,6 @@
 }
 
 .context-menu {
-  -fx-background-color: #006699;
-  -fx-text-fill: white;
+    -fx-background-color: #006699;
+    -fx-text-fill: white;
 }

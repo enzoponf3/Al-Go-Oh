@@ -1,10 +1,15 @@
-package algo3.fiuba.controladores;
+package algo3.fiuba.controladores.controladores_de_carta;
 
+import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.*;
+import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
+import algo3.fiuba.vista.vista_tablero.VistaMano;
+import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
+import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

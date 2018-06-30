@@ -1,10 +1,16 @@
-package algo3.fiuba.controladores;
+package algo3.fiuba.controladores.controladores_de_carta;
 
-import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.*;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnMano;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.*;
+import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
+import algo3.fiuba.vista.vista_tablero.VistaMano;
+import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
+import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
@@ -32,28 +38,13 @@ public class ControladorCarta implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent evento) {
-        if(carta.getEstadoCarta() instanceof EnMano) {
+        if (carta.getEstadoCarta() instanceof EnMano) {
             vistaInformacionCarta.update();
         }
-        //jugador.colocarCartaEnCampo(carta, new BocaArriba());
         vistaCarta.update();
         vistaMano.update();
         vistaZonaMonstruos.update();
         vistaZonaNoMonstruos.update();
     }
-
-    public void jugarEnModoDefensa(VistaCarta vistaCarta) {
-        //carta.setRotate(90);
-    }
-
-    public void activar() {
-
-    }
-
-    public void mandarAlCementerio() {
-
-    }
-
-
 
 }

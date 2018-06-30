@@ -1,14 +1,18 @@
-package algo3.fiuba.controladores;
+package algo3.fiuba.controladores.controladores_de_carta;
 
+import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
-import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.*;
+import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
+import algo3.fiuba.vista.vista_tablero.VistaMano;
+import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
+import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Alert;
 
 public class ControladorBocaAbajo implements EventHandler<ActionEvent> {
 
@@ -35,10 +39,15 @@ public class ControladorBocaAbajo implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        jugador.colocarCartaEnCampo(carta, new BocaAbajo());
-        System.out.print(vistaCarta.getEstadoVision());
-        vistaCarta.cambiarVision();
-        vistaZonaMonstruos.agregarMonstruo(vistaCarta);
-        controladorTurnos.actualizarTablero();
+        try {
+            jugador.colocarCartaEnCampo(carta, new BocaAbajo());
+            vistaCarta.cambiarVision();
+            vistaZonaMonstruos.agregarMonstruo(vistaCarta);
+            controladorTurnos.actualizarTablero();
+        } catch (CampoNoPermiteColocarCartaExcepcion e) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setHeaderText("El campo está lleno!");
+            error.show();
+        }
     }
 }

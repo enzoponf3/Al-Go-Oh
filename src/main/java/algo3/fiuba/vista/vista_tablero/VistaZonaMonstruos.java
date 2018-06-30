@@ -1,14 +1,15 @@
-package algo3.fiuba.vista;
+package algo3.fiuba.vista.vista_tablero;
 
-import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.vista.VistaCarta;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class VistaZonaMonstruos extends HBox {
 
@@ -30,30 +31,18 @@ public class VistaZonaMonstruos extends HBox {
         vistasMonstruos = new LinkedList<VistaCarta>();
     }
 
-    /*
-    public void dibujar() {
-        List<Monstruo> zonaMonstruos = jugador.getMonstuosEnCampo();
-        //this.reemplazarCarta(null);
-        indice = 0;
-        for(Monstruo monstruo: zonaMonstruos) {
-            String imageUrl = "/algo3/fiuba/resources/img/" + monstruo.getNombre() + ".jpg";
-            this.reemplazarCarta(new ImageView(new Image(imageUrl,
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
-            indice++;
+    public void agregarCarta(ImageView carta) {
+
+        try {
+            this.getChildren().add(carta);
+            this.setHgrow(carta, Priority.ALWAYS);
+        } catch (CampoNoPermiteColocarCartaExcepcion e) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setHeaderText("El campo esta lleno");
+            error.show();
         }
     }
-    */
-    public void agregarCarta(ImageView carta) {
-        this.getChildren().add(carta);
-        this.setHgrow(carta, Priority.ALWAYS);
-    }
-    /*
-    public void reemplazarCarta(ImageView carta) {
 
-        getChildren().remove(indice);
-        getChildren().add(indice, carta);
-    }
-    */
     public void dibujar() {
         indice = 0;
         for(VistaCarta vistaMonstruo: vistasMonstruos) {
@@ -63,11 +52,13 @@ public class VistaZonaMonstruos extends HBox {
     }
 
     public void reemplazarCartaVista(VistaCarta vistaCarta) {
-        getChildren().remove(indice);
+        this.getChildren().remove(indice);
         getChildren().add(indice, vistaCarta);
     }
+
     public void agregarMonstruo(VistaCarta vistaCarta) {
-        vistasMonstruos.add(vistaCarta.clonar());
+
+        vistasMonstruos.add(vistaCarta);
         //no se puede tener un mismo nodo en distintos lugares, sino colapsa y no se ve en ningun lado
     }
 

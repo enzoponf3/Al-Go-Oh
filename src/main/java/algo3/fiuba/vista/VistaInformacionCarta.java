@@ -1,12 +1,16 @@
 package algo3.fiuba.vista;
 
-import algo3.fiuba.controladores.ControladorActivarEfecto;
-import algo3.fiuba.controladores.ControladorBocaArriba;
-import algo3.fiuba.controladores.ControladorBocaAbajo;
-import algo3.fiuba.controladores.ControladorInformacionCarta;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorActivarEfecto;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorBocaArriba;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorBocaAbajo;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorInformacionCarta;
 
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
+import algo3.fiuba.vista.vista_tablero.VistaMano;
+import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
+import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
 import javafx.event.Event;
 import javafx.geometry.Bounds;
 import javafx.scene.control.ContextMenu;
@@ -69,7 +73,7 @@ public class VistaInformacionCarta {
     public void dibujar() {
         Bounds posCarta = vistaCarta.localToScreen(vistaCarta.getBoundsInLocal());
         Event.fireEvent(menuBar, new MouseEvent(MouseEvent.MOUSE_CLICKED, posCarta.getMinX(),posCarta.getMinY() ,0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
-                true, true, true, true, true, true, null));
+             true, true, true, true, true, true, null));
     }
 
     public void update() {

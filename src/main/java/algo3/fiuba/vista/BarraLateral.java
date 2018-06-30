@@ -1,23 +1,29 @@
 package algo3.fiuba.vista;
 
-import algo3.fiuba.controladores.BotonCambiarDeFase;
-import algo3.fiuba.controladores.BotonAyuda;
-import algo3.fiuba.controladores.BotonSalida;
-import algo3.fiuba.controladores.BotonTerminarTurno;
+import algo3.fiuba.controladores.*;
+import algo3.fiuba.controladores.botones.BotonAyuda;
+import algo3.fiuba.controladores.botones.BotonCambiarDeFase;
+import algo3.fiuba.controladores.botones.BotonSalida;
+import algo3.fiuba.controladores.botones.BotonTerminarTurno;
 import algo3.fiuba.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+
 
 public class BarraLateral extends StackPane {
 
     private Juego juego;
     private VistaVida vistaVidaJugador1;
     private VistaVida vistaVidaJugador2;
+    private VistaProyeccionCarta vistaProyeccionCarta;
 
     public BarraLateral(Juego juego) {
+
+        ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
 
         // BOTONERA
         Boton botonAyuda = new Boton("Ayuda", new BotonAyuda());
@@ -28,6 +34,14 @@ public class BarraLateral extends StackPane {
         // Consolas de puntos
         vistaVidaJugador1 = new VistaVida(juego.getJugador1());
         vistaVidaJugador2 = new VistaVida(juego.getJugador2());
+        controladorTurnos.setVistaVida(vistaVidaJugador1, vistaVidaJugador2);
+
+        // Nombres jugadores
+        Label nombreJ1 = new Label(controladorTurnos.getNombreJ1());
+        Label nombreJ2 = new Label(controladorTurnos.getNombreJ2());
+
+        // Visor carta
+        vistaProyeccionCarta = new VistaProyeccionCarta();
 
         // CONTENEDORES LATERALES
         HBox boxBtnsAyudaSalir = new HBox(botonAyuda, botonSalir);
@@ -38,12 +52,18 @@ public class BarraLateral extends StackPane {
         boxBtnsFaseTurno.setAlignment(Pos.CENTER);
         boxBtnsFaseTurno.setSpacing(10);
 
-        VBox vbox = new VBox(vistaVidaJugador1, boxBtnsFaseTurno, vistaVidaJugador2);
+        VBox vbox = new VBox(nombreJ1, vistaVidaJugador1, boxBtnsFaseTurno, vistaProyeccionCarta, vistaVidaJugador2, nombreJ2);
         vbox.setPadding(new Insets(15));
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
 
         vbox.getStyleClass().add("vbox");
         this.getChildren().add(vbox);
+    }
+
+    public void update() {
+        this.vistaVidaJugador1.update();
+        this.vistaVidaJugador2.update();
+        //this.vistaProyeccionCarta.update();
     }
 }
