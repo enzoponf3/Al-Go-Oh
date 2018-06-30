@@ -1,5 +1,6 @@
 package algo3.fiuba.vista;
 
+import algo3.fiuba.controladores.ControladorMusica;
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.vista.vista_tablero.Tablero;
@@ -68,5 +69,7 @@ public class ContenedorPrincipal extends BorderPane {
         rprMusica.play();
         rprMusica.setVolume(2);
         rprMusica.setAutoPlay(true);
+        ControladorMusica cm = ControladorMusica.getInstancia();
+        cm.setearControlMusica(rprMusica);
     }
 }

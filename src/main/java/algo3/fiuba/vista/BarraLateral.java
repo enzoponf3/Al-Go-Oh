@@ -27,7 +27,7 @@ public class BarraLateral extends StackPane {
         Boton botonSalir = new Boton("Salir", new BotonSalida());
         Boton botonFase = new Boton("Cambiar de fase", new BotonCambiarDeFase());
         Boton botonFinTurno = new Boton("Terminar turno", new BotonTerminarTurno());
-        Boton mute = new Boton("Mute", new Silenciar());
+        Boton mute = new Boton("Play/Stop music", ControladorMusica.getInstancia());
 
         // Consolas de puntos
         vistaVidaJugador1 = new VistaVida(juego.getJugador1());
@@ -50,7 +50,7 @@ public class BarraLateral extends StackPane {
         boxBtnsFaseTurno.setAlignment(Pos.CENTER);
         boxBtnsFaseTurno.setSpacing(10);
 
-        VBox vbox = new VBox(nombreJ1, vistaVidaJugador1, boxBtnsFaseTurno, vistaProyeccionCarta, vistaVidaJugador2, nombreJ2);
+        VBox vbox = new VBox(nombreJ1, vistaVidaJugador1, boxBtnsFaseTurno, vistaProyeccionCarta, vistaVidaJugador2, nombreJ2, mute);
         vbox.setPadding(new Insets(15));
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);

@@ -1,5 +1,6 @@
 package algo3.fiuba.controladores;
 
+import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.excepciones.CartasInsuficientesExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
