@@ -1,3 +1,9 @@
-{
+.mano {
+
     -fx-background-color: transparent;
+}
+
+.hola {
+
+   -fx-background-image: url("/algo3/fiuba/resources/img/fondo-arena.jpg");
 }

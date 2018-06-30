@@ -5,6 +5,7 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -30,15 +31,10 @@ public class VistaVida extends Label {
 
     public void update() {
 
-        //sacar?? mmm
-        File file = new File("/home/locadesquiciada/Documentos/ALGORITMOS III/TP2/Al-Go-Oh/src/main/java/algo3/fiuba/resources/media/LP_effect.mp3");
-        URI uri = file.toURI();
-        String retVal = uri.toString();
-
-        javafx.scene.media.Media n = new javafx.scene.media.Media(retVal);
-        MediaPlayer j = new MediaPlayer(n);
-        j.setVolume(200);
-        j.play();
+        Media efectoSonidoVida = new Media(getClass().getResource("/algo3/fiuba/resources/media/LP_effect.mp3").toExternalForm());
+        MediaPlayer rprEfecto = new MediaPlayer(efectoSonidoVida);
+        rprEfecto.setVolume(200);
+        rprEfecto.play();
         this.setText("LP: " + jugador.getPuntosDeVida());
     }
 }

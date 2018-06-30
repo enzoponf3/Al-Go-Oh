@@ -1,10 +1,7 @@
 package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.*;
-import algo3.fiuba.controladores.botones.BotonAyuda;
-import algo3.fiuba.controladores.botones.BotonCambiarDeFase;
-import algo3.fiuba.controladores.botones.BotonSalida;
-import algo3.fiuba.controladores.botones.BotonTerminarTurno;
+import algo3.fiuba.controladores.botones.*;
 import algo3.fiuba.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -30,6 +27,7 @@ public class BarraLateral extends StackPane {
         Boton botonSalir = new Boton("Salir", new BotonSalida());
         Boton botonFase = new Boton("Cambiar de fase", new BotonCambiarDeFase());
         Boton botonFinTurno = new Boton("Terminar turno", new BotonTerminarTurno());
+        Boton mute = new Boton("Mute", new Silenciar());
 
         // Consolas de puntos
         vistaVidaJugador1 = new VistaVida(juego.getJugador1());
