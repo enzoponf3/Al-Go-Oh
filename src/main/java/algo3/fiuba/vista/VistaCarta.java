@@ -3,16 +3,24 @@ package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.ControladorCarta;
 import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.jugador.Jugador;
+import javafx.geometry.Insets;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 
-public class VistaCarta extends Label {
+
+public class VistaCarta extends StackPane {
 
     private VistaCartaCampo vistaCartaCampo;
+    private Label labelPuntosDeAtaque;
+    private Label labelPuntosDeDefensa;
     private VistaZonaNoMonstruos vistaZonaNoMonstruos;
     private VistaZonaMonstruos vistaZonaMonstruos;
     private VistaMano vistaMano;
@@ -56,10 +64,35 @@ public class VistaCarta extends Label {
     }
 
     public void dibujar() {
-        if (estadoVision) this.setGraphic(imagenCarta);
-        else this.setGraphic(imagenCartaBocaAbajo);
+        try{
+            if (estadoVision) {
+                this.getChildren().add(imagenCarta);
+                if (carta instanceof Monstruo) {
+                    Rectangle rectanguloFondo = new Rectangle(73,21, Color.LIGHTGOLDENRODYELLOW);
+                    StackPane.setMargin(rectanguloFondo, new Insets(71, 0, 0, 0));
+                    this.getChildren().add(rectanguloFondo);
+                    labelPuntosDeAtaque = new Label("" + ((Monstruo) carta).getAtaque());
+                    labelPuntosDeAtaque.setStyle("-fx-border-color: brown" );
+                    StackPane.setMargin(labelPuntosDeAtaque, new Insets(70, 30, 0, 0));
+                    this.getChildren().add(labelPuntosDeAtaque);
 
-        this.setContentDisplay(ContentDisplay.CENTER);
+                    labelPuntosDeDefensa = new Label("" + ((Monstruo) carta).getDefensa());
+                    labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
+                    StackPane.setMargin(labelPuntosDeDefensa, new Insets(70, 0, 0, 35));
+                    this.getChildren().add(labelPuntosDeDefensa);
+
+                }
+                //this.setGraphic(imagenCarta);
+            } else {
+                this.getChildren().add(imagenCartaBocaAbajo);
+                //this.setGraphic(imagenCartaBocaAbajo);
+            }
+        } catch (Exception e) {
+            //TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS
+        }
+
+
+        //this.setContentDisplay(ContentDisplay.CENTER);
         this.setOnMouseClicked(new ControladorCarta(this, jugador, carta, vistaMano, vistaZonaNoMonstruos, vistaZonaMonstruos, vistaCartaCampo));
     }
 

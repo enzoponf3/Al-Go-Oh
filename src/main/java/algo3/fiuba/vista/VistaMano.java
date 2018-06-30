@@ -50,7 +50,7 @@ public class VistaMano extends ScrollPane {
                 vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/" + carta.getNombre() + ".jpg", jugador, carta, this, vistaZonaMonstruos, vistaZonaNoMonstruos,vistaCartaCampo );
             }
             else {
-                vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/carta-vista-trasera.png", jugador, carta, this, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo);
+                vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/carta-vista-trasera.png", jugador, carta, this, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo,false);
                 vistaCarta.deshabilitarCarta();
             }
             vistaCarta.setOnMouseClicked(new ControladorCarta(vistaCarta, jugador, carta, this, vistaZonaNoMonstruos, vistaZonaMonstruos, vistaCartaCampo));

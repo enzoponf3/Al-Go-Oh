@@ -7,7 +7,7 @@ import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
 public class DragonMilenario extends Monstruo {
 
     public DragonMilenario(Jugador jugador) {
-        super("Dragon Milenario", 1800, 800, 4, new EfectoNulo());
+        super("Dragon Milenario", 2400, 2000, 7, new EfectoNulo());
         setJugador(jugador);
     }
 }
