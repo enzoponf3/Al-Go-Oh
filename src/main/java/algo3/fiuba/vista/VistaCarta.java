@@ -4,6 +4,10 @@ import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
 import algo3.fiuba.controladores.controladores_de_carta.ControladorZoomCarta;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.estado_en_turno.NoUsadaEnTurno;
+import algo3.fiuba.modelo.cartas.estado_en_turno.TurnoRival;
+import algo3.fiuba.modelo.cartas.estados_cartas.*;
+import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -24,8 +28,6 @@ public class VistaCarta extends StackPane {
     private String imageUrl;
     protected double ANCHO_MAXIMO_CARTA = 95.0;
     protected double ALTURA_MAXIMA_CARTA = 110.0;
-    private boolean esVisible;
-    private boolean estaEnModoAtaque;
 
     public VistaCarta(String imageUrl, Jugador jugador, Carta carta) {
         this.imageUrl = imageUrl;
@@ -34,8 +36,6 @@ public class VistaCarta extends StackPane {
         this.imagenCartaBocaAbajo =  new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png", ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.jugador = jugador;
         this.carta = carta;
-        esVisible = true;
-        estaEnModoAtaque = true;
         this.dibujar();
     }
 
@@ -46,37 +46,41 @@ public class VistaCarta extends StackPane {
         this.imagenCartaBocaAbajo =  new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png", ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.jugador = jugador;
         this.carta = carta;
-        this.esVisible = estadoVisibilidad;
-        this.estaEnModoAtaque = estadoModo;
         this.dibujar();
     }
 
     public void dibujar() {
+
+        Rectangle rectanguloFondo = new Rectangle(73,21, Color.LIGHTGOLDENRODYELLOW);
+        StackPane.setMargin(rectanguloFondo, new Insets(71, 0, 0, 0));
+
+        if (carta instanceof Monstruo) {
+            labelPuntosDeAtaque = new Label("" + ((Monstruo) carta).getAtaque());
+            labelPuntosDeAtaque.setStyle("-fx-border-color: brown" );
+            StackPane.setMargin(labelPuntosDeAtaque, new Insets(70, 30, 0, 0));
+
+            labelPuntosDeDefensa = new Label("" + ((Monstruo) carta).getDefensa());
+            labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
+            StackPane.setMargin(labelPuntosDeDefensa, new Insets(70, 0, 0, 35));
+        }
+
         try{
-            if (esVisible) {
+            if (carta.getEstadoCarta() instanceof BocaAbajo || carta.getEstadoCarta() instanceof EnMazo) {
+                this.getChildren().add(imagenCartaBocaAbajo);
+            } else {
                 this.getChildren().add(imagenCarta);
                 if (carta instanceof Monstruo) {
-                    Rectangle rectanguloFondo = new Rectangle(73,21, Color.LIGHTGOLDENRODYELLOW);
-                    StackPane.setMargin(rectanguloFondo, new Insets(71, 0, 0, 0));
-                    this.getChildren().add(rectanguloFondo);
-
-                    labelPuntosDeAtaque = new Label("" + ((Monstruo) carta).getAtaque());
-                    labelPuntosDeAtaque.setStyle("-fx-border-color: brown" );
-                    StackPane.setMargin(labelPuntosDeAtaque, new Insets(70, 30, 0, 0));
-                    this.getChildren().add(labelPuntosDeAtaque);
-
-                    labelPuntosDeDefensa = new Label("" + ((Monstruo) carta).getDefensa());
-                    labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
-                    StackPane.setMargin(labelPuntosDeDefensa, new Insets(70, 0, 0, 35));
-                    this.getChildren().add(labelPuntosDeDefensa);
-                    if(!estaEnModoAtaque) {
-                        this.setRotate(90);
-                        //Chequear visualmente
-                    }
+                    this.getChildren().addAll(rectanguloFondo,labelPuntosDeAtaque,labelPuntosDeDefensa);
                 }
-            } else {
-                this.getChildren().add(imagenCartaBocaAbajo);
             }
+
+            if (carta instanceof Monstruo) {
+                if(((Monstruo)carta).getModo() instanceof ModoDeDefensa) {
+                    this.setRotate(90);
+                    //Chequear visualmente
+                }
+            }
+
         } catch (Exception e) {
             //TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS, calmate broh!
         }
@@ -101,20 +105,4 @@ public class VistaCarta extends StackPane {
         return ANCHO_MAXIMO_CARTA;
     }
 
-    public void cambiarVision() {
-        esVisible = !esVisible;
-    }
-
-    public boolean getEsVisible() {
-        return esVisible;
-    }
-
-    public VistaCarta clonar() {
-       VistaCarta vistaCartaClon = new VistaCarta(imageUrl,jugador,carta, esVisible, estaEnModoAtaque);
-       return vistaCartaClon;
-    }
-
-    public void girar() {
-        estaEnModoAtaque = !estaEnModoAtaque;
-    }
 }

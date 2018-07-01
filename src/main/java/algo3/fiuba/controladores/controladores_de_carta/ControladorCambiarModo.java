@@ -23,9 +23,6 @@ public class ControladorCambiarModo implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         ((Monstruo)carta).cambiarModo();
-        vistaCarta.girar();
-        //Esto lo tendria que hacer el controlador
-        //vistaCarta.update();
-        //vistaZonaMonstruos.update();
+
     }
 }
