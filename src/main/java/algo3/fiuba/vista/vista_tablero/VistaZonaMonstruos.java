@@ -1,5 +1,6 @@
 package algo3.fiuba.vista.vista_tablero;
 
+import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.VistaCarta;
@@ -27,12 +28,12 @@ public class VistaZonaMonstruos extends HBox {
 
         this.setSpacing(20);
         this.jugador = jugador;
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i < 5; i++) {
             ImageView imagen2 = new ImageView(new Image("algo3/fiuba/resources/img/monstruo-atr.jpg",
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
             this.agregarCarta(imagen2);
         }
-        vistasMonstruos = new LinkedList<VistaCarta>();
+        vistasMonstruos = new LinkedList<>();
     }
 
     public void agregarCarta(ImageView carta) {
@@ -49,6 +50,9 @@ public class VistaZonaMonstruos extends HBox {
 
     public void dibujar() {
         indice = 0;
+        for(Monstruo monstruo: jugador.getMonstuosEnCampo()) {
+            vistasMonstruos.add(new VistaCarta("/algo3/fiuba/resources/img/" + monstruo.getNombre() + ".jpg", jugador, monstruo));
+        }
         for(VistaCarta vistaMonstruo: vistasMonstruos) {
             this.reemplazarCartaVista(vistaMonstruo);
             indice++;
@@ -56,7 +60,7 @@ public class VistaZonaMonstruos extends HBox {
     }
 
     public void reemplazarCartaVista(VistaCarta vistaCarta) {
-        getChildren().remove(0);
+        getChildren().remove(indice);
         getChildren().add(indice, vistaCarta);
     }
 

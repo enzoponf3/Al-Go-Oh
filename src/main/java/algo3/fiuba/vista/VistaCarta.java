@@ -4,10 +4,6 @@ import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
-import algo3.fiuba.vista.vista_tablero.VistaMano;
-import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
-import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,12 +14,8 @@ import javafx.scene.shape.Rectangle;
 
 public class VistaCarta extends StackPane {
 
-    private VistaCartaCampo vistaCartaCampo;
     private Label labelPuntosDeAtaque;
     private Label labelPuntosDeDefensa;
-    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
-    private VistaZonaMonstruos vistaZonaMonstruos;
-    private VistaMano vistaMano;
     private Carta carta;
     private Jugador jugador;
     private ImageView imagenCarta;
@@ -34,33 +26,25 @@ public class VistaCarta extends StackPane {
     private boolean esVisible;
     private boolean estaEnModoAtaque;
 
-    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
+    public VistaCarta(String imageUrl, Jugador jugador, Carta carta) {
         this.imageUrl = imageUrl;
         this.imagenCarta = new ImageView(new Image(imageUrl,
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.imagenCartaBocaAbajo =  new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png", ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.jugador = jugador;
         this.carta = carta;
-        this.vistaMano = vistaMano;
-        this.vistaZonaMonstruos = vistaZonaMonstruos;
-        this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
-        this.vistaCartaCampo = vistaCartaCampo;
         esVisible = true;
         estaEnModoAtaque = true;
         this.dibujar();
     }
 
-    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo, boolean estadoVisibilidad, boolean estadoModo) {
+    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, boolean estadoVisibilidad, boolean estadoModo) {
         this.imageUrl = imageUrl;
         this.imagenCarta = new ImageView(new Image(imageUrl,
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.imagenCartaBocaAbajo =  new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png", ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.jugador = jugador;
         this.carta = carta;
-        this.vistaMano = vistaMano;
-        this.vistaZonaMonstruos = vistaZonaMonstruos;
-        this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
-        this.vistaCartaCampo = vistaCartaCampo;
         this.esVisible = estadoVisibilidad;
         this.estaEnModoAtaque = estadoModo;
         this.dibujar();
@@ -95,7 +79,7 @@ public class VistaCarta extends StackPane {
         } catch (Exception e) {
             //TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS, calmate broh!
         }
-        this.setOnMouseClicked(new ControladorCarta(this, jugador, carta, vistaMano, vistaZonaNoMonstruos, vistaZonaMonstruos, vistaCartaCampo));
+        this.setOnMouseClicked(new ControladorCarta(this, jugador, carta));
     }
 
     public void deshabilitarCarta() {
@@ -123,7 +107,7 @@ public class VistaCarta extends StackPane {
     }
 
     public VistaCarta clonar() {
-       VistaCarta vistaCartaClon = new VistaCarta(imageUrl,jugador,carta,vistaMano,vistaZonaMonstruos,vistaZonaNoMonstruos,vistaCartaCampo, esVisible, estaEnModoAtaque);
+       VistaCarta vistaCartaClon = new VistaCarta(imageUrl,jugador,carta, esVisible, estaEnModoAtaque);
        return vistaCartaClon;
     }
 

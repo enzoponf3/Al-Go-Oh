@@ -55,11 +55,14 @@ public class ControladorTurnos {
     }
 
     public void cambiarDeFase() {
-        if (jugadorActual.getEstadoJugador() instanceof PreInvocacion) {
-            jugadorActual.setEstadoJugador(new PostInvocacion());
-        } else if (jugadorActual.getEstadoJugador() instanceof PostInvocacion) {
+        if (jugadorActual.getEstadoJugador() instanceof PostInvocacion) {
             this.terminarTurno();
         }
+        else {
+            jugador1.setEstadoJugador(jugador1.getEstadoJugador().cambioDeFase());
+            jugador2.setEstadoJugador(jugador2.getEstadoJugador().cambioDeFase());
+        }
+        contenedorPrincipal.update();
     }
 
     public void terminarTurno() {
