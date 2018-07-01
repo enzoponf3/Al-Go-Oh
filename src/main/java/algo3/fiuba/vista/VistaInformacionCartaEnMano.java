@@ -29,7 +29,6 @@ public class VistaInformacionCartaEnMano {
     private Menu menuCambiarPosicion;
     private MenuItem menuBocaAbajo;
     private MenuItem menuBocaArriba;
-    private MenuItem menuActivarEfecto;
     private ContextMenu menuOpciones;
     private MenuBar menuBar;
 
@@ -52,12 +51,9 @@ public class VistaInformacionCartaEnMano {
         menuBocaArriba = new MenuItem("Arriba");
         menuBocaArriba.setOnAction(new ControladorBocaArribaEnMano(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
 
-        menuActivarEfecto = new MenuItem("Activar efecto");
-        menuActivarEfecto.setOnAction(new ControladorActivarEfecto());
-
         menuCambiarPosicion.getItems().addAll(menuBocaArriba, menuBocaAbajo);
 
-        menuOpciones.getItems().addAll(menuCambiarPosicion, menuActivarEfecto);
+        menuOpciones.getItems().addAll(menuCambiarPosicion);
 
         menuBar = new MenuBar();
 
