@@ -1,7 +1,9 @@
 package algo3.fiuba.controladores;
 
+import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.jugador.*;
 import algo3.fiuba.vista.ContenedorPrincipal;
+import algo3.fiuba.vista.VistaVida;
 import javafx.scene.control.Alert;
 import javafx.stage.Popup;
 
@@ -11,6 +13,8 @@ public class ControladorTurnos {
     private Jugador jugador1, jugador2;
     private Jugador jugadorActual;
     private ContenedorPrincipal contenedorPrincipal;
+    private VistaVida vistaVidaJ1, vistaVidaJ2;
+    private String nombreJ1, nombreJ2;
 
     public static ControladorTurnos getInstancia() {
         if (INSTANCIA == null)
@@ -18,9 +22,7 @@ public class ControladorTurnos {
         return INSTANCIA;
     }
 
-    public ControladorTurnos() {
-
-    }
+    public ControladorTurnos() {}
 
     public void setJugadores(Jugador J1, Jugador J2) {
         this.jugador1 = J1;
@@ -32,20 +34,24 @@ public class ControladorTurnos {
         this.contenedorPrincipal = contenedorPrincipal;
     }
 
+    public void setVistaVida(VistaVida vidaJ1, VistaVida vidaJ2) {
+        vistaVidaJ1 = vidaJ1;
+        vistaVidaJ1 = vidaJ2;
+    }
+
     public Jugador getJugador() {
        return jugadorActual;
     }
 
-    public void duelo() {
+    public void terminarDuelo() {
 
-        if (!ganadorDuelo()) {
-            preInvocacion();
-            postInvocacion();
-        } else {
-            Alert win = new Alert(Alert.AlertType.valueOf("Has ganado!"));
+        // ponerle el nombre!
+        if (ganadorDuelo() != null) {
+            Alert win = new Alert(Alert.AlertType.INFORMATION);
+            win.setHeaderText("Ha perdido!");
+            contenedorPrincipal.setDisable(true);
             win.show();
         }
-
     }
 
     public void cambiarDeFase() {
@@ -56,24 +62,29 @@ public class ControladorTurnos {
         }
     }
 
-    public void postInvocacion(){
-
-    }
-
-    public void preInvocacion() {
-
-        //if (jugadorActual.getEstadoJugador().getClass() == PreInvocacion)
-          //  mazo.habilitarRobar
-    }
-
     public void terminarTurno() {
-        jugador1.getEstadoJugador().cambioDeTurno();
-        jugador2.getEstadoJugador().cambioDeTurno();
+        jugador1.setEstadoJugador(jugador1.getEstadoJugador().cambioDeTurno());
+        jugador2.setEstadoJugador(jugador2.getEstadoJugador().cambioDeTurno());
         jugadorActual = (jugadorActual == jugador1) ? jugador2 : jugador1;
+        actualizarTablero();
+    }
+
+    public Jugador ganadorDuelo() {
+       return Juego.getInstancia().ganadorPartida();
+    }
+
+    public void actualizarTablero() {
+        terminarDuelo();
         contenedorPrincipal.update();
     }
 
-    public boolean ganadorDuelo() {
-       return jugadorActual.getOponente().getPuntosDeVida() == 0;
+    public void setNombresJugadores(String nombre1, String nombre2) {
+        this.nombreJ1 = nombre1;
+        this.nombreJ2 = nombre2;
     }
+
+    public String getNombreJ1() { return this.nombreJ1; }
+
+    public String getNombreJ2() { return this.nombreJ2; }
+
 }

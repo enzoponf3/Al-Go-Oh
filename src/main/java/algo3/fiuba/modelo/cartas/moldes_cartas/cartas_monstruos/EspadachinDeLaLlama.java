@@ -8,7 +8,7 @@ import algo3.fiuba.modelo.jugador.Jugador;
 public class EspadachinDeLaLlama extends Monstruo {
 
     public EspadachinDeLaLlama(Jugador jugador) {
-        super("Espadachin de la Llama", 100, 100, 1, new EfectoNulo());
+        super("Espadachin de la Llama", 1800, 1600, 5, new EfectoNulo());
         setJugador(jugador);
     }
 }

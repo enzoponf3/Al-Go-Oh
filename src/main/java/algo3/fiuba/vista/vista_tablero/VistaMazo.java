@@ -1,6 +1,5 @@
-package algo3.fiuba.vista;
+package algo3.fiuba.vista.vista_tablero;
 
-import algo3.fiuba.controladores.ControladorMazo;
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.scene.control.ContentDisplay;
@@ -19,7 +18,7 @@ public class VistaMazo extends Label {
 
     // LE PODEMOS PASAR CON EL CONTROLADOR EL NUMERO DE CARTAS
     public VistaMazo(ImageView fondoMazo, Jugador jugador) {
-        this.cantidad = 40;
+        this.cantidad = jugador.cantidadCartasEnMazo();
         this.fondoMazo = fondoMazo;
         this.jugador = jugador;
         this.controladorTurnos = ControladorTurnos.getInstancia();

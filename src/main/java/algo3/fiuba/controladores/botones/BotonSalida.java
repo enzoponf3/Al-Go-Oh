@@ -1,4 +1,4 @@
-package algo3.fiuba.controladores;
+package algo3.fiuba.controladores.botones;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
