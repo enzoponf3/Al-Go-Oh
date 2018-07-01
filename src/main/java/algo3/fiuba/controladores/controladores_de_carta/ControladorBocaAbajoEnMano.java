@@ -41,13 +41,8 @@ public class ControladorBocaAbajoEnMano implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         // salta excepción de que no se pueden colocar más cartas (jugador inhabilitado), mostrar mensaje.
         try {
-            //En testing, hice los actualizar aca para dejar de lado que era el controlador que jodia etc.
             jugador.colocarCartaEnCampo(carta, new BocaAbajo());
-            vistaCarta.cambiarVision();
-            vistaZonaMonstruos.agregarMonstruo(vistaCarta); // !!!! SACAR (MODELO)
-            vistaMano.update();
-            vistaZonaMonstruos.update();
-            //controladorTurnos.actualizarTablero();
+            controladorTurnos.actualizarTablero();
         } catch (CampoNoPermiteColocarCartaExcepcion e) {
             Alert error = new Alert(Alert.AlertType.ERROR);
             error.setHeaderText("El campo está lleno!");

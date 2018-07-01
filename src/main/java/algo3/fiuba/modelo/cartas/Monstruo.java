@@ -123,4 +123,8 @@ public abstract class Monstruo extends Carta {
     public void removerModificador(Modificador modificador) {
         modificadores.remove(modificador);
     }
+
+    public ModoMonstruo getModo() {
+        return modoMonstruo;
+    }
 }

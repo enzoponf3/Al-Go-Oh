@@ -20,67 +20,45 @@ import java.util.List;
 
 public class VistaZonaMonstruos extends HBox {
 
-    private int indice;
     protected Jugador jugador;
     protected double ANCHO_MAXIMO_CARTA = 95.0;
     protected double ALTURA_MAXIMA_CARTA = 110.0;
-    private List<VistaCarta> vistasMonstruos;
 
     private CartaVistaUtils cartaVistaUtils;
 
     public VistaZonaMonstruos(Jugador jugador) {
+        cartaVistaUtils = new CartaVistaUtils();
 
         this.setSpacing(20);
         this.jugador = jugador;
         for (int i = 0; i < 5; i++) {
-            ImageView imagen2 = new ImageView(new Image("algo3/fiuba/resources/img/monstruo-atr.jpg",
+            ImageView imagen2 = new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
             this.agregarCarta(imagen2);
         }
-
-        this.vistasMonstruos = new LinkedList<>();
-        this.cartaVistaUtils = new CartaVistaUtils();
     }
+
 
     // !!!! ESTO HABRÍA QUE SACARLO PORQUE LO HACE LE
     public void agregarCarta(ImageView carta) {
-
-        try {
-            this.getChildren().add(carta);
-            this.setHgrow(carta, Priority.ALWAYS);
-        } catch (CampoNoPermiteColocarCartaExcepcion e) {
-            Alert error = new Alert(Alert.AlertType.ERROR);
-            error.setHeaderText("El campo esta lleno");
-            error.show();
-        }
+        this.getChildren().add(carta);
     }
 
     public void dibujar() {
-        indice = 0;
-        for (Monstruo monstruo : jugador.getMonstuosEnCampo()) {
-            vistasMonstruos.add(new VistaCarta(cartaVistaUtils.getImagenDeCarta(monstruo.getNombre()), jugador, monstruo));
-        }
-        for (VistaCarta vistaMonstruo : vistasMonstruos) {
-            this.reemplazarCartaVista(vistaMonstruo);
-            indice++;
-        }
-    }
+        getChildren().clear();
 
-    public void reemplazarCartaVista(VistaCarta vistaCarta) {
-        getChildren().remove(indice);
-        getChildren().add(indice, vistaCarta);
-    }
-
-    // !!!! MODELO
-    public void agregarMonstruo(VistaCarta vistaCarta) {
-        vistasMonstruos.add(vistaCarta);
+        Integer i = 0;
+        for(Monstruo monstruo: jugador.getMonstuosEnCampo()) {
+            getChildren().add(new VistaCarta(cartaVistaUtils.getImagenDeCarta(monstruo.getNombre()), jugador, monstruo));
+            i++;
+        }
+        for (; i < 5; i++) {
+            agregarCarta(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
+                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
+        }
     }
 
     public void update() {
         this.dibujar();
-    }
-
-    public List<VistaCarta> getVistasMonstruos() {
-        return vistasMonstruos;
     }
 }

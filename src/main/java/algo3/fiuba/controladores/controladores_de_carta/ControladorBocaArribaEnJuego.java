@@ -37,7 +37,6 @@ public class ControladorBocaArribaEnJuego implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         carta.girarCarta();
-        vistaCarta.cambiarVision();
         //Actualizar vistas, falta lo logica si es comehombres etc..
     }
 }
