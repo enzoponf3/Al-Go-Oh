@@ -31,6 +31,7 @@ public class VistaInformacionCartaEnJuego {
     private MenuItem menuModo;
     private ContextMenu menuOpciones;
     private MenuBar menuBar;
+    private MenuItem menuAtacar;
 
     public VistaInformacionCartaEnJuego(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo){
         this.vistaCarta = vistaCarta;
@@ -57,6 +58,11 @@ public class VistaInformacionCartaEnJuego {
             menuModo.setOnAction(new ControladorCambiarModo(vistaCarta,carta,vistaZonaMonstruos));
 
             menuOpciones.getItems().add(menuModo);
+
+            menuAtacar = new MenuItem("Atacar");
+            menuAtacar.setOnAction(new ControladorAtacar(vistaCarta, carta, vistaZonaMonstruos, jugador));
+
+            menuOpciones.getItems().add(menuAtacar);
         }
 
         if (carta instanceof Magica) {

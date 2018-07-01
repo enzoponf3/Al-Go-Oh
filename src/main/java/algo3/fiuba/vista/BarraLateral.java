@@ -29,7 +29,6 @@ public class BarraLateral extends StackPane {
         // BOTONERA
         Boton botonAyuda = new Boton("Ayuda", new BotonAyuda());
         Boton botonSalir = new Boton("Salir", new BotonSalida());
-        Boton botonFase = new Boton("Cambiar de fase", new BotonCambiarDeFase()); // !!! SACAR ESTE BOTÓN LO HACE AUTOMÁTICAMENTE EL MODELO
         Boton botonFinTurno = new Boton("Terminar turno", new BotonTerminarTurno());
         Boton mute = new Boton("Play/Stop music", ControladorMusica.getInstancia());
 
@@ -50,7 +49,7 @@ public class BarraLateral extends StackPane {
         boxBtnsAyudaSalir.setAlignment(Pos.CENTER);
         boxBtnsAyudaSalir.setSpacing(20);
 
-        VBox boxBtnsFaseTurno = new VBox(boxBtnsAyudaSalir, botonFase, botonFinTurno);
+        VBox boxBtnsFaseTurno = new VBox(boxBtnsAyudaSalir, botonFinTurno);
         boxBtnsFaseTurno.setAlignment(Pos.CENTER);
         boxBtnsFaseTurno.setSpacing(10);
 
