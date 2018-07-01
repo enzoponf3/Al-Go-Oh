@@ -25,9 +25,7 @@ public class VistaInformacionCartaEnJuego {
     private VistaZonaMonstruos vistaZonaMonstruos;
     private VistaZonaNoMonstruos vistaZonaNoMonstruos;
     private VistaCartaCampo vistaCartaCampo;
-    private Menu menuCambiarPosicion;
-    private MenuItem menuBocaAbajo;
-    private MenuItem menuBocaArriba;
+    private MenuItem menuCambiarPosicion;
     private MenuItem menuActivarEfecto;
     private MenuItem menuModo;
     private ContextMenu menuOpciones;
@@ -47,11 +45,8 @@ public class VistaInformacionCartaEnJuego {
         menuOpciones = new ContextMenu();
 
         if (carta.getEstadoCarta() instanceof BocaAbajo) {
-            menuCambiarPosicion = new Menu("Cambiar posicion");
-            menuBocaArriba = new MenuItem("Arriba");
-            menuBocaArriba.setOnAction(new ControladorBocaArribaEnJuego(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
-
-            menuCambiarPosicion.getItems().add(menuBocaArriba);
+            menuCambiarPosicion = new MenuItem("Girar carta");
+            menuCambiarPosicion.setOnAction(new ControladorBocaArribaEnJuego(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
 
             menuOpciones.getItems().add(menuCambiarPosicion);
         }

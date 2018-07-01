@@ -20,6 +20,7 @@ public class ControladorBocaArribaEnJuego implements EventHandler<ActionEvent> {
     private VistaZonaMonstruos vistaZonaMonstruos;
     private VistaZonaNoMonstruos vistaZonaNoMonstruos;
     private VistaCartaCampo vistaCartaCampo;
+
     private ControladorDeTurnos controladorTurnos;
 
     public ControladorBocaArribaEnJuego(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
@@ -30,12 +31,13 @@ public class ControladorBocaArribaEnJuego implements EventHandler<ActionEvent> {
         this.vistaZonaMonstruos = vistaZonaMonstruos;
         this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
         this.vistaCartaCampo = vistaCartaCampo;
+
         controladorTurnos = ControladorDeTurnos.getInstancia();
     }
 
     @Override
     public void handle(ActionEvent event) {
         carta.girarCarta();
-        // !!!! Actualizar vistas, falta lo logica si es comehombres etc..
+        controladorTurnos.actualizarTablero();
     }
 }
