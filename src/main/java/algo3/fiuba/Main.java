@@ -3,6 +3,7 @@ package algo3.fiuba;
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.utils.MazoUtils;
 import algo3.fiuba.vista.ContenedorEntrada;
 import algo3.fiuba.vista.ContenedorPrincipal;
 import javafx.application.Application;
@@ -15,6 +16,12 @@ import java.io.File;
 import java.net.URI;
 
 public class Main extends Application {
+
+    private MazoUtils mazoUtils;
+
+    public Main() {
+        this.mazoUtils = new MazoUtils();
+    }
 
     @Override
     public void start(Stage stagePrincipal) throws Exception{
@@ -45,7 +52,7 @@ public class Main extends Application {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         juego.inicializar(jugador1,jugador2);
-        juego.inicializarMazos();
+        juego.inicializarMazos(mazoUtils.getMuestra8Cartas1(jugador1), mazoUtils.getMuestra8Cartas2(jugador2));
         juego.inicializarManos();
         ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
         controladorTurnos.setJugadores(jugador1, jugador2);

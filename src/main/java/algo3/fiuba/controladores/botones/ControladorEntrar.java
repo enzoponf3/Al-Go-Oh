@@ -12,7 +12,7 @@ public class ControladorEntrar implements EventHandler<ActionEvent> {
 
     private Stage stage;
     private Scene pantallaJuego;
-    private String n1, n2;
+    private String n1, n2; // !!!! qué es??? sacar, n se usa
 
 
     public ControladorEntrar(Stage stage, Scene proximaPantalla, String n1, String n2) {

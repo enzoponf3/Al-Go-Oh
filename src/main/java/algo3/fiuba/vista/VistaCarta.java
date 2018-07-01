@@ -29,8 +29,8 @@ public class VistaCarta extends StackPane {
     private ImageView imagenCarta;
     private ImageView imagenCartaBocaAbajo;
     private String imageUrl;
-    protected double ANCHO_MAXIMO_CARTA = 95.0;
-    protected double ALTURA_MAXIMA_CARTA = 110.0;
+    private double ANCHO_MAXIMO_CARTA = 95.0;
+    private double ALTURA_MAXIMA_CARTA = 110.0;
     private boolean esVisible;
     private boolean estaEnModoAtaque;
 

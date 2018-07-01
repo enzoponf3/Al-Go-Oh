@@ -25,7 +25,7 @@ public class ControladorCambiarModo implements EventHandler<ActionEvent> {
         ((Monstruo)carta).cambiarModo();
         vistaCarta.girar();
         //Esto lo tendria que hacer el controlador
-        //vistaCarta.update();
+        vistaCarta.update();
         //vistaZonaMonstruos.update();
     }
 }
