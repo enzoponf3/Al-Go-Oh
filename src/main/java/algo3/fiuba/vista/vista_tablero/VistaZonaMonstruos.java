@@ -32,16 +32,10 @@ public class VistaZonaMonstruos extends HBox {
         this.setSpacing(20);
         this.jugador = jugador;
         for (int i = 0; i < 5; i++) {
-            ImageView imagen2 = new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
+            ImageView imagenEspacioVacio = new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-            this.agregarCarta(imagen2);
+            getChildren().add(imagenEspacioVacio);
         }
-    }
-
-
-    // !!!! ESTO HABRÍA QUE SACARLO PORQUE LO HACE LE
-    public void agregarCarta(ImageView carta) {
-        this.getChildren().add(carta);
     }
 
     public void dibujar() {
@@ -53,11 +47,10 @@ public class VistaZonaMonstruos extends HBox {
             i++;
         }
         for (; i < 5; i++) {
-            agregarCarta(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
+            getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
         }
     }
-
     public void update() {
         this.dibujar();
     }

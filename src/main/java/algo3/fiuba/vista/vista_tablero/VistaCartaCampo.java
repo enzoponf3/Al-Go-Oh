@@ -32,7 +32,7 @@ public class VistaCartaCampo extends Label {
 
     public void dibujar() {
         CartaCampo cartaCampoActiva = jugador.getCartaCampoActiva();
-        if (cartaCampoActiva != null && !(cartaCampoActiva instanceof CartaCampoNula)) {
+        if(!(cartaCampoActiva instanceof CartaCampoNula)) {
             String nombre = jugador.getCartaCampoActiva().getNombre();
             VistaCarta vistaCarta = new VistaCarta(cartaVistaUtils.getImagenDeCarta(nombre), jugador, carta);
             this.setGraphic(vistaCarta);

@@ -26,9 +26,9 @@ public class VistaZonaNoMonstruos extends HBox {
         this.setSpacing(20);
         this.jugador = jugador;
         for (int i = 0; i < 5; i++) {
-            ImageView imagen2 = new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
+            ImageView imagenEspacioVacio = new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-            this.agregarCarta(imagen2);
+            getChildren().add(imagenEspacioVacio);
         }
     }
 
@@ -40,14 +40,9 @@ public class VistaZonaNoMonstruos extends HBox {
             getChildren().add(new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo));
         }
         for (; i < 5; i++) {
-            agregarCarta(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
+            getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
         }
-    }
-
-    public void agregarCarta(ImageView carta) {
-        this.getChildren().add(carta);
-        this.setHgrow(carta, Priority.ALWAYS);
     }
 
     public void update() {
