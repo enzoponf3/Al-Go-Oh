@@ -51,6 +51,7 @@ public class VistaZonaMonstruos extends HBox {
     public void dibujar() {
         indice = 0;
         for(Monstruo monstruo: jugador.getMonstuosEnCampo()) {
+            vistasMonstruos.clear();
             vistasMonstruos.add(new VistaCarta("/algo3/fiuba/resources/img/" + monstruo.getNombre() + ".jpg", jugador, monstruo));
         }
         for(VistaCarta vistaMonstruo: vistasMonstruos) {

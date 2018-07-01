@@ -35,6 +35,7 @@ public class VistaZonaNoMonstruos extends HBox {
     public void dibujar() {
         indice = 0;
         for(NoMonstruo noMonstruo: jugador.getNoMonstuosEnCampo()) {
+            vistasNoMonstruos.clear();
             vistasNoMonstruos.add(new VistaCarta("/algo3/fiuba/resources/img/" + noMonstruo.getNombre() + ".jpg", jugador, noMonstruo));
         }
         for(VistaCarta vistaMonstruo: vistasNoMonstruos) {
