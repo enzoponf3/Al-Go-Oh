@@ -28,10 +28,12 @@ public class VistaCartaCampo extends Label {
 
     public void dibujar() {
         CartaCampo cartaCampoActiva = jugador.getCartaCampoActiva();
-        if (cartaCampoActiva != null && !(cartaCampoActiva instanceof CartaCampoNula)) {
+        if(!(cartaCampoActiva instanceof CartaCampoNula)) {
             String nombre = jugador.getCartaCampoActiva().getNombre();
-            VistaCarta vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/" + nombre + ".jpg", jugador, carta);
-            this.setGraphic(vistaCarta);
+            String imageUrl = "/algo3/fiuba/resources/img/" + nombre + ".jpg";
+            ImageView imagenCarta = new ImageView(new Image(imageUrl,
+                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+            this.setGraphic(imagenCarta);
         } else {
             this.setGraphic(cartaCampoFondo);
         }

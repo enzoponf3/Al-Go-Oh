@@ -18,26 +18,24 @@ import java.util.LinkedList;
 
 public class VistaZonaMonstruos extends HBox {
 
-    private int indice;
+    private final Image imagenFondo;
     protected Jugador jugador;
     protected double ANCHO_MAXIMO_CARTA = 95.0;
     protected double ALTURA_MAXIMA_CARTA = 110.0;
-    private LinkedList<VistaCarta> vistasMonstruos;
 
     public VistaZonaMonstruos(Jugador jugador) {
 
         this.setSpacing(20);
         this.jugador = jugador;
+        this.imagenFondo = new Image("algo3/fiuba/resources/img/monstruo-atr.jpg",
+                ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false);
         for (int i = 0; i < 5; i++) {
-            ImageView imagen2 = new ImageView(new Image("algo3/fiuba/resources/img/monstruo-atr.jpg",
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-            this.agregarCarta(imagen2);
+            ImageView imagen = new ImageView(this.imagenFondo);
+            this.agregarCarta(imagen);
         }
-        vistasMonstruos = new LinkedList<>();
     }
 
     public void agregarCarta(ImageView carta) {
-
         try {
             this.getChildren().add(carta);
             this.setHgrow(carta, Priority.ALWAYS);
@@ -49,31 +47,25 @@ public class VistaZonaMonstruos extends HBox {
     }
 
     public void dibujar() {
-        indice = 0;
+        int i = 0;
         for(Monstruo monstruo: jugador.getMonstuosEnCampo()) {
-            vistasMonstruos.clear();
-            vistasMonstruos.add(new VistaCarta("/algo3/fiuba/resources/img/" + monstruo.getNombre() + ".jpg", jugador, monstruo));
+            VistaCarta vistaMonstruo = new VistaCarta("/algo3/fiuba/resources/img/" + monstruo.getNombre() + ".jpg", jugador, monstruo);
+            this.reemplazarCartaVista(vistaMonstruo, i);
+            i++;
         }
-        for(VistaCarta vistaMonstruo: vistasMonstruos) {
-            this.reemplazarCartaVista(vistaMonstruo);
-            indice++;
+        for(i = jugador.getMonstuosEnCampo().size(); i < 5; i++) {
+            getChildren().remove(i);
+            ImageView imagen = new ImageView(imagenFondo);
+            getChildren().add(i, imagen);
         }
     }
 
-    public void reemplazarCartaVista(VistaCarta vistaCarta) {
+    public void reemplazarCartaVista(VistaCarta vistaCarta, int indice) {
         getChildren().remove(indice);
         getChildren().add(indice, vistaCarta);
     }
 
-    public void agregarMonstruo(VistaCarta vistaCarta) {
-        vistasMonstruos.add(vistaCarta);
-    }
-
     public void update() {
         this.dibujar();
-    }
-
-    public LinkedList<VistaCarta> getVistasMonstruos() {
-        return vistasMonstruos;
     }
 }

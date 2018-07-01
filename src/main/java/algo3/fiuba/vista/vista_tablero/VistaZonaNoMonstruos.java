@@ -14,33 +14,34 @@ import java.util.List;
 
 public class VistaZonaNoMonstruos extends HBox {
 
-    private int indice;
+    private final Image imagenFondo;
     protected Jugador jugador;
     protected double ANCHO_MAXIMO_CARTA = 95.0;
     protected double ALTURA_MAXIMA_CARTA = 110.0;
-    private LinkedList<VistaCarta> vistasNoMonstruos;
 
     public VistaZonaNoMonstruos(Jugador jugador) {
 
         this.setSpacing(20);
         this.jugador = jugador;
+        this.imagenFondo = new Image("algo3/fiuba/resources/img/magica-atr.jpg",
+                ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false);
         for (int i = 0; i < 5; i++) {
-            ImageView imagen2 = new ImageView(new Image("algo3/fiuba/resources/img/magica-atr.jpg",
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-            this.agregarCarta(imagen2);
+            ImageView imagen = new ImageView(imagenFondo);
+            this.agregarCarta(imagen);
         }
-        vistasNoMonstruos = new LinkedList<>();
     }
 
     public void dibujar() {
-        indice = 0;
+        int i = 0;
         for(NoMonstruo noMonstruo: jugador.getNoMonstuosEnCampo()) {
-            vistasNoMonstruos.clear();
-            vistasNoMonstruos.add(new VistaCarta("/algo3/fiuba/resources/img/" + noMonstruo.getNombre() + ".jpg", jugador, noMonstruo));
+            VistaCarta vistaNoMonstruo = new VistaCarta("/algo3/fiuba/resources/img/" + noMonstruo.getNombre() + ".jpg", jugador, noMonstruo);
+            this.reemplazarCartaVista(vistaNoMonstruo, i);
+            i++;
         }
-        for(VistaCarta vistaMonstruo: vistasNoMonstruos) {
-            this.reemplazarCartaVista(vistaMonstruo);
-            indice++;
+        for(i = jugador.getNoMonstuosEnCampo().size(); i < 5; i++) {
+            getChildren().remove(i);
+            ImageView imagen = new ImageView(imagenFondo);
+            getChildren().add(i, imagen);
         }
     }
 
@@ -49,7 +50,7 @@ public class VistaZonaNoMonstruos extends HBox {
         this.setHgrow(carta, Priority.ALWAYS);
     }
 
-    public void reemplazarCartaVista(VistaCarta vistaCarta) {
+    public void reemplazarCartaVista(VistaCarta vistaCarta, int indice) {
         getChildren().remove(indice);
         getChildren().add(indice, vistaCarta);
     }
