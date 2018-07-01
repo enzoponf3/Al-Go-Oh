@@ -32,9 +32,11 @@ public class VistaZonaMonstruos extends HBox {
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
             this.agregarCarta(imagen2);
         }
-        vistasMonstruos = new LinkedList<VistaCarta>();
+
+        vistasMonstruos = new LinkedList<>();
     }
 
+    // !!!! ESTO HABRÍA QUE SACARLO PORQUE LO HACE LE
     public void agregarCarta(ImageView carta) {
 
         try {

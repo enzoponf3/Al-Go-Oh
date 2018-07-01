@@ -43,7 +43,7 @@ public class ControladorBocaAbajoEnMano implements EventHandler<ActionEvent> {
             //En testing, hice los actualizar aca para dejar de lado que era el controlador que jodia etc.
             jugador.colocarCartaEnCampo(carta, new BocaAbajo());
             vistaCarta.cambiarVision();
-            vistaZonaMonstruos.agregarMonstruo(vistaCarta);
+            vistaZonaMonstruos.agregarMonstruo(vistaCarta); // !!!! SACAR (MODELO)
             vistaMano.update();
             vistaZonaMonstruos.update();
             //controladorTurnos.actualizarTablero();
