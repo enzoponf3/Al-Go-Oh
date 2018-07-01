@@ -1,5 +1,6 @@
 package algo3.fiuba.vista;
 
+import algo3.fiuba.controladores.ControladorMusica;
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.vista.vista_tablero.Tablero;
@@ -58,11 +59,7 @@ public class ContenedorPrincipal extends BorderPane {
 
     private void setMusica() {
 
-        File file = new File("/home/locadesquiciada/Documentos/ALGORITMOS III/TP2/Al-Go-Oh/src/main/java/algo3/fiuba/resources/media/musicopening.mp3");
-        URI uri = file.toURI();
-        String retVal = uri.toString();
-
-        Media musica = new Media(retVal);
+        Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/musicopening.mp3").toExternalForm());
         MediaPlayer rprMusica = new MediaPlayer(musica);
         rprMusica.setOnEndOfMedia(new Runnable() {
             public void run() {
@@ -70,7 +67,9 @@ public class ContenedorPrincipal extends BorderPane {
             }
         });
         rprMusica.play();
-        rprMusica.setVolume(10);
+        rprMusica.setVolume(2);
         rprMusica.setAutoPlay(true);
+        ControladorMusica cm = ControladorMusica.getInstancia();
+        cm.setearControlMusica(rprMusica);
     }
 }

@@ -37,11 +37,11 @@ public class VistaMano extends ScrollPane {
         this.setMaxWidth(555);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloVistaMano.css");
+        this.getStyleClass().add("hola");
 
-
-        GridPane vistaMano = new GridPane();;
-
-
+        GridPane vistaMano = new GridPane();
+        vistaMano.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloVistaMano.css");
+        vistaMano.getStyleClass().add("mano");
         List<Carta> mano = jugador.getMano();
         int i = 0;
         for(Carta carta: mano) {

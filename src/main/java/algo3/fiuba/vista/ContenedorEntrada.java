@@ -60,13 +60,9 @@ public class ContenedorEntrada extends VBox {
             }
         });
 
-
         stage.setTitle("Inicio");
         stage.centerOnScreen();
         stage.setResizable(false);
     }
-
-
-
 
 }
