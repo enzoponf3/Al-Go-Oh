@@ -96,4 +96,8 @@ public abstract class Tablero extends GridPane {
         this.zonaCartaDeCampo.dibujar();
         this.add(zonaCartaDeCampo, colIndex, rowIndex);
     }
+
+    public VistaZonaMonstruos getZonaMonstruos() {
+        return zonaMonstruos;
+    }
 }

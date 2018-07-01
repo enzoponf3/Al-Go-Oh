@@ -29,7 +29,7 @@ public class VistaVida extends Label {
     }
 
     public void update() {
-
+        /*
         //sacar?? mmm
         File file = new File("/home/locadesquiciada/Documentos/ALGORITMOS III/TP2/Al-Go-Oh/src/main/java/algo3/fiuba/resources/media/LP_effect.mp3");
         URI uri = file.toURI();
@@ -39,6 +39,7 @@ public class VistaVida extends Label {
         MediaPlayer j = new MediaPlayer(n);
         j.setVolume(200);
         j.play();
+        */
         this.setText("LP: " + jugador.getPuntosDeVida());
     }
 }

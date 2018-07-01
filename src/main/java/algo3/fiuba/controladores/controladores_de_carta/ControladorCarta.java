@@ -1,8 +1,7 @@
 package algo3.fiuba.controladores.controladores_de_carta;
 
 import algo3.fiuba.modelo.cartas.*;
-import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
-import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnMano;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.*;
@@ -10,7 +9,6 @@ import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
 import algo3.fiuba.vista.vista_tablero.VistaMano;
 import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
 import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
@@ -21,7 +19,8 @@ public class ControladorCarta implements EventHandler<MouseEvent> {
     private VistaZonaNoMonstruos vistaZonaNoMonstruos;
     private VistaMano vistaMano;
     private VistaCarta vistaCarta;
-    private VistaInformacionCarta vistaInformacionCarta;
+    private VistaInformacionCartaEnMano vistaInformacionCartaEnMano;
+    private VistaInformacionCartaEnJuego vistaInformacionCartaEnJuego;
     private Jugador jugador;
     private Carta carta;
 
@@ -33,18 +32,22 @@ public class ControladorCarta implements EventHandler<MouseEvent> {
         this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
         this.vistaZonaMonstruos = vistaZonaMonstruos;
         this.vistaCartaCampo = vistaCartaCampo;
-        this.vistaInformacionCarta = new VistaInformacionCarta(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo);
+        this.vistaInformacionCartaEnMano = new VistaInformacionCartaEnMano(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo);
+        this.vistaInformacionCartaEnJuego = new VistaInformacionCartaEnJuego(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo);
     }
 
     @Override
     public void handle(MouseEvent evento) {
         if (carta.getEstadoCarta() instanceof EnMano) {
-            vistaInformacionCarta.update();
+            vistaInformacionCartaEnMano.update(evento);
+        } else if (carta.getEstadoCarta() instanceof EnJuego) {
+            vistaInformacionCartaEnJuego.update(evento);
         }
-        vistaCarta.update();
-        vistaMano.update();
-        vistaZonaMonstruos.update();
-        vistaZonaNoMonstruos.update();
+
+        //vistaCarta.update();
+        //vistaMano.update();
+        //vistaZonaMonstruos.update();
+        //vistaZonaNoMonstruos.update();
     }
 
 }

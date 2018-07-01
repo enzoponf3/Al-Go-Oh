@@ -1,9 +1,8 @@
 package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.controladores_de_carta.ControladorActivarEfecto;
-import algo3.fiuba.controladores.controladores_de_carta.ControladorBocaArriba;
-import algo3.fiuba.controladores.controladores_de_carta.ControladorBocaAbajo;
-import algo3.fiuba.controladores.controladores_de_carta.ControladorInformacionCarta;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorBocaArribaEnMano;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorBocaAbajoEnMano;
 
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.jugador.Jugador;
@@ -11,17 +10,14 @@ import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
 import algo3.fiuba.vista.vista_tablero.VistaMano;
 import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
 import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
-import javafx.event.Event;
-import javafx.geometry.Bounds;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 
-public class VistaInformacionCarta {
+public class VistaInformacionCartaEnMano {
 
     private VistaCarta vistaCarta;
     private Jugador jugador;
@@ -37,7 +33,7 @@ public class VistaInformacionCarta {
     private ContextMenu menuOpciones;
     private MenuBar menuBar;
 
-    public VistaInformacionCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo){
+    public VistaInformacionCartaEnMano(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo){
         this.vistaCarta = vistaCarta;
         this.jugador = jugador;
         this.carta = carta;
@@ -51,10 +47,10 @@ public class VistaInformacionCarta {
         menuCambiarPosicion = new Menu("Colocar boca");
 
         menuBocaAbajo = new MenuItem("Abajo");
-        menuBocaAbajo.setOnAction(new ControladorBocaAbajo(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
+        menuBocaAbajo.setOnAction(new ControladorBocaAbajoEnMano(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
 
         menuBocaArriba = new MenuItem("Arriba");
-        menuBocaArriba.setOnAction(new ControladorBocaArriba(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
+        menuBocaArriba.setOnAction(new ControladorBocaArribaEnMano(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
 
         menuActivarEfecto = new MenuItem("Activar efecto");
         menuActivarEfecto.setOnAction(new ControladorActivarEfecto());
@@ -67,17 +63,13 @@ public class VistaInformacionCarta {
 
         menuBar.setContextMenu(menuOpciones);
 
-        menuBar.setOnMouseClicked(new ControladorInformacionCarta(vistaCarta, menuOpciones));
-
     }
-    public void dibujar() {
-        Bounds posCarta = vistaCarta.localToScreen(vistaCarta.getBoundsInLocal());
-        Event.fireEvent(menuBar, new MouseEvent(MouseEvent.MOUSE_CLICKED, posCarta.getMinX(),posCarta.getMinY() ,0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
-             true, true, true, true, true, true, null));
+    public void dibujar(MouseEvent evento) {
+        menuOpciones.show(vistaCarta,evento.getScreenX(),evento.getScreenY());
     }
 
-    public void update() {
-        this.dibujar();
+    public void update(MouseEvent evento) {
+        this.dibujar(evento);
     }
 
 }

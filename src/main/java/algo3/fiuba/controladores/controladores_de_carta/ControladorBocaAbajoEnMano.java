@@ -14,7 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 
-public class ControladorBocaAbajo implements EventHandler<ActionEvent> {
+public class ControladorBocaAbajoEnMano implements EventHandler<ActionEvent> {
 
     private VistaCarta vistaCarta;
     private Jugador jugador;
@@ -25,7 +25,7 @@ public class ControladorBocaAbajo implements EventHandler<ActionEvent> {
     private VistaCartaCampo vistaCartaCampo;
     private ControladorTurnos controladorTurnos;
 
-    public ControladorBocaAbajo(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
+    public ControladorBocaAbajoEnMano(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
         this.vistaCarta = vistaCarta;
         this.jugador = jugador;
         this.carta = carta;
@@ -40,10 +40,13 @@ public class ControladorBocaAbajo implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         try {
+            //En testing, hice los actualizar aca para dejar de lado que era el controlador que jodia etc.
             jugador.colocarCartaEnCampo(carta, new BocaAbajo());
             vistaCarta.cambiarVision();
             vistaZonaMonstruos.agregarMonstruo(vistaCarta);
-            controladorTurnos.actualizarTablero();
+            vistaMano.update();
+            vistaZonaMonstruos.update();
+            //controladorTurnos.actualizarTablero();
         } catch (CampoNoPermiteColocarCartaExcepcion e) {
             Alert error = new Alert(Alert.AlertType.ERROR);
             error.setHeaderText("El campo está lleno!");

@@ -33,7 +33,7 @@ public class VistaMano extends ScrollPane {
     }
 
     public void dibujar() {
-
+        vistaCartas.clear();
         this.setMaxWidth(555);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloVistaMano.css");
@@ -49,9 +49,10 @@ public class VistaMano extends ScrollPane {
             VistaCarta vistaCarta;
             if(jugadorActual == jugador) {
                 vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/" + carta.getNombre() + ".jpg", jugador, carta, this, vistaZonaMonstruos, vistaZonaNoMonstruos,vistaCartaCampo );
+
             }
             else {
-                vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/carta-vista-trasera.png", jugador, carta, this, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo,false);
+                vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/carta-vista-trasera.png", jugador, carta, this, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo,false,true );
                 vistaCarta.deshabilitarCarta();
             }
             vistaCarta.setOnMouseClicked(new ControladorCarta(vistaCarta, jugador, carta, this, vistaZonaNoMonstruos, vistaZonaMonstruos, vistaCartaCampo));

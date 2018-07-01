@@ -1,6 +1,5 @@
 package algo3.fiuba.controladores.controladores_de_carta;
 
-import algo3.fiuba.vista.VistaInformacionCarta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

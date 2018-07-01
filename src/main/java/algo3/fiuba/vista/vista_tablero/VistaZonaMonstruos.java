@@ -6,8 +6,12 @@ import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 
 import java.util.LinkedList;
 
@@ -52,17 +56,19 @@ public class VistaZonaMonstruos extends HBox {
     }
 
     public void reemplazarCartaVista(VistaCarta vistaCarta) {
-        this.getChildren().remove(indice);
+        getChildren().remove(0);
         getChildren().add(indice, vistaCarta);
     }
 
     public void agregarMonstruo(VistaCarta vistaCarta) {
-
         vistasMonstruos.add(vistaCarta);
-        //no se puede tener un mismo nodo en distintos lugares, sino colapsa y no se ve en ningun lado
     }
 
     public void update() {
         this.dibujar();
+    }
+
+    public LinkedList<VistaCarta> getVistasMonstruos() {
+        return vistasMonstruos;
     }
 }
