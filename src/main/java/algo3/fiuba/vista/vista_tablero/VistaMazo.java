@@ -2,6 +2,7 @@ package algo3.fiuba.vista.vista_tablero;
 
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.modelo.jugador.PreInvocacion;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -30,7 +31,7 @@ public class VistaMazo extends Label {
         this.setGraphic(fondoMazo);
         this.setContentDisplay(ContentDisplay.CENTER);
         Jugador jugadorActual = controladorTurnos.getJugador();
-        if(jugadorActual == jugador) {
+        if(jugadorActual == jugador && jugadorActual.getEstadoJugador() instanceof PreInvocacion) {
             this.habilitarMazo();
         }
         else {

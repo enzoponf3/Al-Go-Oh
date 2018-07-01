@@ -47,7 +47,7 @@ public class VistaMano extends ScrollPane {
             Jugador jugadorActual = controladorTurnos.getJugador();
             VistaCarta vistaCarta;
             if(jugadorActual == jugador && jugador.getEstadoJugador() instanceof PreInvocacion) {
-                vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/" + carta.getNombre() + ".jpg", jugador, carta);
+                vistaCarta = new VistaCarta(cartaVistaUtils.getImagenDeCarta(carta.getNombre()), jugador, carta);
 
             }
             else {
