@@ -3,6 +3,7 @@ package algo3.fiuba.vista;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 public class VistaProyeccionCarta extends StackPane {
@@ -16,7 +17,7 @@ public class VistaProyeccionCarta extends StackPane {
         return INSTANCIA;
     }
 
-    public VistaProyeccionCarta() {
+    private VistaProyeccionCarta() {
 
         imagenProyectada = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg", 200, 300, false, false));
         this.getChildren().add(imagenProyectada);
@@ -30,5 +31,6 @@ public class VistaProyeccionCarta extends StackPane {
 
     public void update() {
          this.getChildren().add(imagenProyectada);
+
     }
 }
