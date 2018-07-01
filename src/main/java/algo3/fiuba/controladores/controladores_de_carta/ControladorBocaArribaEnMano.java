@@ -2,7 +2,9 @@ package algo3.fiuba.controladores.controladores_de_carta;
 
 import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
+import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.*;
 import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
@@ -11,6 +13,7 @@ import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
 import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 
 public class ControladorBocaArribaEnMano implements EventHandler<ActionEvent> {
 
@@ -37,7 +40,13 @@ public class ControladorBocaArribaEnMano implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         // !!!! agregar cartel que diga lo de los sacrificios.
-        jugador.colocarCartaEnCampo(carta, new BocaArriba());
-        controladorTurnos.actualizarTablero();
+        try {
+            jugador.colocarCartaEnCampo(carta, new BocaArriba());
+            controladorTurnos.actualizarTablero();
+        } catch (CampoNoPermiteColocarCartaExcepcion e) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setHeaderText("El campo está lleno!");
+            error.show();
+        }
     }
 }
