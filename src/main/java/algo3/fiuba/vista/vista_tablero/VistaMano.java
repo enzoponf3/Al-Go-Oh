@@ -5,7 +5,11 @@ import algo3.fiuba.controladores.ControladorMano;
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.jugador.Jugador;
+<<<<<<< HEAD
 import algo3.fiuba.modelo.jugador.PreInvocacion;
+=======
+import algo3.fiuba.utils.CartaVistaUtils;
+>>>>>>> 3b967f9a9054cc71aa756595aa1eb0be72399a3e
 import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
@@ -19,12 +23,15 @@ public class VistaMano extends ScrollPane {
     ControladorMano controladorMano;
     List<VistaCarta> vistaCartas;
 
+    private CartaVistaUtils cartaVistaUtils;
+
     public VistaMano(Jugador jugador) {
         this.controladorMano = new ControladorMano(this, jugador);
         this.jugador = jugador;
         this.vistaCartas = new LinkedList<>();
         this.controladorTurnos = ControladorTurnos.getInstancia();
 
+        this.cartaVistaUtils = new CartaVistaUtils();
     }
 
     public void dibujar() {
@@ -47,7 +54,7 @@ public class VistaMano extends ScrollPane {
 
             }
             else {
-                vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/carta-vista-trasera.png", jugador, carta);
+                vistaCarta = new VistaCarta(cartaVistaUtils.getImagenCartaBocaAbajo(), jugador, carta);
                 vistaCarta.deshabilitarCarta();
             }
             vistaCarta.setOnMouseClicked(new ControladorCarta(vistaCarta, jugador, carta));

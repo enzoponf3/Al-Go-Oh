@@ -3,6 +3,7 @@ package algo3.fiuba.vista;
 import algo3.fiuba.controladores.*;
 import algo3.fiuba.controladores.botones.*;
 import algo3.fiuba.modelo.Juego;
+import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -22,10 +23,13 @@ public class BarraLateral extends StackPane {
 
         ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
 
+        Jugador jugador1 = juego.getJugador1();
+        Jugador jugador2 = juego.getJugador2();
+
         // BOTONERA
         Boton botonAyuda = new Boton("Ayuda", new BotonAyuda());
         Boton botonSalir = new Boton("Salir", new BotonSalida());
-        Boton botonFase = new Boton("Cambiar de fase", new BotonCambiarDeFase());
+        Boton botonFase = new Boton("Cambiar de fase", new BotonCambiarDeFase()); // !!! SACAR ESTE BOTÓN LO HACE AUTOMÁTICAMENTE EL MODELO
         Boton botonFinTurno = new Boton("Terminar turno", new BotonTerminarTurno());
         Boton mute = new Boton("Play/Stop music", ControladorMusica.getInstancia());
 
@@ -35,8 +39,8 @@ public class BarraLateral extends StackPane {
         controladorTurnos.setVistaVida(vistaVidaJugador1, vistaVidaJugador2);
 
         // Nombres jugadores
-        Label nombreJ1 = new Label(controladorTurnos.getNombreJ1());
-        Label nombreJ2 = new Label(controladorTurnos.getNombreJ2());
+        Label nombreJ1 = new Label(controladorTurnos.getNombreJugador1());
+        Label nombreJ2 = new Label(controladorTurnos.getNombreJugador2());
 
         // Visor carta
         vistaProyeccionCarta = VistaProyeccionCarta.getInstancia();

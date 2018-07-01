@@ -1,9 +1,12 @@
 package algo3.fiuba.modelo;
 
+import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.modelo.jugador.TurnoDelOponente;
 import algo3.fiuba.utils.MazoUtils;
+
+import java.util.Stack;
 
 public class Juego {
 
@@ -43,14 +46,13 @@ public class Juego {
     }
 
     public Jugador ganadorPartida() {
-        if (terminoPartida()) return jugador1.estaEnJuego() ? jugador1 : jugador2;
+        if (this.terminoPartida()) return jugador1.estaEnJuego() ? jugador1 : jugador2;
         return null;
     }
     
-    public void inicializarMazos() {
-        MazoUtils mazoUtils = new MazoUtils();
-        jugador1.setMazo(mazoUtils.getMuestra8Cartas1(jugador1));
-        jugador2.setMazo(mazoUtils.getMuestra8Cartas2(jugador2));
+    public void inicializarMazos(Stack<Carta> mazoJugador1, Stack<Carta> mazoJugador2) {
+        jugador1.setMazo(mazoJugador1);
+        jugador2.setMazo(mazoJugador2);
     }
 
     public Jugador getJugador1() {

@@ -37,13 +37,6 @@ public class RefuerzosTest {
     }
 
     @Test
-    public void sePuedeColocarBocaArriba() { // !!!
-        refuerzos = new Refuerzos(jugador1);
-
-        jugador1.colocarCartaEnCampo((Carta) refuerzos, new BocaArriba());
-    }
-
-    @Test
     public void seColocaBocaAbajo_laCartaEstaEnElCampo() {
         refuerzos = new Refuerzos(jugador1);
 

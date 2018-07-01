@@ -23,6 +23,5 @@ public class ControladorCambiarModo implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         ((Monstruo)carta).cambiarModo();
-
     }
 }

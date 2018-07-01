@@ -14,7 +14,7 @@ public class BotonCambiarDeFase implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-        ct.cambiarDeFase();
+        //ct.cambiarDeFase(); !!!! ESTO HAY QUE SACARL TODA LA CLASE PORQUE LO HACE EL MODELO
     }
 
 

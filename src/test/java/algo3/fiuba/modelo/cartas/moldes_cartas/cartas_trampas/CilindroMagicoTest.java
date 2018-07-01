@@ -37,13 +37,6 @@ public class CilindroMagicoTest {
     }
 
     @Test
-    public void sePuedeColocarBocaArriba() {
-        cilindroMagico = new CilindroMagico(jugador1);
-
-        jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaArriba());
-    }
-
-    @Test
     public void seColocaBocaAbajo_laCartaEstaEnElCampo() {
         cilindroMagico = new CilindroMagico(jugador1);
 

@@ -80,10 +80,6 @@ public class Entrega1OficialTest {
 
     @Test
     public void colocarCartaMagicaEnCampoBocaAbajo_NoActivaNingunEfecto() {
-        /*
-        EfectoCarta efectoCarta = new EfectoAgujeroNegro();
-        Magica cartaMagica = new Magica("agujero negro", efectoCarta);
-*/
         Magica cartaMagica = new AgujeroNegro(jugador1);
 
         //cartaMagica.pasarAModoJuego(new BocaAbajo());
@@ -199,9 +195,9 @@ public class Entrega1OficialTest {
 
 
     @Test
-    public void jugador1ColocaMonstruoModoDeDefensa_jugador2ColocaCartaModoDeAtaqueConMenorAtaqueQueLaDefensaDelAnterior_monstruoJ2AtacaAMonstruoJ1_ningunMonstruoMuere/*!!!YJugador2PierdePuntosDeVida*/() {
+    public void jugador1ColocaMonstruoModoDeDefensa_jugador2ColocaCartaModoDeAtaqueConMenorAtaqueQueLaDefensaDelAnterior_monstruoJ2AtacaAMonstruoJ1_ningunMonstruoMuereYJugador2PierdePuntosDeVida() {
         Monstruo monstruoDefensor = new BebeDragon(jugador1);
-        Monstruo monstruoAtacante = new BebeDragon(jugador2);
+        Monstruo monstruoAtacante = new Kuriboh(jugador2);
 
         // Los monstruos se colocan por default en modo ataque
         jugador1.colocarCartaEnCampo((Carta) monstruoDefensor, new BocaArriba());
@@ -214,12 +210,13 @@ public class Entrega1OficialTest {
         monstruoAtacante.atacar(monstruoDefensor);
 
         // Si un monstruo muere en modo el jugador no pierde puntos de vida
-        Integer puntosDeVidaEsperados = 8000;
+        Integer puntosDeVidaEsperadosDefensor = 8000;
+        Integer puntosDeVidaEsperadosAtacante = 8000 - (monstruoDefensor.getDefensa() - monstruoAtacante.getAtaque());
 
         //Assert.assertTrue(monstruoDefensor.estaEnJuego());
         Assert.assertTrue(monstruoAtacante.estaEnJuego());
-        Assert.assertEquals(puntosDeVidaEsperados, jugador1.getPuntosDeVida());
-        Assert.assertEquals(puntosDeVidaEsperados, jugador2.getPuntosDeVida());
+        Assert.assertEquals(puntosDeVidaEsperadosDefensor, jugador1.getPuntosDeVida());
+        Assert.assertEquals(puntosDeVidaEsperadosAtacante, jugador2.getPuntosDeVida());
     }
 
 
