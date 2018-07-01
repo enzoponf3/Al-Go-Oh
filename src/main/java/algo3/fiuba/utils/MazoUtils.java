@@ -5,6 +5,7 @@ import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.Fisura;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.*;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas.AgujeroTrampa;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas.CilindroMagico;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas.Refuerzos;
 import algo3.fiuba.modelo.jugador.Jugador;

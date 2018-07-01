@@ -63,9 +63,9 @@ public class VistaInformacionCartaEnJuego {
             menuOpciones.getItems().add(menuModo);
         }
 
-
+        
         menuActivarEfecto = new MenuItem("Activar efecto");
-        menuActivarEfecto.setOnAction(new ControladorActivarEfecto());
+        menuActivarEfecto.setOnAction(new ControladorActivarEfecto(carta));
 
         menuOpciones.getItems().add(menuActivarEfecto);
 
