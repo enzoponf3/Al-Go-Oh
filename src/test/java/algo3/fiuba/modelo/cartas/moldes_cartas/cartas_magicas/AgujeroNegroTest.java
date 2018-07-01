@@ -37,7 +37,7 @@ public class AgujeroNegroTest {
         turno = Turno.getInstancia();
     }
 
-    @Test // !!!
+    @Test
     public void cartaAgujeroNegroAlActivarseMataALosMonstruosEnCampo() {
         agujeroNegro = new AgujeroNegro(jugador1);
         Monstruo monstruoEnemigo = new Kuriboh(jugador2);

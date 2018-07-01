@@ -30,20 +30,18 @@ public class TableroJugador {
     }
 
     public void colocarCartaEnCampo(Trampa carta, EnJuego tipoEnJuego) {
-        //this.campo.colocarCarta(carta, tipoEnJuego);
         tipoEnJuego.colocarCartaEnCampo(carta, campo);
     }
 
 
     public void colocarCartaEnCampo(CartaCampo carta, EnJuego tipoEnJuego) {
-        //this.campo.colocarCarta(carta, tipoEnJuego);
         tipoEnJuego.colocarCartaEnCampo(carta, campo);
 
     }
 
     public Carta tomarCartaDelMazo() {
         try {
-            return this.mazo.pop(); //Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
+            return this.mazo.pop(); // !!! Acá debería de sacar excepción de que no hay más en mazo o en Jugador?
         } catch (Exception e) {
             throw new CartasInsuficientesExcepcion("Usted no posee mas cartas!");
         }

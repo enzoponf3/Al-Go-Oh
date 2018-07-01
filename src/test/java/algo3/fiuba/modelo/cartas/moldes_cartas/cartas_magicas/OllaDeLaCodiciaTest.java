@@ -57,7 +57,7 @@ public class OllaDeLaCodiciaTest {
         Assert.assertEquals(jugador2, juego.ganadorPartida());
     }
 
-    @Test(expected = CartasInsuficientesExcepcion.class) // !!! sacar activar efecto
+    @Test(expected = CartasInsuficientesExcepcion.class)
     public void alActivarOllaJugadorCon1CartaEnMazoLanzaExcepcion() {
         ollaDeLaCodicia = new OllaDeLaCodicia(jugador1);
         Magica agujeroNegro = new AgujeroNegro(jugador1);
@@ -68,9 +68,6 @@ public class OllaDeLaCodiciaTest {
         jugador1.tomarCartaDelMazo();
 
         jugador1.colocarCartaEnCampo(ollaDeLaCodicia, new BocaArriba());
-
-        //Lanza excepcion ya que olla de la codicia hace que robes 2 cartas, y solo hay 1 en el mazo
-        ollaDeLaCodicia.activarEfecto();
     }
 
     @Test

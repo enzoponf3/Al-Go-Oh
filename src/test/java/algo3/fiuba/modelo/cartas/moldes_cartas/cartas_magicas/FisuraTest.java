@@ -63,7 +63,7 @@ public class FisuraTest {
         Assert.assertTrue(jugador1.cartaEstaEnCementerio(fisura));
     }
 
-    @Test // !!! sacar el activar
+    @Test
     public void alActivarseMataAlMonstruoMasDebilDelOponente_siHayUnoSoloMataAEseYFisuraVaAlCementerio() {
         fisura = new Fisura(jugador1);
         Monstruo monstruoOponente = new SevenColoredFish(jugador2);
@@ -123,7 +123,7 @@ public class FisuraTest {
     }
 
 
-    @Test // !!! sacar tests cuando funque el activar y se saquen los otros
+    @Test
     public void fisuraSeColocaBocaAbajoYSeActivaAutomaticamente_fisuraVaAlCementerio() {
         fisura = new Fisura(jugador1);
         Monstruo monstruoFuerte = new SevenColoredFish(jugador2);
