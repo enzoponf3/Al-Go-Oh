@@ -30,12 +30,12 @@ public class VistaVida extends Label {
     }
 
     public void update() {
-        /* !!!! LO COMENTÉ PORQUE ME ROMPÍA
+
         Media efectoSonidoVida = new Media(getClass().getResource("/algo3/fiuba/resources/media/LP_effect.mp3").toExternalForm());
         MediaPlayer rprEfecto = new MediaPlayer(efectoSonidoVida);
         rprEfecto.setVolume(200);
         rprEfecto.play();
-        */
+
         this.setText("LP: " + jugador.getPuntosDeVida());
     }
 }
