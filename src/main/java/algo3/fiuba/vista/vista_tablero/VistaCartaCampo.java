@@ -16,8 +16,8 @@ import javafx.scene.image.ImageView;
 public class VistaCartaCampo extends Label {
 
     private Carta carta;
-    private double ANCHO_MAXIMO_CARTA = 90.0;
-    private double ALTURA_MAXIMA_CARTA = 105.0;
+    private double ANCHO_MAXIMO_CARTA = 95.0;
+    private double ALTURA_MAXIMA_CARTA = 110.0;
     private Jugador jugador;
     ImageView cartaCampoFondo = new ImageView(new Image("/algo3/fiuba/resources/img/campo-atr.jpg",
             ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
