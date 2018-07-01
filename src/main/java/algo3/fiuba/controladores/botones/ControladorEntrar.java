@@ -1,6 +1,5 @@
 package algo3.fiuba.controladores.botones;
 
-import algo3.fiuba.controladores.ControladorTurnos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

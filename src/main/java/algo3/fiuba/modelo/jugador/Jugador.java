@@ -19,9 +19,10 @@ public class Jugador implements Observer {
     private List<Carta> mano;
     private EstadoJugador estadoJugador;
     private Jugador oponente;
+    private static final Integer PUNTOS_DE_VIDA_INICIALES = 8000;
 
     public Jugador() {
-        this.puntosDeVida = 8000;
+        this.puntosDeVida = PUNTOS_DE_VIDA_INICIALES;
         this.mano = new LinkedList<>();
         this.tableroJugador = new TableroJugador();
     }
@@ -166,7 +167,7 @@ public class Jugador implements Observer {
     }
 
     public void inicializar() {
-        this.puntosDeVida = 8000;
+        this.puntosDeVida = PUNTOS_DE_VIDA_INICIALES;
         this.mano = new LinkedList<>();
         this.tableroJugador = new TableroJugador();
     }

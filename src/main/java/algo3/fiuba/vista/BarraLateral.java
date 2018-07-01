@@ -21,7 +21,7 @@ public class BarraLateral extends StackPane {
 
     public BarraLateral(Juego juego) {
 
-        ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
+        ControladorDeTurnos controladorTurnos = ControladorDeTurnos.getInstancia();
 
         Jugador jugador1 = juego.getJugador1();
         Jugador jugador2 = juego.getJugador2();

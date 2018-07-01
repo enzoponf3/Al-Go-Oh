@@ -2,7 +2,7 @@ package algo3.fiuba.vista.vista_tablero;
 
 import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
 import algo3.fiuba.controladores.ControladorMano;
-import algo3.fiuba.controladores.ControladorTurnos;
+import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.CartaVistaUtils;
@@ -14,24 +14,23 @@ import java.util.List;
 
 public class VistaMano extends ScrollPane {
 
-    private ControladorTurnos controladorTurnos;
+    private ControladorDeTurnos controladorTurnos;
     private Jugador jugador;
     ControladorMano controladorMano;
-    List<VistaCarta> vistaCartas;
 
     private CartaVistaUtils cartaVistaUtils;
 
     public VistaMano(Jugador jugador) {
         this.controladorMano = new ControladorMano(this, jugador);
         this.jugador = jugador;
-        this.vistaCartas = new LinkedList<>();
-        this.controladorTurnos = ControladorTurnos.getInstancia();
+        this.controladorTurnos = ControladorDeTurnos.getInstancia();
 
         this.cartaVistaUtils = new CartaVistaUtils();
     }
 
     public void dibujar() {
-        vistaCartas.clear();
+        List<VistaCarta> vistaCartas = new LinkedList<>();
+
         this.setMaxWidth(555);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloVistaMano.css");

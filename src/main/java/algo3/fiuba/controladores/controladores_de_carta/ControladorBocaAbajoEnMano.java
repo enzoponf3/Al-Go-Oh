@@ -1,6 +1,6 @@
 package algo3.fiuba.controladores.controladores_de_carta;
 
-import algo3.fiuba.controladores.ControladorTurnos;
+import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
@@ -23,7 +23,7 @@ public class ControladorBocaAbajoEnMano implements EventHandler<ActionEvent> {
     private VistaZonaMonstruos vistaZonaMonstruos;
     private VistaZonaNoMonstruos vistaZonaNoMonstruos;
     private VistaCartaCampo vistaCartaCampo;
-    private ControladorTurnos controladorTurnos;
+    private ControladorDeTurnos controladorTurnos;
 
     public ControladorBocaAbajoEnMano(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
         this.vistaCarta = vistaCarta;
@@ -33,7 +33,7 @@ public class ControladorBocaAbajoEnMano implements EventHandler<ActionEvent> {
         this.vistaZonaMonstruos = vistaZonaMonstruos;
         this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
         this.vistaCartaCampo = vistaCartaCampo;
-        controladorTurnos = ControladorTurnos.getInstancia();
+        controladorTurnos = ControladorDeTurnos.getInstancia();
 
     }
 

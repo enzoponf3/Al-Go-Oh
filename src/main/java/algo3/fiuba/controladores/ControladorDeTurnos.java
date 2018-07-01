@@ -7,24 +7,24 @@ import algo3.fiuba.vista.ContenedorPrincipal;
 import algo3.fiuba.vista.VistaVida;
 import javafx.scene.control.Alert;
 
-public class ControladorTurnos {
+public class ControladorDeTurnos {
 
-    private static ControladorTurnos INSTANCIA;
+    private static ControladorDeTurnos INSTANCIA;
     private Jugador jugador1, jugador2;
     private ContenedorPrincipal contenedorPrincipal;
     private VistaVida vistaVidaJ1, vistaVidaJ2; // !!! SACAR
     private String nombreJugador1, nombreJugador2;
     private Turno turno;
 
-    public static ControladorTurnos getInstancia() {
+    public static ControladorDeTurnos getInstancia() {
         if (INSTANCIA == null)
-            INSTANCIA = new ControladorTurnos();
+            INSTANCIA = new ControladorDeTurnos();
 
         return INSTANCIA;
     }
 
 
-    private ControladorTurnos() {
+    private ControladorDeTurnos() {
         turno = Turno.getInstancia();
     }
 
