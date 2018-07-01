@@ -5,6 +5,7 @@ import algo3.fiuba.controladores.ControladorMano;
 import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.utils.CartaVistaUtils;
 import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.ScrollPane;
@@ -44,8 +45,8 @@ public class VistaMano extends ScrollPane {
         for(Carta carta: mano) {
             Jugador jugadorActual = controladorTurnos.getJugador();
             VistaCarta vistaCarta;
-            if(jugadorActual == jugador) {
-                vistaCarta = new VistaCarta(cartaVistaUtils.getImagenDeCarta(carta.getNombre()), jugador, carta);
+            if(jugadorActual == jugador && jugador.getEstadoJugador() instanceof PreInvocacion) {
+                vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/" + carta.getNombre() + ".jpg", jugador, carta);
 
             }
             else {
