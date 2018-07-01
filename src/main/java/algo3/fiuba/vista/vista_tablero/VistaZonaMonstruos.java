@@ -21,8 +21,9 @@ import java.util.List;
 public class VistaZonaMonstruos extends HBox {
 
     protected Jugador jugador;
-    protected double ANCHO_MAXIMO_CARTA = 95.0;
-    protected double ALTURA_MAXIMA_CARTA = 110.0;
+    private double ANCHO_MAXIMO_CARTA = 95.0;
+    private double ALTURA_MAXIMA_CARTA = 110.0;
+    private static final Integer LIMITE_CARTAS = 5;
 
     private CartaVistaUtils cartaVistaUtils;
 
@@ -31,7 +32,7 @@ public class VistaZonaMonstruos extends HBox {
 
         this.setSpacing(20);
         this.jugador = jugador;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < LIMITE_CARTAS; i++) {
             ImageView imagenEspacioVacio = new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
             getChildren().add(imagenEspacioVacio);
@@ -46,7 +47,7 @@ public class VistaZonaMonstruos extends HBox {
             getChildren().add(new VistaCarta(cartaVistaUtils.getImagenDeCarta(monstruo.getNombre()), jugador, monstruo));
             i++;
         }
-        for (; i < 5; i++) {
+        for (; i < LIMITE_CARTAS; i++) {
             getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
         }

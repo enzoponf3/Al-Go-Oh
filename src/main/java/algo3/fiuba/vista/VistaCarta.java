@@ -9,6 +9,7 @@ import algo3.fiuba.modelo.cartas.estado_en_turno.TurnoRival;
 import algo3.fiuba.modelo.cartas.estados_cartas.*;
 import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.utils.CartaVistaUtils;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -29,21 +30,15 @@ public class VistaCarta extends StackPane {
     private double ANCHO_MAXIMO_CARTA = 95.0;
     private double ALTURA_MAXIMA_CARTA = 110.0;
 
-    public VistaCarta(String imageUrl, Jugador jugador, Carta carta) {
-        this.imageUrl = imageUrl;
-        this.imagenCarta = new ImageView(new Image(imageUrl,
-                ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        this.imagenCartaBocaAbajo =  new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png", ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        this.jugador = jugador;
-        this.carta = carta;
-        this.dibujar();
-    }
+    private CartaVistaUtils cartaVistaUtils;
 
-    public VistaCarta(String imageUrl, Jugador jugador, Carta carta, boolean estadoVisibilidad, boolean estadoModo) {
+    public VistaCarta(String imageUrl, Jugador jugador, Carta carta) {
+        cartaVistaUtils = new CartaVistaUtils();
+
         this.imageUrl = imageUrl;
         this.imagenCarta = new ImageView(new Image(imageUrl,
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        this.imagenCartaBocaAbajo =  new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png", ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
+        this.imagenCartaBocaAbajo =  new ImageView(new Image(cartaVistaUtils.getImagenCartaBocaAbajo(), ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
         this.jugador = jugador;
         this.carta = carta;
         this.dibujar();

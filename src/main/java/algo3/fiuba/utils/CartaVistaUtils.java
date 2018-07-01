@@ -13,4 +13,8 @@ public class CartaVistaUtils {
     public String getImagenEspacioVacioMonstruo() {
         return "algo3/fiuba/resources/img/monstruo-atr.jpg";
     }
+
+    public String getImagenCartaBocaAbajo() {
+        return "/algo3/fiuba/resources/img/carta-vista-trasera.png";
+    }
 }
