@@ -1,6 +1,7 @@
 package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
+import algo3.fiuba.controladores.controladores_de_carta.ControladorZoomCarta;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.jugador.Jugador;
@@ -96,6 +97,8 @@ public class VistaCarta extends StackPane {
             //TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS, calmate broh!
         }
         this.setOnMouseClicked(new ControladorCarta(this, jugador, carta, vistaMano, vistaZonaNoMonstruos, vistaZonaMonstruos, vistaCartaCampo));
+        this.setOnMouseEntered(new ControladorZoomCarta(imageUrl));
+        this.setOnMouseExited(new ControladorZoomCarta());
     }
 
     public void deshabilitarCarta() {
