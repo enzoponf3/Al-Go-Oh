@@ -1,6 +1,6 @@
 package algo3.fiuba;
 
-import algo3.fiuba.controladores.ControladorTurnos;
+import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.MazoUtils;
@@ -9,11 +9,7 @@ import algo3.fiuba.vista.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.net.URI;
 
 public class Main extends Application {
 
@@ -30,7 +26,7 @@ public class Main extends Application {
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stagePrincipal, juego);
         contenedorPrincipal.dibujar();
-        ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
+        ControladorDeTurnos controladorTurnos = ControladorDeTurnos.getInstancia();
         controladorTurnos.setContenedorPrincipal(contenedorPrincipal);
         Scene sceneJuego = new Scene(contenedorPrincipal, 1000, 700);
 
@@ -54,7 +50,7 @@ public class Main extends Application {
         juego.inicializar(jugador1,jugador2);
         juego.inicializarMazos(mazoUtils.getMuestra8Cartas1(jugador1), mazoUtils.getMuestra8Cartas2(jugador2));
         juego.inicializarManos();
-        ControladorTurnos controladorTurnos = ControladorTurnos.getInstancia();
+        ControladorDeTurnos controladorTurnos = ControladorDeTurnos.getInstancia();
         controladorTurnos.setJugadores(jugador1, jugador2);
         return juego;
     }

@@ -1,8 +1,7 @@
 package algo3.fiuba.controladores.controladores_de_carta;
 
-import algo3.fiuba.controladores.ControladorTurnos;
+import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.VistaCarta;
 import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
@@ -21,7 +20,7 @@ public class ControladorBocaArribaEnJuego implements EventHandler<ActionEvent> {
     private VistaZonaMonstruos vistaZonaMonstruos;
     private VistaZonaNoMonstruos vistaZonaNoMonstruos;
     private VistaCartaCampo vistaCartaCampo;
-    private ControladorTurnos controladorTurnos;
+    private ControladorDeTurnos controladorTurnos;
 
     public ControladorBocaArribaEnJuego(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
         this.vistaCarta = vistaCarta;
@@ -31,12 +30,12 @@ public class ControladorBocaArribaEnJuego implements EventHandler<ActionEvent> {
         this.vistaZonaMonstruos = vistaZonaMonstruos;
         this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
         this.vistaCartaCampo = vistaCartaCampo;
-        controladorTurnos = ControladorTurnos.getInstancia();
+        controladorTurnos = ControladorDeTurnos.getInstancia();
     }
 
     @Override
     public void handle(ActionEvent event) {
         carta.girarCarta();
-        //Actualizar vistas, falta lo logica si es comehombres etc..
+        // !!!! Actualizar vistas, falta lo logica si es comehombres etc..
     }
 }

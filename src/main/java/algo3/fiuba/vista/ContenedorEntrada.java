@@ -1,6 +1,5 @@
 package algo3.fiuba.vista;
 
-import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.controladores.botones.ControladorEntrar;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,13 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.net.URI;
 
 public class ContenedorEntrada extends VBox {
 

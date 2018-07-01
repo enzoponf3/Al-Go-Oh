@@ -40,7 +40,7 @@ public class ControladorCarta implements EventHandler<MouseEvent> {
             vistaInformacionCartaEnJuego.update(evento);
         }
 
-        //vistaCarta.update();
+        //vistaCarta.update(); !!!!
         //vistaMano.update();
         //vistaZonaMonstruos.update();
         //vistaZonaNoMonstruos.update();

@@ -1,7 +1,5 @@
 package algo3.fiuba.controladores;
 
-import algo3.fiuba.controladores.ControladorTurnos;
-import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.excepciones.CartasInsuficientesExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
@@ -10,8 +8,6 @@ import algo3.fiuba.vista.vista_tablero.VistaMazo;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
-
-import java.util.Stack;
 
 
 public class ControladorMazo implements EventHandler<MouseEvent> {
@@ -30,7 +26,7 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
 
-        ControladorTurnos ct = ControladorTurnos.getInstancia();
+        ControladorDeTurnos ct = ControladorDeTurnos.getInstancia();
         Jugador actual = ct.getJugador();
         if(actual.getEstadoJugador() instanceof PreInvocacion ) {
             vistaMano.setDisable(true);

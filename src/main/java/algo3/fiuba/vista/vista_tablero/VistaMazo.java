@@ -1,6 +1,6 @@
 package algo3.fiuba.vista.vista_tablero;
 
-import algo3.fiuba.controladores.ControladorTurnos;
+import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
 import javafx.scene.control.ContentDisplay;
@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 
 public class VistaMazo extends Label {
 
-    private ControladorTurnos controladorTurnos;
+    private ControladorDeTurnos controladorTurnos;
     private Jugador jugador;
     private double ANCHO_MAXIMO_CARTA = 95.0;
     private double ALTURA_MAXIMA_CARTA = 110.0;
@@ -22,7 +22,7 @@ public class VistaMazo extends Label {
         this.cantidad = jugador.cantidadCartasEnMazo();
         this.fondoMazo = fondoMazo;
         this.jugador = jugador;
-        this.controladorTurnos = ControladorTurnos.getInstancia();
+        this.controladorTurnos = ControladorDeTurnos.getInstancia();
     }
 
     public void dibujar() {
