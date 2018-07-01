@@ -5,6 +5,9 @@ import algo3.fiuba.controladores.controladores_de_carta.ControladorBocaArribaEnM
 import algo3.fiuba.controladores.controladores_de_carta.ControladorBocaAbajoEnMano;
 
 import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.CartaCampo;
+import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.Trampa;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
 import algo3.fiuba.vista.vista_tablero.VistaMano;
@@ -51,7 +54,9 @@ public class VistaInformacionCartaEnMano {
         menuBocaArriba = new MenuItem("Arriba");
         menuBocaArriba.setOnAction(new ControladorBocaArribaEnMano(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo));
 
-        menuCambiarPosicion.getItems().addAll(menuBocaArriba, menuBocaAbajo);
+        if (!(carta instanceof Trampa)) menuCambiarPosicion.getItems().add(menuBocaArriba);
+
+        if (!(carta instanceof CartaCampo)) menuCambiarPosicion.getItems().add(menuBocaAbajo);
 
         menuOpciones.getItems().addAll(menuCambiarPosicion);
 

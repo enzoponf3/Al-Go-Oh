@@ -1,5 +1,6 @@
 package algo3.fiuba.vista.vista_tablero;
 
+import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.NoMonstruo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.CartaVistaUtils;
@@ -18,12 +19,12 @@ public class VistaZonaNoMonstruos extends HBox {
     private static final double ANCHO_MAXIMO_CARTA = 95.0;
     private static final double ALTURA_MAXIMA_CARTA = 110.0;
     private static final Integer LIMITE_CARTAS = 5;
-
+    private ControladorDeTurnos controladorDeTurnos;
     private CartaVistaUtils cartaVistaUtils;
 
     public VistaZonaNoMonstruos(Jugador jugador) {
         cartaVistaUtils = new CartaVistaUtils();
-
+        controladorDeTurnos = ControladorDeTurnos.getInstancia();
         this.setSpacing(20);
         this.jugador = jugador;
         for (int i = 0; i < LIMITE_CARTAS; i++) {
@@ -38,7 +39,18 @@ public class VistaZonaNoMonstruos extends HBox {
 
         Integer i = 0;
         for(NoMonstruo noMonstruo: jugador.getNoMonstuosEnCampo()) {
-            getChildren().add(new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo));
+            Jugador jugadorActual = controladorDeTurnos.getJugador();
+            VistaCarta vistaNoMonstruo;
+            if(jugadorActual == jugador) {
+                vistaNoMonstruo = new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo);
+
+            }
+            else {
+                vistaNoMonstruo = new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo);
+                vistaNoMonstruo.deshabilitarCarta();
+            }
+            getChildren().add(vistaNoMonstruo);
+            i++;
         }
         for (; i < LIMITE_CARTAS; i++) {
             getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
