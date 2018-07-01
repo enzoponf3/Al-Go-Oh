@@ -39,6 +39,7 @@ public class ControladorBocaAbajoEnMano implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        // salta excepción de que no se pueden colocar más cartas (jugador inhabilitado), mostrar mensaje.
         try {
             //En testing, hice los actualizar aca para dejar de lado que era el controlador que jodia etc.
             jugador.colocarCartaEnCampo(carta, new BocaAbajo());

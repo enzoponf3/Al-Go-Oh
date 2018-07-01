@@ -38,4 +38,9 @@ public class PreInvocacion implements EstadoJugador {
     public EstadoJugador cambioDeTurno() {
         return new TurnoDelOponente();
     }
+
+    @Override
+    public EstadoJugador cambioDeFase() {
+        return new PostInvocacion();
+    }
 }

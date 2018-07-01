@@ -61,11 +61,7 @@ public class ContenedorPrincipal extends BorderPane {
 
         Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/musicopening.mp3").toExternalForm());
         MediaPlayer rprMusica = new MediaPlayer(musica);
-        rprMusica.setOnEndOfMedia(new Runnable() {
-            public void run() {
-                rprMusica.seek(Duration.ZERO);
-            }
-        });
+        rprMusica.setOnEndOfMedia(() -> rprMusica.seek(Duration.ZERO));
         rprMusica.play();
         rprMusica.setVolume(2);
         rprMusica.setAutoPlay(true);

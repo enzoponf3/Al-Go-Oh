@@ -1,7 +1,9 @@
 package algo3.fiuba.vista.vista_tablero;
 
+import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.utils.CartaVistaUtils;
 import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
@@ -14,6 +16,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class VistaZonaMonstruos extends HBox {
 
@@ -21,19 +24,22 @@ public class VistaZonaMonstruos extends HBox {
     protected Jugador jugador;
     protected double ANCHO_MAXIMO_CARTA = 95.0;
     protected double ALTURA_MAXIMA_CARTA = 110.0;
-    private LinkedList<VistaCarta> vistasMonstruos;
+    private List<VistaCarta> vistasMonstruos;
+
+    private CartaVistaUtils cartaVistaUtils;
 
     public VistaZonaMonstruos(Jugador jugador) {
 
         this.setSpacing(20);
         this.jugador = jugador;
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i < 5; i++) {
             ImageView imagen2 = new ImageView(new Image("algo3/fiuba/resources/img/monstruo-atr.jpg",
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
             this.agregarCarta(imagen2);
         }
 
-        vistasMonstruos = new LinkedList<>();
+        this.vistasMonstruos = new LinkedList<>();
+        this.cartaVistaUtils = new CartaVistaUtils();
     }
 
     // !!!! ESTO HABRÍA QUE SACARLO PORQUE LO HACE LE
@@ -51,17 +57,21 @@ public class VistaZonaMonstruos extends HBox {
 
     public void dibujar() {
         indice = 0;
-        for(VistaCarta vistaMonstruo: vistasMonstruos) {
+        for (Monstruo monstruo : jugador.getMonstuosEnCampo()) {
+            vistasMonstruos.add(new VistaCarta(cartaVistaUtils.getImagenDeCarta(monstruo.getNombre()), jugador, monstruo));
+        }
+        for (VistaCarta vistaMonstruo : vistasMonstruos) {
             this.reemplazarCartaVista(vistaMonstruo);
             indice++;
         }
     }
 
     public void reemplazarCartaVista(VistaCarta vistaCarta) {
-        getChildren().remove(0);
+        getChildren().remove(indice);
         getChildren().add(indice, vistaCarta);
     }
 
+    // !!!! MODELO
     public void agregarMonstruo(VistaCarta vistaCarta) {
         vistasMonstruos.add(vistaCarta);
     }
@@ -70,7 +80,7 @@ public class VistaZonaMonstruos extends HBox {
         this.dibujar();
     }
 
-    public LinkedList<VistaCarta> getVistasMonstruos() {
+    public List<VistaCarta> getVistasMonstruos() {
         return vistasMonstruos;
     }
 }

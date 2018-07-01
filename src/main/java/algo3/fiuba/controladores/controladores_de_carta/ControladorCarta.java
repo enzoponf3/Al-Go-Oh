@@ -24,14 +24,10 @@ public class ControladorCarta implements EventHandler<MouseEvent> {
     private Jugador jugador;
     private Carta carta;
 
-    public ControladorCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaZonaMonstruos vistaZonaMonstruos, VistaCartaCampo vistaCartaCampo) {
+    public ControladorCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta) {
         this.vistaCarta = vistaCarta;
         this.jugador = jugador;
         this.carta = carta;
-        this.vistaMano = vistaMano;
-        this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
-        this.vistaZonaMonstruos = vistaZonaMonstruos;
-        this.vistaCartaCampo = vistaCartaCampo;
         this.vistaInformacionCartaEnMano = new VistaInformacionCartaEnMano(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo);
         this.vistaInformacionCartaEnJuego = new VistaInformacionCartaEnJuego(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo);
     }

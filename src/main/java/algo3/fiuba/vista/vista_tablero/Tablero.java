@@ -29,7 +29,7 @@ public abstract class Tablero extends GridPane {
     public Tablero(Jugador jugador) {
         zonaMonstruos = new VistaZonaMonstruos(jugador);
         zonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
-        this.zonaMano = new VistaMano(jugador, zonaMonstruos, zonaNoMonstruos, zonaCartaDeCampo);
+        this.zonaMano = new VistaMano(jugador);
 
         ImageView fondoMazo = new ImageView(new Image("/algo3/fiuba/resources/img/carta-vista-trasera.png",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
@@ -45,7 +45,7 @@ public abstract class Tablero extends GridPane {
 
         ImageView cartaCampoFondo = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-        this.zonaCartaDeCampo = new VistaCartaCampo(jugador, zonaMano, zonaMonstruos, zonaNoMonstruos);
+        this.zonaCartaDeCampo = new VistaCartaCampo(jugador);
         this.zonaCartaDeCampo.setOnMouseClicked(new ControladorCartaCampo(zonaCartaDeCampo, jugador, zonaMano));
     }
 

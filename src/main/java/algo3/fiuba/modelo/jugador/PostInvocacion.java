@@ -31,4 +31,9 @@ public class PostInvocacion implements EstadoJugador {
     public EstadoJugador cambioDeTurno() {
         return new TurnoDelOponente();
     }
+
+    @Override
+    public EstadoJugador cambioDeFase() {
+        return new TurnoDelOponente();
+    }
 }

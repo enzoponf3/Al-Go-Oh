@@ -43,7 +43,7 @@ public class BarraLateral extends StackPane {
         Label nombreJ2 = new Label(controladorTurnos.getNombreJugador2());
 
         // Visor carta
-        vistaProyeccionCarta = new VistaProyeccionCarta();
+        vistaProyeccionCarta = VistaProyeccionCarta.getInstancia();
 
         // CONTENEDORES LATERALES
         HBox boxBtnsAyudaSalir = new HBox(botonAyuda, botonSalir);

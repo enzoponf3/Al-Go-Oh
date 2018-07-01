@@ -12,7 +12,6 @@ public class BotonTerminarTurno implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-
         ControladorTurnos ct = ControladorTurnos.getInstancia();
         ct.terminarTurno();
     }

@@ -32,4 +32,9 @@ public class TurnoDelOponente implements EstadoJugador {
     public EstadoJugador cambioDeTurno() {
         return new PreInvocacion();
     }
+
+    @Override
+    public EstadoJugador cambioDeFase() {
+        return new TurnoDelOponente();
+    }
 }

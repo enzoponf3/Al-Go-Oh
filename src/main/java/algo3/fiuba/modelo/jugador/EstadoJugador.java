@@ -16,4 +16,6 @@ public interface EstadoJugador {
 
     EstadoJugador cambioDeTurno();
 
+    EstadoJugador cambioDeFase();
+
 }

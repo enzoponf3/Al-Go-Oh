@@ -37,6 +37,7 @@ public class ControladorBocaArribaEnMano implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        // agregar cartel que diga lo de los sacrificios.
         jugador.colocarCartaEnCampo(carta, new BocaArriba());
         controladorTurnos.actualizarTablero();
     }
