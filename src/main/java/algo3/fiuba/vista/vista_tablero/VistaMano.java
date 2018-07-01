@@ -5,11 +5,8 @@ import algo3.fiuba.controladores.ControladorMano;
 import algo3.fiuba.controladores.ControladorTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.jugador.Jugador;
-<<<<<<< HEAD
 import algo3.fiuba.modelo.jugador.PreInvocacion;
-=======
 import algo3.fiuba.utils.CartaVistaUtils;
->>>>>>> 3b967f9a9054cc71aa756595aa1eb0be72399a3e
 import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
