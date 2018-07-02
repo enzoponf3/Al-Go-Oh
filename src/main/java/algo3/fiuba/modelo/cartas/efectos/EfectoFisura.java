@@ -35,17 +35,11 @@ public class EfectoFisura extends EfectoCarta {
             }
         }
 
-        System.out.println("semilla: " + semilla);
-
         Monstruo monstruoDebil = monstruos.stream().reduce(semilla, (acc, m) -> {
             if (!m.equals(new MonstruoNulo()) && m.getAtaque() < acc.getAtaque())
                 return m;
             return acc;
         });
-
-        System.out.println("son iguales? " + new MonstruoNulo().equals(new MonstruoNulo()));
-
-        System.out.println("monstruo débil: " + monstruoDebil);
 
         return monstruoDebil;
     }

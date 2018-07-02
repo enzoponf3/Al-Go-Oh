@@ -67,7 +67,6 @@ public class ZonaCartas<T> {
             }
         }
 
-        System.out.println(tamanio);
         return tamanio;
     }
 

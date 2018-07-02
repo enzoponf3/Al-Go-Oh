@@ -17,7 +17,6 @@ public class ControladorMonstruoAAtacar implements EventHandler<ActionEvent>, Ob
     }
 
     public static Monstruo getMonstruoAAtacar() {
-        System.out.println("getMonstruoAAtacar: " + (checkBoxMonstruoAAtacar.isEmpty() ? null : checkBoxMonstruoAAtacar.get(0).getMonstruo()));
         return checkBoxMonstruoAAtacar.isEmpty() ? null : checkBoxMonstruoAAtacar.get(0).getMonstruo();
     }
 
@@ -25,7 +24,6 @@ public class ControladorMonstruoAAtacar implements EventHandler<ActionEvent>, Ob
     public void handle(ActionEvent event) {
         CheckBoxSacrificio checkboxSeleccionadoParaAtacar = (CheckBoxSacrificio) event.getSource();
 
-        System.out.println("checkboxSeleccionadoParaAtacar: " + checkboxSeleccionadoParaAtacar.getMonstruo());
         if (checkboxSeleccionadoParaAtacar.isSelected()) {
             if (!checkBoxMonstruoAAtacar.isEmpty()) {
                 checkBoxMonstruoAAtacar.get(0).setSelected(false);

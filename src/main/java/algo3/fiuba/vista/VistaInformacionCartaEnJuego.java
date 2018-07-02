@@ -6,6 +6,8 @@ import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
+import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeAtaque;
+import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.jugador.PostInvocacion;
 import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
@@ -52,10 +54,12 @@ public class VistaInformacionCartaEnJuego {
 
                 menuOpciones.getItems().add(menuModo);
 
-                MenuItem menuAtacar = new MenuItem("Atacar");
-                menuAtacar.setOnAction(new ControladorAtacar(monstruo, jugador));
+                if (monstruo.getModo() instanceof ModoDeAtaque) {
+                    MenuItem menuAtacar = new MenuItem("Atacar");
+                    menuAtacar.setOnAction(new ControladorAtacar(monstruo, jugador));
 
-                menuOpciones.getItems().add(menuAtacar);
+                    menuOpciones.getItems().add(menuAtacar);
+                }
             }
         }
 

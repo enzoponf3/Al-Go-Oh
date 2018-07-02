@@ -70,4 +70,7 @@ public class ControladorDeTurnos {
         contenedorPrincipal.update();
     }
 
+    public boolean esElPrimerTurno() {
+        return turno.esElPrimerTurno();
+    }
 }

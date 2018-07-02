@@ -9,10 +9,12 @@ public class Turno extends Observable {
 
     private static Turno INSTANCIA;
     private List<Observer> observadores;
+    private Integer numeroDeTurno;
 
     private Turno() {
         super();
-        observadores = new LinkedList<>();
+        this.observadores = new LinkedList<>();
+        this.numeroDeTurno = 1;
     }
 
     public static Turno getInstancia() {
@@ -23,7 +25,14 @@ public class Turno extends Observable {
 
     public void pasarTurno() {
         this.notifyObservers();
+        numeroDeTurno++;
     }
+
+
+    public boolean esElPrimerTurno() {
+        return numeroDeTurno == 1;
+    }
+
 
     @Override
     public synchronized void addObserver(Observer o) {
