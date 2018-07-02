@@ -9,6 +9,8 @@ import algo3.fiuba.modelo.cartas.estado_en_turno.TurnoRival;
 import algo3.fiuba.modelo.cartas.estados_cartas.*;
 import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.modelo.jugador.PostInvocacion;
+import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.modelo.jugador.TurnoDelOponente;
 import algo3.fiuba.utils.CartaVistaUtils;
 import javafx.geometry.Insets;
@@ -58,13 +60,24 @@ public class VistaCarta extends StackPane {
             labelPuntosDeDefensa = new Label("" + ((Monstruo) carta).getDefensa());
             labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
             StackPane.setMargin(labelPuntosDeDefensa, new Insets(70, 0, 0, 35));
-            if (jugador.getEstadoJugador() instanceof TurnoDelOponente && !carta.estaEnJuego()) {
+
+            if ((jugador.getEstadoJugador() instanceof TurnoDelOponente && !carta.estaEnJuego())
+                    || (jugador.getEstadoJugador() instanceof PostInvocacion && !carta.estaEnJuego())) {
                 rectanguloFondo.setVisible(false);
                 labelPuntosDeAtaque.setVisible(false);
                 labelPuntosDeDefensa.setVisible(false);
             }
+
+            if ((jugador.getEstadoJugador() instanceof PreInvocacion) && carta.estaEnJuego()) {
+
+            }
+
+            if(((Monstruo) carta).getModo() instanceof ModoDeDefensa) {
+                    this.setRotate(90);
+            }
         }
 
+        // !!!!
         try{
             if (carta.getEstadoCarta() instanceof BocaAbajo || carta.getEstadoCarta() instanceof EnMazo) {
                 this.getChildren().add(imagenCartaBocaAbajo);
@@ -75,15 +88,9 @@ public class VistaCarta extends StackPane {
                 }
             }
 
-            if (carta instanceof Monstruo) {
-                if(((Monstruo)carta).getModo() instanceof ModoDeDefensa) {
-                    this.setRotate(90);
-                    //Chequear visualmente
-                }
-            }
 
         } catch (Exception e) {
-            //TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS, calmate broh!
+            // !!!! TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS, calmate broh!
         }
         this.setOnMouseClicked(new ControladorCarta(this, jugador, carta));
         this.setOnMouseEntered(new ControladorZoomCarta(imageUrl));
