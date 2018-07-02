@@ -21,6 +21,8 @@ public class BarraLateral extends StackPane {
     private VistaVida vistaVidaJugador1;
     private VistaVida vistaVidaJugador2;
     private VistaProyeccionCarta vistaProyeccionCarta;
+    private VistaNombreJugador vistaNombreJugador1;
+    private VistaNombreJugador vistaNombreJugador2;
 
     public BarraLateral(Juego juego) {
 
@@ -41,12 +43,8 @@ public class BarraLateral extends StackPane {
         controladorTurnos.setVistaVida(vistaVidaJugador1, vistaVidaJugador2);
 
         // Nombres jugadores
-        Label nombreJ1 = new Label(juego.getJugador1().getNombre());
-        Label nombreJ2 = new Label(juego.getJugador2().getNombre());
-        nombreJ1.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
-        nombreJ1.setTextFill(Color.WHITE);
-        nombreJ2.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
-        nombreJ2.setTextFill(Color.WHITE);
+        vistaNombreJugador1 = new VistaNombreJugador(juego.getJugador1());
+        vistaNombreJugador2 = new VistaNombreJugador(juego.getJugador2());
 
         // Visor carta
         vistaProyeccionCarta = VistaProyeccionCarta.getInstancia();
@@ -60,7 +58,7 @@ public class BarraLateral extends StackPane {
         boxBtnsFaseTurno.setAlignment(Pos.CENTER);
         boxBtnsFaseTurno.setSpacing(10);
 
-        VBox vbox = new VBox(nombreJ1, vistaVidaJugador1, boxBtnsFaseTurno, vistaProyeccionCarta, vistaVidaJugador2, nombreJ2, mute);
+        VBox vbox = new VBox(vistaNombreJugador1, vistaVidaJugador1, boxBtnsFaseTurno, vistaProyeccionCarta, vistaVidaJugador2, vistaNombreJugador2, mute);
         vbox.setPadding(new Insets(15));
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.CENTER);
@@ -72,5 +70,7 @@ public class BarraLateral extends StackPane {
     public void update() {
         this.vistaVidaJugador1.update();
         this.vistaVidaJugador2.update();
+        this.vistaNombreJugador1.update();
+        this.vistaNombreJugador2.update();
     }
 }

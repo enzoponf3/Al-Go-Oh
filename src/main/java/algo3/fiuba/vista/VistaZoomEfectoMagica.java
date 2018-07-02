@@ -1,4 +1,4 @@
-package algo3.fiuba.vista.vista_tablero;
+package algo3.fiuba.vista;
 
 
 import algo3.fiuba.vista.VistaCarta;

@@ -4,8 +4,7 @@ import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.vista.VistaCarta;
-import algo3.fiuba.vista.VistaProyeccionCarta;
-import algo3.fiuba.vista.vista_tablero.VistaZoomEfectoMagica;
+import algo3.fiuba.vista.VistaZoomEfectoMagica;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
