@@ -8,6 +8,8 @@ import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class VistaCartaCampo extends Label {
 

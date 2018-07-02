@@ -6,10 +6,19 @@
     -fx-background-image: url("/algo3/fiuba/resources/img/fondo-arena.jpg");
 }
 
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
 /* !!! esto no se está usando*/
 .muestrarioInfoCarta {
     -fx-font-size: 24px;
     -fx-font-color: WHITE;
     -fx-font-alignment: center;
 }
+
 

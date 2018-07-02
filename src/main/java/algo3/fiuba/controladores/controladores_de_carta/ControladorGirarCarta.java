@@ -19,7 +19,6 @@ public class ControladorGirarCarta implements EventHandler<ActionEvent> {
 
     public ControladorGirarCarta(Carta carta) {
         this.carta = carta;
-
         controladorTurnos = ControladorDeTurnos.getInstancia();
     }
 

@@ -32,6 +32,9 @@ public class VistaMano extends ScrollPane {
     public void dibujar() {
         List<VistaCarta> vistaCartas = new LinkedList<>();
 
+        this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
+        this.getStyleClass().add("scroll-pane");
+
         this.setMaxWidth(555);
         this.setFitToHeight(true);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);

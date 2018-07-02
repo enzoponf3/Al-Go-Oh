@@ -12,7 +12,7 @@ public class TableroLado2 extends Tablero {
 
     @Override
     public void dibujar() {
-        this.setGridLinesVisible(true); // si las quieren ver habiliten esta linea
+
         this.setPadding(new Insets(5));
         this.setVgap(5.5);
         this.setHgap(10);

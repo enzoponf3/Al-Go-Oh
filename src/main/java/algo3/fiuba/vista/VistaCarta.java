@@ -2,13 +2,11 @@ package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.ControladorCantidadDeSacrificios;
 import algo3.fiuba.controladores.ControladorMonstruoAAtacar;
-import algo3.fiuba.controladores.botones.checkboxs.CheckBoxSacrificio;
+import algo3.fiuba.controladores.botones.checkboxs.CheckBoxMonstruo;
 import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
 import algo3.fiuba.controladores.controladores_de_carta.ControladorZoomCarta;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
-import algo3.fiuba.modelo.cartas.estado_en_turno.NoUsadaEnTurno;
-import algo3.fiuba.modelo.cartas.estado_en_turno.TurnoRival;
 import algo3.fiuba.modelo.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.modelo.cartas.estados_cartas.*;
 import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeDefensa;
@@ -18,7 +16,6 @@ import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.modelo.jugador.TurnoDelOponente;
 import algo3.fiuba.utils.CartaVistaUtils;
 import javafx.geometry.Insets;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -85,7 +82,7 @@ public class VistaCarta extends StackPane {
             }
 
             if ((jugador.getEstadoJugador() instanceof PreInvocacion) && carta.estaEnJuego()) {
-                CheckBoxSacrificio checkBoxParaSacrificio = new CheckBoxSacrificio(monstruo);
+                CheckBoxMonstruo checkBoxParaSacrificio = new CheckBoxMonstruo(monstruo);
                 checkBoxParaSacrificio.setOnAction(new ControladorCantidadDeSacrificios());
 
                 super.getChildren().add(checkBoxParaSacrificio);
@@ -93,7 +90,7 @@ public class VistaCarta extends StackPane {
 
             if (jugador.getEstadoJugador() instanceof TurnoDelOponente
                     && jugador.getOponente().getEstadoJugador() instanceof PostInvocacion && carta.estaEnJuego()) {
-                CheckBoxSacrificio checkBoxMonstruoAAtacar = new CheckBoxSacrificio(monstruo);
+                CheckBoxMonstruo checkBoxMonstruoAAtacar = new CheckBoxMonstruo(monstruo);
                 checkBoxMonstruoAAtacar.setOnAction(new ControladorMonstruoAAtacar());
 
                 super.getChildren().add(checkBoxMonstruoAAtacar);
@@ -129,5 +126,10 @@ public class VistaCarta extends StackPane {
     public double getAnchoCarta() {
         return ANCHO_MAXIMO_CARTA;
     }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
 
 }
