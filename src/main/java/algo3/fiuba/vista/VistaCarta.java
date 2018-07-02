@@ -58,6 +58,11 @@ public class VistaCarta extends StackPane {
             labelPuntosDeDefensa = new Label("" + ((Monstruo) carta).getDefensa());
             labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
             StackPane.setMargin(labelPuntosDeDefensa, new Insets(70, 0, 0, 35));
+            if (jugador.getEstadoJugador() instanceof TurnoDelOponente && !carta.estaEnJuego()) {
+                rectanguloFondo.setVisible(false);
+                labelPuntosDeAtaque.setVisible(false);
+                labelPuntosDeDefensa.setVisible(false);
+            }
         }
 
         try{
