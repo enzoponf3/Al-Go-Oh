@@ -1,4 +1,4 @@
-package algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo;
+package algo3.fiuba.modelo.cartas.moldes_cartas;
 
 import algo3.fiuba.modelo.cartas.CartaCampo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;

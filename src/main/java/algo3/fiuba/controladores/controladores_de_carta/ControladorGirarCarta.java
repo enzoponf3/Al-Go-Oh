@@ -11,26 +11,14 @@ import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class ControladorBocaArribaEnJuego implements EventHandler<ActionEvent> {
+public class ControladorGirarCarta implements EventHandler<ActionEvent> {
 
-    private VistaCarta vistaCarta;
-    private Jugador jugador;
     private Carta carta;
-    private VistaMano vistaMano;
-    private VistaZonaMonstruos vistaZonaMonstruos;
-    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
-    private VistaCartaCampo vistaCartaCampo;
 
     private ControladorDeTurnos controladorTurnos;
 
-    public ControladorBocaArribaEnJuego(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo) {
-        this.vistaCarta = vistaCarta;
-        this.jugador = jugador;
+    public ControladorGirarCarta(Carta carta) {
         this.carta = carta;
-        this.vistaMano = vistaMano;
-        this.vistaZonaMonstruos = vistaZonaMonstruos;
-        this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
-        this.vistaCartaCampo = vistaCartaCampo;
 
         controladorTurnos = ControladorDeTurnos.getInstancia();
     }

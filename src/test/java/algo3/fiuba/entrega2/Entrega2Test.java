@@ -4,7 +4,6 @@ import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.*;
-import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.Sogen;
@@ -69,7 +68,7 @@ public class Entrega2Test {
         Assert.assertEquals(defensaFinalMonstruoPropio1, monstruoPropio1.getDefensa());
 
         Monstruo monstruoPropio2 = new GuerreroCelta(jugador1);
-        Monstruo monstruoOponente2 = new SevenColoredFish(jugador2);
+        Monstruo monstruoOponente2 = new PezDe7Colores(jugador2);
 
         Integer ataqueInicialMonstruoPropio2 = monstruoPropio2.getAtaque();
         Integer defensaInicialMonstruoOponente2 = monstruoOponente2.getDefensa();
@@ -119,7 +118,7 @@ public class Entrega2Test {
         Assert.assertEquals(defensaFinalMonstruoOponente1, monstruoOponente1.getDefensa());
 
         Monstruo monstruoPropio2 = new GuerreroCelta(jugador1);
-        Monstruo monstruoOponente2 = new SevenColoredFish(jugador2);
+        Monstruo monstruoOponente2 = new PezDe7Colores(jugador2);
 
         Integer defensaInicialMonstruoPropio2 = monstruoPropio2.getDefensa();
         Integer ataqueInicialMonstruoOponente2 = monstruoOponente2.getAtaque();
@@ -129,7 +128,6 @@ public class Entrega2Test {
         jugador2.colocarCartaEnCampo((Carta) monstruoOponente2, new BocaArriba());
 
         // El efecto de las cartas de campo se mantienen activas, aún para cartas agregadas después de colocar estas.
-        // Se suma 300 a la defensa del oponente y el ataque permanece igual.
         Integer defensaFinalMonstruoPropio2 = defensaInicialMonstruoPropio2 + 500;
         Assert.assertEquals(defensaFinalMonstruoPropio2, monstruoPropio2.getDefensa());
         Integer ataqueFinalMonstruoOponente2 = ataqueInicialMonstruoOponente2 + 200;
@@ -163,7 +161,7 @@ public class Entrega2Test {
 
     @Test
     public void colocoDosCartasMonstruoEnCampoEnemigo_activoFisura_elDeMenorAtaqueEsDestruido() {
-        Monstruo monstruoFuerte = new SevenColoredFish(jugador2);
+        Monstruo monstruoFuerte = new PezDe7Colores(jugador2);
         Monstruo monstruoDebil = new Jinzo7(jugador2);
         Magica fisura = new Fisura(jugador1);
 
@@ -214,12 +212,12 @@ public class Entrega2Test {
         Monstruo dragonASacrificar3 = new DragonBlancoDeOjosAzules(jugador1);
 
         // Monstruos de sacrificio para poder invocar a los tres dragones blancos de ojos azúles.
-        Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador1);
-        Monstruo monstruoASacrificar2 = new SevenColoredFish(jugador1);
-        Monstruo monstruoASacrificar3 = new SevenColoredFish(jugador1);
-        Monstruo monstruoASacrificar4 = new SevenColoredFish(jugador1);
-        Monstruo monstruoASacrificar5 = new SevenColoredFish(jugador1);
-        Monstruo monstruoASacrificar6 = new SevenColoredFish(jugador1);
+        Monstruo monstruoASacrificar1 = new PezDe7Colores(jugador1);
+        Monstruo monstruoASacrificar2 = new PezDe7Colores(jugador1);
+        Monstruo monstruoASacrificar3 = new PezDe7Colores(jugador1);
+        Monstruo monstruoASacrificar4 = new PezDe7Colores(jugador1);
+        Monstruo monstruoASacrificar5 = new PezDe7Colores(jugador1);
+        Monstruo monstruoASacrificar6 = new PezDe7Colores(jugador1);
 
         // Invoco los dragones, con sus respectivos sacrificios.
         jugador1.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaAbajo());
@@ -296,7 +294,7 @@ public class Entrega2Test {
 
     @Test
     public void atacarATrampaCilindroMagico_seNiegaAtaqueYSeEfectuaALosPuntosDeVidaDelAtacante() {
-        Monstruo monstruoAtacante = new SevenColoredFish(jugador2);
+        Monstruo monstruoAtacante = new PezDe7Colores(jugador2);
         Monstruo monstruoAtacado = new Jinzo7(jugador1);
         Carta cilindroMagico = new CilindroMagico(jugador1);
 
@@ -409,7 +407,7 @@ public class Entrega2Test {
         Monstruo parteExodia5 = new BrazoIzquierdoExodia(jugador1);
 
         jugador2.agregarCartaAMazo(new MagoOscuro(jugador2));
-        jugador1.agregarCartaAMazo(new SevenColoredFish(jugador1));
+        jugador1.agregarCartaAMazo(new PezDe7Colores(jugador1));
 
         jugador1.agregarCartaAMazo(parteExodia1);
         jugador1.agregarCartaAMazo(parteExodia2);

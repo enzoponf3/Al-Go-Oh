@@ -11,10 +11,9 @@ import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.PezDe7Colores;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class CilindroMagicoTest {
@@ -174,7 +173,7 @@ public class CilindroMagicoTest {
     @Test
     public void colocoTrampaCilindroMagico_seActivaAlAtacarAUnMonstruoDeSuCampo_elAtaqueDelAtacanteVaDirectoALosPuntosDeDanioDelOponente() {
         cilindroMagico = new CilindroMagico(jugador1);
-        Monstruo monstruoAtacante = new SevenColoredFish(jugador2);
+        Monstruo monstruoAtacante = new PezDe7Colores(jugador2);
         Monstruo monstruoAtacado = new Jinzo7(jugador1);
 
         jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaAbajo());
@@ -193,7 +192,7 @@ public class CilindroMagicoTest {
     @Test
     public void atacarATrampaCilindroMagico_seNiegaAtaqueYSeEfectuaALosPuntosDeVidaDelAtacante() {
         cilindroMagico = new CilindroMagico(jugador1);
-        Monstruo monstruoAtacante = new SevenColoredFish(jugador2);
+        Monstruo monstruoAtacante = new PezDe7Colores(jugador2);
         Monstruo monstruoAtacado = new Jinzo7(jugador1);
 
         jugador1.colocarCartaEnCampo((Carta) cilindroMagico, new BocaAbajo());

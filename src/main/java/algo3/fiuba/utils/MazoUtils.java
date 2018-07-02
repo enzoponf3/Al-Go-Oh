@@ -24,7 +24,7 @@ public class MazoUtils {
         mazo.add(new DragonNegroDeOjosRojos(jugador));
         mazo.add(new EspadachinDeLaLlama(jugador));
         mazo.add(new Fisura(jugador));
-        mazo.add(new SevenColoredFish(jugador));
+        mazo.add(new PezDe7Colores(jugador));
 
         return mazo;
     }
@@ -35,7 +35,7 @@ public class MazoUtils {
         mazo.add(new DragonNegroDeOjosRojos(jugador));
         mazo.add(new EspadachinDeLaLlama(jugador));
         mazo.add(new Fisura(jugador));
-        mazo.add(new SevenColoredFish(jugador));
+        mazo.add(new PezDe7Colores(jugador));
         mazo.add(new AgujeroNegro(jugador));
         mazo.add(new AgujeroTrampa(jugador));
         mazo.add(new BebeDragon(jugador));
@@ -48,7 +48,7 @@ public class MazoUtils {
         Stack<Carta> mazo = new Stack();
 
         mazo.add(new PetitAngel(jugador));
-        mazo.add(new SevenColoredFish(jugador));
+        mazo.add(new PezDe7Colores(jugador));
         mazo.add(new Griffore(jugador));
         mazo.add(new BebeDragon(jugador));
         mazo.add(new Fisura(jugador));
@@ -72,7 +72,7 @@ public class MazoUtils {
         Stack<Carta> mazo = new Stack();
 
         mazo.add(new PetitAngel(jugador));
-        mazo.add(new SevenColoredFish(jugador));
+        mazo.add(new PezDe7Colores(jugador));
         mazo.add(new Griffore(jugador));
         mazo.add(new BebeDragon(jugador));
         mazo.add(new Fisura(jugador));
@@ -102,7 +102,7 @@ public class MazoUtils {
         Stack<Carta> mazo = new Stack();
 
         mazo.add(new PetitAngel(jugador));
-        mazo.add(new SevenColoredFish(jugador));
+        mazo.add(new PezDe7Colores(jugador));
         mazo.add(new Griffore(jugador));
         mazo.add(new BebeDragon(jugador));
         mazo.add(new Fisura(jugador));

@@ -14,8 +14,8 @@ public class ModoDeAtaque extends ModoMonstruo {
     }
 
     @Override
-    public ResultadoCombate atacar(Monstruo monstruoAtacante, Monstruo otraCarta, Integer puntosAtaque) {
-        return otraCarta.recibirAtaque(monstruoAtacante, puntosAtaque);
+    public ResultadoCombate atacar(Monstruo monstruoAtacante, Monstruo monstruoAtacado, Integer puntosAtaque) {
+        return monstruoAtacado.recibirAtaque(monstruoAtacante, puntosAtaque);
     }
 
     @Override

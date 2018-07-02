@@ -1,7 +1,7 @@
 package algo3.fiuba.modelo.campo;
 
 import algo3.fiuba.modelo.cartas.CartaCampo;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.CartaCampoNula;
+import algo3.fiuba.modelo.cartas.moldes_cartas.CartaCampoNula;
 
 public class ZonaCartaCampoVacia implements ZonaCartaCampo {
 

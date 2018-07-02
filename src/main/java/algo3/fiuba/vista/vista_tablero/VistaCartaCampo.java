@@ -1,14 +1,10 @@
 package algo3.fiuba.vista.vista_tablero;
 
 import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.CartaCampo;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.CartaCampoNula;
+import algo3.fiuba.modelo.cartas.moldes_cartas.CartaCampoNula;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.CartaVistaUtils;
 import algo3.fiuba.vista.VistaCarta;
-import algo3.fiuba.vista.vista_tablero.VistaMano;
-import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
-import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,7 +27,7 @@ public class VistaCartaCampo extends Label {
     }
 
     public void dibujar() {
-        CartaCampo cartaCampoActiva = jugador.getCartaCampoActiva();
+        Carta cartaCampoActiva = jugador.getCartaCampoActiva();
         if(!(cartaCampoActiva instanceof CartaCampoNula)) {
             String nombre = jugador.getCartaCampoActiva().getNombre();
             VistaCarta vistaCarta = new VistaCarta(cartaVistaUtils.getImagenDeCarta(nombre), jugador, carta);

@@ -9,6 +9,7 @@ import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnMano;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnMazo;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
+import algo3.fiuba.modelo.cartas.moldes_cartas.NoMonstruoNulo;
 
 import java.util.*;
 
@@ -158,7 +159,7 @@ public class Jugador implements Observer {
         boolean continuarAtaque = true;
         List<NoMonstruo> noMonstruos = tableroJugador.getNoMonstruos();
         for (NoMonstruo noMonstruo : noMonstruos) {
-            if ((continuarAtaque = noMonstruo.activarTrampa())) {
+            if (!noMonstruo.equals(new NoMonstruoNulo()) && (continuarAtaque = noMonstruo.activarTrampa())) {
                 noMonstruo.activarEfecto(monstruoAtacante, monstruoAtacado);
                 return noMonstruo.negarAtaque();
             }

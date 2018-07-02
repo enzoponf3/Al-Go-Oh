@@ -7,7 +7,7 @@ import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.PezDe7Colores;
 import algo3.fiuba.modelo.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class Entrega3NoOficial {
 
     @Test
     public void agregoUnMonstruoAlCampo_puedeAtacarCuandoReciénFueInvocado() {
-        Monstruo monstruoAtacante = new SevenColoredFish(jugador1);
+        Monstruo monstruoAtacante = new PezDe7Colores(jugador1);
         Monstruo monstruoDefensor = new Jinzo7(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
@@ -46,7 +46,7 @@ public class Entrega3NoOficial {
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void agregoUnMonstruoAlCampoYAtaco_noPuedeVolverAAtacarEnEseTurno() {
         Monstruo monstruoAtacante = new Jinzo7(jugador1);
-        Monstruo monstruoDefensor = new SevenColoredFish(jugador2);
+        Monstruo monstruoDefensor = new PezDe7Colores(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruoAtacante, new BocaArriba());
         turno.pasarTurno();
@@ -64,7 +64,7 @@ public class Entrega3NoOficial {
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void agregoUnMonstruoAlCampo_noAtacaYPasoElTurno_noPuedeAtacarEnElTurnoRival() {
         Monstruo monstruo1 = new Jinzo7(jugador1);
-        Monstruo monstruo2 = new SevenColoredFish(jugador2);
+        Monstruo monstruo2 = new PezDe7Colores(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruo1, new BocaArriba());
         turno.pasarTurno();
@@ -80,7 +80,7 @@ public class Entrega3NoOficial {
     @Test(expected = MonstruoInhabilitadoParaAtacarExcepcion.class)
     public void agregoUnMonstruoAlCampo_atacaYPasoElTurno_noPuedeAtacarEnElTurnoRival() {
         Monstruo monstruo1 = new Jinzo7(jugador1);
-        Monstruo monstruo2 = new SevenColoredFish(jugador2);
+        Monstruo monstruo2 = new PezDe7Colores(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) monstruo1, new BocaArriba());
         turno.pasarTurno();

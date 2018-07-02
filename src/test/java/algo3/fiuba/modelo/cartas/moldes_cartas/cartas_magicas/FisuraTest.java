@@ -3,16 +3,12 @@ package algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
-import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
-import algo3.fiuba.modelo.jugador.PreInvocacion;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.PezDe7Colores;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +36,7 @@ public class FisuraTest {
     @Test
     public void alActivarseMataAlMonstruoMasDebilDelOponente_fisuraVaAlCementerio() {
         fisura = new Fisura(jugador1);
-        Monstruo monstruoFuerte = new SevenColoredFish(jugador2);
+        Monstruo monstruoFuerte = new PezDe7Colores(jugador2);
         Monstruo monstruoDebil = new Jinzo7(jugador2);
 
         turno.pasarTurno();
@@ -66,7 +62,7 @@ public class FisuraTest {
     @Test
     public void alActivarseMataAlMonstruoMasDebilDelOponente_siHayUnoSoloMataAEseYFisuraVaAlCementerio() {
         fisura = new Fisura(jugador1);
-        Monstruo monstruoOponente = new SevenColoredFish(jugador2);
+        Monstruo monstruoOponente = new PezDe7Colores(jugador2);
 
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoOponente, new BocaArriba());
@@ -100,7 +96,7 @@ public class FisuraTest {
     @Test
     public void seColocaBocaAbajoYLuegoSeActiva_fisuraVaAlCementerio() {
         fisura = new Fisura(jugador1);
-        Monstruo monstruoFuerte = new SevenColoredFish(jugador2);
+        Monstruo monstruoFuerte = new PezDe7Colores(jugador2);
         Monstruo monstruoDebil = new Jinzo7(jugador2);
 
         turno.pasarTurno();
@@ -126,7 +122,7 @@ public class FisuraTest {
     @Test
     public void fisuraSeColocaBocaAbajoYSeActivaAutomaticamente_fisuraVaAlCementerio() {
         fisura = new Fisura(jugador1);
-        Monstruo monstruoFuerte = new SevenColoredFish(jugador2);
+        Monstruo monstruoFuerte = new PezDe7Colores(jugador2);
         Monstruo monstruoDebil = new Jinzo7(jugador2);
 
         turno.pasarTurno();

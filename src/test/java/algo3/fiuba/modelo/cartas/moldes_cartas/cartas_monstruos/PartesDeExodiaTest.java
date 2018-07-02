@@ -33,7 +33,7 @@ public class PartesDeExodiaTest {
         Monstruo parteExodia5 = new BrazoIzquierdoExodia(jugador1);
 
         jugador2.agregarCartaAMazo(new MagoOscuro(jugador2));
-        jugador1.agregarCartaAMazo(new SevenColoredFish(jugador1));
+        jugador1.agregarCartaAMazo(new PezDe7Colores(jugador1));
 
         jugador1.agregarCartaAMazo(parteExodia1);
         jugador1.agregarCartaAMazo(parteExodia2);

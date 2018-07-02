@@ -1,16 +1,13 @@
 package algo3.fiuba.vista.vista_tablero;
 
 import algo3.fiuba.modelo.cartas.NoMonstruo;
+import algo3.fiuba.modelo.cartas.moldes_cartas.NoMonstruoNulo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.CartaVistaUtils;
 import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class VistaZonaNoMonstruos extends HBox {
 
@@ -36,13 +33,13 @@ public class VistaZonaNoMonstruos extends HBox {
     public void dibujar() {
         getChildren().clear();
 
-        Integer i = 0;
         for(NoMonstruo noMonstruo: jugador.getNoMonstuosEnCampo()) {
-            getChildren().add(new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo));
-        }
-        for (; i < LIMITE_CARTAS; i++) {
-            getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
-                    ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
+            if (noMonstruo instanceof NoMonstruoNulo) {
+                getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
+                        ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
+            } else {
+                getChildren().add(new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo));
+            }
         }
     }
 

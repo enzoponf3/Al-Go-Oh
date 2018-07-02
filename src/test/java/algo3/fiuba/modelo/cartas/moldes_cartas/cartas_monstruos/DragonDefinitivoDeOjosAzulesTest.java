@@ -36,12 +36,12 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Monstruo dragonASacrificar3 = new DragonBlancoDeOjosAzules(jugador);
 
         // Monstruos de sacrificio para poder invocar a los tres dragones blancos de ojos azúles.
-        Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador);
+        Monstruo monstruoASacrificar1 = new PezDe7Colores(jugador);
         Monstruo monstruoASacrificar2 = new BebeDragon(jugador);
-        Monstruo monstruoASacrificar3 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar4 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar5 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar6 = new SevenColoredFish(jugador);
+        Monstruo monstruoASacrificar3 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar4 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar5 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar6 = new PezDe7Colores(jugador);
 
         // Invoco los dragones, con sus respectivos sacrificios.
         jugador.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaAbajo());
@@ -103,7 +103,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
 
     @Test(expected = SacrificiosIncorrectosExcepcion.class)
     public void unSacrificioCualquiera_noSePuedeInvocar() {
-        Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador);
+        Monstruo monstruoASacrificar1 = new PezDe7Colores(jugador);
 
         jugador.colocarCartaEnCampo((Carta) dragonDefinitivo, new BocaArriba(), monstruoASacrificar1);
 
@@ -114,9 +114,9 @@ public class DragonDefinitivoDeOjosAzulesTest {
 
     @Test(expected = SacrificiosIncorrectosExcepcion.class)
     public void tresSacrificiosCualquiera_noSePuedeInvocar() {
-        Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar2 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar3 = new SevenColoredFish(jugador);
+        Monstruo monstruoASacrificar1 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar2 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar3 = new PezDe7Colores(jugador);
 
         jugador.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaArriba());
         turno.pasarTurno();
@@ -141,10 +141,10 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Monstruo dragonASacrificar2 = new DragonBlancoDeOjosAzules(jugador);
 
         // Monstruos de sacrificio para poder invocar a los tres dragones blancos de ojos azúles.
-        Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar2 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar3 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar4 = new SevenColoredFish(jugador);
+        Monstruo monstruoASacrificar1 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar2 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar3 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar4 = new PezDe7Colores(jugador);
 
         // Invoco los dragones, con sus respectivos sacrificios.
         jugador.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaAbajo());
@@ -187,8 +187,8 @@ public class DragonDefinitivoDeOjosAzulesTest {
         Monstruo dragonASacrificar1 = new DragonBlancoDeOjosAzules(jugador);
 
         // Monstruos de sacrificio para poder invocar a los tres dragones blancos de ojos azúles.
-        Monstruo monstruoASacrificar1 = new SevenColoredFish(jugador);
-        Monstruo monstruoASacrificar2 = new SevenColoredFish(jugador);
+        Monstruo monstruoASacrificar1 = new PezDe7Colores(jugador);
+        Monstruo monstruoASacrificar2 = new PezDe7Colores(jugador);
 
         // Invoco los dragones, con sus respectivos sacrificios.
         jugador.colocarCartaEnCampo((Carta) monstruoASacrificar1, new BocaAbajo());

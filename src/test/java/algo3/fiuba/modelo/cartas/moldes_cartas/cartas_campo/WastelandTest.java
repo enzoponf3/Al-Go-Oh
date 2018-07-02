@@ -3,18 +3,16 @@ package algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo;
 import algo3.fiuba.modelo.Juego;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.GuerreroCelta;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.PezDe7Colores;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class WastelandTest {
@@ -232,7 +230,7 @@ public class WastelandTest {
         Monstruo monstruoPropio1 = new BebeDragon(jugador1);
         Monstruo monstruoPropio2 = new Kuriboh(jugador1);
         Monstruo monstruoOponente1 = new GuerreroCelta(jugador2);
-        Monstruo monstruoOponente2 = new SevenColoredFish(jugador2);
+        Monstruo monstruoOponente2 = new PezDe7Colores(jugador2);
 
         Monstruo monstruoPropio3 = new Kuriboh(jugador1);
         jugador1.colocarCartaEnCampo((Carta) monstruoPropio3, new BocaArriba());

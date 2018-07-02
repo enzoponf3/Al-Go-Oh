@@ -33,7 +33,7 @@ public class InsectoComeHombresTest {
 
     @Test
     public void alColocarseEnCampoBocaArribaNoSeActivaElEfecto() {
-        Carta monstruoRival = new SevenColoredFish(jugador2);
+        Carta monstruoRival = new PezDe7Colores(jugador2);
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaArriba());
         turno.pasarTurno();
@@ -48,7 +48,7 @@ public class InsectoComeHombresTest {
 
     @Test
     public void seColocaEnElCampoBocaArriba_alSerAtacadoNoActivaElEfecto() {
-        Monstruo monstruoOponente = new SevenColoredFish(jugador2);
+        Monstruo monstruoOponente = new PezDe7Colores(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaArriba());
         turno.pasarTurno();
@@ -67,7 +67,7 @@ public class InsectoComeHombresTest {
 
     @Test
     public void seColocaEnElCampoBocaAbajo_alGirarLaCaraBocaArribaEnElMismoTurnoNoSeActivaElEfecto() {
-        Monstruo monstruoRival = new SevenColoredFish(jugador2);
+        Monstruo monstruoRival = new PezDe7Colores(jugador2);
 
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
@@ -88,7 +88,7 @@ public class InsectoComeHombresTest {
 
     @Test
     public void seColocaEnElCampoBocaAbajo_alQuererActivarElEfectoEnElPrimerTurnoQueEsConvocadaNoloLograYSeDaVueltaLaCarta() {
-        Monstruo monstruoRival = new SevenColoredFish(jugador2);
+        Monstruo monstruoRival = new PezDe7Colores(jugador2);
 
         turno.pasarTurno();
         jugador2.colocarCartaEnCampo((Carta) monstruoRival, new BocaArriba());
@@ -111,7 +111,7 @@ public class InsectoComeHombresTest {
 
     @Test
     public void seColocaEnElCampoBocaAbajo_alSerAtacadoActivaElEfecto() {
-        Monstruo monstruoRival = new SevenColoredFish(jugador2);
+        Monstruo monstruoRival = new PezDe7Colores(jugador2);
 
         jugador1.colocarCartaEnCampo(insectoComeHombres, new BocaAbajo());
         turno.pasarTurno();
@@ -131,7 +131,7 @@ public class InsectoComeHombresTest {
 
     @Test
     public void seColocaEnElCampoBocaAbajo_alGirarLaCaraBocaArribaEnOtroTurnoSeActivaElEfecto() {
-        Monstruo monstruoRival = new SevenColoredFish(jugador2);
+        Monstruo monstruoRival = new PezDe7Colores(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaAbajo());
         turno.pasarTurno();
@@ -153,7 +153,7 @@ public class InsectoComeHombresTest {
 
     @Test
     public void seColocaEnElCampoBocaAbajo_sePuedeActivarElEfectoYAutomaticamentePasaAEstarBocaArriba() {
-        Monstruo monstruoRival = new SevenColoredFish(jugador2);
+        Monstruo monstruoRival = new PezDe7Colores(jugador2);
 
         jugador1.colocarCartaEnCampo((Carta) insectoComeHombres, new BocaAbajo());
         turno.pasarTurno();

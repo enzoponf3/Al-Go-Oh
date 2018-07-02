@@ -6,10 +6,8 @@ import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.BebeDragon;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Jinzo7;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.Kuriboh;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.SevenColoredFish;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas.CilindroMagico;
+import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.PezDe7Colores;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.excepciones.MonstruoInhabilitadoParaAtacarExcepcion;
 import org.junit.Assert;
@@ -269,7 +267,7 @@ public class MonstruoTest {
 
     @Test
     public void unMonstruoBocaAbajoAlSerAtacadoPasaAEstarBocaArriba() {
-        Monstruo monstruoAtacado = new SevenColoredFish(jugador1); // ATK 1800
+        Monstruo monstruoAtacado = new PezDe7Colores(jugador1); // ATK 1800
         Monstruo monstruoAtacante = new Jinzo7(jugador2); // ATK 500
 
         // Los monstruos por default se colocan en modo ataque
@@ -289,7 +287,7 @@ public class MonstruoTest {
 
     @Test
     public void unMonstruoBocaAbajoAlActivarElEfectoPasaAEstarBocaArriba() {
-        Monstruo monstruo = new SevenColoredFish(jugador1);
+        Monstruo monstruo = new PezDe7Colores(jugador1);
 
         // Los monstruos por default se colocan en modo ataque
         jugador1.colocarCartaEnCampo((Carta) monstruo, new BocaAbajo());

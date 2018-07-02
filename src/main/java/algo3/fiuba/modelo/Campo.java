@@ -2,50 +2,59 @@ package algo3.fiuba.modelo;
 
 import algo3.fiuba.modelo.campo.ZonaCartaCampo;
 import algo3.fiuba.modelo.campo.ZonaCartaCampoVacia;
+import algo3.fiuba.modelo.campo.ZonaCartas;
 import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
+import algo3.fiuba.modelo.cartas.moldes_cartas.MonstruoNulo;
+import algo3.fiuba.modelo.cartas.moldes_cartas.NoMonstruoNulo;
 import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 
 import java.util.*;
 
 public class Campo {
 
-    private List<Monstruo> zonaMonstruos;
-    private List<NoMonstruo> zonaNoMonstruos;
+    private ZonaCartas<Monstruo> zonaMonstruos;
+    private ZonaCartas<NoMonstruo> zonaNoMonstruos;
     private ZonaCartaCampo zonaCartaCampo;
     private Set<Modificador> modificadoresActivos;
 
     private static final Integer LIMITE_CARTAS_EN_ZONA = 5;
 
     public Campo() {
-        zonaMonstruos = new LinkedList<>();
-        zonaNoMonstruos = new LinkedList<>();
+        zonaMonstruos = new ZonaCartas<>(LIMITE_CARTAS_EN_ZONA, new MonstruoNulo());
+        zonaNoMonstruos = new ZonaCartas<>(LIMITE_CARTAS_EN_ZONA, new NoMonstruoNulo());
         zonaCartaCampo = new ZonaCartaCampoVacia();
         modificadoresActivos = new HashSet<>();
     }
 
     public boolean estaVacio() {
-        return (zonaMonstruos.isEmpty() && zonaNoMonstruos.isEmpty());
+        return (zonaMonstruos.estaVacia() && zonaNoMonstruos.estaVacia());
     }
 
     public Integer cantidadMonstruos() {
-        return (zonaMonstruos.size());
+        return (zonaMonstruos.tamanio());
     }
 
     public Integer cantidadNoMonstruos() {
-        return (zonaNoMonstruos.size());
+        return (zonaNoMonstruos.tamanio());
     }
 
     public void colocarCarta(Monstruo carta, EnJuego enJuego) {
+        zonaMonstruos.agregar(carta);
+        carta.setEstado(enJuego);
+        this.agregarModificadoresAMonstruos();
+        /*
         if (zonaMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
             throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 monstruos en el campo.");
 
         carta.setEstado(enJuego);
         zonaMonstruos.add(carta);
         this.agregarModificadoresAMonstruos();
+        */
+
     }
 
     public void colocarCarta(Magica carta, BocaArriba bocaArriba) {
@@ -54,11 +63,8 @@ public class Campo {
     }
 
     public void colocarCarta(Magica carta, BocaAbajo bocaAbajo) {
-        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
-
+        zonaNoMonstruos.agregar(carta);
         carta.setEstado(bocaAbajo);
-        zonaNoMonstruos.add(carta);
     }
 
     public void colocarCarta(Trampa carta, BocaArriba bocaArriba) {
@@ -66,11 +72,8 @@ public class Campo {
     }
 
     public void colocarCarta(Trampa carta, BocaAbajo bocaAbajo) {
-        if (zonaNoMonstruos.size() >= LIMITE_CARTAS_EN_ZONA)
-            throw new CampoNoPermiteColocarCartaExcepcion("No se puede tener más de 5 no monstruos en el campo.");
-
+        zonaNoMonstruos.agregar(carta);
         carta.setEstado(bocaAbajo);
-        zonaNoMonstruos.add(carta);
     }
 
     public void colocarCarta(CartaCampo carta, BocaArriba bocaArriba) {
@@ -87,11 +90,11 @@ public class Campo {
     }
 
     public boolean cartaEstaEnCampo(Monstruo carta) {
-        return zonaMonstruos.contains(carta);
+        return zonaMonstruos.contiene(carta);
     }
 
     public boolean cartaEstaEnCampo(NoMonstruo carta) {
-        return zonaNoMonstruos.contains(carta);
+        return zonaNoMonstruos.contiene(carta);
     }
 
     public boolean cartaEstaEnCampo(CartaCampo carta) {
@@ -99,11 +102,11 @@ public class Campo {
     }
 
     public void removerCarta(Monstruo carta) {
-        zonaMonstruos.remove(carta);
+        zonaMonstruos.remover(carta);
     }
 
     public void removerCarta(NoMonstruo carta) {
-        zonaNoMonstruos.remove(carta);
+        zonaNoMonstruos.remover(carta);
     }
 
     public void removerCarta(CartaCampo carta) {
@@ -120,11 +123,11 @@ public class Campo {
     }
 
     public List<Monstruo> getMonstruos() {
-        return zonaMonstruos;
+        return zonaMonstruos.getCartas();
     }
 
     public List<NoMonstruo> getNoMonstruos() {
-        return zonaNoMonstruos;
+        return zonaNoMonstruos.getCartas();
     }
 
     public void agregarModificador(Modificador modificador) {
@@ -138,7 +141,7 @@ public class Campo {
     }
 
     private void agregarModificadoresAMonstruos() {
-        for(Monstruo monstruo: zonaMonstruos) {
+        for(Monstruo monstruo: zonaMonstruos.getCartas()) {
             for(Modificador modificador: modificadoresActivos) {
                 monstruo.agregarModificador(modificador);
             }
@@ -146,7 +149,7 @@ public class Campo {
     }
 
     private void removerModificadorAMonstruo(Modificador modificador) {
-        for(Monstruo monstruo: zonaMonstruos) {
+        for(Monstruo monstruo: zonaMonstruos.getCartas()) {
             monstruo.removerModificador(modificador);
         }
     }

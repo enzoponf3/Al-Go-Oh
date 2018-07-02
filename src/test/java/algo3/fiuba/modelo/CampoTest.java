@@ -6,7 +6,7 @@ import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.Trampa;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.CartaCampoNula;
+import algo3.fiuba.modelo.cartas.moldes_cartas.CartaCampoNula;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.Sogen;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo.Wasteland;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;

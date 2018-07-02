@@ -5,7 +5,7 @@ import algo3.fiuba.modelo.resultado_combate.ResultadoCombate;
 
 public abstract class ModoMonstruo {
 
-    public abstract ResultadoCombate atacar(Monstruo monstruoAtacante, Monstruo otraCarta, Integer puntosAtaque);
+    public abstract ResultadoCombate atacar(Monstruo monstruoAtacante, Monstruo monstruoAtacado, Integer puntosAtaque);
 
     public ResultadoCombate recibirAtaque(Integer ataqueAtacante, Integer ataqueDefensor, Integer defensaDefensor) {
         Integer diferenciaPuntos = puntosDefensivos(ataqueDefensor, defensaDefensor) - ataqueAtacante;
