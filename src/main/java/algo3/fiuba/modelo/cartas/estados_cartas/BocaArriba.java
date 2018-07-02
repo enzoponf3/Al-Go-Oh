@@ -36,7 +36,9 @@ public class BocaArriba extends EnJuego {
 
     @Override
     public void activarEfecto(Trampa trampa, Monstruo atacante, Monstruo atacado, EfectoCarta efecto) {
-        throw new CartaInhabilitadaParaActivarseExcepcion("No se puede Activar una carta Trampa en que esté boca arriba");
+        return;
+        // !!! salvada
+        // throw new CartaInhabilitadaParaActivarseExcepcion("No se puede Activar una carta Trampa en que esté boca arriba");
     }
 
     @Override

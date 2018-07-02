@@ -14,18 +14,18 @@ public class VistaMazo extends Label {
     private Jugador jugador;
     private double ANCHO_MAXIMO_CARTA = 95.0;
     private double ALTURA_MAXIMA_CARTA = 110.0;
-    private int cantidad;
     private ImageView fondoMazo;
 
     // !!!! LE PODEMOS PASAR CON EL CONTROLADOR EL NUMERO DE CARTAS
     public VistaMazo(ImageView fondoMazo, Jugador jugador) {
-        this.cantidad = jugador.cantidadCartasEnMazo();
         this.fondoMazo = fondoMazo;
         this.jugador = jugador;
         this.controladorTurnos = ControladorDeTurnos.getInstancia();
     }
 
     public void dibujar() {
+        Integer cantidad = jugador.cantidadCartasEnMazo();
+
         this.setText(String.valueOf(cantidad));
         this.setTextFill(Color.WHITE);
         this.setGraphic(fondoMazo);
@@ -40,14 +40,7 @@ public class VistaMazo extends Label {
     }
 
     public void update() {
-        cantidad--;
-
         this.dibujar();
-        this.setText(String.valueOf(cantidad));
-        this.setDisable(true);
-        this.setTextFill(Color.WHITE);
-        this.setGraphic(fondoMazo);
-        this.setContentDisplay(ContentDisplay.CENTER);
     }
 
     public void habilitarMazo() {
