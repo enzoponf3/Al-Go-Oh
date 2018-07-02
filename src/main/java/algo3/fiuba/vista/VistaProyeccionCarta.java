@@ -6,6 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
+import java.util.concurrent.TimeUnit;
+
 public class VistaProyeccionCarta extends StackPane {
 
     private ImageView imagenProyectada;
@@ -32,5 +34,9 @@ public class VistaProyeccionCarta extends StackPane {
     public void update() {
          super.getChildren().add(imagenProyectada);
 
+    }
+
+    public void zoomImgView(ImageView imagenProyectada) {
+        this.imagenProyectada = imagenProyectada;
     }
 }

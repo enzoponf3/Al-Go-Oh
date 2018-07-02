@@ -57,7 +57,7 @@ public class VistaInformacionCartaEnJuego {
                 if (!(monstruo.getEfecto() instanceof EfectoNulo)
                         && !(monstruo.getEfecto() instanceof EfectoInsectoComeHombres)) {
                     MenuItem menuActivarEfecto = new MenuItem("Activar efecto");
-                    menuActivarEfecto.setOnAction(new ControladorActivarEfecto(carta));
+                    menuActivarEfecto.setOnAction(new ControladorActivarEfecto(vistaCarta, carta));
 
                     menuOpciones.getItems().add(menuActivarEfecto);
                 }
@@ -73,7 +73,7 @@ public class VistaInformacionCartaEnJuego {
 
         if (carta instanceof Magica) {
             MenuItem menuActivarEfecto = new MenuItem("Activar efecto");
-            menuActivarEfecto.setOnAction(new ControladorActivarEfecto(carta));
+            menuActivarEfecto.setOnAction(new ControladorActivarEfecto(vistaCarta, carta));
 
             menuOpciones.getItems().add(menuActivarEfecto);
         }

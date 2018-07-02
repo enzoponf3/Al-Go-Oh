@@ -20,8 +20,8 @@ import javafx.scene.control.Alert;
 
 public class ControladorBocaArribaEnMano extends ControladorColocarCarta {
 
-    public ControladorBocaArribaEnMano(Jugador jugador, Carta carta) {
-        super(jugador, carta);
+    public ControladorBocaArribaEnMano(VistaCarta vistaCarta, Jugador jugador, Carta carta) {
+        super(vistaCarta, jugador, carta);
     }
 
     @Override

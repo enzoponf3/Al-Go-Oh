@@ -33,10 +33,10 @@ public class VistaInformacionCartaEnMano {
         Menu menuCambiarPosicion = new Menu("Colocar boca");
 
         MenuItem menuBocaAbajo = new MenuItem("Abajo");
-        menuBocaAbajo.setOnAction(new ControladorBocaAbajoEnMano(jugador, carta));
+        menuBocaAbajo.setOnAction(new ControladorBocaAbajoEnMano(vistaCarta, jugador, carta));
 
         MenuItem menuBocaArriba = new MenuItem("Arriba");
-        menuBocaArriba.setOnAction(new ControladorBocaArribaEnMano(jugador, carta));
+        menuBocaArriba.setOnAction(new ControladorBocaArribaEnMano(vistaCarta, jugador, carta));
 
         if (!(carta instanceof Trampa)) menuCambiarPosicion.getItems().add(menuBocaArriba);
 

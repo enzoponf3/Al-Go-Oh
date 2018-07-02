@@ -130,4 +130,9 @@ public class VistaCarta extends StackPane {
         return ANCHO_MAXIMO_CARTA;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+
 }
