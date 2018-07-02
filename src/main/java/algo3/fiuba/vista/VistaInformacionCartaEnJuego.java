@@ -6,6 +6,7 @@ import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.modelo.jugador.PostInvocacion;
 import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
 import algo3.fiuba.vista.vista_tablero.VistaMano;
 import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
@@ -21,50 +22,46 @@ public class VistaInformacionCartaEnJuego {
     private Jugador jugador;
     private Carta carta;
     private VistaZonaMonstruos vistaZonaMonstruos;
-    private MenuItem menuCambiarPosicion;
-    private MenuItem menuActivarEfecto;
-    private MenuItem menuModo;
-    private ContextMenu menuOpciones;
-    private MenuBar menuBar;
-    private MenuItem menuAtacar;
 
     public VistaInformacionCartaEnJuego(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaZonaMonstruos vistaZonaMonstruos){
         this.vistaCarta = vistaCarta;
         this.jugador = jugador;
         this.carta = carta;
         this.vistaZonaMonstruos = vistaZonaMonstruos;
-
     }
+
     public void dibujar(MouseEvent evento) {
-        menuOpciones = new ContextMenu();
+        ContextMenu menuOpciones = new ContextMenu();
 
         if (carta.getEstadoCarta() instanceof BocaAbajo && carta instanceof Monstruo) {
-            menuCambiarPosicion = new MenuItem("Girar carta");
+            MenuItem menuCambiarPosicion = new MenuItem("Girar carta");
             menuCambiarPosicion.setOnAction(new ControladorGirarCarta(carta));
 
             menuOpciones.getItems().add(menuCambiarPosicion);
         }
 
         if (carta instanceof Monstruo) {
-            menuModo = new MenuItem("Cambiar modo");
-            menuModo.setOnAction(new ControladorCambiarModo(vistaCarta,carta,vistaZonaMonstruos));
+            if (jugador.getEstadoJugador() instanceof PostInvocacion) {
+                MenuItem menuModo = new MenuItem("Cambiar modo");
+                menuModo.setOnAction(new ControladorCambiarModo(vistaCarta,carta,vistaZonaMonstruos));
 
-            menuOpciones.getItems().add(menuModo);
+                menuOpciones.getItems().add(menuModo);
 
-            menuAtacar = new MenuItem("Atacar");
-            menuAtacar.setOnAction(new ControladorAtacar(vistaCarta, carta, vistaZonaMonstruos, jugador));
+                MenuItem menuAtacar = new MenuItem("Atacar");
+                menuAtacar.setOnAction(new ControladorAtacar(vistaCarta, carta, vistaZonaMonstruos, jugador));
 
-            menuOpciones.getItems().add(menuAtacar);
+                menuOpciones.getItems().add(menuAtacar);
+            }
         }
 
         if (carta instanceof Magica) {
-            menuActivarEfecto = new MenuItem("Activar efecto");
+            MenuItem menuActivarEfecto = new MenuItem("Activar efecto");
             menuActivarEfecto.setOnAction(new ControladorActivarEfecto(carta));
 
             menuOpciones.getItems().add(menuActivarEfecto);
         }
 
-        menuBar = new MenuBar();
+        MenuBar menuBar = new MenuBar();
         menuBar.setContextMenu(menuOpciones);
 
         menuOpciones.show(vistaCarta,evento.getScreenX(),evento.getScreenY());

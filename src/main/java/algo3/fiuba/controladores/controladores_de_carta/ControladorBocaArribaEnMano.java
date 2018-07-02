@@ -1,7 +1,9 @@
 package algo3.fiuba.controladores.controladores_de_carta;
 
+import algo3.fiuba.controladores.ControladorCantidadDeSacrificios;
 import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
@@ -39,9 +41,11 @@ public class ControladorBocaArribaEnMano implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        Monstruo[] monstruosASacrificar = ControladorCantidadDeSacrificios.getMonstruosASacrificar();
+
         // !!!! agregar cartel que diga lo de los sacrificios.
         try {
-            jugador.colocarCartaEnCampo(carta, new BocaArriba());
+            jugador.colocarCartaEnCampo(carta, new BocaArriba(), monstruosASacrificar);
             controladorTurnos.actualizarTablero();
         } catch (CampoNoPermiteColocarCartaExcepcion e) {
             Alert error = new Alert(Alert.AlertType.ERROR);

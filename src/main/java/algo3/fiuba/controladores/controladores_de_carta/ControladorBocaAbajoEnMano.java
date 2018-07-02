@@ -1,7 +1,9 @@
 package algo3.fiuba.controladores.controladores_de_carta;
 
+import algo3.fiuba.controladores.ControladorCantidadDeSacrificios;
 import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
@@ -39,9 +41,11 @@ public class ControladorBocaAbajoEnMano implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        // salta excepción de que no se pueden colocar más cartas (jugador inhabilitado), mostrar mensaje.
+        Monstruo[] monstruosASacrificar = ControladorCantidadDeSacrificios.getMonstruosASacrificar();
+
+        // !!!! salta excepción de que no se pueden colocar más cartas (jugador inhabilitado), mostrar mensaje.
         try {
-            jugador.colocarCartaEnCampo(carta, new BocaAbajo());
+            jugador.colocarCartaEnCampo(carta, new BocaAbajo(), monstruosASacrificar);
             controladorTurnos.actualizarTablero();
         } catch (CampoNoPermiteColocarCartaExcepcion e) {
             Alert error = new Alert(Alert.AlertType.ERROR);

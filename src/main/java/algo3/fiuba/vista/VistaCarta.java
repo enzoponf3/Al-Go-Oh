@@ -1,5 +1,7 @@
 package algo3.fiuba.vista;
 
+import algo3.fiuba.controladores.ControladorCantidadDeSacrificios;
+import algo3.fiuba.controladores.botones.checkboxs.CheckBoxSacrificio;
 import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
 import algo3.fiuba.controladores.controladores_de_carta.ControladorZoomCarta;
 import algo3.fiuba.modelo.cartas.Carta;
@@ -14,6 +16,7 @@ import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.modelo.jugador.TurnoDelOponente;
 import algo3.fiuba.utils.CartaVistaUtils;
 import javafx.geometry.Insets;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,17 +52,25 @@ public class VistaCarta extends StackPane {
 
     public void dibujar() {
 
-        Rectangle rectanguloFondo = new Rectangle(73,21, Color.LIGHTGOLDENRODYELLOW);
-        StackPane.setMargin(rectanguloFondo, new Insets(71, 0, 0, 0));
+        if (carta.getEstadoCarta() instanceof BocaAbajo || carta.getEstadoCarta() instanceof EnMazo) {
+            this.getChildren().add(imagenCartaBocaAbajo);
+        } else {
+            this.getChildren().add(imagenCarta);
 
+        }
         if (carta instanceof Monstruo) {
+            Rectangle rectanguloFondo = new Rectangle(76, 21, Color.LIGHTGOLDENRODYELLOW);
+            StackPane.setMargin(rectanguloFondo, new Insets(76, 0, 0, 0));
+
             labelPuntosDeAtaque = new Label("" + ((Monstruo) carta).getAtaque());
             labelPuntosDeAtaque.setStyle("-fx-border-color: brown" );
-            StackPane.setMargin(labelPuntosDeAtaque, new Insets(70, 30, 0, 0));
+            StackPane.setMargin(labelPuntosDeAtaque, new Insets(75, 35, 0, 0));
 
             labelPuntosDeDefensa = new Label("" + ((Monstruo) carta).getDefensa());
             labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
-            StackPane.setMargin(labelPuntosDeDefensa, new Insets(70, 0, 0, 35));
+            StackPane.setMargin(labelPuntosDeDefensa, new Insets(75, 0, 0, 40));
+
+            getChildren().addAll(rectanguloFondo,labelPuntosDeAtaque,labelPuntosDeDefensa);
 
             if ((jugador.getEstadoJugador() instanceof TurnoDelOponente && !carta.estaEnJuego())
                     || (jugador.getEstadoJugador() instanceof PostInvocacion && !carta.estaEnJuego())) {
@@ -69,7 +80,18 @@ public class VistaCarta extends StackPane {
             }
 
             if ((jugador.getEstadoJugador() instanceof PreInvocacion) && carta.estaEnJuego()) {
+                CheckBoxSacrificio checkBoxParaSacrificio = new CheckBoxSacrificio((Monstruo) carta);
+                checkBoxParaSacrificio.setStyle( // !!!!
+                        "-fx-border-color: lightblue; "
+                                + "-fx-font-size: 20;"
+                                + "-fx-border-insets: -5; "
+                                + "-fx-border-radius: 5;"
+                                + "-fx-border-style: dotted;"
+                                + "-fx-border-width: 2;"
+                );
 
+                checkBoxParaSacrificio.setOnAction(new ControladorCantidadDeSacrificios());
+                getChildren().add(checkBoxParaSacrificio);
             }
 
             if(((Monstruo) carta).getModo() instanceof ModoDeDefensa) {
@@ -77,21 +99,7 @@ public class VistaCarta extends StackPane {
             }
         }
 
-        // !!!!
-        try{
-            if (carta.getEstadoCarta() instanceof BocaAbajo || carta.getEstadoCarta() instanceof EnMazo) {
-                this.getChildren().add(imagenCartaBocaAbajo);
-            } else {
-                this.getChildren().add(imagenCarta);
-                if (carta instanceof Monstruo) {
-                    this.getChildren().addAll(rectanguloFondo,labelPuntosDeAtaque,labelPuntosDeDefensa);
-                }
-            }
 
-
-        } catch (Exception e) {
-            // !!!! TE APILO TODOS LOS NODOS QUE SE EM CANTAN NO ME ROMPAS LOS HUEVOS, calmate broh!
-        }
         this.setOnMouseClicked(new ControladorCarta(this, jugador, carta));
         this.setOnMouseEntered(new ControladorZoomCarta(imageUrl));
         this.setOnMouseExited(new ControladorZoomCarta());
