@@ -9,6 +9,8 @@ import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.utils.CartaVistaUtils;
 import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,20 +35,17 @@ public class VistaMano extends ScrollPane {
         List<VistaCarta> vistaCartas = new LinkedList<>();
 
         this.setMaxWidth(555);
+        this.setFitToHeight(true);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
-        this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloVistaMano.css");
-        this.getStyleClass().add("hola");
 
         GridPane vistaMano = new GridPane();
-        vistaMano.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloVistaMano.css");
-        vistaMano.getStyleClass().add("mano");
         List<Carta> mano = jugador.getMano();
         int i = 0;
         for(Carta carta: mano) {
             Jugador jugadorActual = controladorTurnos.getJugador();
             VistaCarta vistaCarta;
             if(jugadorActual == jugador && jugador.getEstadoJugador() instanceof PreInvocacion) {
-                vistaCarta = new VistaCarta("/algo3/fiuba/resources/img/" + carta.getNombre() + ".jpg", jugador, carta);
+                vistaCarta = new VistaCarta(cartaVistaUtils.getImagenDeCarta(carta.getNombre()), jugador, carta);
 
             }
             else {

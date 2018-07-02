@@ -1,6 +1,7 @@
 package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.botones.ControladorEntrar;
+import algo3.fiuba.modelo.jugador.Jugador;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -14,7 +15,7 @@ public class ContenedorEntrada extends VBox {
 
     Stage stage;
 
-    public ContenedorEntrada(Stage stage, Scene pantallaJuego) {
+    public ContenedorEntrada(Stage stage, Scene pantallaJuego, Jugador jugador1, Jugador jugador2) {
 
         super();
 
@@ -26,22 +27,20 @@ public class ContenedorEntrada extends VBox {
         Label nombres = new Label("Duelistas! \nIngresen sus nombres");
         this.getChildren().addAll(nombres);
 
+        Text nombre1 = new Text("Duelista 1:");
         TextField entradaNombreJ1 = new TextField();
-        Text nombre = new Text("Duelista 1:");
-        String n1 = entradaNombreJ1.getText();
-        VBox boxJugador1 = new VBox(nombre, entradaNombreJ1);
+        VBox boxJugador1 = new VBox(nombre1, entradaNombreJ1);
         this.getChildren().addAll(boxJugador1);
 
-        TextField entradaNombreJ2 = new TextField();
-
         Text nombre2 = new Text("Duelista 2:");
+        TextField entradaNombreJ2 = new TextField();
         VBox boxJugador2 = new VBox(nombre2, entradaNombreJ2);
         this.getChildren().addAll(boxJugador2);
 
-        String getNombreJ1 = nombre.getText();
-        String getNombreJ2 = nombre2.getText();
+        jugador1.setNombre(entradaNombreJ1.getText());
+        jugador2.setNombre(entradaNombreJ2.getText());
 
-        Boton botonJugar = new Boton("Duelo!", new ControladorEntrar(stage, pantallaJuego, getNombreJ1, getNombreJ2));
+        Boton botonJugar = new Boton("Duelo!", new ControladorEntrar(stage, pantallaJuego));
         this.getChildren().addAll(botonJugar);
 
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {

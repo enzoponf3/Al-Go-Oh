@@ -88,13 +88,4 @@ public class ControladorDeTurnos {
         contenedorPrincipal.update();
     }
 
-    public void setNombresJugadores(String nombre1, String nombre2) {
-        this.nombreJugador1 = nombre1;
-        this.nombreJugador2 = nombre2;
-    }
-
-    public String getNombreJugador1() { return this.nombreJugador1; }
-
-    public String getNombreJugador2() { return this.nombreJugador2; }
-
 }

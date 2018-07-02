@@ -21,6 +21,7 @@ public class Jugador implements Observer {
     private EstadoJugador estadoJugador;
     private Jugador oponente;
     private static final Integer PUNTOS_DE_VIDA_INICIALES = 8000;
+    private String nombre;
 
     public Jugador() {
         this.puntosDeVida = PUNTOS_DE_VIDA_INICIALES;
@@ -201,11 +202,9 @@ public class Jugador implements Observer {
         tableroJugador.removerModificador(modificador);
     }
 
-
     public void setEstadoJugador(EstadoJugador estadoJugador) {
         this.estadoJugador = estadoJugador;
     }
-
 
     public EstadoJugador getEstadoJugador() {
         return this.estadoJugador;
@@ -217,5 +216,13 @@ public class Jugador implements Observer {
 
     public void sacarCartaDeMano(Carta carta) {
         mano.remove(carta);
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

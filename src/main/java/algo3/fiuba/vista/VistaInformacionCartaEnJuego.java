@@ -2,6 +2,7 @@ package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.controladores_de_carta.*;
 import algo3.fiuba.modelo.cartas.Carta;
+import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.jugador.Jugador;
@@ -25,6 +26,7 @@ public class VistaInformacionCartaEnJuego {
     private MenuItem menuModo;
     private ContextMenu menuOpciones;
     private MenuBar menuBar;
+    private MenuItem menuAtacar;
 
     public VistaInformacionCartaEnJuego(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaZonaMonstruos vistaZonaMonstruos){
         this.vistaCarta = vistaCarta;
@@ -36,7 +38,7 @@ public class VistaInformacionCartaEnJuego {
     public void dibujar(MouseEvent evento) {
         menuOpciones = new ContextMenu();
 
-        if (carta.getEstadoCarta() instanceof BocaAbajo) {
+        if (carta.getEstadoCarta() instanceof BocaAbajo && carta instanceof Monstruo) {
             menuCambiarPosicion = new MenuItem("Girar carta");
             menuCambiarPosicion.setOnAction(new ControladorGirarCarta(carta));
 
@@ -48,11 +50,19 @@ public class VistaInformacionCartaEnJuego {
             menuModo.setOnAction(new ControladorCambiarModo(vistaCarta,carta,vistaZonaMonstruos));
 
             menuOpciones.getItems().add(menuModo);
+
+            menuAtacar = new MenuItem("Atacar");
+            menuAtacar.setOnAction(new ControladorAtacar(vistaCarta, carta, vistaZonaMonstruos, jugador));
+
+            menuOpciones.getItems().add(menuAtacar);
         }
 
-        menuActivarEfecto = new MenuItem("Activar efecto");
-        menuActivarEfecto.setOnAction(new ControladorActivarEfecto(carta));
-        menuOpciones.getItems().add(menuActivarEfecto);
+        if (carta instanceof Magica) {
+            menuActivarEfecto = new MenuItem("Activar efecto");
+            menuActivarEfecto.setOnAction(new ControladorActivarEfecto(carta));
+
+            menuOpciones.getItems().add(menuActivarEfecto);
+        }
 
         menuBar = new MenuBar();
         menuBar.setContextMenu(menuOpciones);

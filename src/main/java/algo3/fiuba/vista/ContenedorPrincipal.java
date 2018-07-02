@@ -30,7 +30,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujar() {
-        //this.setMusica();
+//        this.setMusica();
         this.dibujarBarraLateral();
         this.dibujarTablero();
     }
@@ -55,7 +55,6 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     private void setMusica() {
-
         Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/musicopening.mp3").toExternalForm());
         MediaPlayer rprMusica = new MediaPlayer(musica);
         rprMusica.setOnEndOfMedia(() -> rprMusica.seek(Duration.ZERO));

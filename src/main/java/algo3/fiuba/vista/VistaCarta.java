@@ -9,6 +9,7 @@ import algo3.fiuba.modelo.cartas.estado_en_turno.TurnoRival;
 import algo3.fiuba.modelo.cartas.estados_cartas.*;
 import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.modelo.jugador.TurnoDelOponente;
 import algo3.fiuba.utils.CartaVistaUtils;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -57,6 +58,11 @@ public class VistaCarta extends StackPane {
             labelPuntosDeDefensa = new Label("" + ((Monstruo) carta).getDefensa());
             labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
             StackPane.setMargin(labelPuntosDeDefensa, new Insets(70, 0, 0, 35));
+            if (jugador.getEstadoJugador() instanceof TurnoDelOponente) {
+                rectanguloFondo.setVisible(false);
+                labelPuntosDeAtaque.setVisible(false);
+                labelPuntosDeDefensa.setVisible(false);
+            }
         }
 
         try{
