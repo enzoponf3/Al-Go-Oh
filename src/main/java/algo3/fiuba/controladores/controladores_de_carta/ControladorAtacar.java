@@ -51,11 +51,10 @@ public class ControladorAtacar implements EventHandler<ActionEvent> {
                 }
             }
         } catch (Exception e) {
-            Alert movInvalido= new Alert(Alert.AlertType.WARNING);
-            movInvalido.setHeaderText(null);
-            movInvalido.setContentText(e.getMessage());
-            movInvalido.show();
-
+            Alert ataqueInvalidoAlert = new Alert(Alert.AlertType.WARNING);
+            ataqueInvalidoAlert .setHeaderText(null);
+            ataqueInvalidoAlert .setContentText(e.getMessage());
+            ataqueInvalidoAlert .show();
         }
 
         controladorDeTurnos.actualizarTablero();

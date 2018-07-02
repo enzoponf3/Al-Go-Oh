@@ -40,12 +40,6 @@ public class VistaInformacionCartaEnJuego {
         if (carta instanceof Monstruo) {
             Monstruo monstruo = (Monstruo) carta;
 
-            if (jugador.getEstadoJugador() instanceof PostInvocacion && carta.getEstadoCarta() instanceof BocaAbajo) {
-                MenuItem menuCambiarPosicion = new MenuItem("Girar carta");
-                menuCambiarPosicion.setOnAction(new ControladorGirarCarta(carta));
-
-                menuOpciones.getItems().add(menuCambiarPosicion);
-            }
 
             if (jugador.getEstadoJugador() instanceof PostInvocacion
                     /*&& !(carta.getEstadoEnTurno() instanceof UsadaEnTurno) !!!! */) {
@@ -60,6 +54,13 @@ public class VistaInformacionCartaEnJuego {
 
                     menuOpciones.getItems().add(menuAtacar);
                 }
+            }
+
+            if (jugador.getEstadoJugador() instanceof PostInvocacion && carta.getEstadoCarta() instanceof BocaAbajo) {
+                MenuItem menuCambiarPosicion = new MenuItem("Girar carta");
+                menuCambiarPosicion.setOnAction(new ControladorGirarCarta(carta));
+
+                menuOpciones.getItems().add(menuCambiarPosicion);
             }
         }
 
