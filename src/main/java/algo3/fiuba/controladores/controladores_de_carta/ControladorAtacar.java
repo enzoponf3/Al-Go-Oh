@@ -3,6 +3,7 @@ package algo3.fiuba.controladores.controladores_de_carta;
 import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.controladores.ControladorMonstruoAAtacar;
 import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.modelo.cartas.moldes_cartas.MonstruoNulo;
 import algo3.fiuba.modelo.excepciones.FaltaObjetivoAAtacarExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
@@ -30,6 +31,7 @@ public class ControladorAtacar implements EventHandler<ActionEvent> {
 
         if (oponenteNoTieneCartasEnCampo) {
             jugador.getOponente().modificarPuntosDeVida(-monstruoAtacante.getAtaque());
+            monstruoAtacante.setEstadoEnTurno(new UsadaEnTurno());
         } else {
             if (monstruoAtacado == null) {
                 throw new FaltaObjetivoAAtacarExcepcion("Seleccione un objetivo a atacar.");

@@ -99,7 +99,7 @@ public class VistaCarta extends StackPane {
                 super.getChildren().add(checkBoxMonstruoAAtacar);
             }
 
-            if (carta.getEstadoCarta() instanceof UsadaEnTurno) {
+            if (carta.getEstadoEnTurno() instanceof UsadaEnTurno) {
                 super.setDisable(true);
             }
 

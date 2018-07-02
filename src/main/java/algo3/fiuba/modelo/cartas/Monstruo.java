@@ -2,7 +2,9 @@ package algo3.fiuba.modelo.cartas;
 
 import algo3.fiuba.modelo.Campo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
+import algo3.fiuba.modelo.cartas.estado_en_turno.EstadoEnTurno;
 import algo3.fiuba.modelo.cartas.estado_en_turno.NoUsadaEnTurno;
+import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.nivel.Nivel;
 import algo3.fiuba.modelo.cartas.nivel.NivelFactoryFactory;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
@@ -40,6 +42,7 @@ public abstract class Monstruo extends Carta {
     public void atacar(Monstruo otraCarta) {
         estadoCarta.verificarQuePuedeAtacar();
         estadoEnTurno = estadoEnTurno.verificarQueSePuedeUsar();
+        estadoCarta = new BocaArriba();
         ResultadoCombate resultadoCombate = modoMonstruo.atacar(this, otraCarta, this.getAtaque());
         resultadoCombate.afectarAtacante(this);
     }

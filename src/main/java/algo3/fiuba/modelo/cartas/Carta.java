@@ -99,4 +99,8 @@ public abstract class Carta implements Observer {
     public String getNombre() {
         return nombre;
     }
+
+    public void setEstadoEnTurno(EstadoEnTurno estadoEnTurno) {
+        this.estadoEnTurno = estadoEnTurno;
+    }
 }

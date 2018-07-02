@@ -34,18 +34,19 @@ public class VistaInformacionCartaEnJuego {
     public void dibujar(MouseEvent evento) {
         ContextMenu menuOpciones = new ContextMenu();
 
-        if (carta.getEstadoCarta() instanceof BocaAbajo && carta instanceof Monstruo) {
-            MenuItem menuCambiarPosicion = new MenuItem("Girar carta");
-            menuCambiarPosicion.setOnAction(new ControladorGirarCarta(carta));
-
-            menuOpciones.getItems().add(menuCambiarPosicion);
-        }
 
         if (carta instanceof Monstruo) {
             Monstruo monstruo = (Monstruo) carta;
 
+            if (jugador.getEstadoJugador() instanceof PostInvocacion && carta.getEstadoCarta() instanceof BocaAbajo) {
+                MenuItem menuCambiarPosicion = new MenuItem("Girar carta");
+                menuCambiarPosicion.setOnAction(new ControladorGirarCarta(carta));
+
+                menuOpciones.getItems().add(menuCambiarPosicion);
+            }
+
             if (jugador.getEstadoJugador() instanceof PostInvocacion
-                    && !(carta.getEstadoCarta() instanceof UsadaEnTurno)) {
+                    /*&& !(carta.getEstadoEnTurno() instanceof UsadaEnTurno) !!!! */) {
                 MenuItem menuModo = new MenuItem("Cambiar modo");
                 menuModo.setOnAction(new ControladorCambiarModo(monstruo));
 
