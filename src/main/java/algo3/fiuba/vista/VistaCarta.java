@@ -53,9 +53,9 @@ public class VistaCarta extends StackPane {
     public void dibujar() {
 
         if (carta.getEstadoCarta() instanceof BocaAbajo || carta.getEstadoCarta() instanceof EnMazo) {
-            this.getChildren().add(imagenCartaBocaAbajo);
+            super.getChildren().add(imagenCartaBocaAbajo);
         } else {
-            this.getChildren().add(imagenCarta);
+            super.getChildren().add(imagenCarta);
 
         }
         if (carta instanceof Monstruo) {
@@ -70,9 +70,10 @@ public class VistaCarta extends StackPane {
             labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
             StackPane.setMargin(labelPuntosDeDefensa, new Insets(75, 0, 0, 40));
 
-            getChildren().addAll(rectanguloFondo,labelPuntosDeAtaque,labelPuntosDeDefensa);
+            super.getChildren().addAll(rectanguloFondo,labelPuntosDeAtaque,labelPuntosDeDefensa);
 
-            if ((jugador.getEstadoJugador() instanceof TurnoDelOponente && !carta.estaEnJuego())
+            if ((jugador.getEstadoJugador() instanceof TurnoDelOponente &&
+                    (!carta.estaEnJuego() || carta.getEstadoCarta() instanceof BocaAbajo))g
                     || (jugador.getEstadoJugador() instanceof PostInvocacion && !carta.estaEnJuego())) {
                 rectanguloFondo.setVisible(false);
                 labelPuntosDeAtaque.setVisible(false);
@@ -81,17 +82,9 @@ public class VistaCarta extends StackPane {
 
             if ((jugador.getEstadoJugador() instanceof PreInvocacion) && carta.estaEnJuego()) {
                 CheckBoxSacrificio checkBoxParaSacrificio = new CheckBoxSacrificio((Monstruo) carta);
-                checkBoxParaSacrificio.setStyle( // !!!!
-                        "-fx-border-color: lightblue; "
-                                + "-fx-font-size: 20;"
-                                + "-fx-border-insets: -5; "
-                                + "-fx-border-radius: 5;"
-                                + "-fx-border-style: dotted;"
-                                + "-fx-border-width: 2;"
-                );
-
                 checkBoxParaSacrificio.setOnAction(new ControladorCantidadDeSacrificios());
-                getChildren().add(checkBoxParaSacrificio);
+
+                super.getChildren().add(checkBoxParaSacrificio);
             }
 
             if(((Monstruo) carta).getModo() instanceof ModoDeDefensa) {

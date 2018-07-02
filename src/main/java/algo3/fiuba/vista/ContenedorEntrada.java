@@ -25,23 +25,23 @@ public class ContenedorEntrada extends VBox {
         this.getStyleClass().add("fondo");
 
         Label nombres = new Label("Duelistas! \nIngresen sus nombres");
-        this.getChildren().addAll(nombres);
+        super.getChildren().addAll(nombres);
 
         Text nombre1 = new Text("Duelista 1:");
         TextField entradaNombreJ1 = new TextField();
         VBox boxJugador1 = new VBox(nombre1, entradaNombreJ1);
-        this.getChildren().addAll(boxJugador1);
+        super.getChildren().addAll(boxJugador1);
 
         Text nombre2 = new Text("Duelista 2:");
         TextField entradaNombreJ2 = new TextField();
         VBox boxJugador2 = new VBox(nombre2, entradaNombreJ2);
-        this.getChildren().addAll(boxJugador2);
+        super.getChildren().addAll(boxJugador2);
 
         jugador1.setNombre(entradaNombreJ1.getText());
         jugador2.setNombre(entradaNombreJ2.getText());
 
         Boton botonJugar = new Boton("Duelo!", new ControladorEntrar(stage, pantallaJuego));
-        this.getChildren().addAll(botonJugar);
+        super.getChildren().addAll(botonJugar);
 
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override

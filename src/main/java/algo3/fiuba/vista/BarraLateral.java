@@ -66,7 +66,7 @@ public class BarraLateral extends StackPane {
         vbox.setAlignment(Pos.CENTER);
 
         vbox.getStyleClass().add("vbox");
-        this.getChildren().add(vbox);
+        super.getChildren().add(vbox);
     }
 
     public void update() {

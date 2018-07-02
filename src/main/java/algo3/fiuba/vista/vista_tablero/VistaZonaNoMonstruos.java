@@ -27,20 +27,20 @@ public class VistaZonaNoMonstruos extends HBox {
         for (int i = 0; i < LIMITE_CARTAS; i++) {
             ImageView imagenEspacioVacio = new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
                     ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
-            getChildren().add(imagenEspacioVacio);
+            super.getChildren().add(imagenEspacioVacio);
         }
     }
 
     public void dibujar() {
-        getChildren().clear();
+        super.getChildren().clear();
 
         for(NoMonstruo noMonstruo: jugador.getNoMonstuosEnCampo()) {
             if (noMonstruo instanceof NoMonstruoNulo) {
-                getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
+                super.getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
                         ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
             } else {
                 VistaCarta vistaNoMonstruo = new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo);
-                getChildren().add(vistaNoMonstruo);
+                super.getChildren().add(vistaNoMonstruo);
                 if (!jugador.equals(controladorDeTurnos.getJugador())) {
                     vistaNoMonstruo.deshabilitarCarta();
                 }

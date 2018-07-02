@@ -9,6 +9,16 @@ public class CheckBoxSacrificio extends CheckBox {
 
     public CheckBoxSacrificio(Monstruo monstruo) {
         this.monstruo = monstruo;
+
+        super.setStyle( // !!!!
+                "-fx-border-color: lightblue; "
+                        + "-fx-font-size: 20;"
+                        + "-fx-border-insets: -5; "
+                        + "-fx-border-radius: 5;"
+                        + "-fx-border-style: dotted;"
+                        + "-fx-border-width: 2;"
+        );
+
     }
 
     public Monstruo getMonstruo() {

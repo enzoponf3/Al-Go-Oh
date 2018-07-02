@@ -20,7 +20,7 @@ public class VistaProyeccionCarta extends StackPane {
     private VistaProyeccionCarta() {
 
         imagenProyectada = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg", 200, 300, false, false));
-        this.getChildren().add(imagenProyectada);
+        super.getChildren().add(imagenProyectada);
     }
 
     public void zoomImg(String urlImg) {
@@ -30,7 +30,7 @@ public class VistaProyeccionCarta extends StackPane {
     }
 
     public void update() {
-         this.getChildren().add(imagenProyectada);
+         super.getChildren().add(imagenProyectada);
 
     }
 }
