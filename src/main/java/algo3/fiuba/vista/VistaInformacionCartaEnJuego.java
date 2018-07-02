@@ -4,6 +4,7 @@ import algo3.fiuba.controladores.controladores_de_carta.*;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.jugador.PostInvocacion;
@@ -41,14 +42,17 @@ public class VistaInformacionCartaEnJuego {
         }
 
         if (carta instanceof Monstruo) {
-            if (jugador.getEstadoJugador() instanceof PostInvocacion) {
+            Monstruo monstruo = (Monstruo) carta;
+
+            if (jugador.getEstadoJugador() instanceof PostInvocacion
+                    && !(carta.getEstadoCarta() instanceof UsadaEnTurno)) {
                 MenuItem menuModo = new MenuItem("Cambiar modo");
-                menuModo.setOnAction(new ControladorCambiarModo(vistaCarta,carta,vistaZonaMonstruos));
+                menuModo.setOnAction(new ControladorCambiarModo(monstruo));
 
                 menuOpciones.getItems().add(menuModo);
 
                 MenuItem menuAtacar = new MenuItem("Atacar");
-                menuAtacar.setOnAction(new ControladorAtacar(vistaCarta, carta, vistaZonaMonstruos, jugador));
+                menuAtacar.setOnAction(new ControladorAtacar(monstruo, jugador));
 
                 menuOpciones.getItems().add(menuAtacar);
             }

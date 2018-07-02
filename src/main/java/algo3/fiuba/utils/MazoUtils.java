@@ -7,15 +7,12 @@ import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.AgujeroNegro;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.Fisura;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_magicas.OllaDeLaCodicia;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_monstruos.*;
-import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas.AgujeroTrampa;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas.CilindroMagico;
 import algo3.fiuba.modelo.cartas.moldes_cartas.cartas_trampas.Refuerzos;
 import algo3.fiuba.modelo.jugador.Jugador;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
-import java.util.Vector;
 
 public class MazoUtils {
 
@@ -33,7 +30,6 @@ public class MazoUtils {
         Stack<Carta> mazo = new Stack<>();
 
         mazo.add(new AgujeroNegro(jugador));
-        mazo.add(new AgujeroTrampa(jugador));
         mazo.add(new CilindroMagico(jugador));
         //mazo.add(new Refuerzos(jugador));
         mazo.add(new OllaDeLaCodicia(jugador));
@@ -42,20 +38,20 @@ public class MazoUtils {
         mazo.add(new BrazoIzquierdoExodia(jugador));
         mazo.add(new CabezaExodia(jugador));
         mazo.add(new ColmilloPlateado(jugador));
-        mazo.add(new CraneoConvocado(jugador));
+        //mazo.add(new CraneoConvocado(jugador));
         mazo.add(new DiablilloSalvaje(jugador));
         mazo.add(new DragonBlancoDeOjosAzules(jugador));
         mazo.add(new DragonDefinitivoDeOjosAzules(jugador));
         mazo.add(new ElDragonAladoDeRa(jugador));
-        mazo.add(new GenioMisticoDeLaLampara(jugador));
-        mazo.add(new Griffore(jugador));
+        //!!!mazo.add(new GenioMisticoDeLaLampara(jugador));
+        //mazo.add(new Griffore(jugador));
         mazo.add(new GuerreroCastor(jugador));
-        mazo.add(new GuerreroCelta(jugador));
+        //mazo.add(new GuerreroCelta(jugador));
         mazo.add(new IncursorDelHacha(jugador));
         mazo.add(new InsectoComeHombres(jugador));
         mazo.add(new Jinzo7(jugador));
         mazo.add(new Kuriboh(jugador));
-        mazo.add(new MagoOscuro(jugador));
+        //mazo.add(new MagoOscuro(jugador));
         mazo.add(new ObeliscoElAtormentador(jugador));
         mazo.add(new PetitAngel(jugador));
         mazo.add(new PiernaDerechaExodia(jugador));
@@ -81,7 +77,6 @@ public class MazoUtils {
         mazo.add(new Fisura(jugador));
         mazo.add(new PezDe7Colores(jugador));
         mazo.add(new AgujeroNegro(jugador));
-        mazo.add(new AgujeroTrampa(jugador));
         mazo.add(new BebeDragon(jugador));
         mazo.add(new DragonMilenario(jugador));
         mazo.add(new Wasteland(jugador));

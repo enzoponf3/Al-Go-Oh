@@ -12,8 +12,7 @@ public class ControladorDeTurnos {
     private static ControladorDeTurnos INSTANCIA;
     private Jugador jugador1, jugador2;
     private ContenedorPrincipal contenedorPrincipal;
-    private VistaVida vistaVidaJ1, vistaVidaJ2; // !!! SACAR
-    private String nombreJugador1, nombreJugador2;
+    private VistaVida vistaVidaJ1, vistaVidaJ2;
     private Turno turno;
 
     public static ControladorDeTurnos getInstancia() {
@@ -57,25 +56,8 @@ public class ControladorDeTurnos {
         }
     }
 
-    /* !!!! ESTO LO HACE EL MODELO AUTOMÁTICAMENTE
-    public void cambiarDeFase() {
-        if (jugadorActual.getEstadoJugador() instanceof PostInvocacion) {
-            this.terminarTurno();
-        }
-        else {
-            jugador1.setEstadoJugador(jugador1.getEstadoJugador().cambioDeFase());
-            jugador2.setEstadoJugador(jugador2.getEstadoJugador().cambioDeFase());
-        }
-        contenedorPrincipal.update();
-    }
-*/
     public void terminarTurno() {
         turno.pasarTurno();
-        /* !!!! ESTO LO HACE EL MODELO AUTOMÁTICAMENTE
-        jugador1.setEstadoJugador(jugador1.getEstadoJugador().cambioDeTurno());
-        jugador2.setEstadoJugador(jugador2.getEstadoJugador().cambioDeTurno());
-        jugadorActual = (jugadorActual == jugador1) ? jugador2 : jugador1;
-        */
         actualizarTablero();
     }
 

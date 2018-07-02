@@ -1,6 +1,7 @@
 package algo3.fiuba.vista;
 
 import algo3.fiuba.controladores.ControladorCantidadDeSacrificios;
+import algo3.fiuba.controladores.ControladorMonstruoAAtacar;
 import algo3.fiuba.controladores.botones.checkboxs.CheckBoxSacrificio;
 import algo3.fiuba.controladores.controladores_de_carta.ControladorCarta;
 import algo3.fiuba.controladores.controladores_de_carta.ControladorZoomCarta;
@@ -8,6 +9,7 @@ import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estado_en_turno.NoUsadaEnTurno;
 import algo3.fiuba.modelo.cartas.estado_en_turno.TurnoRival;
+import algo3.fiuba.modelo.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.modelo.cartas.estados_cartas.*;
 import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeDefensa;
 import algo3.fiuba.modelo.jugador.Jugador;
@@ -59,21 +61,23 @@ public class VistaCarta extends StackPane {
 
         }
         if (carta instanceof Monstruo) {
+            Monstruo monstruo = (Monstruo) carta;
+
             Rectangle rectanguloFondo = new Rectangle(76, 21, Color.LIGHTGOLDENRODYELLOW);
             StackPane.setMargin(rectanguloFondo, new Insets(76, 0, 0, 0));
 
-            labelPuntosDeAtaque = new Label("" + ((Monstruo) carta).getAtaque());
+            labelPuntosDeAtaque = new Label("" + monstruo.getAtaque());
             labelPuntosDeAtaque.setStyle("-fx-border-color: brown" );
             StackPane.setMargin(labelPuntosDeAtaque, new Insets(75, 35, 0, 0));
 
-            labelPuntosDeDefensa = new Label("" + ((Monstruo) carta).getDefensa());
+            labelPuntosDeDefensa = new Label("" + monstruo.getDefensa());
             labelPuntosDeDefensa.setStyle("-fx-border-color: brown");
             StackPane.setMargin(labelPuntosDeDefensa, new Insets(75, 0, 0, 40));
 
             super.getChildren().addAll(rectanguloFondo,labelPuntosDeAtaque,labelPuntosDeDefensa);
 
             if ((jugador.getEstadoJugador() instanceof TurnoDelOponente &&
-                    (!carta.estaEnJuego() || carta.getEstadoCarta() instanceof BocaAbajo))g
+                    (!carta.estaEnJuego() || carta.getEstadoCarta() instanceof BocaAbajo))
                     || (jugador.getEstadoJugador() instanceof PostInvocacion && !carta.estaEnJuego())) {
                 rectanguloFondo.setVisible(false);
                 labelPuntosDeAtaque.setVisible(false);
@@ -81,13 +85,25 @@ public class VistaCarta extends StackPane {
             }
 
             if ((jugador.getEstadoJugador() instanceof PreInvocacion) && carta.estaEnJuego()) {
-                CheckBoxSacrificio checkBoxParaSacrificio = new CheckBoxSacrificio((Monstruo) carta);
+                CheckBoxSacrificio checkBoxParaSacrificio = new CheckBoxSacrificio(monstruo);
                 checkBoxParaSacrificio.setOnAction(new ControladorCantidadDeSacrificios());
 
                 super.getChildren().add(checkBoxParaSacrificio);
             }
 
-            if(((Monstruo) carta).getModo() instanceof ModoDeDefensa) {
+            if (jugador.getEstadoJugador() instanceof TurnoDelOponente
+                    && jugador.getOponente().getEstadoJugador() instanceof PostInvocacion && carta.estaEnJuego()) {
+                CheckBoxSacrificio checkBoxMonstruoAAtacar = new CheckBoxSacrificio(monstruo);
+                checkBoxMonstruoAAtacar.setOnAction(new ControladorMonstruoAAtacar());
+
+                super.getChildren().add(checkBoxMonstruoAAtacar);
+            }
+
+            if (carta.getEstadoCarta() instanceof UsadaEnTurno) {
+                super.setDisable(true);
+            }
+
+            if(monstruo.getModo() instanceof ModoDeDefensa) {
                     this.setRotate(90);
             }
         }
@@ -99,7 +115,7 @@ public class VistaCarta extends StackPane {
     }
 
     public void deshabilitarCarta() {
-        this.setDisable(true);
+        super.setDisable(true);
     }
 
     public void update() {

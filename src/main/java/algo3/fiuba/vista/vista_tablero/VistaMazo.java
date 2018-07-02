@@ -17,7 +17,7 @@ public class VistaMazo extends Label {
     private int cantidad;
     private ImageView fondoMazo;
 
-    // LE PODEMOS PASAR CON EL CONTROLADOR EL NUMERO DE CARTAS
+    // !!!! LE PODEMOS PASAR CON EL CONTROLADOR EL NUMERO DE CARTAS
     public VistaMazo(ImageView fondoMazo, Jugador jugador) {
         this.cantidad = jugador.cantidadCartasEnMazo();
         this.fondoMazo = fondoMazo;

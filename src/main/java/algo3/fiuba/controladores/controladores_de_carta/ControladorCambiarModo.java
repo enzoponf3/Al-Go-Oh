@@ -10,18 +10,18 @@ import javafx.event.EventHandler;
 
 public class ControladorCambiarModo implements EventHandler<ActionEvent> {
 
-    private Carta carta;
+    private Monstruo monstruo;
 
     private ControladorDeTurnos controladorDeTurnos;
 
-    public ControladorCambiarModo(VistaCarta vistaCarta, Carta carta, VistaZonaMonstruos vistaZonaMonstruos) {
-        this.carta = carta;
+    public ControladorCambiarModo(Monstruo monstruo) {
+        this.monstruo = monstruo;
         controladorDeTurnos = ControladorDeTurnos.getInstancia();
     }
 
     @Override
     public void handle(ActionEvent event) {
-        ((Monstruo)carta).cambiarModo();
+        monstruo.cambiarModo();
         controladorDeTurnos.actualizarTablero();
     }
 }

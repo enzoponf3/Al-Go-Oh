@@ -19,12 +19,12 @@ public abstract class Tablero extends GridPane {
     private Label cementerio;
     private double ANCHO_MAXIMO_CARTA = 90.0;
     private double ALTURA_MAXIMA_CARTA = 105.0;
-    protected Jugador jugador;
-    protected VistaMazo zonaMazo;
+    private Jugador jugador;
+    private VistaMazo zonaMazo;
     protected VistaMano zonaMano;
-    protected VistaZonaNoMonstruos zonaNoMonstruos;
-    protected VistaZonaMonstruos zonaMonstruos;
-    protected VistaCartaCampo zonaCartaDeCampo;
+    private VistaZonaNoMonstruos zonaNoMonstruos;
+    private VistaZonaMonstruos zonaMonstruos;
+    private VistaCartaCampo zonaCartaDeCampo;
 
     private CartaVistaUtils cartaVistaUtils;
 
@@ -101,6 +101,7 @@ public abstract class Tablero extends GridPane {
         this.zonaCartaDeCampo.dibujar();
         this.add(zonaCartaDeCampo, colIndex, rowIndex);
     }
+
 
     public VistaZonaMonstruos getZonaMonstruos() {
         return zonaMonstruos;
