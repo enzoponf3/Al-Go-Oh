@@ -10,6 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 
 public class BarraLateral extends StackPane {
@@ -38,8 +41,12 @@ public class BarraLateral extends StackPane {
         controladorTurnos.setVistaVida(vistaVidaJugador1, vistaVidaJugador2);
 
         // Nombres jugadores
-        Label nombreJ1 = new Label(controladorTurnos.getNombreJugador1());
-        Label nombreJ2 = new Label(controladorTurnos.getNombreJugador2());
+        Label nombreJ1 = new Label(juego.getJugador1().getNombre());
+        Label nombreJ2 = new Label(juego.getJugador2().getNombre());
+        nombreJ1.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
+        nombreJ1.setTextFill(Color.WHITE);
+        nombreJ2.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
+        nombreJ2.setTextFill(Color.WHITE);
 
         // Visor carta
         vistaProyeccionCarta = VistaProyeccionCarta.getInstancia();
@@ -65,6 +72,5 @@ public class BarraLateral extends StackPane {
     public void update() {
         this.vistaVidaJugador1.update();
         this.vistaVidaJugador2.update();
-        //this.vistaProyeccionCarta.update();
     }
 }
