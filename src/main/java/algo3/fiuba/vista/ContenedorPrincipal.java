@@ -30,7 +30,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void dibujar() {
-//        this.setMusica();
+        this.setMusica();
         this.dibujarBarraLateral();
         this.dibujarTablero();
     }

@@ -11,6 +11,8 @@ import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
 import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class ControladorCarta implements EventHandler<MouseEvent> {
 

@@ -10,6 +10,7 @@ import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.excepciones.CampoNoPermiteColocarCartaExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.VistaCarta;
+import algo3.fiuba.vista.VistaZoomEfectoMagica;
 import algo3.fiuba.vista.vista_tablero.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -36,8 +37,8 @@ public abstract class ControladorColocarCarta implements EventHandler<ActionEven
         Monstruo[] monstruosASacrificar = ControladorCantidadDeSacrificios.getMonstruosASacrificar();
 
         try {
-            jugador.colocarCartaEnCampo(carta, this.tipoEnJuego(), monstruosASacrificar);
-            if(carta instanceof Magica && this.tipoEnJuego() instanceof BocaArriba) {
+            jugador.colocarCartaEnCampo(carta, this.tipoEnJuego(carta), monstruosASacrificar);
+            if(carta instanceof Magica && this.tipoEnJuego(carta) instanceof BocaArriba) {
                 vistaZoomEfectoMagica.update();
             }
             controladorTurnos.actualizarTablero();
@@ -49,5 +50,5 @@ public abstract class ControladorColocarCarta implements EventHandler<ActionEven
         }
     }
 
-    public abstract EnJuego tipoEnJuego();
+    public abstract EnJuego tipoEnJuego(Carta carta);
 }

@@ -48,7 +48,7 @@ public class ControladorDeTurnos {
     public void terminarDuelo() {
         if (ganadorDuelo() != null) {
             Alert win = new Alert(Alert.AlertType.INFORMATION);
-            win.setHeaderText("Ha perdido el jugador !" + (jugador1.estaEnJuego() ? jugador2.getNombre() : jugador1.getNombre()));
+            win.setHeaderText("Ha perdido el jugador: " + (jugador1.estaEnJuego() ? jugador2.getNombre() : jugador1.getNombre()) +"!" );
             contenedorPrincipal.setDisable(true);
             win.show();
         }
