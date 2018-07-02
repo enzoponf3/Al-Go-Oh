@@ -23,35 +23,19 @@ import javafx.scene.input.MouseEvent;
 public class VistaInformacionCartaEnMano {
 
     private VistaCarta vistaCarta;
-    private Jugador jugador;
-    private Carta carta;
-    private VistaMano vistaMano;
-    private VistaZonaMonstruos vistaZonaMonstruos;
-    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
-    private VistaCartaCampo vistaCartaCampo;
-    private Menu menuCambiarPosicion;
-    private MenuItem menuBocaAbajo;
-    private MenuItem menuBocaArriba;
     private ContextMenu menuOpciones;
-    private MenuBar menuBar;
 
-    public VistaInformacionCartaEnMano(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaMano vistaMano, VistaZonaMonstruos vistaZonaMonstruos, VistaZonaNoMonstruos vistaZonaNoMonstruos, VistaCartaCampo vistaCartaCampo){
+    public VistaInformacionCartaEnMano(VistaCarta vistaCarta, Jugador jugador, Carta carta){
         this.vistaCarta = vistaCarta;
-        this.jugador = jugador;
-        this.carta = carta;
-        this.vistaMano = vistaMano;
-        this.vistaZonaMonstruos = vistaZonaMonstruos;
-        this.vistaZonaNoMonstruos = vistaZonaNoMonstruos;
-        this.vistaCartaCampo = vistaCartaCampo;
 
         menuOpciones = new ContextMenu();
 
-        menuCambiarPosicion = new Menu("Colocar boca");
+        Menu menuCambiarPosicion = new Menu("Colocar boca");
 
-        menuBocaAbajo = new MenuItem("Abajo");
+        MenuItem menuBocaAbajo = new MenuItem("Abajo");
         menuBocaAbajo.setOnAction(new ControladorBocaAbajoEnMano(jugador, carta));
 
-        menuBocaArriba = new MenuItem("Arriba");
+        MenuItem menuBocaArriba = new MenuItem("Arriba");
         menuBocaArriba.setOnAction(new ControladorBocaArribaEnMano(jugador, carta));
 
         if (!(carta instanceof Trampa)) menuCambiarPosicion.getItems().add(menuBocaArriba);
@@ -60,13 +44,14 @@ public class VistaInformacionCartaEnMano {
 
         menuOpciones.getItems().addAll(menuCambiarPosicion);
 
-        menuBar = new MenuBar();
+        MenuBar menuBar = new MenuBar();
 
         menuBar.setContextMenu(menuOpciones);
 
     }
+
     public void dibujar(MouseEvent evento) {
-        menuOpciones.show(vistaCarta,evento.getScreenX(),evento.getScreenY());
+        menuOpciones.show(vistaCarta,evento.getScreenX(), evento.getScreenY());
     }
 
     public void update(MouseEvent evento) {

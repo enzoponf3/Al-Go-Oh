@@ -24,7 +24,7 @@ public class ZonaCartas<T> {
 
     public void agregar(T carta) {
         if (this.tamanio() >= limite)
-            throw new CampoNoPermiteColocarCartaExcepcion(String.format("No se puede tener más de {} cartas de ese tipo en el campo.", limite));
+            throw new CampoNoPermiteColocarCartaExcepcion(String.format("No se puede tener más de %d cartas de ese tipo en el campo.", limite));
 
         Integer indicePrimerCartaNula = 0;
         for (T c : cartas) {

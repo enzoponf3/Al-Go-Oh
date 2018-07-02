@@ -43,7 +43,7 @@ public class VistaZonaMonstruos extends HBox {
                 VistaCarta vistaMonstruo = new VistaCarta(cartaVistaUtils.getImagenDeCarta(monstruo.getNombre()), jugador, monstruo);
                 super.getChildren().add(vistaMonstruo);
                 /*
-                if (!jugador.equals(controladorDeTurnos.getJugador())) {
+                if (!jugador.equals(controladorDeTurnos.getJugadorActual())) {
                     vistaMonstruo.deshabilitarCarta();
                 }
                 */

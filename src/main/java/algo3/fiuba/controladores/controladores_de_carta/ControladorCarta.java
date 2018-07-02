@@ -14,22 +14,14 @@ import javafx.scene.input.MouseEvent;
 
 public class ControladorCarta implements EventHandler<MouseEvent> {
 
-    private VistaCartaCampo vistaCartaCampo;
-    private VistaZonaMonstruos vistaZonaMonstruos;
-    private VistaZonaNoMonstruos vistaZonaNoMonstruos;
-    private VistaMano vistaMano;
-    private VistaCarta vistaCarta;
     private VistaInformacionCartaEnMano vistaInformacionCartaEnMano;
     private VistaInformacionCartaEnJuego vistaInformacionCartaEnJuego;
-    private Jugador jugador;
     private Carta carta;
 
     public ControladorCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta) {
-        this.vistaCarta = vistaCarta;
-        this.jugador = jugador;
         this.carta = carta;
-        this.vistaInformacionCartaEnMano = new VistaInformacionCartaEnMano(vistaCarta, jugador, carta, vistaMano, vistaZonaMonstruos, vistaZonaNoMonstruos, vistaCartaCampo);
-        this.vistaInformacionCartaEnJuego = new VistaInformacionCartaEnJuego(vistaCarta, jugador, carta, vistaZonaMonstruos);
+        this.vistaInformacionCartaEnMano = new VistaInformacionCartaEnMano(vistaCarta, jugador, carta);
+        this.vistaInformacionCartaEnJuego = new VistaInformacionCartaEnJuego(vistaCarta, jugador, carta);
     }
 
     @Override
@@ -39,11 +31,6 @@ public class ControladorCarta implements EventHandler<MouseEvent> {
         } else if (carta.getEstadoCarta() instanceof EnJuego) {
             vistaInformacionCartaEnJuego.update(evento);
         }
-
-        //vistaCarta.update(); !!!!
-        //vistaMano.update();
-        //vistaZonaMonstruos.update();
-        //vistaZonaNoMonstruos.update();
     }
 
 }

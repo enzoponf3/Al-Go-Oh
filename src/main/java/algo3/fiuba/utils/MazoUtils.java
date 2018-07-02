@@ -19,8 +19,8 @@ public class MazoUtils {
     public Stack<Carta> getMazo40(Jugador jugador) {
         Stack<Carta> mazoJugador = new Stack<>();
         Stack<Carta> mazo = new Stack<>();
-        mazo.addAll(getMuestraTodasLasCartas(jugador));
-        mazo.addAll(getMuestraTodasLasCartas(jugador));
+        mazo.addAll(this.getMuestraTodasLasCartas(jugador));
+        mazo.addAll(this.getMuestraTodasLasCartas(jugador));
         Collections.shuffle(mazo);
         mazoJugador.addAll(mazo.subList(0, 40));
         return mazoJugador;
@@ -38,20 +38,20 @@ public class MazoUtils {
         mazo.add(new BrazoIzquierdoExodia(jugador));
         mazo.add(new CabezaExodia(jugador));
         mazo.add(new ColmilloPlateado(jugador));
-        //mazo.add(new CraneoConvocado(jugador));
+        //!!!mazo.add(new CraneoConvocado(jugador));
         mazo.add(new DiablilloSalvaje(jugador));
         mazo.add(new DragonBlancoDeOjosAzules(jugador));
         mazo.add(new DragonDefinitivoDeOjosAzules(jugador));
         mazo.add(new ElDragonAladoDeRa(jugador));
-        //!!!mazo.add(new GenioMisticoDeLaLampara(jugador));
-        //mazo.add(new Griffore(jugador));
+        mazo.add(new GenioMisticoDeLaLampara(jugador));
+        mazo.add(new Griffore(jugador));
         mazo.add(new GuerreroCastor(jugador));
         //mazo.add(new GuerreroCelta(jugador));
         mazo.add(new IncursorDelHacha(jugador));
         mazo.add(new InsectoComeHombres(jugador));
         mazo.add(new Jinzo7(jugador));
         mazo.add(new Kuriboh(jugador));
-        //mazo.add(new MagoOscuro(jugador));
+        mazo.add(new MagoOscuro(jugador));
         mazo.add(new ObeliscoElAtormentador(jugador));
         mazo.add(new PetitAngel(jugador));
         mazo.add(new PiernaDerechaExodia(jugador));
@@ -113,7 +113,7 @@ public class MazoUtils {
 
         mazo.add(new PetitAngel(jugador));
         mazo.add(new PezDe7Colores(jugador));
-        mazo.add(new Griffore(jugador));
+        mazo.add(new GuerreroCelta(jugador));
         mazo.add(new BebeDragon(jugador));
         mazo.add(new Fisura(jugador));
         mazo.add(new Refuerzos(jugador));
@@ -128,8 +128,8 @@ public class MazoUtils {
         mazo.add(new DragonBlancoDeOjosAzules(jugador));
         mazo.add(new DragonBlancoDeOjosAzules(jugador));
         mazo.add(new OllaDeLaCodicia(jugador));
-        mazo.add(new GuerreroCelta(jugador));
-        mazo.add(new GuerreroCelta(jugador));
+        mazo.add(new PezDe7Colores(jugador));
+        mazo.add(new Griffore(jugador));
         mazo.add(new IncursorDelHacha(jugador));
         mazo.add(new IncursorDelHacha(jugador));
         mazo.add(new IncursorDelHacha(jugador));
@@ -164,6 +164,24 @@ public class MazoUtils {
         mazo.add(new IncursorDelHacha(jugador));
         mazo.add(new BrazoIzquierdoExodia(jugador));
         mazo.add(new BrazoDerechoExodia(jugador));
+
+        return mazo;
+    }
+
+    public Stack<Carta> getMuestraCartasPedidas(Jugador jugador) {
+        Stack<Carta> mazo = new Stack();
+
+        mazo.add(new OllaDeLaCodicia(jugador));
+        mazo.add(new Fisura(jugador));
+        mazo.add(new Refuerzos(jugador));
+        mazo.add(new AgujeroNegro(jugador));
+        mazo.add(new Wasteland(jugador));
+        mazo.add(new BebeDragon(jugador));
+        mazo.add(new CilindroMagico(jugador));
+        mazo.add(new OllaDeLaCodicia(jugador));
+        mazo.add(new Jinzo7(jugador));
+        mazo.add(new InsectoComeHombres(jugador));
+        mazo.add(new Sogen(jugador));
 
         return mazo;
     }

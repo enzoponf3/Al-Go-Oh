@@ -41,16 +41,14 @@ public class ControladorDeTurnos {
         vistaVidaJ1 = vidaJ2;
     }
 
-    public Jugador getJugador() {
+    public Jugador getJugadorActual() {
         return jugador1.getEstadoJugador() instanceof TurnoDelOponente ? jugador2 : jugador1;
     }
 
     public void terminarDuelo() {
-
-        // !!!! ponerle el nombre!
         if (ganadorDuelo() != null) {
             Alert win = new Alert(Alert.AlertType.INFORMATION);
-            win.setHeaderText("Ha perdido!");
+            win.setHeaderText("Ha perdido el jugador !" + (jugador1.estaEnJuego() ? jugador2.getNombre() : jugador1.getNombre()));
             contenedorPrincipal.setDisable(true);
             win.show();
         }
@@ -58,6 +56,7 @@ public class ControladorDeTurnos {
 
     public void terminarTurno() {
         turno.pasarTurno();
+        this.getJugadorActual().tomarCartaDelMazo();
         actualizarTablero();
     }
 

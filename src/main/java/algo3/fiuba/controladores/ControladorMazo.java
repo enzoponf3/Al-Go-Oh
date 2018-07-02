@@ -25,9 +25,10 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent event) {
-
+        // !!!! no tiene que hacer nada esto, se hace automáticamente cada vez que pasa el turno
+        /*
         ControladorDeTurnos ct = ControladorDeTurnos.getInstancia();
-        Jugador actual = ct.getJugador();
+        Jugador actual = ct.getJugadorActual();
         if(actual.getEstadoJugador() instanceof PreInvocacion ) {
             vistaMano.setDisable(true);
             try {
@@ -41,6 +42,7 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
             errorMazo.show();
         }
         vistaMano.setDisable(false);
+        */
     }
 
 }

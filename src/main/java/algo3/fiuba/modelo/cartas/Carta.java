@@ -103,4 +103,8 @@ public abstract class Carta implements Observer {
     public void setEstadoEnTurno(EstadoEnTurno estadoEnTurno) {
         this.estadoEnTurno = estadoEnTurno;
     }
+
+    public EfectoCarta getEfecto() {
+        return efecto;
+    }
 }

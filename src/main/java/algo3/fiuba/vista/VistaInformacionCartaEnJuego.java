@@ -4,6 +4,7 @@ import algo3.fiuba.controladores.controladores_de_carta.*;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
 import algo3.fiuba.modelo.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
 import algo3.fiuba.modelo.cartas.modo_monstruo.ModoDeAtaque;
@@ -24,13 +25,11 @@ public class VistaInformacionCartaEnJuego {
     private VistaCarta vistaCarta;
     private Jugador jugador;
     private Carta carta;
-    private VistaZonaMonstruos vistaZonaMonstruos;
 
-    public VistaInformacionCartaEnJuego(VistaCarta vistaCarta, Jugador jugador, Carta carta, VistaZonaMonstruos vistaZonaMonstruos){
+    public VistaInformacionCartaEnJuego(VistaCarta vistaCarta, Jugador jugador, Carta carta){
         this.vistaCarta = vistaCarta;
         this.jugador = jugador;
         this.carta = carta;
-        this.vistaZonaMonstruos = vistaZonaMonstruos;
     }
 
     public void dibujar(MouseEvent evento) {
@@ -39,7 +38,6 @@ public class VistaInformacionCartaEnJuego {
 
         if (carta instanceof Monstruo) {
             Monstruo monstruo = (Monstruo) carta;
-
 
             if (jugador.getEstadoJugador() instanceof PostInvocacion
                     /*&& !(carta.getEstadoEnTurno() instanceof UsadaEnTurno) !!!! */) {
@@ -53,6 +51,13 @@ public class VistaInformacionCartaEnJuego {
                     menuAtacar.setOnAction(new ControladorAtacar(monstruo, jugador));
 
                     menuOpciones.getItems().add(menuAtacar);
+                }
+
+                if (!(monstruo.getEfecto() instanceof EfectoNulo)) {
+                    MenuItem menuActivarEfecto = new MenuItem("Activar efecto");
+                    menuActivarEfecto.setOnAction(new ControladorActivarEfecto(carta));
+
+                    menuOpciones.getItems().add(menuActivarEfecto);
                 }
             }
 

@@ -30,7 +30,7 @@ public class VistaMazo extends Label {
         this.setTextFill(Color.WHITE);
         this.setGraphic(fondoMazo);
         this.setContentDisplay(ContentDisplay.CENTER);
-        Jugador jugadorActual = controladorTurnos.getJugador();
+        Jugador jugadorActual = controladorTurnos.getJugadorActual();
         if(jugadorActual == jugador && jugadorActual.getEstadoJugador() instanceof PreInvocacion) {
             this.habilitarMazo();
         }

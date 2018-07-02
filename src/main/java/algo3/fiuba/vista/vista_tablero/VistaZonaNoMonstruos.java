@@ -41,7 +41,7 @@ public class VistaZonaNoMonstruos extends HBox {
             } else {
                 VistaCarta vistaNoMonstruo = new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo);
                 super.getChildren().add(vistaNoMonstruo);
-                if (!jugador.equals(controladorDeTurnos.getJugador())) {
+                if (!jugador.equals(controladorDeTurnos.getJugadorActual())) {
                     vistaNoMonstruo.deshabilitarCarta();
                 }
             }
