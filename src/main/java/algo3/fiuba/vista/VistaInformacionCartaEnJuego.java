@@ -4,6 +4,7 @@ import algo3.fiuba.controladores.controladores_de_carta.*;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Magica;
 import algo3.fiuba.modelo.cartas.Monstruo;
+import algo3.fiuba.modelo.cartas.efectos.EfectoInsectoComeHombres;
 import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
 import algo3.fiuba.modelo.cartas.estado_en_turno.UsadaEnTurno;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaAbajo;
@@ -53,7 +54,8 @@ public class VistaInformacionCartaEnJuego {
                     menuOpciones.getItems().add(menuAtacar);
                 }
 
-                if (!(monstruo.getEfecto() instanceof EfectoNulo)) {
+                if (!(monstruo.getEfecto() instanceof EfectoNulo)
+                        && !(monstruo.getEfecto() instanceof EfectoInsectoComeHombres)) {
                     MenuItem menuActivarEfecto = new MenuItem("Activar efecto");
                     menuActivarEfecto.setOnAction(new ControladorActivarEfecto(carta));
 

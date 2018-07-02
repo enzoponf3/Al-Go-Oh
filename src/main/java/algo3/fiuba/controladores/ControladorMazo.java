@@ -2,6 +2,7 @@ package algo3.fiuba.controladores;
 
 import algo3.fiuba.modelo.excepciones.CartasInsuficientesExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.modelo.jugador.PostInvocacion;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.vista.vista_tablero.VistaMano;
 import algo3.fiuba.vista.vista_tablero.VistaMazo;
@@ -16,15 +17,22 @@ public class ControladorMazo implements EventHandler<MouseEvent> {
     private Jugador jugador;
     private VistaMazo vistaMazo;
 
+    private ControladorDeTurnos controladorDeTurnos;
+
     public ControladorMazo(VistaMazo vistaMazo, Jugador jugador, VistaMano vistaMano) {
 
         this.jugador = jugador;
         this.vistaMazo = vistaMazo;
         this.vistaMano = vistaMano;
+
+        controladorDeTurnos = ControladorDeTurnos.getInstancia();
     }
 
     @Override
     public void handle(MouseEvent event) {
+        // !!!! Decisión de negocio ;)
+        jugador.setEstadoJugador(new PostInvocacion());
+        controladorDeTurnos.actualizarTablero();
         // !!!! no tiene que hacer nada esto, se hace automáticamente cada vez que pasa el turno
         /*
         ControladorDeTurnos ct = ControladorDeTurnos.getInstancia();
