@@ -8,6 +8,8 @@ import algo3.fiuba.vista.vista_tablero.VistaMano;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class ControladorCartaCampo implements EventHandler<MouseEvent> {
     private VistaCartaCampo vistaCartaCampo;

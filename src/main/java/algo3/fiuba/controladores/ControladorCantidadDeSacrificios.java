@@ -1,6 +1,6 @@
 package algo3.fiuba.controladores;
 
-import algo3.fiuba.controladores.botones.checkboxs.CheckBoxSacrificio;
+import algo3.fiuba.controladores.botones.checkboxs.CheckBoxMonstruo;
 import algo3.fiuba.modelo.Turno;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import javafx.event.ActionEvent;
@@ -22,7 +22,7 @@ public class ControladorCantidadDeSacrificios implements EventHandler<ActionEven
 
     @Override
     public void handle(ActionEvent event) {
-        CheckBoxSacrificio checkboxSeleccionadoParaSacrificio = (CheckBoxSacrificio) event.getSource();
+        CheckBoxMonstruo checkboxSeleccionadoParaSacrificio = (CheckBoxMonstruo) event.getSource();
         Monstruo monstruo = checkboxSeleccionadoParaSacrificio.getMonstruo();
         if (checkboxSeleccionadoParaSacrificio.isSelected()) {
             monstruosASacrificar.add(monstruo);

@@ -33,7 +33,6 @@ public class VistaProyeccionCarta extends StackPane {
 
     public void update() {
          super.getChildren().add(imagenProyectada);
-
     }
 
     public void zoomImgView(ImageView imagenProyectada) {

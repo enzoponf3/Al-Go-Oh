@@ -41,7 +41,7 @@ public abstract class Monstruo extends Carta {
     public void atacar(Monstruo otraCarta) {
         estadoCarta.verificarQuePuedeAtacar();
         estadoEnTurno = estadoEnTurno.verificarQueSePuedeUsar();
-        estadoCarta = new BocaArriba();
+        this.girarCarta();
         ResultadoCombate resultadoCombate = modoMonstruo.atacar(this, otraCarta, this.getAtaque());
         resultadoCombate.afectarAtacante(this);
     }

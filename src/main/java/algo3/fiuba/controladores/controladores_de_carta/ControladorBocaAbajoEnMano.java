@@ -24,7 +24,7 @@ public class ControladorBocaAbajoEnMano extends ControladorColocarCarta {
     }
 
     @Override
-    public EnJuego tipoEnJuego() {
+    public EnJuego tipoEnJuego(Carta carta) {
         return new BocaAbajo();
     }
 }
