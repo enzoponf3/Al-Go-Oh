@@ -31,7 +31,7 @@ public class ControladorBocaArribaEnMano extends ControladorColocarCarta {
 
     @Override
     public EnJuego tipoEnJuego(Carta carta) {
-        if (carta instanceof Monstruo){
+        /*if (carta instanceof Monstruo){
             Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/monstruo.mp3").toExternalForm());
             MediaPlayer rprMusica = new MediaPlayer(musica);
             rprMusica.play();
@@ -39,7 +39,7 @@ public class ControladorBocaArribaEnMano extends ControladorColocarCarta {
             Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/cartacampofx.mp3").toExternalForm());
             MediaPlayer rprMusica = new MediaPlayer(musica);
             rprMusica.play();
-        }
+        }*/
         return new BocaArriba();
     }
 }

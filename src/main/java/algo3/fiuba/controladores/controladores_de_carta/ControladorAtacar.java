@@ -45,20 +45,20 @@ public class ControladorAtacar implements EventHandler<ActionEvent> {
             boolean oponenteNoTieneCartasEnCampo = this.cantidadDeMonstruos(jugador.getOponente().getMonstuosEnCampo()) == 0;
 
             if (oponenteNoTieneCartasEnCampo) {
-                Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/LP_effect.mp3").toExternalForm());
+              /*  Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/LP_effect.mp3").toExternalForm());
                 MediaPlayer rprMusica = new MediaPlayer(musica);
-                rprMusica.play();
+                rprMusica.play();*/
                 jugador.getOponente().modificarPuntosDeVida(-monstruoAtacante.getAtaque());
                 monstruoAtacante.setEstadoEnTurno(new UsadaEnTurno());
             } else {
                 if (monstruoAtacado == null) {
                     throw new FaltaObjetivoAAtacarExcepcion("Seleccione un objetivo a atacar.");
                 } else {
-                    if (monstruoAtacado.getModo() instanceof ModoDeAtaque) {
+                   /* if (monstruoAtacado.getModo() instanceof ModoDeAtaque) {
                         Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/LP_effect.mp3").toExternalForm());
                         MediaPlayer rprMusica = new MediaPlayer(musica);
                         rprMusica.play();
-                    }
+                    }*/
                     monstruoAtacante.atacar(monstruoAtacado);
                 }
             }

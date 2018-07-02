@@ -26,9 +26,9 @@ public class ControladorActivarEfecto implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/actefect.mp3").toExternalForm());
+       /* Media musica = new Media(getClass().getResource("/algo3/fiuba/resources/media/actefect.mp3").toExternalForm());
         MediaPlayer rprMusica = new MediaPlayer(musica);
-        rprMusica.play();
+        rprMusica.play();*/
 
         carta.activarEfecto();
         if (carta instanceof Magica) {
