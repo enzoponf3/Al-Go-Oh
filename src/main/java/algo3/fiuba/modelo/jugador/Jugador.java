@@ -201,11 +201,9 @@ public class Jugador implements Observer {
         tableroJugador.removerModificador(modificador);
     }
 
-
     public void setEstadoJugador(EstadoJugador estadoJugador) {
         this.estadoJugador = estadoJugador;
     }
-
 
     public EstadoJugador getEstadoJugador() {
         return this.estadoJugador;

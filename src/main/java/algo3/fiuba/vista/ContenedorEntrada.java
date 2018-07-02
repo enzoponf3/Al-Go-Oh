@@ -27,15 +27,18 @@ public class ContenedorEntrada extends VBox {
         Label nombres = new Label("Duelistas! \nIngresen sus nombres");
         this.getChildren().addAll(nombres);
 
-        TextField entradaNombreJ1 = new TextField();
         Text nombre1 = new Text("Duelista 1:");
+        TextField entradaNombreJ1 = new TextField();
         VBox boxJugador1 = new VBox(nombre1, entradaNombreJ1);
         this.getChildren().addAll(boxJugador1);
 
-        TextField entradaNombreJ2 = new TextField();
         Text nombre2 = new Text("Duelista 2:");
+        TextField entradaNombreJ2 = new TextField();
         VBox boxJugador2 = new VBox(nombre2, entradaNombreJ2);
         this.getChildren().addAll(boxJugador2);
+
+        jugador1.setNombre(entradaNombreJ1.getText());
+        jugador2.setNombre(entradaNombreJ2.getText());
 
         Boton botonJugar = new Boton("Duelo!", new ControladorEntrar(stage, pantallaJuego));
         this.getChildren().addAll(botonJugar);

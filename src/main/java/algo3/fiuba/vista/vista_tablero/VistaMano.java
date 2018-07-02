@@ -10,6 +10,7 @@ import algo3.fiuba.utils.CartaVistaUtils;
 import algo3.fiuba.vista.VistaCarta;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class VistaMano extends ScrollPane {
         this.setMaxWidth(555);
         this.setFitToHeight(true);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
-  
+
         GridPane vistaMano = new GridPane();
         List<Carta> mano = jugador.getMano();
         int i = 0;
