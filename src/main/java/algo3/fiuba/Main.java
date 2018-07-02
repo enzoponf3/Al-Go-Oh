@@ -49,8 +49,8 @@ public class Main extends Application {
         Jugador jugador2 = new Jugador();
         juego.inicializar(jugador1,jugador2);
         //juego.inicializarMazos(mazoUtils.getMazo40(jugador1), mazoUtils.getMazo40(jugador2));
-        //juego.inicializarMazos(mazoUtils.getMuestraOjosAzules(jugador1), mazoUtils.getMuestraExodia(jugador2));
-        juego.inicializarMazos(mazoUtils.getMuestraCartasPedidas(jugador1), mazoUtils.getMuestraCartasPedidas(jugador2));
+        juego.inicializarMazos(mazoUtils.getMuestraOjosAzules(jugador1), mazoUtils.getMuestraExodia(jugador2));
+        //juego.inicializarMazos(mazoUtils.getMuestraCartasPedidas(jugador1), mazoUtils.getMuestraCartasPedidas(jugador2));
         juego.inicializarManos();
         ControladorDeTurnos controladorTurnos = ControladorDeTurnos.getInstancia();
         controladorTurnos.setJugadores(jugador1, jugador2);

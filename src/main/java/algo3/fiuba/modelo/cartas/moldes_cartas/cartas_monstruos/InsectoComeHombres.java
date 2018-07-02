@@ -56,7 +56,6 @@ public class InsectoComeHombres extends Monstruo {
 
         this.realizarSacrificios(sacrificios);
         modoMonstruo = new ModoDeAtaque(); // !!! sacarg
-        //super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
         jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
         primerTurno = true;
     }
