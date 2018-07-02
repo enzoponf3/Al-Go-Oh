@@ -30,7 +30,7 @@ public class VistaVida extends Label {
     }
 
     public void update() {
-/*
+        /*
         Media efectoSonidoVida = new Media(getClass().getResource("/algo3/fiuba/resources/media/LP_effect.mp3").toExternalForm());
         MediaPlayer rprEfecto = new MediaPlayer(efectoSonidoVida);
         rprEfecto.setVolume(200);
