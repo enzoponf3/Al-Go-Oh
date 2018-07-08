@@ -27,9 +27,9 @@ public class ControladorDeTurnos {
         turno = Turno.getInstancia();
     }
 
-    public void setJugadores(Jugador J1, Jugador J2) {
-        this.jugador1 = J1;
-        this.jugador2 = J2;
+    public void setJugadores(Jugador jugador1, Jugador jugador2) {
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
     }
 
     public void setContenedorPrincipal(ContenedorPrincipal contenedorPrincipal) {

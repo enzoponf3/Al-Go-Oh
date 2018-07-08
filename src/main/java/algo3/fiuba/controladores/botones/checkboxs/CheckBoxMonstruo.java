@@ -1,7 +1,6 @@
 package algo3.fiuba.controladores.botones.checkboxs;
 
 import algo3.fiuba.modelo.cartas.Monstruo;
-import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
 
 public class CheckBoxMonstruo extends CheckBox {
