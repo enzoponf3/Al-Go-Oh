@@ -5,6 +5,7 @@ import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 
+import java.util.List;
 import java.util.Observable;
 
 public abstract class Trampa extends NoMonstruo {
@@ -54,6 +55,10 @@ public abstract class Trampa extends NoMonstruo {
         if (estaActiva)
             jugador.mandarCartaDelCampoAlCementerio(this);
         estaActiva = false;
+    }
 
+    @Override
+    public List<AccionCarta> accionesDisponibles() {
+        return estadoEnTurno.accionesDisponibles(this, estadoCarta);
     }
 }

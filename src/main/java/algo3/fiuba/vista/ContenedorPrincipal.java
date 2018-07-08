@@ -16,14 +16,14 @@ public class ContenedorPrincipal extends BorderPane {
 
     private Tablero tableroJ1;
     private Tablero tableroJ2;
-    private BarraLateral barraLateral;
+    private MenuLateral barraLateral;
     private Juego juego;
     private ControladorDeTurnos ct;
 
     public ContenedorPrincipal(Stage stage, Juego juego) {
         this.juego = juego;
         this.ct = ControladorDeTurnos.getInstancia();
-        this.barraLateral = new BarraLateral(juego);
+        this.barraLateral = new MenuLateral(juego);
         this.tableroJ1 = new TableroLado1(juego.getJugador1());
         this.tableroJ2 = new TableroLado2(juego.getJugador2());
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");

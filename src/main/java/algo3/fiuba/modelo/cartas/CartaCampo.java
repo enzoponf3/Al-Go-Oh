@@ -7,6 +7,8 @@ import algo3.fiuba.modelo.cartas.modificadores.Modificador;
 import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 
+import java.util.List;
+
 public abstract class CartaCampo extends Carta {
 
     protected Modificador modificadorCampoPropio;
@@ -37,6 +39,12 @@ public abstract class CartaCampo extends Carta {
         campo.removerCarta(this);
         jugador.removerModificador(modificadorCampoPropio);
         jugador.getOponente().removerModificador(modificadorCampoOponente);
+    }
+
+
+    @Override
+    public List<AccionCarta> accionesDisponibles() {
+        return estadoEnTurno.accionesDisponibles(this, estadoCarta);
     }
 
     public void setModificadorCampoPropio(Modificador modificadorCampoPropio) {

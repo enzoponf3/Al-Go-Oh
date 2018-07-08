@@ -8,9 +8,8 @@ import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.vista.VistaCarta;
+import algo3.fiuba.vista.vista_cartas.CartaVista;
 import algo3.fiuba.vista.VistaZoomEfectoMagica;
-import algo3.fiuba.vista.vista_tablero.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -24,12 +23,14 @@ public abstract class ControladorColocarCarta implements EventHandler<ActionEven
 
     private ControladorDeTurnos controladorTurnos;
 
-    public ControladorColocarCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta) {
+    public ControladorColocarCarta(CartaVista vistaCarta, Jugador jugador, Carta carta) {
         this.jugador = jugador;
         this.carta = carta;
         controladorTurnos = ControladorDeTurnos.getInstancia();
         this.vistaZoomEfectoMagica = new VistaZoomEfectoMagica(vistaCarta);
     }
+
+
 
     @Override
     public void handle(ActionEvent event) {

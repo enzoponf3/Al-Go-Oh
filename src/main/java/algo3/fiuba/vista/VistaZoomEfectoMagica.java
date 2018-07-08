@@ -1,13 +1,10 @@
 package algo3.fiuba.vista;
 
 
-import algo3.fiuba.vista.VistaCarta;
-import algo3.fiuba.vista.VistaProyeccionCarta;
+import algo3.fiuba.vista.vista_cartas.CartaVista;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -21,7 +18,7 @@ public class VistaZoomEfectoMagica {
     private Image imagen;
     private VistaProyeccionCarta vistaProyeccionCarta;
 
-    public VistaZoomEfectoMagica(VistaCarta vistaCarta) {
+    public VistaZoomEfectoMagica(CartaVista vistaCarta) {
         this.imageUrl = vistaCarta.getImageUrl();
         this.vistaProyeccionCarta = VistaProyeccionCarta.getInstancia();
     }

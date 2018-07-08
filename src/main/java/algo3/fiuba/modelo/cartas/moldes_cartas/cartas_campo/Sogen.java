@@ -1,9 +1,12 @@
 package algo3.fiuba.modelo.cartas.moldes_cartas.cartas_campo;
 
+import algo3.fiuba.modelo.cartas.AccionCarta;
 import algo3.fiuba.modelo.cartas.efectos.EfectoNulo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.CartaCampo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoSogen;
+
+import java.util.List;
 
 public class Sogen extends CartaCampo {
 

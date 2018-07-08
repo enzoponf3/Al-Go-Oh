@@ -1,12 +1,12 @@
 package algo3.fiuba.modelo.cartas.estados_cartas;
 
+import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.excepciones.CartaNoInicializadaEnDueloExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.Monstruo;
-import algo3.fiuba.modelo.cartas.NoMonstruo;
-import algo3.fiuba.modelo.cartas.Trampa;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class EstadoNoInicializado implements EstadoCarta {
 
@@ -58,5 +58,25 @@ public class EstadoNoInicializado implements EstadoCarta {
     @Override
     public boolean estaBocaAbajo() {
         throw new CartaNoInicializadaEnDueloExcepcion("La carta nunca se ha inicializado en el duelo.");
+    }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles(Monstruo carta) {
+        return new LinkedList<>();
+    }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles(Magica carta) {
+        return new LinkedList<>();
+    }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles(Trampa carta) {
+        return new LinkedList<>();
+    }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles(CartaCampo carta) {
+        return new LinkedList<>();
     }
 }

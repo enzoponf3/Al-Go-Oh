@@ -20,14 +20,12 @@ public abstract class Carta implements Observer {
     protected Jugador jugador;
     protected EfectoCarta efecto;
     protected EstadoEnTurno estadoEnTurno;
-    private Turno turno;
 
     public Carta(String nombre, EfectoCarta efecto) {
         this.nombre = nombre;
         this.estadoCarta = new EstadoNoInicializado();
         this.efecto = efecto;
-
-        turno = Turno.getInstancia();
+        this.estadoEnTurno = new NoUsadaEnTurno();
     }
 
     @Override
@@ -74,6 +72,8 @@ public abstract class Carta implements Observer {
     public abstract boolean estaEnCampo(Campo campo);
 
     public abstract void removerDelCampo(Campo campo);
+
+    public abstract List<AccionCarta> accionesDisponibles();
 
     public void girarCarta() {
         estadoCarta = estadoCarta.girarCarta();

@@ -4,12 +4,10 @@ import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.moldes_cartas.CartaCampoNula;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.CartaVistaUtils;
-import algo3.fiuba.vista.VistaCarta;
+import algo3.fiuba.vista.vista_cartas.CartaVista;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 public class VistaCartaCampo extends Label {
 
@@ -32,7 +30,7 @@ public class VistaCartaCampo extends Label {
         Carta cartaCampoActiva = jugador.getCartaCampoActiva();
         if(!(cartaCampoActiva instanceof CartaCampoNula)) {
             String nombre = jugador.getCartaCampoActiva().getNombre();
-            VistaCarta vistaCarta = new VistaCarta(cartaVistaUtils.getImagenDeCarta(nombre), jugador, carta);
+            CartaVista vistaCarta = new CartaVista(cartaVistaUtils.getImagenDeCarta(nombre), jugador, carta);
             this.setGraphic(vistaCarta);
         } else {
             this.setGraphic(cartaCampoFondo);

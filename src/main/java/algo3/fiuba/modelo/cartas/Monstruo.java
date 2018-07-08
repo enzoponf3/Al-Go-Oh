@@ -17,6 +17,7 @@ import algo3.fiuba.modelo.excepciones.SacrificiosIncorrectosExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public abstract class Monstruo extends Carta {
@@ -33,7 +34,6 @@ public abstract class Monstruo extends Carta {
         this.ataqueBase = ataque;
         this.defensaBase = defensa;
         this.nivel = NivelFactoryFactory.obtenerEstrellas(estrellas);
-        this.estadoEnTurno = new NoUsadaEnTurno(); // está solo para que pasen los tests
         this.modificadores = new HashSet<>();
         this.modoMonstruo = new ModoDeAtaque();
     }
@@ -88,6 +88,12 @@ public abstract class Monstruo extends Carta {
         super.colocarEnCampo(jugador, tipoEnJuego, sacrificios);
         jugador.colocarCartaEnCampo(this, tipoEnJuego, sacrificios);
     }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles() {
+        return estadoEnTurno.accionesDisponibles(this, estadoCarta);
+    }
+
 
 
     public void cambiarModo() {

@@ -1,11 +1,10 @@
 package algo3.fiuba.modelo.cartas.estados_cartas;
 
+import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.jugador.Jugador;
-import algo3.fiuba.modelo.cartas.Carta;
-import algo3.fiuba.modelo.cartas.Monstruo;
-import algo3.fiuba.modelo.cartas.NoMonstruo;
-import algo3.fiuba.modelo.cartas.Trampa;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
+
+import java.util.List;
 
 public interface EstadoCarta {
 
@@ -28,4 +27,12 @@ public interface EstadoCarta {
     EstadoCarta girarCarta();
 
     boolean estaBocaAbajo();
+
+    List<AccionCarta> accionesDisponibles(Monstruo carta);
+
+    List<AccionCarta> accionesDisponibles(Magica carta);
+
+    List<AccionCarta> accionesDisponibles(Trampa carta);
+
+    List<AccionCarta> accionesDisponibles(CartaCampo carta);
 }

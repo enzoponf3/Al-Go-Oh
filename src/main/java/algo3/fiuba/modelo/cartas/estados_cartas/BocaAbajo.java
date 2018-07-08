@@ -6,6 +6,9 @@ import algo3.fiuba.modelo.excepciones.CartaInhabilitadaParaActivarseExcepcion;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class BocaAbajo extends EnJuego {
 
     @Override
@@ -56,5 +59,37 @@ public class BocaAbajo extends EnJuego {
     @Override
     public boolean estaBocaAbajo() {
         return true;
+    }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles(Monstruo carta) {
+        List<AccionCarta> acciones = new LinkedList<>();
+
+        for (AccionCarta ac : carta.getModo().accionesDisponibles()) {
+            acciones.add(ac);
+        }
+
+        acciones.add(AccionCarta.CAMBIAR_MODO);
+        acciones.add(AccionCarta.GIRAR_CARTA);
+
+        return acciones;
+    }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles(Magica carta) {
+        List<AccionCarta> acciones = new LinkedList<>();
+        acciones.add(AccionCarta.ACTIVAR_EFECTO);
+
+        return acciones;
+    }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles(Trampa carta) {
+        return new LinkedList<>();
+    }
+
+    @Override
+    public List<AccionCarta> accionesDisponibles(CartaCampo carta) {
+        return new LinkedList<>();
     }
 }

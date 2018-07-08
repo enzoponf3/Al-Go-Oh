@@ -7,7 +7,7 @@ import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.modelo.jugador.PreInvocacion;
 import algo3.fiuba.utils.CartaVistaUtils;
-import algo3.fiuba.vista.VistaCarta;
+import algo3.fiuba.vista.vista_cartas.CartaVista;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import java.util.LinkedList;
@@ -30,7 +30,7 @@ public class VistaMano extends ScrollPane {
     }
 
     public void dibujar() {
-        List<VistaCarta> vistaCartas = new LinkedList<>();
+        List<CartaVista> vistaCartas = new LinkedList<>();
 
         this.getStylesheets().add("/algo3/fiuba/resources/estilos/estiloContenedorPrincipal.css");
         this.getStyleClass().add("scroll-pane");
@@ -44,18 +44,21 @@ public class VistaMano extends ScrollPane {
         int i = 0;
         for(Carta carta: mano) {
             Jugador jugadorActual = controladorTurnos.getJugadorActual();
-            VistaCarta vistaCarta;
+            CartaVista vistaCarta;
             if(jugadorActual == jugador && jugador.getEstadoJugador() instanceof PreInvocacion) {
-                vistaCarta = new VistaCarta(cartaVistaUtils.getImagenDeCarta(carta.getNombre()), jugador, carta);
+                vistaCarta = new CartaVista(cartaVistaUtils.getImagenDeCarta(carta.getNombre()), jugador, carta);
 
             }
             else {
-                vistaCarta = new VistaCarta(cartaVistaUtils.getImagenCartaBocaAbajo(), jugador, carta);
+                vistaCarta = new CartaVista(cartaVistaUtils.getImagenCartaBocaAbajo(), jugador, carta);
                 vistaCarta.deshabilitarCarta();
             }
+
             vistaCarta.setOnMouseClicked(new ControladorCarta(vistaCarta, jugador, carta));
             vistaCartas.add(vistaCarta);
             vistaMano.add(vistaCarta, i, 0);
+
+            vistaCarta.update();
             i++;
         }
         this.setContent(vistaMano);

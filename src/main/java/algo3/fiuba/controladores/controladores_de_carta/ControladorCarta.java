@@ -1,38 +1,33 @@
 package algo3.fiuba.controladores.controladores_de_carta;
 
 import algo3.fiuba.modelo.cartas.*;
-import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
-import algo3.fiuba.modelo.cartas.estados_cartas.EnMano;
 import algo3.fiuba.modelo.jugador.Jugador;
+import algo3.fiuba.utils.CartaVistaUtils;
 import algo3.fiuba.vista.*;
-import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
-import algo3.fiuba.vista.vista_tablero.VistaMano;
-import algo3.fiuba.vista.vista_tablero.VistaZonaMonstruos;
-import algo3.fiuba.vista.vista_tablero.VistaZonaNoMonstruos;
+import algo3.fiuba.vista.vista_cartas.CartaVista;
 import javafx.event.EventHandler;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 public class ControladorCarta implements EventHandler<MouseEvent> {
 
-    private VistaInformacionCartaEnMano vistaInformacionCartaEnMano;
-    private VistaInformacionCartaEnJuego vistaInformacionCartaEnJuego;
     private Carta carta;
+    private CartaVista cartaVista;
+    private Jugador jugador;
 
-    public ControladorCarta(VistaCarta vistaCarta, Jugador jugador, Carta carta) {
+    private CartaVistaUtils cartaVistaUtils;
+
+    public ControladorCarta(CartaVista cartaVista, Jugador jugador, Carta carta) {
         this.carta = carta;
-        this.vistaInformacionCartaEnMano = new VistaInformacionCartaEnMano(vistaCarta, jugador, carta);
-        this.vistaInformacionCartaEnJuego = new VistaInformacionCartaEnJuego(vistaCarta, jugador, carta);
+        this.cartaVista = cartaVista;
+        this.jugador = jugador;
+
+        cartaVistaUtils = new CartaVistaUtils();
     }
 
     @Override
     public void handle(MouseEvent evento) {
-        if (carta.getEstadoCarta() instanceof EnMano) {
-            vistaInformacionCartaEnMano.update(evento);
-        } else if (carta.getEstadoCarta() instanceof EnJuego) {
-            vistaInformacionCartaEnJuego.update(evento);
-        }
+            ContextMenu menuAcciones = cartaVistaUtils.menuAcciones(cartaVista, jugador, carta, carta.accionesDisponibles());
+            menuAcciones.show(cartaVista,evento.getScreenX(),evento.getScreenY());
     }
-
 }

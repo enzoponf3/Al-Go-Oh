@@ -3,14 +3,10 @@ package algo3.fiuba.controladores.controladores_de_carta;
 import algo3.fiuba.controladores.ControladorDeTurnos;
 import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Magica;
-import algo3.fiuba.vista.VistaCarta;
-import algo3.fiuba.vista.VistaProyeccionCarta;
+import algo3.fiuba.vista.vista_cartas.CartaVista;
 import algo3.fiuba.vista.VistaZoomEfectoMagica;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 
 public class ControladorActivarEfecto implements EventHandler<ActionEvent> {
 
@@ -18,7 +14,7 @@ public class ControladorActivarEfecto implements EventHandler<ActionEvent> {
     private ControladorDeTurnos controladorDeTurnos;
     private VistaZoomEfectoMagica vistaZoomEfectoMagica;
 
-    public ControladorActivarEfecto(VistaCarta vistaCarta, Carta carta) {
+    public ControladorActivarEfecto(CartaVista vistaCarta, Carta carta) {
         this.carta = carta;
         this.controladorDeTurnos = ControladorDeTurnos.getInstancia();
         this.vistaZoomEfectoMagica = new VistaZoomEfectoMagica(vistaCarta);

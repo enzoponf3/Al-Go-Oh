@@ -5,7 +5,7 @@ import algo3.fiuba.modelo.cartas.NoMonstruo;
 import algo3.fiuba.modelo.cartas.moldes_cartas.NoMonstruoNulo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.CartaVistaUtils;
-import algo3.fiuba.vista.VistaCarta;
+import algo3.fiuba.vista.vista_cartas.CartaVista;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -39,11 +39,15 @@ public class VistaZonaNoMonstruos extends HBox {
                 super.getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioNoMonstruo(),
                         ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
             } else {
-                VistaCarta vistaNoMonstruo = new VistaCarta(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo);
+                CartaVista vistaNoMonstruo = new CartaVista(cartaVistaUtils.getImagenDeCarta(noMonstruo.getNombre()), jugador, noMonstruo);
+                vistaNoMonstruo.update();
                 super.getChildren().add(vistaNoMonstruo);
+                /*!!!
                 if (!jugador.equals(controladorDeTurnos.getJugadorActual())) {
                     vistaNoMonstruo.deshabilitarCarta();
                 }
+                */
+
             }
         }
     }

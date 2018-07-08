@@ -14,10 +14,7 @@ public class BotonAyuda implements EventHandler<ActionEvent> {
 
         try {
             Desktop.getDesktop().browse(new URI("http://www.yugioh-card.com/es/rulebook/es.pdf"));
-        } catch (IOException e1) {
-            System.out.println("ne");
-        } catch (URISyntaxException e2) {
-            System.out.println("nw");
+        } catch (Exception e) {
         }
     }
 }

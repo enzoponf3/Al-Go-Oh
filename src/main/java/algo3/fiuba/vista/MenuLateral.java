@@ -17,7 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 
-public class BarraLateral extends StackPane {
+public class MenuLateral extends StackPane {
 
     private Juego juego;
     private VistaVida vistaVidaJugador1;
@@ -26,7 +26,7 @@ public class BarraLateral extends StackPane {
     private VistaNombreJugador vistaNombreJugador1;
     private VistaNombreJugador vistaNombreJugador2;
 
-    public BarraLateral(Juego juego) {
+    public MenuLateral(Juego juego) {
 
         ControladorDeTurnos controladorTurnos = ControladorDeTurnos.getInstancia();
 

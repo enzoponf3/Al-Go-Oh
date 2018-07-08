@@ -1,7 +1,10 @@
 package algo3.fiuba.modelo.cartas.modo_monstruo;
 
+import algo3.fiuba.modelo.cartas.AccionCarta;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.resultado_combate.ResultadoCombate;
+
+import java.util.List;
 
 public abstract class ModoMonstruo {
 
@@ -27,4 +30,6 @@ public abstract class ModoMonstruo {
     public abstract ResultadoCombate empataron();
 
     public abstract ModoMonstruo cambiarModoMonstruo();
+
+    public abstract List<AccionCarta> accionesDisponibles();
 }

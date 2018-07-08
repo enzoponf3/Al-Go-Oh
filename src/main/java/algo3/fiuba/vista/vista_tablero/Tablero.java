@@ -5,8 +5,6 @@ import algo3.fiuba.controladores.controladores_de_carta.ControladorCementerio;
 import algo3.fiuba.controladores.ControladorMazo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.CartaVistaUtils;
-import algo3.fiuba.vista.*;
-import algo3.fiuba.vista.vista_tablero.VistaCartaCampo;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -23,7 +21,7 @@ public abstract class Tablero extends GridPane {
     private VistaMazo zonaMazo;
     protected VistaMano zonaMano;
     private VistaZonaNoMonstruos zonaNoMonstruos;
-    private VistaZonaMonstruos zonaMonstruos;
+    private ZonaMonstruosVista zonaMonstruos;
     private VistaCartaCampo zonaCartaDeCampo;
 
     private CartaVistaUtils cartaVistaUtils;
@@ -32,7 +30,7 @@ public abstract class Tablero extends GridPane {
     public Tablero(Jugador jugador) {
         cartaVistaUtils = new CartaVistaUtils();
 
-        zonaMonstruos = new VistaZonaMonstruos(jugador);
+        zonaMonstruos = new ZonaMonstruosVista(jugador);
         zonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
         this.zonaMano = new VistaMano(jugador);
 
@@ -42,7 +40,7 @@ public abstract class Tablero extends GridPane {
         this.zonaMazo.setOnMouseClicked(new ControladorMazo(zonaMazo, jugador, zonaMano));
 
         this.zonaNoMonstruos = new VistaZonaNoMonstruos(jugador);
-        this.zonaMonstruos = new VistaZonaMonstruos(jugador);
+        this.zonaMonstruos = new ZonaMonstruosVista(jugador);
 
         ImageView fondoCementerio = new ImageView(new Image("/algo3/fiuba/resources/img/cartavacia.jpg",
                 ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false));
@@ -103,7 +101,7 @@ public abstract class Tablero extends GridPane {
     }
 
 
-    public VistaZonaMonstruos getZonaMonstruos() {
+    public ZonaMonstruosVista getZonaMonstruos() {
         return zonaMonstruos;
     }
 }

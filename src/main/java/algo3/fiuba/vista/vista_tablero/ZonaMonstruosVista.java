@@ -5,12 +5,13 @@ import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.cartas.moldes_cartas.MonstruoNulo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.utils.CartaVistaUtils;
-import algo3.fiuba.vista.VistaCarta;
+import algo3.fiuba.vista.vista_cartas.CartaVista;
+import algo3.fiuba.vista.vista_cartas.MonstruoVista;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
-public class VistaZonaMonstruos extends HBox {
+public class ZonaMonstruosVista extends HBox {
 
     protected Jugador jugador;
     private double ANCHO_MAXIMO_CARTA = 95.0;
@@ -20,7 +21,7 @@ public class VistaZonaMonstruos extends HBox {
     private ControladorDeTurnos controladorDeTurnos;
     private CartaVistaUtils cartaVistaUtils;
 
-    public VistaZonaMonstruos(Jugador jugador) {
+    public ZonaMonstruosVista(Jugador jugador) {
         cartaVistaUtils = new CartaVistaUtils();
         controladorDeTurnos = ControladorDeTurnos.getInstancia();
         this.setSpacing(20);
@@ -40,14 +41,17 @@ public class VistaZonaMonstruos extends HBox {
                 super.getChildren().add(new ImageView(new Image(cartaVistaUtils.getImagenEspacioVacioMonstruo(),
                         ANCHO_MAXIMO_CARTA, ALTURA_MAXIMA_CARTA, false, false)));
             } else {
-                VistaCarta vistaMonstruo = new VistaCarta(cartaVistaUtils.getImagenDeCarta(monstruo.getNombre()), jugador, monstruo);
+                //CartaVista vistaMonstruo = new CartaVista(cartaVistaUtils.getImagenDeCarta(monstruo.getNombre()), jugador, monstruo);
+                MonstruoVista vistaMonstruo = new MonstruoVista(cartaVistaUtils.getImagenDeCarta(monstruo.getNombre()), jugador, monstruo);
+                vistaMonstruo.update();
                 super.getChildren().add(vistaMonstruo);
-                /*
+                /*!!!!
                 if (!jugador.equals(controladorDeTurnos.getJugadorActual())) {
                     vistaMonstruo.deshabilitarCarta();
                 }
                 */
             }
+
         }
     }
 
