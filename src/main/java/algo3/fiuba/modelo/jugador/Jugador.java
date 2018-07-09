@@ -97,10 +97,6 @@ public class Jugador implements Observer {
         tableroJugador.agregarCartaAlMazo(carta);
     }
 
-    public void setTableroJugador(TableroJugador tableroJugador) {
-        this.tableroJugador = tableroJugador;
-    }
-
     public void mandarCartaDelCampoAlCementerio(Carta carta) {
         carta.setEstado(new EnCementerio());
         tableroJugador.removerCartaDelCampo(carta);
@@ -134,12 +130,31 @@ public class Jugador implements Observer {
         return false;
     }
 
-    public List<Carta> getMano() {
-        return mano;
-    }
-
     public void removerCartaDelCampo(Carta carta) {
         tableroJugador.removerCartaDelCampo(carta);
+    }
+
+
+    public boolean recibirAtaque(Monstruo monstruoAtacante, Monstruo monstruoAtacado) {
+        boolean continuarAtaque = true;
+        List<NoMonstruo> noMonstruos = tableroJugador.getNoMonstruos();
+        for (NoMonstruo noMonstruo : noMonstruos) {
+            if (!noMonstruo.equals(new NoMonstruoNulo()) && (continuarAtaque = noMonstruo.activarTrampa())) {
+                noMonstruo.activarEfecto(monstruoAtacante, monstruoAtacado);
+                return noMonstruo.negarAtaque();
+            }
+        }
+        return !continuarAtaque;
+    }
+
+    public List<AccionJugador> accionesDisponibles() {
+        return estadoJugador.accionesJugadorDisponibles();
+    }
+
+    public void inicializar() {
+        this.puntosDeVida = PUNTOS_DE_VIDA_INICIALES;
+        this.mano = new LinkedList<>();
+        this.tableroJugador = new TableroJugador();
     }
 
     @Override
@@ -156,22 +171,9 @@ public class Jugador implements Observer {
                 '}';
     }
 
-    public boolean recibirAtaque(Monstruo monstruoAtacante, Monstruo monstruoAtacado) {
-        boolean continuarAtaque = true;
-        List<NoMonstruo> noMonstruos = tableroJugador.getNoMonstruos();
-        for (NoMonstruo noMonstruo : noMonstruos) {
-            if (!noMonstruo.equals(new NoMonstruoNulo()) && (continuarAtaque = noMonstruo.activarTrampa())) {
-                noMonstruo.activarEfecto(monstruoAtacante, monstruoAtacado);
-                return noMonstruo.negarAtaque();
-            }
-        }
-        return !continuarAtaque;
-    }
 
-    public void inicializar() {
-        this.puntosDeVida = PUNTOS_DE_VIDA_INICIALES;
-        this.mano = new LinkedList<>();
-        this.tableroJugador = new TableroJugador();
+    public List<Carta> getMano() {
+        return mano;
     }
 
     public Jugador getOponente() {
@@ -224,5 +226,9 @@ public class Jugador implements Observer {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setTableroJugador(TableroJugador tableroJugador) {
+        this.tableroJugador = tableroJugador;
     }
 }

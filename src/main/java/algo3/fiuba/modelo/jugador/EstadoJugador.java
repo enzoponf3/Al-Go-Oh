@@ -4,6 +4,8 @@ import algo3.fiuba.modelo.TableroJugador;
 import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 
+import java.util.List;
+
 public interface EstadoJugador {
 
     EstadoJugador colocarCartaEnCampo(Jugador jugador, TableroJugador tableroJugador, Monstruo carta, EnJuego tipoEnJuego);
@@ -16,6 +18,5 @@ public interface EstadoJugador {
 
     EstadoJugador cambioDeTurno();
 
-    EstadoJugador cambioDeFase();
-
+    List<AccionJugador> accionesJugadorDisponibles();
 }

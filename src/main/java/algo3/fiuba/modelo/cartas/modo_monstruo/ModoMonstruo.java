@@ -32,4 +32,6 @@ public abstract class ModoMonstruo {
     public abstract ModoMonstruo cambiarModoMonstruo();
 
     public abstract List<AccionCarta> accionesDisponibles();
+
+    public abstract boolean estaEnModoDeDefensa();
 }

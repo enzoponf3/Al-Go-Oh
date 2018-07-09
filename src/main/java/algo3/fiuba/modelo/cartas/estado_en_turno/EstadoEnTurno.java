@@ -11,11 +11,13 @@ public interface EstadoEnTurno {
 
     EstadoEnTurno pasarTurno();
 
-    List<AccionCarta> accionesDisponibles(Monstruo carta, EstadoCarta estadoCarta);
+    List<AccionCarta> accionesCartaDisponibles(Monstruo carta, EstadoCarta estadoCarta);
 
-    List<AccionCarta> accionesDisponibles(Magica carta, EstadoCarta estadoCarta);
+    List<AccionCarta> accionesCartaDisponibles(Magica carta, EstadoCarta estadoCarta);
 
-    List<AccionCarta> accionesDisponibles(Trampa carta, EstadoCarta estadoCarta);
+    List<AccionCarta> accionesCartaDisponibles(Trampa carta, EstadoCarta estadoCarta);
 
-    List<AccionCarta> accionesDisponibles(CartaCampo carta, EstadoCarta estadoCarta);
+    List<AccionCarta> accionesCartaDisponibles(CartaCampo carta, EstadoCarta estadoCarta);
+
+
 }

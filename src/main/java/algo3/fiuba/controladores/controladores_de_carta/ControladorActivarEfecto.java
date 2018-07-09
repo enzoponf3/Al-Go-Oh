@@ -27,9 +27,8 @@ public class ControladorActivarEfecto implements EventHandler<ActionEvent> {
         rprMusica.play();*/
 
         carta.activarEfecto();
-        if (carta instanceof Magica) {
-            vistaZoomEfectoMagica.update();
-        }
+        vistaZoomEfectoMagica.update();
+
         controladorDeTurnos.actualizarTablero();
     }
 }

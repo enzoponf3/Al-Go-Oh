@@ -20,22 +20,22 @@ public class UsadaEnTurno implements EstadoEnTurno {
     }
 
     @Override
-    public List<AccionCarta> accionesDisponibles(Monstruo carta, EstadoCarta estadoCarta) {
+    public List<AccionCarta> accionesCartaDisponibles(Monstruo carta, EstadoCarta estadoCarta) {
         return new LinkedList<>();
     }
 
     @Override
-    public List<AccionCarta> accionesDisponibles(Magica carta, EstadoCarta estadoCarta) {
+    public List<AccionCarta> accionesCartaDisponibles(Magica carta, EstadoCarta estadoCarta) {
         return new LinkedList<>();
     }
 
     @Override
-    public List<AccionCarta> accionesDisponibles(Trampa carta, EstadoCarta estadoCarta) {
+    public List<AccionCarta> accionesCartaDisponibles(Trampa carta, EstadoCarta estadoCarta) {
         return new LinkedList<>();
     }
 
     @Override
-    public List<AccionCarta> accionesDisponibles(CartaCampo carta, EstadoCarta estadoCarta) {
+    public List<AccionCarta> accionesCartaDisponibles(CartaCampo carta, EstadoCarta estadoCarta) {
         return new LinkedList<>();
     }
 }

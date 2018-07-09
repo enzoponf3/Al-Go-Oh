@@ -44,7 +44,7 @@ public abstract class CartaCampo extends Carta {
 
     @Override
     public List<AccionCarta> accionesDisponibles() {
-        return estadoEnTurno.accionesDisponibles(this, estadoCarta);
+        return estadoEnTurno.accionesCartaDisponibles(this, estadoCarta);
     }
 
     public void setModificadorCampoPropio(Modificador modificadorCampoPropio) {

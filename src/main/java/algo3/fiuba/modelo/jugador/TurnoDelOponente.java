@@ -5,6 +5,9 @@ import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 import algo3.fiuba.modelo.excepciones.JugadorInhabilitadoParaColocarCartasExcepcion;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class TurnoDelOponente implements EstadoJugador {
 
     @Override
@@ -34,7 +37,7 @@ public class TurnoDelOponente implements EstadoJugador {
     }
 
     @Override
-    public EstadoJugador cambioDeFase() {
-        return new TurnoDelOponente();
+    public List<AccionJugador> accionesJugadorDisponibles() {
+        return new LinkedList<>();
     }
 }

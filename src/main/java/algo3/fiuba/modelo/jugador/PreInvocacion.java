@@ -4,6 +4,11 @@ import algo3.fiuba.modelo.TableroJugador;
 import algo3.fiuba.modelo.cartas.*;
 import algo3.fiuba.modelo.cartas.estados_cartas.EnJuego;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import static algo3.fiuba.modelo.jugador.AccionJugador.TERMINAR_TURNO;
+
 public class PreInvocacion implements EstadoJugador {
 
     @Override
@@ -40,7 +45,12 @@ public class PreInvocacion implements EstadoJugador {
     }
 
     @Override
-    public EstadoJugador cambioDeFase() {
-        return new PostInvocacion();
+    public List<AccionJugador> accionesJugadorDisponibles() {
+        List<AccionJugador> acciones = new LinkedList<>();
+        acciones.add(AccionJugador.COLOCAR_MONSTRUO);
+        acciones.add(AccionJugador.COLOCAR_DISTINTA_A_MONSTRUO);
+        acciones.add(AccionJugador.TERMINAR_TURNO);
+
+        return acciones;
     }
 }

@@ -19,22 +19,25 @@ public class NoUsadaEnTurno implements EstadoEnTurno {
     }
 
     @Override
-    public List<AccionCarta> accionesDisponibles(Monstruo carta, EstadoCarta estadoCarta) {
+    public List<AccionCarta> accionesCartaDisponibles(Monstruo carta, EstadoCarta estadoCarta) {
+        List<AccionCarta> acciones = estadoCarta.accionesDisponibles(carta);
+        //acciones.remove(AccionCarta.RECIBIR_ATAQUE);
+
+        return acciones;
+    }
+
+    @Override
+    public List<AccionCarta> accionesCartaDisponibles(Magica carta, EstadoCarta estadoCarta) {
         return estadoCarta.accionesDisponibles(carta);
     }
 
     @Override
-    public List<AccionCarta> accionesDisponibles(Magica carta, EstadoCarta estadoCarta) {
+    public List<AccionCarta> accionesCartaDisponibles(Trampa carta, EstadoCarta estadoCarta) {
         return estadoCarta.accionesDisponibles(carta);
     }
 
     @Override
-    public List<AccionCarta> accionesDisponibles(Trampa carta, EstadoCarta estadoCarta) {
-        return estadoCarta.accionesDisponibles(carta);
-    }
-
-    @Override
-    public List<AccionCarta> accionesDisponibles(CartaCampo carta, EstadoCarta estadoCarta) {
+    public List<AccionCarta> accionesCartaDisponibles(CartaCampo carta, EstadoCarta estadoCarta) {
         return estadoCarta.accionesDisponibles(carta);
     }
 }

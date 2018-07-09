@@ -6,6 +6,7 @@ import algo3.fiuba.modelo.cartas.Carta;
 import algo3.fiuba.modelo.cartas.Monstruo;
 import algo3.fiuba.modelo.jugador.Jugador;
 import algo3.fiuba.vista.vista_cartas.CartaVista;
+import algo3.fiuba.vista.vista_cartas.MonstruoVista;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -43,7 +44,7 @@ public class CartaVistaUtils {
                     break;
                 case CAMBIAR_MODO:
                     MenuItem itemCambiarModo = new MenuItem("Cambiar modo");
-                    itemCambiarModo.setOnAction(new ControladorCambiarModo((Monstruo) carta));
+                    itemCambiarModo.setOnAction(new ControladorCambiarModo((Monstruo) carta, (MonstruoVista) cartaVista));
 
                     menuAcciones.getItems().add(itemCambiarModo);
                     break;

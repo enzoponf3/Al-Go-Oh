@@ -38,9 +38,6 @@ public abstract class ControladorColocarCarta implements EventHandler<ActionEven
 
         try {
             jugador.colocarCartaEnCampo(carta, this.tipoEnJuego(carta), monstruosASacrificar);
-            if(carta instanceof Magica && this.tipoEnJuego(carta) instanceof BocaArriba) {
-                vistaZoomEfectoMagica.update();
-            }
             controladorTurnos.actualizarTablero();
         } catch (Exception e) {
             Alert invocacionInvalidaAlert = new Alert(Alert.AlertType.WARNING);

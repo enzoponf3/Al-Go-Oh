@@ -44,4 +44,9 @@ public class ModoDeDefensa extends ModoMonstruo {
     public List<AccionCarta> accionesDisponibles() {
         return new LinkedList<>();
     }
+
+    @Override
+    public boolean estaEnModoDeDefensa() {
+        return true;
+    }
 }

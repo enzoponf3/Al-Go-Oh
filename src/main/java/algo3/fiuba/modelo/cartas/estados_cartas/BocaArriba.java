@@ -71,7 +71,9 @@ public class BocaArriba extends EnJuego {
         for (AccionCarta ac : carta.getModo().accionesDisponibles()) {
             acciones.add(ac);
         }
+
         acciones.add(AccionCarta.CAMBIAR_MODO);
+        acciones.add(AccionCarta.RECIBIR_ATAQUE);
 
         return acciones;
     }

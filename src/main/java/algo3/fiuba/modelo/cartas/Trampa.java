@@ -59,6 +59,6 @@ public abstract class Trampa extends NoMonstruo {
 
     @Override
     public List<AccionCarta> accionesDisponibles() {
-        return estadoEnTurno.accionesDisponibles(this, estadoCarta);
+        return estadoEnTurno.accionesCartaDisponibles(this, estadoCarta);
     }
 }

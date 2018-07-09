@@ -71,6 +71,7 @@ public class BocaAbajo extends EnJuego {
 
         acciones.add(AccionCarta.CAMBIAR_MODO);
         acciones.add(AccionCarta.GIRAR_CARTA);
+        acciones.add(AccionCarta.RECIBIR_ATAQUE);
 
         return acciones;
     }

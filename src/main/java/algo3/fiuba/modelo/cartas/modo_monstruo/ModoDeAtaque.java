@@ -49,4 +49,9 @@ public class ModoDeAtaque extends ModoMonstruo {
 
         return acciones;
     }
+
+    @Override
+    public boolean estaEnModoDeDefensa() {
+        return false;
+    }
 }

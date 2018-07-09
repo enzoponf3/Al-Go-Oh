@@ -2,8 +2,6 @@ package algo3.fiuba.modelo.cartas;
 
 import algo3.fiuba.modelo.Campo;
 import algo3.fiuba.modelo.cartas.efectos.EfectoCarta;
-import algo3.fiuba.modelo.cartas.estado_en_turno.NoUsadaEnTurno;
-import algo3.fiuba.modelo.cartas.estados_cartas.BocaArriba;
 import algo3.fiuba.modelo.cartas.nivel.Nivel;
 import algo3.fiuba.modelo.cartas.nivel.NivelFactoryFactory;
 import algo3.fiuba.modelo.cartas.modificadores.Modificador;
@@ -91,7 +89,7 @@ public abstract class Monstruo extends Carta {
 
     @Override
     public List<AccionCarta> accionesDisponibles() {
-        return estadoEnTurno.accionesDisponibles(this, estadoCarta);
+        return estadoEnTurno.accionesCartaDisponibles(this, estadoCarta);
     }
 
 
@@ -130,6 +128,10 @@ public abstract class Monstruo extends Carta {
 
     public void removerModificador(Modificador modificador) {
         modificadores.remove(modificador);
+    }
+
+    public boolean estaEnModoDeDefensa() {
+        return modoMonstruo.estaEnModoDeDefensa();
     }
 
     public ModoMonstruo getModo() {
