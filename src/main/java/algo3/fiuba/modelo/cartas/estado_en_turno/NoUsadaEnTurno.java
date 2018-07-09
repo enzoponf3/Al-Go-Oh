@@ -21,7 +21,7 @@ public class NoUsadaEnTurno implements EstadoEnTurno {
     @Override
     public List<AccionCarta> accionesCartaDisponibles(Monstruo carta, EstadoCarta estadoCarta) {
         List<AccionCarta> acciones = estadoCarta.accionesDisponibles(carta);
-        //acciones.remove(AccionCarta.RECIBIR_ATAQUE);
+        acciones.remove(AccionCarta.RECIBIR_ATAQUE);
 
         return acciones;
     }

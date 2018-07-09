@@ -537,7 +537,8 @@ public class AccionCartaTest {
         carta.setEstadoEnTurno(new TurnoRival());
         carta.setEstado(new BocaArriba());
 
-        Assert.assertTrue(carta.accionesDisponibles().isEmpty());
+        Assert.assertEquals(1, carta.accionesDisponibles().size());
+        Assert.assertTrue(carta.accionesDisponibles().contains(AccionCarta.RECIBIR_ATAQUE));
     }
 
     @Test
@@ -546,7 +547,8 @@ public class AccionCartaTest {
         carta.setEstadoEnTurno(new TurnoRival());
         carta.setEstado(new BocaAbajo());
 
-        Assert.assertTrue(carta.accionesDisponibles().isEmpty());
+        Assert.assertEquals(1, carta.accionesDisponibles().size());
+        Assert.assertTrue(carta.accionesDisponibles().contains(AccionCarta.RECIBIR_ATAQUE));
     }
 
     @Test
