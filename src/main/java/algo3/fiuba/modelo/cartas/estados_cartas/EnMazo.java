@@ -32,4 +32,9 @@ public class EnMazo extends FueraDeJuego {
     public List<AccionCarta> accionesDisponibles(CartaCampo carta) {
         return new LinkedList<>();
     }
+
+    @Override
+    public boolean estaEnMazo() {
+        return true;
+    }
 }

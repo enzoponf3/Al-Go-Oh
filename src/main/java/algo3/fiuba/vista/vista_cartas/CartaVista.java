@@ -41,7 +41,7 @@ public class CartaVista extends StackPane {
     public void dibujar() {
         super.getChildren().clear();
 
-        if (carta.getEstadoCarta() instanceof BocaAbajo || carta.getEstadoCarta() instanceof EnMazo) {
+        if (carta.estaBocaAbajo() || carta.estaEnMazo()) {
             super.getChildren().add(imagenCartaBocaAbajo);
         } else {
             super.getChildren().add(imagenCarta);

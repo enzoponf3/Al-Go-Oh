@@ -23,6 +23,11 @@ public abstract class EnJuego implements EstadoCarta {
         return new BocaArriba();
     }
 
+    @Override
+    public boolean estaEnMazo() {
+        return false;
+    }
+
     public void colocarCartaEnCampo(Monstruo carta, Campo campo) {
         campo.colocarCarta(carta, this);
     }

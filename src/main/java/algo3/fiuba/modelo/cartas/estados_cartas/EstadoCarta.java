@@ -28,6 +28,8 @@ public interface EstadoCarta {
 
     boolean estaBocaAbajo();
 
+    boolean estaEnMazo();
+
     List<AccionCarta> accionesDisponibles(Monstruo carta);
 
     List<AccionCarta> accionesDisponibles(Magica carta);

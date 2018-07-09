@@ -61,6 +61,11 @@ public class EstadoNoInicializado implements EstadoCarta {
     }
 
     @Override
+    public boolean estaEnMazo() {
+        throw new CartaNoInicializadaEnDueloExcepcion("La carta nunca se ha inicializado en el duelo.");
+    }
+
+    @Override
     public List<AccionCarta> accionesDisponibles(Monstruo carta) {
         return new LinkedList<>();
     }

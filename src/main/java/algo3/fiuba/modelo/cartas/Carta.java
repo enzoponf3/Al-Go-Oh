@@ -79,6 +79,14 @@ public abstract class Carta implements Observer {
         estadoCarta = estadoCarta.girarCarta();
     }
 
+    public boolean estaBocaAbajo() {
+        return estadoCarta.estaBocaAbajo();
+    }
+
+    public boolean estaEnMazo() {
+        return estadoCarta.estaEnMazo();
+    }
+
     protected void setEfecto(EfectoCarta efecto) {
         this.efecto = efecto;
     }
